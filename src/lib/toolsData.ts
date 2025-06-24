@@ -1,4 +1,3 @@
-
 import { 
   BookOpen, MessageCircle, Users, FileText, Target, 
   PenTool, Mail, ClipboardList, Calendar, Star,
@@ -18,11 +17,13 @@ export const tools = [
     timesSaved: "2h",
     estimatedTime: "3 min",
     fields: [
-      { name: "subject", label: "Subject", type: "select", options: ["Math", "Science", "English", "History", "Art"] },
+      { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Mathematics, Science, English Literature, History" },
       { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
-      { name: "topic", label: "Lesson Topic", type: "text", placeholder: "e.g., Photosynthesis, Fractions, Character Analysis" },
-      { name: "duration", label: "Lesson Duration", type: "select", options: ["30 min", "45 min", "60 min", "90 min"] },
-      { name: "learningStyle", label: "Focus Learning Style", type: "select", options: ["Visual", "Auditory", "Kinesthetic", "Mixed"] }
+      { name: "topic", label: "Topic or Objectives", type: "text", placeholder: "e.g., Understanding photosynthesis, Adding fractions, Character analysis in literature" },
+      { name: "duration", label: "Lesson Duration", type: "select", options: ["1 hour", "1.5 hours", "2 hours", "2.5 hours", "3 hours"] },
+      { name: "learningStyle", label: "Focus Learning Style", type: "select", options: ["Visual", "Auditory", "Kinesthetic", "Mixed"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific requirements, student needs, available resources, or teaching constraints that should be considered..." },
+      { name: "standardAlignment", label: "Standard Alignment", type: "text", placeholder: "UK standard" }
     ]
   },
   {
