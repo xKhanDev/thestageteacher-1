@@ -17,12 +17,12 @@ const Index = () => {
   const [teacherProfile, setTeacherProfile] = useState(null);
 
   const categories = [
-    { name: "All", icon: Sparkles, color: "bg-purple-100 text-purple-800" },
     { name: "Lesson Planning", icon: BookOpen, color: "bg-blue-100 text-blue-800" },
     { name: "Communication", icon: MessageCircle, color: "bg-green-100 text-green-800" },
     { name: "Behavior Support", icon: Users, color: "bg-orange-100 text-orange-800" },
     { name: "Admin", icon: FileText, color: "bg-gray-100 text-gray-800" },
     { name: "Differentiation", icon: Target, color: "bg-pink-100 text-pink-800" },
+    { name: "All", icon: Sparkles, color: "bg-purple-100 text-purple-800" },
   ];
 
   const filteredTools = tools.filter(tool => {
