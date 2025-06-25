@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,7 +10,7 @@ import { tools } from "@/lib/toolsData";
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Lesson Planning");
   const [showProfile, setShowProfile] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
@@ -23,13 +22,12 @@ const Index = () => {
     { name: "Communication", icon: MessageCircle, color: "bg-orange-100 text-orange-800" },
     { name: "Behaviour Support", icon: Users, color: "bg-red-100 text-red-800" },
     { name: "Differentiation", icon: Target, color: "bg-pink-100 text-pink-800" },
-    { name: "All", icon: Sparkles, color: "bg-gray-100 text-gray-800" },
   ];
 
   const filteredTools = tools.filter(tool => {
     const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          tool.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || tool.category === selectedCategory;
+    const matchesCategory = tool.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 

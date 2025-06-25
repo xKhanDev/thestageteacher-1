@@ -1,4 +1,3 @@
-
 import { 
   BookOpen, MessageCircle, Users, FileText, Target, 
   PenTool, Mail, ClipboardList, Calendar, Star,
@@ -145,7 +144,10 @@ export const tools = [
     fields: [
       { name: "text", label: "Text to Analyze", type: "textarea", placeholder: "Paste the text you want to validate..." },
       { name: "targetGrade", label: "Target Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
-      { name: "purpose", label: "Text Purpose", type: "select", options: ["Independent Reading", "Guided Reading", "Instructional Text", "Assessment"] }
+      { name: "purpose", label: "Text Purpose", type: "select", options: ["Independent Reading", "Guided Reading", "Instructional Text", "Assessment"] },
+      { name: "proofreading", label: "Proofreading", type: "select", options: ["Yes", "No"] },
+      { name: "rewriteTo", label: "Re-write to make it", type: "select", options: ["Simpler", "More Complex", "More Engaging", "More Formal", "More Informal"] },
+      { name: "textSummariser", label: "Text Summariser", type: "select", options: ["Brief Summary", "Detailed Summary", "Key Points Only", "No Summary"] }
     ]
   },
   {
