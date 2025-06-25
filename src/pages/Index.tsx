@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, BookOpen, MessageCircle, Users, FileText, Target, User, Sparkles, Clock, Heart } from "lucide-react";
+import { Search, BookOpen, MessageCircle, Users, FileText, Target, User, Sparkles, Clock, Heart, CheckCircle, Lightbulb } from "lucide-react";
 import TeacherProfile from "@/components/TeacherProfile";
 import ToolModal from "@/components/ToolModal";
 import { tools } from "@/lib/toolsData";
@@ -18,11 +18,12 @@ const Index = () => {
 
   const categories = [
     { name: "Lesson Planning", icon: BookOpen, color: "bg-blue-100 text-blue-800" },
-    { name: "Communication", icon: MessageCircle, color: "bg-green-100 text-green-800" },
-    { name: "Behavior Support", icon: Users, color: "bg-orange-100 text-orange-800" },
-    { name: "Admin", icon: FileText, color: "bg-gray-100 text-gray-800" },
+    { name: "Content Hub", icon: FileText, color: "bg-green-100 text-green-800" },
+    { name: "Assessment", icon: CheckCircle, color: "bg-purple-100 text-purple-800" },
+    { name: "Communication", icon: MessageCircle, color: "bg-orange-100 text-orange-800" },
+    { name: "Behaviour Support", icon: Users, color: "bg-red-100 text-red-800" },
     { name: "Differentiation", icon: Target, color: "bg-pink-100 text-pink-800" },
-    { name: "All", icon: Sparkles, color: "bg-purple-100 text-purple-800" },
+    { name: "All", icon: Sparkles, color: "bg-gray-100 text-gray-800" },
   ];
 
   const filteredTools = tools.filter(tool => {
