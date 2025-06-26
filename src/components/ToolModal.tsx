@@ -118,11 +118,18 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
   };
 
   const handleClose = () => {
+    // Only show survey if content was generated and survey hasn't been shown yet
     if (hasGeneratedContent && !showSurvey) {
       setShowSurvey(true);
     } else {
+      // Always close the modal if survey is already showing or no content generated
       onClose();
     }
+  };
+
+  const handleSurveyClose = () => {
+    setShowSurvey(false);
+    onClose(); // Close the entire modal when survey is closed
   };
 
   const handleSurveySubmit = (feedback) => {
@@ -140,6 +147,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
     localStorage.setItem('toolFeedback', JSON.stringify(existingFeedback));
     
     console.log('Feedback saved:', newFeedback);
+    setShowSurvey(false);
     onClose(); // Close the modal after survey submission
   };
 
@@ -312,7 +320,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
 
       <SatisfactionSurvey
         isOpen={showSurvey}
-        onClose={() => setShowSurvey(false)}
+        onClose={handleSurveyClose}
         toolName={tool.name}
         onSubmit={handleSurveySubmit}
       />
