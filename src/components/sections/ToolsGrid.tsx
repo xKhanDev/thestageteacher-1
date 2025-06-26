@@ -80,7 +80,7 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
                   className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200"
                   onClick={(e) => handleToolClick(tool, e)}
                 >
-                  Try it →
+                  Use Tool →
                 </Button>
               </div>
             </CardContent>

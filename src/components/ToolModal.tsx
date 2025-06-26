@@ -49,7 +49,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
             formData.grade || 'Elementary'
           );
           break;
-        case 4: // Parent Email - Note: This is tool ID 17 in the data, but keeping 4 for backward compatibility
+        case 4: // Parent Email
         case 17: // Parent Email Composer
           aiContent = await generateParentEmail(
             formData.studentName || 'Student',
@@ -57,7 +57,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
             formData.emailType || 'Positive Update'
           );
           break;
-        case 7: // Behavior Plan - Note: This is tool ID 20 in the data, but keeping 7 for backward compatibility
+        case 7: // Behavior Plan
         case 20: // Behavior Plan Creator
           aiContent = await generateBehaviorPlan(
             formData.behaviorConcern || 'Classroom behavior',
@@ -125,18 +125,16 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
   };
 
   const handleClose = () => {
-    // Only show survey if content was generated and survey hasn't been shown yet
     if (hasGeneratedContent && !showSurvey) {
       setShowSurvey(true);
     } else {
-      // Always close the modal if survey is already showing or no content generated
       onClose();
     }
   };
 
   const handleSurveyClose = () => {
     setShowSurvey(false);
-    onClose(); // Close the entire modal when survey is closed
+    onClose();
   };
 
   const handleSurveySubmit = (feedback) => {
@@ -155,7 +153,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
     
     console.log('Feedback saved:', newFeedback);
     setShowSurvey(false);
-    onClose(); // Close the modal after survey submission
+    onClose();
   };
 
   const IconComponent = tool.icon;
@@ -172,7 +170,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={handleClose}>
+      <Dialog open={isOpen && !showSurvey} onOpenChange={handleClose}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <div className="flex items-center space-x-3">
@@ -217,11 +215,6 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
                       <h4 className="font-semibold text-red-800">Generation Error</h4>
                     </div>
                     <p className="text-red-700 text-sm mt-2">{error}</p>
-                    {error.includes('quota') && (
-                      <p className="text-red-600 text-sm mt-2">
-                        Please add credits to your OpenAI account or contact your administrator.
-                      </p>
-                    )}
                   </div>
                 )}
 
