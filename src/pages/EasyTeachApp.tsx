@@ -68,28 +68,25 @@ const EasyTeachApp = () => {
               </TabsList>
 
               <TabsContent value="tools" className="space-y-8">
-                {/* Enhanced Search Section */}
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Find Your Perfect Tool</h3>
-                  
-                  {/* Search Bar */}
-                  <div className="relative mb-6">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                    <Input
-                      type="text"
-                      placeholder="Search for lesson plans, worksheets, assessments, and more..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 py-4 text-base border-2 border-gray-200 focus:border-blue-400 rounded-xl bg-white shadow-sm focus:shadow-md transition-all duration-200"
+                {/* Search and Filters */}
+                <div className="space-y-6">
+                  <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div className="relative flex-1 max-w-md">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                      <Input
+                        type="text"
+                        placeholder="Search tools..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="pl-10 py-3 text-sm border-2 border-blue-200 focus:border-blue-400 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm"
+                      />
+                    </div>
+                    <CategoryFilters 
+                      categories={categories}
+                      selectedCategory={selectedCategory}
+                      onCategorySelect={setSelectedCategory}
                     />
                   </div>
-
-                  {/* Category Filters */}
-                  <CategoryFilters 
-                    categories={categories}
-                    selectedCategory={selectedCategory}
-                    onCategorySelect={setSelectedCategory}
-                  />
                 </div>
 
                 <ToolsGrid 

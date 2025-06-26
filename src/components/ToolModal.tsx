@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -8,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Copy, Download, Sparkles, Clock, Loader2, Bot, AlertCircle } from "lucide-react";
+import { Copy, Download, Sparkles, Clock, Loader2, Bot } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import SatisfactionSurvey from "./SatisfactionSurvey";
 import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent } from "@/utils/aiService";
@@ -24,7 +23,6 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
   const [generatedContent, setGeneratedContent] = useState('');
   const [showSurvey, setShowSurvey] = useState(false);
   const [hasGeneratedContent, setHasGeneratedContent] = useState(false);
-  const [error, setError] = useState('');
 
   const handleInputChange = (fieldName: string, value: string) => {
     setFormData(prev => ({
@@ -35,7 +33,6 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
 
   const generateContent = async () => {
     setIsGenerating(true);
-    setError('');
     
     try {
       let aiContent = '';
@@ -49,16 +46,14 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
             formData.grade || 'Elementary'
           );
           break;
-        case 4: // Parent Email - Note: This is tool ID 17 in the data, but keeping 4 for backward compatibility
-        case 17: // Parent Email Composer
+        case 4: // Parent Email
           aiContent = await generateParentEmail(
             formData.studentName || 'Student',
             formData.situation || 'General update',
             formData.emailType || 'Positive Update'
           );
           break;
-        case 7: // Behavior Plan - Note: This is tool ID 20 in the data, but keeping 7 for backward compatibility
-        case 20: // Behavior Plan Creator
+        case 7: // Behavior Plan
           aiContent = await generateBehaviorPlan(
             formData.behaviorConcern || 'Classroom behavior',
             formData.studentAge || '10',
@@ -80,14 +75,12 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
         description: "Your personalized teaching content is ready.",
       });
 
+      // Remove the automatic survey trigger
     } catch (error) {
       console.error('Generation error:', error);
-      const errorMessage = error.message || 'Unable to generate content. Please try again.';
-      setError(errorMessage);
-      
       toast({
         title: "Generation Error",
-        description: errorMessage,
+        description: "Unable to generate content. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -125,18 +118,11 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
   };
 
   const handleClose = () => {
-    // Only show survey if content was generated and survey hasn't been shown yet
     if (hasGeneratedContent && !showSurvey) {
       setShowSurvey(true);
     } else {
-      // Always close the modal if survey is already showing or no content generated
       onClose();
     }
-  };
-
-  const handleSurveyClose = () => {
-    setShowSurvey(false);
-    onClose(); // Close the entire modal when survey is closed
   };
 
   const handleSurveySubmit = (feedback) => {
@@ -154,7 +140,6 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
     localStorage.setItem('toolFeedback', JSON.stringify(existingFeedback));
     
     console.log('Feedback saved:', newFeedback);
-    setShowSurvey(false);
     onClose(); // Close the modal after survey submission
   };
 
@@ -166,7 +151,6 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
       setGeneratedContent('');
       setHasGeneratedContent(false);
       setShowSurvey(false);
-      setError('');
     }
   }, [isOpen]);
 
@@ -209,21 +193,6 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
                     Our AI assistant will help generate personalized educational content based on your inputs.
                   </p>
                 </div>
-
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <div className="flex items-center space-x-2">
-                      <AlertCircle className="h-5 w-5 text-red-600" />
-                      <h4 className="font-semibold text-red-800">Generation Error</h4>
-                    </div>
-                    <p className="text-red-700 text-sm mt-2">{error}</p>
-                    {error.includes('quota') && (
-                      <p className="text-red-600 text-sm mt-2">
-                        Please add credits to your OpenAI account or contact your administrator.
-                      </p>
-                    )}
-                  </div>
-                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {tool.fields.map((field) => (
@@ -343,7 +312,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
 
       <SatisfactionSurvey
         isOpen={showSurvey}
-        onClose={handleSurveyClose}
+        onClose={() => setShowSurvey(false)}
         toolName={tool.name}
         onSubmit={handleSurveySubmit}
       />
