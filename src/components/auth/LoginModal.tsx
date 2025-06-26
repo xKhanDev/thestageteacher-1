@@ -3,10 +3,12 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles, Mail, Lock, Eye, EyeOff, User } from "lucide-react";
+import { Sparkles, Mail, Lock, Eye, EyeOff, User, AlertCircle } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -14,6 +16,7 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
+  const { signIn, signUp } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -27,24 +30,51 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { error } = await signIn(formData.email, formData.password);
+      
+      if (error) {
+        toast.error(error.message || 'Failed to sign in');
+      } else {
+        toast.success('Welcome back!');
+        onClose();
+      }
+    } catch (error) {
+      toast.error('An unexpected error occurred');
+    } finally {
       setIsLoading(false);
-      // For demo purposes, we'll just redirect to the main app
-      window.location.href = '/app';
-    }, 1500);
+    }
   };
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
+
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { error } = await signUp(formData.email, formData.password, formData.name);
+      
+      if (error) {
+        toast.error(error.message || 'Failed to create account');
+      } else {
+        toast.success('Account created successfully! Please check your email to verify your account.');
+        onClose();
+      }
+    } catch (error) {
+      toast.error('An unexpected error occurred');
+    } finally {
       setIsLoading(false);
-      // For demo purposes, we'll just redirect to the main app
-      window.location.href = '/app';
-    }, 1500);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -121,16 +151,6 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
                     </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm">
-                    <label className="flex items-center space-x-2 text-gray-600">
-                      <input type="checkbox" className="rounded border-gray-300" />
-                      <span>Remember me</span>
-                    </label>
-                    <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">
-                      Forgot password?
-                    </a>
                   </div>
 
                   <Button
@@ -211,6 +231,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         onChange={(e) => handleInputChange('password', e.target.value)}
                         className="pl-10 pr-12 border-gray-200 focus:border-purple-300"
                         required
+                        minLength={6}
                       />
                       <button
                         type="button"
@@ -238,22 +259,6 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         required
                       />
                     </div>
-                  </div>
-
-                  <div className="text-sm text-gray-600">
-                    <label className="flex items-start space-x-2">
-                      <input type="checkbox" className="rounded border-gray-300 mt-1" required />
-                      <span>
-                        I agree to the{' '}
-                        <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">
-                          Terms of Service
-                        </a>{' '}
-                        and{' '}
-                        <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">
-                          Privacy Policy
-                        </a>
-                      </span>
-                    </label>
                   </div>
 
                   <Button

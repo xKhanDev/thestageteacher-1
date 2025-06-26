@@ -1,20 +1,23 @@
 
-import { useState, useEffect } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 import LandingPage from './LandingPage';
 import EasyTeachApp from './EasyTeachApp';
 
 const Index = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { user, loading } = useAuth();
 
-  useEffect(() => {
-    // Check if user is authenticated (you can implement proper auth logic here)
-    const urlParams = new URLSearchParams(window.location.search);
-    const isApp = urlParams.get('app') === 'true' || window.location.pathname.includes('/app');
-    setIsAuthenticated(isApp);
-  }, []);
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // For demo purposes, we'll show the app if URL contains 'app'
-  if (isAuthenticated || window.location.href.includes('/app')) {
+  if (user) {
     return <EasyTeachApp />;
   }
 
