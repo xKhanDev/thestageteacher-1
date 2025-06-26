@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -12,14 +13,18 @@ import { useToast } from "@/hooks/use-toast";
 import SatisfactionSurvey from "./SatisfactionSurvey";
 import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent } from "@/utils/aiService";
 
+interface FormData {
+  [key: string]: string;
+}
+
 const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<FormData>({});
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedContent, setGeneratedContent] = useState('');
   const [showSurvey, setShowSurvey] = useState(false);
 
-  const handleInputChange = (fieldName, value) => {
+  const handleInputChange = (fieldName: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [fieldName]: value
@@ -84,7 +89,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
     }
   };
 
-  const enhanceGeneratedContent = (tool, data, profile, aiContent) => {
+  const enhanceGeneratedContent = (tool, data: FormData, profile, aiContent: string) => {
     const teacherName = profile?.name || "Teacher";
     const grade = profile?.grade || "your grade";
     
