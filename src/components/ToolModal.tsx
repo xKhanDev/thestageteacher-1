@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,6 +22,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedContent, setGeneratedContent] = useState('');
   const [showSurvey, setShowSurvey] = useState(false);
+  const [hasGeneratedContent, setHasGeneratedContent] = useState(false);
 
   const handleInputChange = (fieldName: string, value: string) => {
     setFormData(prev => ({
@@ -68,15 +68,14 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
 
       const enhancedContent = enhanceGeneratedContent(tool, formData, teacherProfile, aiContent);
       setGeneratedContent(enhancedContent);
+      setHasGeneratedContent(true);
       
       toast({
         title: "AI Content Generated! ✨",
         description: "Your personalized teaching content is ready.",
       });
 
-      setTimeout(() => {
-        setShowSurvey(true);
-      }, 1500);
+      // Remove the automatic survey trigger
     } catch (error) {
       console.error('Generation error:', error);
       toast({
@@ -118,6 +117,14 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
     });
   };
 
+  const handleClose = () => {
+    if (hasGeneratedContent && !showSurvey) {
+      setShowSurvey(true);
+    } else {
+      onClose();
+    }
+  };
+
   const handleSurveySubmit = (feedback) => {
     const existingFeedback = JSON.parse(localStorage.getItem('toolFeedback') || '[]');
     const newFeedback = {
@@ -133,13 +140,23 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
     localStorage.setItem('toolFeedback', JSON.stringify(existingFeedback));
     
     console.log('Feedback saved:', newFeedback);
+    onClose(); // Close the modal after survey submission
   };
 
   const IconComponent = tool.icon;
 
+  useEffect(() => {
+    if (!isOpen) {
+      setFormData({});
+      setGeneratedContent('');
+      setHasGeneratedContent(false);
+      setShowSurvey(false);
+    }
+  }, [isOpen]);
+
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={onClose}>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <div className="flex items-center space-x-3">
@@ -229,7 +246,7 @@ ${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
                 <Separator />
 
                 <div className="flex justify-end space-x-3">
-                  <Button variant="outline" onClick={onClose}>
+                  <Button variant="outline" onClick={handleClose}>
                     Cancel
                   </Button>
                   <Button 
