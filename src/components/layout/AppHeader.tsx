@@ -17,41 +17,43 @@ const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-sm border-b border-gradient-to-r from-blue-100 to-purple-100 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center space-x-4">
-            <SidebarTrigger className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-xl p-2 transition-all duration-200 hover:shadow-md border border-transparent hover:border-blue-200" />
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-              <Sparkles className="h-7 w-7 text-white animate-pulse" />
+    <header className="bg-white/95 backdrop-blur-sm border-b border-emerald-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center space-x-3">
+            <SidebarTrigger className="hover:bg-emerald-50 rounded-lg p-2 transition-all duration-200 hover:shadow-sm border border-transparent hover:border-emerald-200" />
+            <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center shadow-md">
+              <Sparkles className="h-6 w-6 text-white animate-pulse" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 EasyTeach
               </h1>
-              <p className="text-sm text-gray-600 font-medium">Your AI Teaching Assistant ✨</p>
+              <p className="text-xs text-gray-600 font-medium">AI Teaching Assistant</p>
             </div>
           </div>
           
-          <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-3 bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-2 rounded-full border border-green-100">
-              <Clock className="h-5 w-5 text-green-600" />
-              <span className="text-sm font-semibold text-green-700">Save 10+ hours weekly</span>
-              <Zap className="h-4 w-4 text-yellow-500" />
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-2 rounded-full border border-emerald-100">
+              <Clock className="h-4 w-4 text-emerald-600" />
+              <span className="text-xs font-semibold text-emerald-700">Save 10+ hrs weekly</span>
+              <Zap className="h-4 w-4 text-amber-500" />
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
               <Button
                 variant="outline"
+                size="sm"
                 onClick={onProfileClick}
-                className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 hover:border-purple-300 transition-all duration-200"
+                className="flex items-center space-x-2 bg-emerald-50 border-emerald-200 hover:border-emerald-300 hover:bg-emerald-100 transition-all duration-200 text-xs"
               >
                 <User className="h-4 w-4" />
-                <span>{teacherProfile?.name || user?.user_metadata?.name || user?.email || "Profile"}</span>
+                <span className="max-w-20 truncate">{teacherProfile?.name || user?.user_metadata?.name || user?.email || "Profile"}</span>
               </Button>
               <Button
                 variant="outline"
+                size="sm"
                 onClick={handleSignOut}
-                className="flex items-center space-x-2 text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 transition-all duration-200"
+                className="flex items-center space-x-2 text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 transition-all duration-200 text-xs"
               >
                 <LogOut className="h-4 w-4" />
                 <span>Sign Out</span>
