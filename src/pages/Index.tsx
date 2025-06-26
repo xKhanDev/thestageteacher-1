@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,10 +26,10 @@ const Index = () => {
   ];
 
   const sidebarItems = [
-    { name: "Wizard Tools", icon: Wand2, href: "#wizard" },
-    { name: "AI Chatbot", icon: Bot, href: "#chatbot" },
-    { name: "Output History", icon: History, href: "#history" },
-    { name: "Tools Suggestions", icon: BrainCircuit, href: "#suggestions" },
+    { name: "Wizard Tools", icon: Wand2, href: "/wizard-tools" },
+    { name: "AI Chatbot", icon: Bot, href: "/ai-chatbot" },
+    { name: "Output History", icon: History, href: "/output-history" },
+    { name: "Tools Suggestions", icon: BrainCircuit, href: "/tools-suggestions" },
   ];
 
   const filteredTools = tools.filter(tool => {
