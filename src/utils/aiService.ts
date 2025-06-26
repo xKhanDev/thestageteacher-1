@@ -3,6 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 
 export const generateEducationalContent = async (prompt: string, toolContext?: string) => {
   try {
+    console.log('Generating educational content:', { prompt: prompt.substring(0, 100), toolContext });
+
     const { data, error } = await supabase.functions.invoke('generate-ai-content', {
       body: {
         prompt,
@@ -23,7 +25,7 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
     return data.content;
   } catch (error) {
     console.error('AI generation error:', error);
-    throw new Error('Unable to generate AI response. Please try again.');
+    throw new Error('Unable to generate AI response. Please check your connection and try again.');
   }
 };
 
@@ -44,6 +46,8 @@ Topic: ${topic}
 Grade Level: ${grade}`;
 
   try {
+    console.log('Generating lesson plan:', { subject, topic, grade });
+
     const { data, error } = await supabase.functions.invoke('generate-ai-content', {
       body: {
         prompt,
@@ -52,7 +56,15 @@ Grade Level: ${grade}`;
       }
     });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Lesson plan generation error:', error);
+      throw error;
+    }
+    
+    if (!data?.content) {
+      throw new Error('No lesson plan content received');
+    }
+
     return data.content;
   } catch (error) {
     console.error('Lesson plan generation error:', error);
@@ -76,6 +88,8 @@ Please include:
 - Maintain a positive, collaborative tone`;
 
   try {
+    console.log('Generating parent email:', { studentName, situation, emailType });
+
     const { data, error } = await supabase.functions.invoke('generate-ai-content', {
       body: {
         prompt,
@@ -84,7 +98,15 @@ Please include:
       }
     });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Parent email generation error:', error);
+      throw error;
+    }
+
+    if (!data?.content) {
+      throw new Error('No email content received');
+    }
+
     return data.content;
   } catch (error) {
     console.error('Parent email generation error:', error);
@@ -110,6 +132,8 @@ Please include:
 - Ways to leverage student strengths`;
 
   try {
+    console.log('Generating behavior plan:', { behaviorConcern, studentAge, strengths });
+
     const { data, error } = await supabase.functions.invoke('generate-ai-content', {
       body: {
         prompt,
@@ -118,7 +142,15 @@ Please include:
       }
     });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Behavior plan generation error:', error);
+      throw error;
+    }
+
+    if (!data?.content) {
+      throw new Error('No behavior plan content received');
+    }
+
     return data.content;
   } catch (error) {
     console.error('Behavior plan generation error:', error);
@@ -126,7 +158,7 @@ Please include:
   }
 };
 
-// Remove the old transformers-based functions
+// Legacy function for backward compatibility
 export const initializeAI = async () => {
   // No longer needed - using OpenAI via edge function
   return null;

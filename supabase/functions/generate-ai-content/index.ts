@@ -27,17 +27,19 @@ serve(async (req) => {
 
     switch (toolType) {
       case 'lessonPlan':
-        systemPrompt = 'You are an expert educational consultant. Create detailed, engaging lesson plans that include clear objectives, activities, assessments, and differentiation strategies. Format your response with clear headings and bullet points.';
+        systemPrompt = 'You are an expert educational consultant. Create detailed, engaging lesson plans that include clear objectives, activities, assessments, and differentiation strategies. Format your response with clear headings and bullet points for easy reading.';
         break;
       case 'parentEmail':
         systemPrompt = 'You are a professional educator writing to parents. Create warm, professional emails that maintain positive relationships while clearly communicating important information. Use a respectful and collaborative tone.';
         break;
       case 'behaviorPlan':
-        systemPrompt = 'You are a behavior specialist creating positive behavior support plans. Focus on understanding root causes, building on student strengths, and providing practical, evidence-based strategies.';
+        systemPrompt = 'You are a behavior specialist creating positive behavior support plans. Focus on understanding root causes, building on student strengths, and providing practical, evidence-based strategies. Structure your response clearly.';
         break;
       default:
-        systemPrompt = 'You are an AI teaching assistant. Provide helpful, practical educational content that supports effective teaching and learning. Be specific, actionable, and professional.';
+        systemPrompt = 'You are an AI teaching assistant. Provide helpful, practical educational content that supports effective teaching and learning. Be specific, actionable, and professional in your responses.';
     }
+
+    console.log('Generating content with OpenAI for tool type:', toolType);
 
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -51,13 +53,14 @@ serve(async (req) => {
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        max_tokens: 1000,
+        max_tokens: 1500,
         temperature: 0.7,
       }),
     });
 
     if (!response.ok) {
       const errorData = await response.json();
+      console.error('OpenAI API error:', errorData);
       throw new Error(`OpenAI API error: ${errorData.error?.message || 'Unknown error'}`);
     }
 
@@ -67,6 +70,8 @@ serve(async (req) => {
     if (!generatedContent) {
       throw new Error('No content generated from OpenAI');
     }
+
+    console.log('Successfully generated content');
 
     return new Response(JSON.stringify({ content: generatedContent }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
