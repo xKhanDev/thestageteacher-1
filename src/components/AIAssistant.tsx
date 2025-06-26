@@ -20,7 +20,7 @@ const AIAssistant = () => {
     {
       id: 1,
       sender: 'ai',
-      text: "Hello! I'm your AI Teaching Assistant. I can help you with lesson planning, student support, classroom management, and educational guidance. What would you like assistance with today?",
+      text: "Hello! I'm your AI Teaching Assistant powered by OpenAI. I can help you with lesson planning, student support, classroom management, and educational guidance. What would you like assistance with today?",
       timestamp: new Date()
     }
   ]);
@@ -43,7 +43,7 @@ const AIAssistant = () => {
     setIsLoading(true);
 
     try {
-      const aiResponse = await generateEducationalContent(inputMessage);
+      const aiResponse = await generateEducationalContent(inputMessage, 'AI Assistant Chat');
       
       const aiMessage: Message = {
         id: Date.now() + 1,
@@ -56,7 +56,7 @@ const AIAssistant = () => {
     } catch (error) {
       toast({
         title: "AI Assistant Error",
-        description: "Unable to generate response. Please try again.",
+        description: "Unable to generate response. Please check your OpenAI API key and try again.",
         variant: "destructive",
       });
     } finally {

@@ -1,47 +1,26 @@
 
-import { pipeline } from '@huggingface/transformers';
-
-let textGenerator: any = null;
-
-export const initializeAI = async () => {
-  if (!textGenerator) {
-    try {
-      // Use a lightweight text generation model that works in the browser
-      textGenerator = await pipeline(
-        'text-generation',
-        'Xenova/gpt2',
-        { device: 'webgpu' }
-      );
-    } catch (error) {
-      console.warn('WebGPU not available, falling back to CPU');
-      textGenerator = await pipeline(
-        'text-generation',
-        'Xenova/gpt2'
-      );
-    }
-  }
-  return textGenerator;
-};
+import { supabase } from '@/integrations/supabase/client';
 
 export const generateEducationalContent = async (prompt: string, toolContext?: string) => {
   try {
-    const generator = await initializeAI();
-    
-    // Create educational context for better responses
-    const educationalPrompt = `As an AI teaching assistant, provide helpful educational guidance for: ${prompt}
-    
-    Context: ${toolContext || 'General teaching assistance'}
-    
-    Response:`;
-
-    const result = await generator(educationalPrompt, {
-      max_new_tokens: 200,
-      temperature: 0.7,
-      do_sample: true,
-      pad_token_id: generator.tokenizer.eos_token_id
+    const { data, error } = await supabase.functions.invoke('generate-ai-content', {
+      body: {
+        prompt,
+        toolType: 'general',
+        context: toolContext || 'General teaching assistance'
+      }
     });
 
-    return result[0].generated_text.replace(educationalPrompt, '').trim();
+    if (error) {
+      console.error('Supabase function error:', error);
+      throw new Error('Failed to generate content. Please try again.');
+    }
+
+    if (!data?.content) {
+      throw new Error('No content received from AI service');
+    }
+
+    return data.content;
   } catch (error) {
     console.error('AI generation error:', error);
     throw new Error('Unable to generate AI response. Please try again.');
@@ -49,16 +28,106 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
 };
 
 export const generateLessonPlan = async (subject: string, topic: string, grade: string) => {
-  const prompt = `Create a detailed lesson plan for ${grade} students learning about "${topic}" in ${subject}. Include learning objectives, activities, and assessment methods.`;
-  return generateEducationalContent(prompt, 'Lesson Planning');
+  const prompt = `Create a comprehensive lesson plan for ${grade} students learning about "${topic}" in ${subject}. 
+
+Please include:
+- Clear learning objectives
+- Materials needed
+- Step-by-step activities (opening, main activities, closing)
+- Assessment strategies
+- Differentiation for different learning styles
+- Estimated time for each section
+- Extension activities for early finishers
+
+Subject: ${subject}
+Topic: ${topic}
+Grade Level: ${grade}`;
+
+  try {
+    const { data, error } = await supabase.functions.invoke('generate-ai-content', {
+      body: {
+        prompt,
+        toolType: 'lessonPlan',
+        context: 'Lesson Planning'
+      }
+    });
+
+    if (error) throw error;
+    return data.content;
+  } catch (error) {
+    console.error('Lesson plan generation error:', error);
+    throw new Error('Unable to generate lesson plan. Please try again.');
+  }
 };
 
 export const generateParentEmail = async (studentName: string, situation: string, emailType: string) => {
-  const prompt = `Draft a professional ${emailType.toLowerCase()} email to parents about ${studentName}. Situation: ${situation}`;
-  return generateEducationalContent(prompt, 'Parent Communication');
+  const prompt = `Draft a professional ${emailType.toLowerCase()} email to parents about ${studentName}. 
+
+Email Type: ${emailType}
+Student: ${studentName}
+Situation: ${situation}
+
+Please include:
+- Appropriate greeting
+- Clear purpose of the email
+- Specific details about the situation
+- Next steps or recommendations
+- Professional closing
+- Maintain a positive, collaborative tone`;
+
+  try {
+    const { data, error } = await supabase.functions.invoke('generate-ai-content', {
+      body: {
+        prompt,
+        toolType: 'parentEmail',
+        context: 'Parent Communication'
+      }
+    });
+
+    if (error) throw error;
+    return data.content;
+  } catch (error) {
+    console.error('Parent email generation error:', error);
+    throw new Error('Unable to generate parent email. Please try again.');
+  }
 };
 
 export const generateBehaviorPlan = async (behaviorConcern: string, studentAge: string, strengths: string) => {
-  const prompt = `Create a positive behavior support plan for a ${studentAge}-year-old student showing ${behaviorConcern}. Student strengths: ${strengths}`;
-  return generateEducationalContent(prompt, 'Behavior Support');
+  const prompt = `Create a positive behavior support plan for a ${studentAge}-year-old student.
+
+Behavior Concern: ${behaviorConcern}
+Student Age: ${studentAge}
+Student Strengths: ${strengths}
+
+Please include:
+- Behavior analysis (possible triggers and functions)
+- Positive behavior goals
+- Teaching strategies
+- Environmental modifications
+- Reinforcement strategies
+- Data collection methods
+- Crisis intervention procedures (if needed)
+- Ways to leverage student strengths`;
+
+  try {
+    const { data, error } = await supabase.functions.invoke('generate-ai-content', {
+      body: {
+        prompt,
+        toolType: 'behaviorPlan',
+        context: 'Behavior Support'
+      }
+    });
+
+    if (error) throw error;
+    return data.content;
+  } catch (error) {
+    console.error('Behavior plan generation error:', error);
+    throw new Error('Unable to generate behavior plan. Please try again.');
+  }
+};
+
+// Remove the old transformers-based functions
+export const initializeAI = async () => {
+  // No longer needed - using OpenAI via edge function
+  return null;
 };
