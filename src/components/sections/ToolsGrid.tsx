@@ -26,6 +26,13 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
     );
   }
 
+  const handleToolClick = (tool: any, event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log('Tool clicked:', tool.name, tool.id);
+    onToolClick(tool);
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {tools.map((tool) => {
@@ -36,7 +43,7 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
           <Card 
             key={tool.id}
             className="group hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 border-0 bg-white/90 backdrop-blur-sm shadow-lg overflow-hidden relative"
-            onClick={() => onToolClick(tool)}
+            onClick={(e) => handleToolClick(tool, e)}
           >
             <div className={`absolute inset-0 bg-gradient-to-br ${categoryInfo?.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
             <CardHeader className="pb-4 relative">
@@ -68,7 +75,11 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
                 <span className="text-sm text-green-600 font-semibold bg-green-50 px-3 py-1 rounded-full">
                   ✓ Ready in {tool.estimatedTime}
                 </span>
-                <Button size="sm" className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200">
+                <Button 
+                  size="sm" 
+                  className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200"
+                  onClick={(e) => handleToolClick(tool, e)}
+                >
                   Try it →
                 </Button>
               </div>
