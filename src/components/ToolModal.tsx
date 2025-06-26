@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -10,12 +9,14 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Copy, Download, Sparkles, Clock, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import SatisfactionSurvey from "./SatisfactionSurvey";
 
 const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({});
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedContent, setGeneratedContent] = useState('');
+  const [showSurvey, setShowSurvey] = useState(false);
 
   const handleInputChange = (fieldName, value) => {
     setFormData(prev => ({
@@ -37,7 +38,30 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
         title: "Content generated! ✨",
         description: "Your personalized teaching content is ready to use.",
       });
+
+      // Show satisfaction survey after a brief delay
+      setTimeout(() => {
+        setShowSurvey(true);
+      }, 1500);
     }, 2000 + Math.random() * 2000); // 2-4 second delay
+  };
+
+  const handleSurveySubmit = (feedback) => {
+    // Save feedback to localStorage for now (in a real app, this would go to a database)
+    const existingFeedback = JSON.parse(localStorage.getItem('toolFeedback') || '[]');
+    const newFeedback = {
+      id: Date.now(),
+      toolId: tool.id,
+      toolName: tool.name,
+      feedback,
+      timestamp: new Date().toISOString(),
+      teacherProfile: teacherProfile?.name || 'Anonymous'
+    };
+    
+    existingFeedback.push(newFeedback);
+    localStorage.setItem('toolFeedback', JSON.stringify(existingFeedback));
+    
+    console.log('Feedback saved:', newFeedback);
   };
 
   const generateMockContent = (tool, data, profile) => {
@@ -191,159 +215,169 @@ This content has been tailored to match your teaching style and classroom needs.
   const IconComponent = tool.icon;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <div className="flex items-center space-x-3">
-            <div className={`p-2 rounded-lg ${tool.color}`}>
-              <IconComponent className="h-6 w-6" />
-            </div>
-            <div>
-              <DialogTitle className="text-2xl font-bold">{tool.name}</DialogTitle>
-              <p className="text-gray-600 mt-1">{tool.description}</p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4 mt-4">
-            <Badge variant="secondary">{tool.category}</Badge>
-            <div className="flex items-center space-x-1 text-sm text-amber-600">
-              <Clock className="h-4 w-4" />
-              <span>Saves {tool.timesSaved}</span>
-            </div>
-            <div className="flex items-center space-x-1 text-sm text-green-600">
-              <Sparkles className="h-4 w-4" />
-              <span>Ready in {tool.estimatedTime}</span>
-            </div>
-          </div>
-        </DialogHeader>
-
-        <div className="py-6">
-          {!generatedContent ? (
-            // Input Form
-            <div className="space-y-6">
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <h3 className="font-semibold text-blue-800 mb-2">
-                  Let's create something amazing for your classroom! 🎯
-                </h3>
-                <p className="text-blue-700 text-sm">
-                  Fill out the details below and we'll generate personalized content just for you.
-                </p>
+    <>
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <div className="flex items-center space-x-3">
+              <div className={`p-2 rounded-lg ${tool.color}`}>
+                <IconComponent className="h-6 w-6" />
               </div>
+              <div>
+                <DialogTitle className="text-2xl font-bold">{tool.name}</DialogTitle>
+                <p className="text-gray-600 mt-1">{tool.description}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4 mt-4">
+              <Badge variant="secondary">{tool.category}</Badge>
+              <div className="flex items-center space-x-1 text-sm text-amber-600">
+                <Clock className="h-4 w-4" />
+                <span>Saves {tool.timesSaved}</span>
+              </div>
+              <div className="flex items-center space-x-1 text-sm text-green-600">
+                <Sparkles className="h-4 w-4" />
+                <span>Ready in {tool.estimatedTime}</span>
+              </div>
+            </div>
+          </DialogHeader>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {tool.fields.map((field) => (
-                  <div key={field.name} className={field.type === 'textarea' ? 'md:col-span-2' : ''}>
-                    <Label htmlFor={field.name} className="text-sm font-medium">
-                      {field.label}
-                    </Label>
-                    
-                    {field.type === 'text' && (
-                      <Input
-                        id={field.name}
-                        value={formData[field.name] || ''}
-                        onChange={(e) => handleInputChange(field.name, e.target.value)}
-                        placeholder={field.placeholder}
-                        className="mt-1"
-                      />
+          <div className="py-6">
+            {!generatedContent ? (
+              // Input Form
+              <div className="space-y-6">
+                <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                  <h3 className="font-semibold text-blue-800 mb-2">
+                    Let's create something amazing for your classroom! 🎯
+                  </h3>
+                  <p className="text-blue-700 text-sm">
+                    Fill out the details below and we'll generate personalized content just for you.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {tool.fields.map((field) => (
+                    <div key={field.name} className={field.type === 'textarea' ? 'md:col-span-2' : ''}>
+                      <Label htmlFor={field.name} className="text-sm font-medium">
+                        {field.label}
+                      </Label>
+                      
+                      {field.type === 'text' && (
+                        <Input
+                          id={field.name}
+                          value={formData[field.name] || ''}
+                          onChange={(e) => handleInputChange(field.name, e.target.value)}
+                          placeholder={field.placeholder}
+                          className="mt-1"
+                        />
+                      )}
+                      
+                      {field.type === 'select' && (
+                        <Select 
+                          value={formData[field.name] || ''} 
+                          onValueChange={(value) => handleInputChange(field.name, value)}
+                        >
+                          <SelectTrigger className="mt-1">
+                            <SelectValue placeholder={field.placeholder || `Select ${field.label.toLowerCase()}`} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {field.options.map((option) => (
+                              <SelectItem key={option} value={option}>
+                                {option}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                      
+                      {field.type === 'textarea' && (
+                        <Textarea
+                          id={field.name}
+                          value={formData[field.name] || ''}
+                          onChange={(e) => handleInputChange(field.name, e.target.value)}
+                          placeholder={field.placeholder}
+                          className="mt-1"
+                          rows={3}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <Separator />
+
+                <div className="flex justify-end space-x-3">
+                  <Button variant="outline" onClick={onClose}>
+                    Cancel
+                  </Button>
+                  <Button 
+                    onClick={generateContent} 
+                    disabled={isGenerating}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Generating magic...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Generate Content
+                      </>
                     )}
-                    
-                    {field.type === 'select' && (
-                      <Select 
-                        value={formData[field.name] || ''} 
-                        onValueChange={(value) => handleInputChange(field.name, value)}
-                      >
-                        <SelectTrigger className="mt-1">
-                          <SelectValue placeholder={field.placeholder || `Select ${field.label.toLowerCase()}`} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {field.options.map((option) => (
-                            <SelectItem key={option} value={option}>
-                              {option}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    )}
-                    
-                    {field.type === 'textarea' && (
-                      <Textarea
-                        id={field.name}
-                        value={formData[field.name] || ''}
-                        onChange={(e) => handleInputChange(field.name, e.target.value)}
-                        placeholder={field.placeholder}
-                        className="mt-1"
-                        rows={3}
-                      />
-                    )}
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              // Generated Content Display
+              <div className="space-y-6">
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h3 className="font-semibold text-green-800 mb-2">
+                    Your content is ready! 🎉
+                  </h3>
+                  <p className="text-green-700 text-sm">
+                    Feel free to copy, edit, or save this content. It's personalized just for your classroom!
+                  </p>
+                </div>
+
+                <div className="bg-white border rounded-lg p-6 max-h-96 overflow-y-auto">
+                  <pre className="whitespace-pre-wrap text-sm font-mono text-gray-800 leading-relaxed">
+                    {generatedContent}
+                  </pre>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-gray-500">
+                    Generated for {teacherProfile?.name || 'your classroom'} • {new Date().toLocaleDateString()}
                   </div>
-                ))}
-              </div>
-
-              <Separator />
-
-              <div className="flex justify-end space-x-3">
-                <Button variant="outline" onClick={onClose}>
-                  Cancel
-                </Button>
-                <Button 
-                  onClick={generateContent} 
-                  disabled={isGenerating}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                >
-                  {isGenerating ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Generating magic...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      Generate Content
-                    </>
-                  )}
-                </Button>
-              </div>
-            </div>
-          ) : (
-            // Generated Content Display
-            <div className="space-y-6">
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h3 className="font-semibold text-green-800 mb-2">
-                  Your content is ready! 🎉
-                </h3>
-                <p className="text-green-700 text-sm">
-                  Feel free to copy, edit, or save this content. It's personalized just for your classroom!
-                </p>
-              </div>
-
-              <div className="bg-white border rounded-lg p-6 max-h-96 overflow-y-auto">
-                <pre className="whitespace-pre-wrap text-sm font-mono text-gray-800 leading-relaxed">
-                  {generatedContent}
-                </pre>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <div className="text-sm text-gray-500">
-                  Generated for {teacherProfile?.name || 'your classroom'} • {new Date().toLocaleDateString()}
-                </div>
-                <div className="flex space-x-3">
-                  <Button variant="outline" onClick={copyToClipboard}>
-                    <Copy className="mr-2 h-4 w-4" />
-                    Copy
-                  </Button>
-                  <Button variant="outline">
-                    <Download className="mr-2 h-4 w-4" />
-                    Save
-                  </Button>
-                  <Button onClick={() => setGeneratedContent('')}>
-                    Create Another
-                  </Button>
+                  <div className="flex space-x-3">
+                    <Button variant="outline" onClick={copyToClipboard}>
+                      <Copy className="mr-2 h-4 w-4" />
+                      Copy
+                    </Button>
+                    <Button variant="outline">
+                      <Download className="mr-2 h-4 w-4" />
+                      Save
+                    </Button>
+                    <Button onClick={() => setGeneratedContent('')}>
+                      Create Another
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </DialogContent>
-    </Dialog>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Satisfaction Survey Modal */}
+      <SatisfactionSurvey
+        isOpen={showSurvey}
+        onClose={() => setShowSurvey(false)}
+        toolName={tool.name}
+        onSubmit={handleSurveySubmit}
+      />
+    </>
   );
 };
 
