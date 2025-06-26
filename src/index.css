@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Vicerta.com inspired color scheme with educational focus */
+/* Professional educator color scheme - mature and friendly */
 
 @layer base {
   :root {
@@ -16,75 +16,75 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Vicerta-inspired primary colors - emerald/teal theme */
-    --primary: 158 64% 52%; /* Emerald primary */
-    --primary-foreground: 0 0% 100%;
+    /* Professional educator colors - warm blues and grays */
+    --primary: 212 70% 45%; /* Professional blue */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 142 76% 36%; /* Darker teal */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 52%; /* Muted blue-gray */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 142 76% 96%; /* Very light emerald */
-    --muted-foreground: 158 25% 35%;
+    --muted: 210 40% 96%; /* Very light blue-gray */
+    --muted-foreground: 212 20% 40%;
 
-    --accent: 174 62% 47%; /* Teal accent */
+    --accent: 207 82% 66%; /* Friendly sky blue */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 142 30% 88%;
-    --input: 142 30% 88%;
-    --ring: 158 64% 52%;
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 212 70% 45%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 158 64% 98%;
-    --sidebar-foreground: 158 25% 25%;
-    --sidebar-primary: 158 64% 52%;
+    --sidebar-background: 212 25% 97%;
+    --sidebar-foreground: 212 20% 25%;
+    --sidebar-primary: 212 70% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 158 30% 92%;
-    --sidebar-accent-foreground: 158 25% 25%;
-    --sidebar-border: 142 30% 85%;
-    --sidebar-ring: 158 64% 52%;
+    --sidebar-accent: 210 40% 90%;
+    --sidebar-accent-foreground: 212 20% 25%;
+    --sidebar-border: 210 30% 85%;
+    --sidebar-ring: 212 70% 45%;
   }
 
   .dark {
-    --background: 158 25% 8%;
-    --foreground: 142 30% 95%;
+    --background: 212 25% 8%;
+    --foreground: 210 30% 95%;
 
-    --card: 158 25% 10%;
-    --card-foreground: 142 30% 95%;
+    --card: 212 25% 10%;
+    --card-foreground: 210 30% 95%;
 
-    --popover: 158 25% 8%;
-    --popover-foreground: 142 30% 95%;
+    --popover: 212 25% 8%;
+    --popover-foreground: 210 30% 95%;
 
-    --primary: 158 64% 52%;
+    --primary: 212 70% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 25% 15%;
-    --secondary-foreground: 142 30% 95%;
+    --secondary: 212 25% 15%;
+    --secondary-foreground: 210 30% 95%;
 
-    --muted: 158 25% 15%;
-    --muted-foreground: 142 15% 65%;
+    --muted: 212 25% 15%;
+    --muted-foreground: 210 15% 65%;
 
-    --accent: 174 62% 47%;
+    --accent: 207 82% 66%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 158 25% 20%;
-    --input: 158 25% 20%;
-    --ring: 158 64% 52%;
+    --border: 212 25% 20%;
+    --input: 212 25% 20%;
+    --ring: 212 70% 45%;
 
-    --sidebar-background: 158 25% 6%;
-    --sidebar-foreground: 142 30% 90%;
-    --sidebar-primary: 158 64% 52%;
+    --sidebar-background: 212 25% 6%;
+    --sidebar-foreground: 210 30% 90%;
+    --sidebar-primary: 212 70% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 158 25% 12%;
-    --sidebar-accent-foreground: 142 30% 90%;
-    --sidebar-border: 158 25% 15%;
-    --sidebar-ring: 158 64% 52%;
+    --sidebar-accent: 212 25% 12%;
+    --sidebar-accent-foreground: 210 30% 90%;
+    --sidebar-border: 212 25% 15%;
+    --sidebar-ring: 212 70% 45%;
   }
 }
 
@@ -95,12 +95,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-size: 14px; /* Smaller base font for better content density */
+    font-size: 15px; /* Slightly larger base font for better readability */
   }
 
-  /* Improved typography scale for educational content */
+  /* Professional typography scale for educational content */
   h1 {
-    @apply text-2xl md:text-3xl font-bold;
+    @apply text-3xl md:text-4xl font-bold;
   }
 
   h2 {
@@ -117,10 +117,19 @@
 
   /* Better spacing for educational content */
   .compact-text {
-    @apply text-xs leading-tight;
+    @apply text-sm leading-tight;
   }
 
   .content-text {
     @apply text-sm leading-normal;
+  }
+
+  /* Professional sidebar styling */
+  .sidebar-text {
+    @apply text-sm font-medium;
+  }
+
+  .sidebar-description {
+    @apply text-xs text-muted-foreground;
   }
 }

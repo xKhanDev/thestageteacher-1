@@ -23,12 +23,12 @@ const EasyTeachApp = () => {
   const [teacherProfile, setTeacherProfile] = useState(null);
 
   const categories = [
-    { name: "Lesson Planning", icon: "BookOpen", color: "bg-emerald-100 text-emerald-800", gradient: "from-emerald-400 to-emerald-600" },
-    { name: "Content Hub", icon: "FileText", color: "bg-teal-100 text-teal-800", gradient: "from-teal-400 to-teal-600" },
-    { name: "Assessment", icon: "CheckCircle", color: "bg-cyan-100 text-cyan-800", gradient: "from-cyan-400 to-cyan-600" },
-    { name: "Communication", icon: "MessageCircle", color: "bg-green-100 text-green-800", gradient: "from-green-400 to-green-600" },
-    { name: "Behaviour Support", icon: "Users", color: "bg-lime-100 text-lime-800", gradient: "from-lime-400 to-lime-600" },
-    { name: "Differentiation", icon: "Target", color: "bg-emerald-100 text-emerald-800", gradient: "from-emerald-400 to-emerald-600" },
+    { name: "Lesson Planning", icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
+    { name: "Content Hub", icon: "FileText", color: "bg-indigo-100 text-indigo-800", gradient: "from-indigo-500 to-indigo-600" },
+    { name: "Assessment", icon: "CheckCircle", color: "bg-purple-100 text-purple-800", gradient: "from-purple-500 to-purple-600" },
+    { name: "Communication", icon: "MessageCircle", color: "bg-cyan-100 text-cyan-800", gradient: "from-cyan-500 to-cyan-600" },
+    { name: "Behaviour Support", icon: "Users", color: "bg-teal-100 text-teal-800", gradient: "from-teal-500 to-teal-600" },
+    { name: "Differentiation", icon: "Target", color: "bg-slate-100 text-slate-800", gradient: "from-slate-500 to-slate-600" },
   ];
 
   const filteredTools = tools.filter(tool => {
@@ -46,7 +46,7 @@ const EasyTeachApp = () => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
-        <div className="flex-1 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+        <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
           <AppHeader 
             teacherProfile={teacherProfile}
             onProfileClick={() => setShowProfile(true)}
@@ -57,11 +57,11 @@ const EasyTeachApp = () => {
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-emerald-100 mb-8">
-                <TabsTrigger value="tools" className="data-[state=active]:bg-emerald-600 data-[state=active]:text-white">
+              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-8">
+                <TabsTrigger value="tools" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                   Teaching Tools
                 </TabsTrigger>
-                <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-emerald-600 data-[state=active]:text-white">
+                <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                   <Bot className="h-4 w-4 mr-2" />
                   AI Assistant
                 </TabsTrigger>
@@ -78,7 +78,7 @@ const EasyTeachApp = () => {
                         placeholder="Search tools..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 py-3 text-sm border-2 border-emerald-200 focus:border-emerald-400 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm"
+                        className="pl-10 py-3 text-sm border-2 border-blue-200 focus:border-blue-400 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm"
                       />
                     </div>
                     <CategoryFilters 
