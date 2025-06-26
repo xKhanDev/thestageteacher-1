@@ -15,6 +15,12 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
 
     if (error) {
       console.error('Supabase function error:', error);
+      
+      // Check for specific OpenAI quota error
+      if (error.message && error.message.includes('quota')) {
+        throw new Error('OpenAI API quota exceeded. Please check your OpenAI billing and usage limits.');
+      }
+      
       throw new Error('Failed to generate content. Please try again.');
     }
 
@@ -25,6 +31,12 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
     return data.content;
   } catch (error) {
     console.error('AI generation error:', error);
+    
+    // Provide more specific error messages
+    if (error.message && error.message.includes('quota')) {
+      throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account or upgrade your plan.');
+    }
+    
     throw new Error('Unable to generate AI response. Please check your connection and try again.');
   }
 };
@@ -58,6 +70,11 @@ Grade Level: ${grade}`;
 
     if (error) {
       console.error('Lesson plan generation error:', error);
+      
+      if (error.message && error.message.includes('quota')) {
+        throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+      }
+      
       throw error;
     }
     
@@ -68,6 +85,11 @@ Grade Level: ${grade}`;
     return data.content;
   } catch (error) {
     console.error('Lesson plan generation error:', error);
+    
+    if (error.message && error.message.includes('quota')) {
+      throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+    }
+    
     throw new Error('Unable to generate lesson plan. Please try again.');
   }
 };
@@ -100,6 +122,11 @@ Please include:
 
     if (error) {
       console.error('Parent email generation error:', error);
+      
+      if (error.message && error.message.includes('quota')) {
+        throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+      }
+      
       throw error;
     }
 
@@ -110,6 +137,11 @@ Please include:
     return data.content;
   } catch (error) {
     console.error('Parent email generation error:', error);
+    
+    if (error.message && error.message.includes('quota')) {
+      throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+    }
+    
     throw new Error('Unable to generate parent email. Please try again.');
   }
 };
@@ -144,6 +176,11 @@ Please include:
 
     if (error) {
       console.error('Behavior plan generation error:', error);
+      
+      if (error.message && error.message.includes('quota')) {
+        throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+      }
+      
       throw error;
     }
 
@@ -154,6 +191,11 @@ Please include:
     return data.content;
   } catch (error) {
     console.error('Behavior plan generation error:', error);
+    
+    if (error.message && error.message.includes('quota')) {
+      throw new Error('OpenAI API quota exceeded. Please add credits to your OpenAI account.');
+    }
+    
     throw new Error('Unable to generate behavior plan. Please try again.');
   }
 };

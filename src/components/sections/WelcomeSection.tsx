@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Sparkles, BookOpen, Users, Target, MessageCircle } from "lucide-react";
+import { BookOpen, MessageCircle, Users, Star } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 interface WelcomeSectionProps {
@@ -17,53 +17,56 @@ const WelcomeSection = ({ teacherProfile }: WelcomeSectionProps) => {
     return 'Teacher';
   };
 
-  const stats = [
-    { label: "AI Tools", value: "50+", icon: Sparkles, color: "text-emerald-600" },
-    { label: "Lesson Plans", value: "1000+", icon: BookOpen, color: "text-teal-600" },
-    { label: "Happy Teachers", value: "100K+", icon: Users, color: "text-cyan-600" },
-    { label: "Time Saved", value: "15hrs/week", icon: Target, color: "text-green-600" }
+  const favoriteTools = [
+    { name: "Lesson Plan Generator", icon: BookOpen, category: "Lesson Planning", color: "text-blue-600" },
+    { name: "Parent Email Draft", icon: MessageCircle, category: "Communication", color: "text-green-600" },
+    { name: "Behavior Support Plan", icon: Users, category: "Behaviour Support", color: "text-purple-600" },
   ];
 
   return (
-    <div className="mb-12">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-          Welcome back, 
-          <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent block mt-1">
-            {getUserName()}! 👋
-          </span>
+    <div className="mb-8">
+      {/* Subtle Welcome Message */}
+      <div className="text-center mb-6">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-2">
+          Welcome back, {getUserName()}
         </h1>
-        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Ready to supercharge your teaching? Choose from our AI-powered tools designed to save you time and enhance learning.
+        <p className="text-sm text-gray-600">
+          Ready to create something amazing today?
         </p>
       </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        {stats.map((stat, index) => (
-          <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-emerald-100 hover:shadow-md transition-all duration-200">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-lg md:text-xl font-bold text-gray-900">{stat.value}</div>
-                <div className="text-xs text-gray-600 font-medium">{stat.label}</div>
+      {/* Your Favorite Tools */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 mb-6">
+        <div className="flex items-center space-x-2 mb-4">
+          <Star className="h-5 w-5 text-yellow-500" />
+          <h2 className="text-lg font-semibold text-gray-800">Your Favorite Tools</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {favoriteTools.map((tool, index) => (
+            <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer">
+              <div className="p-2 rounded-lg bg-white shadow-sm">
+                <tool.icon className={`h-4 w-4 ${tool.color}`} />
               </div>
-              <stat.icon className={`h-6 w-6 ${stat.color}`} />
+              <div>
+                <div className="font-medium text-gray-800 text-sm">{tool.name}</div>
+                <div className="text-xs text-gray-500">{tool.category}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Quick Actions */}
       <div className="flex flex-wrap gap-3 justify-center">
-        <Button className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-sm">
+        <Button className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-sm">
           <BookOpen className="mr-2 h-4 w-4" />
           Create Lesson Plan
         </Button>
-        <Button variant="outline" className="border-2 border-emerald-200 hover:border-emerald-300 hover:bg-emerald-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm">
+        <Button variant="outline" className="border-2 border-blue-200 hover:border-blue-300 hover:bg-blue-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm">
           <MessageCircle className="mr-2 h-4 w-4" />
           Draft Parent Email
         </Button>
-        <Button variant="outline" className="border-2 border-teal-200 hover:border-teal-300 hover:bg-teal-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm">
+        <Button variant="outline" className="border-2 border-purple-200 hover:border-purple-300 hover:bg-purple-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm">
           <Users className="mr-2 h-4 w-4" />
           Behavior Support
         </Button>
