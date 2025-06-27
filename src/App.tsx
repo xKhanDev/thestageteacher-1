@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
+import EcertaHome from "./pages/EcertaHome";
 import NotFound from "./pages/NotFound";
 import WizardTools from "./pages/WizardTools";
 import AIChatbot from "./pages/AIChatbot";
@@ -22,7 +23,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<EcertaHome />} />
+            <Route path="/easyteach" element={<Index />} />
             <Route path="/wizard-tools" element={<WizardTools />} />
             <Route path="/ai-chatbot" element={<AIChatbot />} />
             <Route path="/output-history" element={<OutputHistory />} />

@@ -21,7 +21,9 @@ const Index = () => {
     return <EasyTeachApp />;
   }
 
-  return <LandingPage />;
+  // For non-authenticated users, redirect to main Ecerta page
+  window.location.href = '/';
+  return null;
 };
 
 export default Index;
