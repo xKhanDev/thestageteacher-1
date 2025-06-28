@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, Mail, Lock, Eye, EyeOff, User, AlertCircle } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -16,6 +18,7 @@ interface LoginModalProps {
 
 const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const { signIn, signUp } = useAuth();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -37,8 +40,8 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
       } else {
         toast.success('Welcome to EasyTeach!');
         onClose();
-        // Redirect to EasyTeach after successful login
-        window.location.href = '/easyteach';
+        // Use React Router navigation instead of window.location.href
+        navigate('/easyteach-app');
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
