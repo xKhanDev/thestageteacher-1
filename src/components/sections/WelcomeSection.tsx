@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { BookOpen, MessageCircle, Users, Quote } from "lucide-react";
+import { BookOpen, MessageCircle, Users, Quote, Star, Heart, Zap } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useState, useEffect } from "react";
 
@@ -28,6 +28,13 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
     { text: "Every child deserves a champion – an adult who will never give up on them.", author: "Rita Pearson" }
   ];
 
+  const favoriteTools = [
+    { name: "Lesson Planner Pro", icon: BookOpen, color: "from-blue-500 to-indigo-500" },
+    { text: "Smart Grading", icon: Star, color: "from-purple-500 to-pink-500" },
+    { text: "Class Organizer", icon: Heart, color: "from-green-500 to-emerald-500" },
+    { text: "Quiz Master", icon: Zap, color: "from-orange-500 to-red-500" }
+  ];
+
   useEffect(() => {
     const randomQuote = educationalQuotes[Math.floor(Math.random() * educationalQuotes.length)];
     setCurrentQuote(randomQuote);
@@ -40,12 +47,6 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
     return 'Teacher';
   };
 
-  const handleQuickActionClick = (category: string) => {
-    if (onQuickAction) {
-      onQuickAction(category);
-    }
-  };
-
   return (
     <div className="mb-8">
       {/* Subtle Welcome Message */}
@@ -53,7 +54,7 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         <h1 className="text-2xl font-semibold text-gray-800 mb-2">
           Welcome back, {getUserName()}
         </h1>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-700">
           Ready to create something amazing today?
         </p>
       </div>
@@ -61,42 +62,34 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
       {/* Educational Quote of the Day */}
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 mb-6">
         <div className="flex items-center space-x-2 mb-4">
-          <Quote className="h-5 w-5 text-blue-500" />
+          <Quote className="h-5 w-5 text-blue-600" />
           <h2 className="text-lg font-semibold text-gray-800">Quote of the Day</h2>
         </div>
         <div className="text-center">
-          <blockquote className="text-lg text-gray-700 italic mb-3 leading-relaxed">
+          <blockquote className="text-lg text-gray-800 italic mb-3 leading-relaxed">
             "{currentQuote.text}"
           </blockquote>
-          <cite className="text-sm text-gray-500 font-medium">— {currentQuote.author}</cite>
+          <cite className="text-sm text-gray-600 font-medium">— {currentQuote.author}</cite>
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="flex flex-wrap gap-3 justify-center">
-        <Button 
-          className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-sm"
-          onClick={() => handleQuickActionClick("Lesson Planning")}
-        >
-          <BookOpen className="mr-2 h-4 w-4" />
-          Create Lesson Plan
-        </Button>
-        <Button 
-          variant="outline" 
-          className="border-2 border-blue-200 hover:border-blue-300 hover:bg-blue-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm"
-          onClick={() => handleQuickActionClick("Communication")}
-        >
-          <MessageCircle className="mr-2 h-4 w-4" />
-          Draft Parent Email
-        </Button>
-        <Button 
-          variant="outline" 
-          className="border-2 border-purple-200 hover:border-purple-300 hover:bg-purple-50 px-4 py-2 rounded-xl transition-all duration-200 text-sm"
-          onClick={() => handleQuickActionClick("Behaviour Support")}
-        >
-          <Users className="mr-2 h-4 w-4" />
-          Behavior Support
-        </Button>
+      {/* Your Favorite Tools */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200">
+        <div className="flex items-center space-x-2 mb-4">
+          <Heart className="h-5 w-5 text-red-500" />
+          <h2 className="text-lg font-semibold text-gray-800">Your Favorite Tools</h2>
+        </div>
+        <div className="flex flex-wrap gap-3 justify-center">
+          {favoriteTools.map((tool, index) => (
+            <Button 
+              key={index}
+              className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 text-sm font-medium`}
+            >
+              <tool.icon className="mr-2 h-4 w-4" />
+              {tool.name || tool.text}
+            </Button>
+          ))}
+        </div>
       </div>
     </div>
   );

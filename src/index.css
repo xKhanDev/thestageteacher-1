@@ -16,36 +16,36 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Professional educator colors - warm blues and grays */
-    --primary: 212 70% 45%; /* Professional blue */
+    /* Professional educator colors - warm blues and grays with better contrast */
+    --primary: 212 70% 40%; /* Darker blue for better contrast */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 52%; /* Muted blue-gray */
+    --secondary: 210 40% 45%; /* Darker blue-gray for better contrast */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96%; /* Very light blue-gray */
-    --muted-foreground: 212 20% 40%;
+    --muted: 210 40% 94%; /* Slightly darker for better contrast */
+    --muted-foreground: 212 25% 35%; /* Much darker for better readability */
 
-    --accent: 207 82% 66%; /* Friendly sky blue */
+    --accent: 207 82% 60%; /* Slightly darker sky blue */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 30% 88%;
-    --input: 210 30% 88%;
-    --ring: 212 70% 45%;
+    --border: 210 30% 82%; /* Darker border for better visibility */
+    --input: 210 30% 82%;
+    --ring: 212 70% 40%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 212 25% 97%;
-    --sidebar-foreground: 212 20% 25%;
-    --sidebar-primary: 212 70% 45%;
+    --sidebar-background: 212 25% 96%;
+    --sidebar-foreground: 212 25% 20%; /* Much darker for better contrast */
+    --sidebar-primary: 212 70% 40%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 90%;
-    --sidebar-accent-foreground: 212 20% 25%;
-    --sidebar-border: 210 30% 85%;
-    --sidebar-ring: 212 70% 45%;
+    --sidebar-accent: 210 40% 85%; /* Darker accent */
+    --sidebar-accent-foreground: 212 25% 20%; /* Darker text */
+    --sidebar-border: 210 30% 78%; /* Darker border */
+    --sidebar-ring: 212 70% 40%;
   }
 
   .dark {
@@ -58,33 +58,33 @@
     --popover: 212 25% 8%;
     --popover-foreground: 210 30% 95%;
 
-    --primary: 212 70% 45%;
+    --primary: 212 70% 50%; /* Brighter in dark mode */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 212 25% 15%;
+    --secondary: 212 25% 18%; /* Lighter in dark mode */
     --secondary-foreground: 210 30% 95%;
 
-    --muted: 212 25% 15%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 212 25% 18%;
+    --muted-foreground: 210 20% 70%; /* Better contrast in dark mode */
 
-    --accent: 207 82% 66%;
+    --accent: 207 82% 70%; /* Brighter in dark mode */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 212 25% 20%;
-    --input: 212 25% 20%;
-    --ring: 212 70% 45%;
+    --border: 212 25% 25%; /* Lighter border in dark mode */
+    --input: 212 25% 25%;
+    --ring: 212 70% 50%;
 
     --sidebar-background: 212 25% 6%;
-    --sidebar-foreground: 210 30% 90%;
-    --sidebar-primary: 212 70% 45%;
+    --sidebar-foreground: 210 30% 85%; /* Better contrast */
+    --sidebar-primary: 212 70% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 212 25% 12%;
-    --sidebar-accent-foreground: 210 30% 90%;
-    --sidebar-border: 212 25% 15%;
-    --sidebar-ring: 212 70% 45%;
+    --sidebar-accent: 212 25% 15%;
+    --sidebar-accent-foreground: 210 30% 85%;
+    --sidebar-border: 212 25% 20%;
+    --sidebar-ring: 212 70% 50%;
   }
 }
 
@@ -98,38 +98,81 @@
     font-size: 15px; /* Slightly larger base font for better readability */
   }
 
-  /* Professional typography scale for educational content */
+  /* Professional typography scale for educational content with better contrast */
   h1 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl md:text-4xl font-bold text-gray-900;
   }
 
   h2 {
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-xl md:text-2xl font-semibold text-gray-800;
   }
 
   h3 {
-    @apply text-lg md:text-xl font-medium;
+    @apply text-lg md:text-xl font-medium text-gray-800;
   }
 
   p {
-    @apply text-sm md:text-base leading-relaxed;
+    @apply text-sm md:text-base leading-relaxed text-gray-700;
   }
 
-  /* Better spacing for educational content */
+  /* Better spacing for educational content with improved contrast */
   .compact-text {
-    @apply text-sm leading-tight;
+    @apply text-sm leading-tight text-gray-800;
   }
 
   .content-text {
-    @apply text-sm leading-normal;
+    @apply text-sm leading-normal text-gray-700;
   }
 
-  /* Professional sidebar styling */
+  /* Professional sidebar styling with better visibility */
   .sidebar-text {
-    @apply text-sm font-medium;
+    @apply text-sm font-medium text-gray-800;
   }
 
   .sidebar-description {
-    @apply text-xs text-muted-foreground;
+    @apply text-xs text-gray-600;
+  }
+
+  /* Improved hover states for better visibility */
+  .hover\:text-purple-600:hover {
+    @apply text-purple-700 !important;
+  }
+
+  .hover\:text-blue-600:hover {
+    @apply text-blue-700 !important;
+  }
+
+  /* Better navigation contrast */
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-700 font-medium transition-colors duration-200;
+  }
+
+  .nav-link:hover {
+    @apply bg-blue-50;
+  }
+}
+
+/* Custom improvements for navigation and general hover states */
+@layer components {
+  .navigation-menu-trigger {
+    @apply text-gray-800 hover:text-blue-700 hover:bg-blue-50 font-medium;
+  }
+  
+  .navigation-menu-content {
+    @apply bg-white border-2 border-gray-200 shadow-xl;
+  }
+  
+  .navigation-menu-link {
+    @apply text-gray-700 hover:text-blue-700 hover:bg-blue-50 font-medium;
+  }
+
+  /* Better button hover states */
+  .btn-outline:hover {
+    @apply bg-blue-50 border-blue-300 text-blue-700;
+  }
+
+  /* Improved dropdown visibility */
+  .dropdown-content {
+    @apply bg-white border-2 border-gray-200 shadow-lg z-50;
   }
 }
