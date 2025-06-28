@@ -1,5 +1,5 @@
-
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { 
   NavigationMenu,
@@ -17,6 +17,8 @@ interface NavigationProps {
 }
 
 const Navigation = ({ onShowLogin }: NavigationProps) => {
+  const navigate = useNavigate();
+  
   const products = [
     {
       id: 'easyteach',
@@ -25,6 +27,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
       icon: BookOpen,
       status: 'available',
       color: 'from-blue-500 to-blue-600',
+      onClick: () => navigate('/easyteach'),
     },
     {
       id: 'lms',
@@ -33,6 +36,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
       icon: GraduationCap,
       status: 'coming-soon',
       color: 'from-purple-500 to-purple-600',
+      onClick: () => {},
     },
     {
       id: 'admin',
@@ -41,6 +45,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
       icon: Building2,
       status: 'coming-soon',
       color: 'from-green-500 to-green-600',
+      onClick: () => {},
     }
   ];
 
@@ -48,7 +53,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
     <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-3 animate-scale-in">
+          <div className="flex items-center space-x-3 animate-scale-in cursor-pointer" onClick={() => navigate('/')}>
             <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
               <Sparkles className="h-6 w-6 text-white" />
             </div>
@@ -71,7 +76,11 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                     <div className="w-80 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
                       <div className="space-y-3">
                         {products.map((product) => (
-                          <div key={product.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale">
+                          <div 
+                            key={product.id} 
+                            className={`flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors ${product.status === 'available' ? 'cursor-pointer' : 'cursor-default'} hover-scale`}
+                            onClick={product.onClick}
+                          >
                             <div className={`p-2 rounded-lg bg-gradient-to-r ${product.color}`}>
                               <product.icon className="h-5 w-5 text-white" />
                             </div>
