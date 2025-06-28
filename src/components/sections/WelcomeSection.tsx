@@ -59,11 +59,11 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         </p>
       </div>
 
-      {/* Educational Quote of the Day - More Compact */}
+      {/* Cogitatio - More Compact */}
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 mb-4">
         <div className="flex items-center space-x-2 mb-3">
           <Quote className="h-4 w-4 text-blue-600" />
-          <h2 className="text-base font-semibold text-gray-800">Quote of the Day</h2>
+          <h2 className="text-base font-semibold text-gray-800">Cogitatio</h2>
         </div>
         <div className="text-center">
           <blockquote className="text-sm text-gray-800 italic mb-2 leading-relaxed">
@@ -73,13 +73,13 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         </div>
       </div>
 
-      {/* Your Favorite Tools - More Compact */}
+      {/* Your Favorite Tools - More Compact with better spacing */}
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
         <div className="flex items-center space-x-2 mb-3">
           <Heart className="h-4 w-4 text-red-500" />
           <h2 className="text-base font-semibold text-gray-800">Your Favorite Tools</h2>
         </div>
-        <div className="flex flex-wrap gap-2 justify-center">
+        <div className="flex flex-wrap gap-3 justify-center">
           {favoriteTools.map((tool, index) => (
             <Button 
               key={index}

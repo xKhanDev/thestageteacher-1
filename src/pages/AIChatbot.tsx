@@ -11,7 +11,7 @@ const AIChatbot = () => {
     {
       id: 1,
       sender: 'bot',
-      text: "Hello! I'm your AI Teaching Assistant. How can I help you today? I can assist with lesson planning, classroom management, student engagement strategies, and much more!"
+      text: "Hello! I'm Kribi, your AI Teaching Assistant. How can I help you today? I can assist with lesson planning, classroom management, student engagement strategies, and much more!"
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
@@ -58,7 +58,7 @@ const AIChatbot = () => {
               </Button>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">AI Teaching Assistant</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Kribi Teaching Assistant</h1>
               <p className="text-gray-600">Get instant help with your teaching questions</p>
             </div>
           </div>
@@ -69,7 +69,7 @@ const AIChatbot = () => {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Bot className="h-5 w-5 text-blue-600" />
-              <span>AI Teaching Assistant</span>
+              <span>Kribi Teaching Assistant</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="flex-1 flex flex-col">

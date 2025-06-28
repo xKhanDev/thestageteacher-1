@@ -20,7 +20,7 @@ const AIAssistant = () => {
     {
       id: 1,
       sender: 'ai',
-      text: "Hello! I'm your AI Teaching Assistant powered by OpenAI. I can help you with lesson planning, student support, classroom management, and educational guidance. What would you like assistance with today?",
+      text: "Hello! I'm Kribi, your AI Teaching Assistant powered by OpenAI. I can help you with lesson planning, student support, classroom management, and educational guidance. What would you like assistance with today?",
       timestamp: new Date()
     }
   ]);
@@ -76,7 +76,7 @@ const AIAssistant = () => {
       <CardHeader className="pb-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
         <CardTitle className="flex items-center space-x-2 text-lg">
           <Bot className="h-5 w-5" />
-          <span>AI Teaching Assistant</span>
+          <span>Kribi Teaching Assistant</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col p-4">

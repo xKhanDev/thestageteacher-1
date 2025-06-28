@@ -12,7 +12,7 @@ const AppSidebar = () => {
       gradient: "from-blue-500 to-indigo-500"
     },
     { 
-      name: "AI Chatbot", 
+      name: "Kribi Chatbot", 
       icon: Bot, 
       href: "/ai-chatbot",
       description: "Teaching assistant bot",

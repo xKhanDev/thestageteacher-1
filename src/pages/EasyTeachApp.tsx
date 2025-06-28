@@ -75,7 +75,7 @@ const EasyTeachApp = () => {
                 </TabsTrigger>
                 <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
                   <Bot className="h-4 w-4 mr-2" />
-                  AI Assistant
+                  Kribi Assistant
                 </TabsTrigger>
               </TabsList>
 
@@ -115,7 +115,7 @@ const EasyTeachApp = () => {
               <TabsContent value="ai-assistant">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-6">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">AI Teaching Assistant</h2>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Kribi Teaching Assistant</h2>
                     <p className="text-gray-600 text-sm">Get instant help with educational questions, lesson planning, and teaching strategies</p>
                   </div>
                   <AIAssistant />
