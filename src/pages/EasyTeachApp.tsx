@@ -42,6 +42,15 @@ const EasyTeachApp = () => {
     setSelectedTool(tool);
   };
 
+  const handleQuickAction = (category) => {
+    setSelectedCategory(category);
+    // Find the first tool in the selected category
+    const categoryTool = tools.find(tool => tool.category === category);
+    if (categoryTool) {
+      setSelectedTool(categoryTool);
+    }
+  };
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
@@ -53,7 +62,10 @@ const EasyTeachApp = () => {
           />
 
           <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-8">
-            <WelcomeSection teacherProfile={teacherProfile} />
+            <WelcomeSection 
+              teacherProfile={teacherProfile} 
+              onQuickAction={handleQuickAction}
+            />
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
