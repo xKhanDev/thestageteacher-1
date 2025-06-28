@@ -9,9 +9,9 @@ const Index = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center">
-        <div className="text-center">
+        <div className="text-center animate-fade-in">
           <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600">Loading EasyTeach...</p>
         </div>
       </div>
     );
@@ -21,9 +21,8 @@ const Index = () => {
     return <EasyTeachApp />;
   }
 
-  // For non-authenticated users, redirect to main Ecerta page
-  window.location.href = '/';
-  return null;
+  // For non-authenticated users, show the EasyTeach landing page
+  return <LandingPage />;
 };
 
 export default Index;

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -36,8 +35,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
       if (error) {
         toast.error(error.message || 'Failed to sign in');
       } else {
-        toast.success('Welcome back!');
+        toast.success('Welcome to EasyTeach!');
         onClose();
+        // Redirect to EasyTeach after successful login
+        window.location.href = '/easyteach';
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
@@ -67,7 +68,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
       if (error) {
         toast.error(error.message || 'Failed to create account');
       } else {
-        toast.success('Account created successfully! Please check your email to verify your account.');
+        toast.success('Account created successfully! Please check your email to verify your account, then you can access EasyTeach.');
         onClose();
       }
     } catch (error) {
@@ -83,15 +84,15 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white border-0 shadow-2xl">
+      <DialogContent className="sm:max-w-md bg-white border-0 shadow-2xl animate-scale-in">
         <DialogHeader className="text-center pb-4">
-          <div className="flex justify-center mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+          <div className="flex justify-center mb-4 animate-fade-in">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg hover-scale">
               <Sparkles className="h-7 w-7 text-white" />
             </div>
           </div>
           <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Welcome to EasyTeach
+            Access EasyTeach
           </DialogTitle>
         </DialogHeader>
 
@@ -122,7 +123,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         placeholder="teacher@school.edu"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
-                        className="pl-10 border-gray-200 focus:border-purple-300"
+                        className="pl-10 border-gray-200 focus:border-purple-300 transition-colors"
                         required
                       />
                     </div>
@@ -140,13 +141,13 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         placeholder="Enter your password"
                         value={formData.password}
                         onChange={(e) => handleInputChange('password', e.target.value)}
-                        className="pl-10 pr-12 border-gray-200 focus:border-purple-300"
+                        className="pl-10 pr-12 border-gray-200 focus:border-purple-300 transition-colors"
                         required
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
                       >
                         {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                       </button>
@@ -156,7 +157,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-2.5"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-2.5 hover-scale transition-all duration-200"
                   >
                     {isLoading ? (
                       <div className="flex items-center space-x-2">
@@ -164,7 +165,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <span>Signing in...</span>
                       </div>
                     ) : (
-                      'Sign In'
+                      'Sign In to EasyTeach'
                     )}
                   </Button>
                 </form>
@@ -264,7 +265,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-2.5"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium py-2.5 hover-scale transition-all duration-200"
                   >
                     {isLoading ? (
                       <div className="flex items-center space-x-2">
@@ -272,7 +273,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         <span>Creating account...</span>
                       </div>
                     ) : (
-                      'Create Account'
+                      'Create EasyTeach Account'
                     )}
                   </Button>
                 </form>
@@ -281,8 +282,8 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           </TabsContent>
         </Tabs>
 
-        <div className="text-center text-sm text-gray-500 mt-6">
-          Trusted by 100,000+ educators worldwide 🌟
+        <div className="text-center text-sm text-gray-500 mt-6 animate-fade-in">
+          Join 100,000+ educators worldwide 🌟
         </div>
       </DialogContent>
     </Dialog>

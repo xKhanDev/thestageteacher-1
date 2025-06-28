@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { BookOpen, GraduationCap, Building2, ArrowRight, CheckCircle, Users, Sparkles, Star } from "lucide-react";
+import { BookOpen, GraduationCap, Building2, ArrowRight, CheckCircle, Users, Sparkles, Star, TrendingUp, Clock, Shield, Globe } from "lucide-react";
 import LoginModal from "@/components/auth/LoginModal";
 import WaitlistModal from "@/components/WaitlistModal";
 
@@ -79,11 +79,11 @@ const EcertaHome = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50">
       {/* Navigation */}
-      <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50">
+      <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50 animate-fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="flex items-center space-x-3 animate-scale-in">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -98,14 +98,14 @@ const EcertaHome = () => {
               <NavigationMenu>
                 <NavigationMenuList className="space-x-2">
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50">
+                    <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
                       Products
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-80 p-4 bg-white shadow-lg border border-gray-200">
+                      <div className="w-80 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
                         <div className="space-y-3">
                           {products.map((product) => (
-                            <div key={product.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+                            <div key={product.id} className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale">
                               <div className={`p-2 rounded-lg bg-gradient-to-r ${product.color}`}>
                                 <product.icon className="h-5 w-5 text-white" />
                               </div>
@@ -128,11 +128,11 @@ const EcertaHome = () => {
                   </NavigationMenuItem>
 
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50">
+                    <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
                       Solutions
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-96 p-4 bg-white shadow-lg border border-gray-200">
+                      <div className="w-96 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
                         <div className="grid grid-cols-2 gap-6">
                           <div>
                             <h4 className="font-semibold text-gray-900 mb-3">By Category</h4>
@@ -192,14 +192,14 @@ const EcertaHome = () => {
               </NavigationMenu>
 
               <div className="flex items-center space-x-3">
-                <Button variant="outline" className="text-purple-600 border-purple-200 hover:bg-purple-50">
+                <Button variant="outline" className="text-purple-600 border-purple-200 hover:bg-purple-50 hover-scale transition-all duration-200">
                   Book a Demo
                 </Button>
                 <Button 
                   onClick={() => setShowLogin(true)}
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white hover-scale transition-all duration-200"
                 >
-                  Login
+                  Login to EasyTeach
                 </Button>
               </div>
             </div>
@@ -210,37 +210,71 @@ const EcertaHome = () => {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center mb-8">
-            <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 border-purple-200 text-sm font-medium px-4 py-2">
+          <div className="flex justify-center mb-8 animate-fade-in">
+            <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 border-purple-200 text-sm font-medium px-4 py-2 hover-scale">
               <Sparkles className="h-4 w-4 mr-2" />
               Transforming Education with AI
             </Badge>
           </div>
           
-          <h1 className="text-6xl font-bold text-gray-900 mb-8 leading-tight">
+          <h1 className="text-6xl font-bold text-gray-900 mb-8 leading-tight animate-scale-in">
             Complete EdTech 
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent block">
               Solutions for Education
             </span>
           </h1>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in">
             From AI-powered teaching tools to comprehensive school management, Ecerta provides 
             everything educational institutions need to thrive in the digital age.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16">
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-blue-200">
-              <div className="text-2xl font-bold text-blue-600 mb-1">100K+</div>
-              <div className="text-gray-600 text-sm">Active Educators</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 hover-scale">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">100K+</div>
+              <div className="text-gray-700 font-medium mb-2">Active Educators</div>
+              <div className="text-sm text-gray-500">Teaching smarter with AI-powered tools</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-purple-200">
-              <div className="text-2xl font-bold text-purple-600 mb-1">3</div>
-              <div className="text-gray-600 text-sm">Comprehensive Products</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-purple-200 hover:shadow-lg transition-all duration-300 hover-scale">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-purple-600">
+                  <TrendingUp className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
+              <div className="text-gray-700 font-medium mb-2">Comprehensive Products</div>
+              <div className="text-sm text-gray-500">Complete education ecosystem</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-green-200">
-              <div className="text-2xl font-bold text-green-600 mb-1">15+</div>
-              <div className="text-gray-600 text-sm">Hours Saved Weekly</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300 hover-scale">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-600">
+                  <Clock className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-green-600 mb-2">15+</div>
+              <div className="text-gray-700 font-medium mb-2">Hours Saved Weekly</div>
+              <div className="text-sm text-gray-500">More time for what matters most</div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8 animate-fade-in">
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Shield className="h-5 w-5 text-green-500" />
+              <span className="text-sm font-medium">SOC 2 Compliant</span>
+            </div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Globe className="h-5 w-5 text-blue-500" />
+              <span className="text-sm font-medium">Available Worldwide</span>
+            </div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+              <span className="text-sm font-medium">4.9/5 User Rating</span>
             </div>
           </div>
         </div>
@@ -249,28 +283,28 @@ const EcertaHome = () => {
       {/* Products Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Our Product 
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Ecosystem</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive solutions for every aspect of modern education
+              Comprehensive solutions for every aspect of modern education, from individual teachers to entire institutions
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <Card key={product.id} className={`group hover:shadow-2xl transition-all duration-300 border-0 ${product.bgColor} overflow-hidden relative ${product.status === 'available' ? 'hover:-translate-y-2' : ''}`}>
+              <Card key={product.id} className={`group hover:shadow-2xl transition-all duration-500 border-0 ${product.bgColor} overflow-hidden relative ${product.status === 'available' ? 'hover:-translate-y-2' : ''} animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 
                 <CardHeader className="pb-4 relative">
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${product.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}>
+                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${product.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <product.icon className="h-8 w-8 text-white" />
                     </div>
                     {product.status === 'available' ? (
-                      <Badge className="bg-green-100 text-green-800 border-green-200">
+                      <Badge className="bg-green-100 text-green-800 border-green-200 pulse">
                         <CheckCircle className="h-3 w-3 mr-1" />
                         Available Now
                       </Badge>
@@ -281,7 +315,7 @@ const EcertaHome = () => {
                     )}
                   </div>
                   
-                  <CardTitle className="text-2xl font-bold text-gray-900 mb-2">
+                  <CardTitle className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
                     {product.name}
                   </CardTitle>
                   <CardDescription className="text-gray-600 text-base leading-relaxed mb-4">
@@ -310,7 +344,7 @@ const EcertaHome = () => {
 
                   <Button 
                     onClick={product.action}
-                    className={`w-full rounded-2xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white font-medium py-3 transition-all duration-200 ${product.status === 'available' ? 'group-hover:scale-105' : ''}`}
+                    className={`w-full rounded-2xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white font-medium py-3 transition-all duration-300 ${product.status === 'available' ? 'group-hover:scale-105' : ''}`}
                   >
                     {product.actionText}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -323,9 +357,9 @@ const EcertaHome = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-fade-in">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-5xl font-bold mb-6 animate-scale-in">
             Ready to Transform Education?
           </h2>
           <p className="text-xl mb-12 opacity-90">
@@ -335,7 +369,7 @@ const EcertaHome = () => {
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
-              className="bg-white text-purple-600 hover:bg-gray-100 px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              className="bg-white text-purple-600 hover:bg-gray-100 px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
             >
               Try EasyTeach Free
               <Sparkles className="ml-3 h-6 w-6" />
@@ -344,7 +378,7 @@ const EcertaHome = () => {
               size="lg"
               variant="outline"
               onClick={() => handleJoinWaitlist('All Products')}
-              className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-4 text-xl font-bold rounded-xl"
+              className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-4 text-xl font-bold rounded-xl hover-scale transition-all duration-300"
             >
               Join All Waitlists
               <Star className="ml-3 h-6 w-6" />
@@ -356,8 +390,8 @@ const EcertaHome = () => {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center items-center space-x-3 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+          <div className="flex justify-center items-center space-x-3 mb-6 animate-fade-in">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center hover-scale">
               <Sparkles className="h-5 w-5 text-white" />
             </div>
             <span className="text-2xl font-bold">Ecerta</span>
@@ -366,10 +400,10 @@ const EcertaHome = () => {
             Empowering education worldwide with comprehensive AI-powered solutions.
           </p>
           <div className="flex justify-center space-x-8 text-sm text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Support</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="#" className="hover:text-white transition-colors hover-scale">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors hover-scale">Terms</a>
+            <a href="#" className="hover:text-white transition-colors hover-scale">Support</a>
+            <a href="#" className="hover:text-white transition-colors hover-scale">Contact</a>
           </div>
         </div>
       </footer>
