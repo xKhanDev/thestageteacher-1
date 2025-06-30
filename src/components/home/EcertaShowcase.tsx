@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Network, Zap, Users, TrendingUp, Globe, BookOpen, GraduationCap, Building2, CheckCircle } from "lucide-react";
@@ -87,52 +88,15 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
                   </div>
                 </div>
                 
-                {/* Platform Visualization */}
                 <div className="flex-1 relative">
                   <div className="relative mx-auto max-w-lg">
-                    <div className="bg-gray-800 rounded-t-2xl p-4 shadow-2xl">
-                      <div className="bg-gray-900 rounded-lg p-2 mb-2">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <div className="flex-1 bg-gray-700 rounded px-3 py-1 text-xs text-gray-300">ecerta.platform</div>
-                        </div>
-                        
-                        <div className="bg-white rounded-lg overflow-hidden aspect-video relative">
-                          <img 
-                            src={feature.image}
-                            alt={feature.title}
-                            className="w-full h-full object-cover"
-                          />
-                          
-                          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent">
-                            <div className="absolute bottom-4 left-4 right-4">
-                              <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-                                <div className="flex items-center justify-between mb-2">
-                                  <div className="flex items-center space-x-2">
-                                    <div className="flex space-x-1">
-                                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                      <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                    </div>
-                                    <span className="text-xs font-semibold text-gray-800">Ecerta Platform</span>
-                                  </div>
-                                  <div className="text-xs text-green-600 font-medium">● Synchronized</div>
-                                </div>
-                                <div className="text-xs text-gray-600">
-                                  {index === 0 && "AI models learning across EasyTeach, LMS, and Administration..."}
-                                  {index === 1 && "Syncing data between teaching tools and school management..."}
-                                  {index === 2 && "Transforming education through integrated AI solutions..."}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="bg-white rounded-2xl p-4 shadow-2xl overflow-hidden">
+                      <img 
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-64 object-cover rounded-lg"
+                      />
                     </div>
-                    <div className="bg-gray-700 h-6 rounded-b-2xl mx-4 shadow-lg"></div>
-                    <div className="bg-gray-600 h-2 rounded-b-lg mx-8 shadow-md"></div>
                   </div>
                 </div>
               </div>

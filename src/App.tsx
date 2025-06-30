@@ -14,6 +14,14 @@ import AIChatbot from "./pages/AIChatbot";
 import WizardTools from "./pages/WizardTools";
 import ToolsSuggestions from "./pages/ToolsSuggestions";
 import OutputHistory from "./pages/OutputHistory";
+import AdvancedLMS from "./pages/AdvancedLMS";
+import SchoolAdministration from "./pages/SchoolAdministration";
+import CaseStudies from "./pages/CaseStudies";
+import Blog from "./pages/Blog";
+import KnowledgeBase from "./pages/KnowledgeBase";
+import PartnersIntegrations from "./pages/PartnersIntegrations";
+import DataProtection from "./pages/DataProtection";
+import ContactUs from "./pages/ContactUs";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +41,14 @@ const App = () => (
             <Route path="/wizard-tools" element={<WizardTools />} />
             <Route path="/tools-suggestions" element={<ToolsSuggestions />} />
             <Route path="/output-history" element={<OutputHistory />} />
+            <Route path="/advanced-lms" element={<AdvancedLMS />} />
+            <Route path="/school-administration" element={<SchoolAdministration />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/knowledge-base" element={<KnowledgeBase />} />
+            <Route path="/partners-integrations" element={<PartnersIntegrations />} />
+            <Route path="/data-protection" element={<DataProtection />} />
+            <Route path="/contact-us" element={<ContactUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

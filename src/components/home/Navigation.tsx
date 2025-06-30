@@ -11,7 +11,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, GraduationCap, Building2, Sparkles, Users, TrendingUp, Heart, Zap, Award, Target } from "lucide-react";
+import { BookOpen, GraduationCap, Building2, Sparkles, Users, TrendingUp, Heart, Zap, Award, Target, FileText, HelpCircle, Shield, Mail } from "lucide-react";
 
 interface NavigationProps {
   onShowLogin: () => void;
@@ -24,7 +24,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
     {
       id: 'easyteach',
       name: 'EasyTeach',
-      description: 'AI-powered teaching tools that save educators 15+ hours every week',
+      description: 'AI-powered teaching tools',
       icon: BookOpen,
       status: 'available',
       color: 'from-blue-500 to-blue-600',
@@ -33,20 +33,20 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
     {
       id: 'lms',
       name: 'Advanced AI LMS',
-      description: 'Next-generation learning management system powered by artificial intelligence',
+      description: 'Next-generation learning management',
       icon: GraduationCap,
       status: 'coming-soon',
       color: 'from-purple-500 to-purple-600',
-      onClick: () => {},
+      onClick: () => navigate('/advanced-lms'),
     },
     {
       id: 'admin',
       name: 'School Administration',
-      description: 'Comprehensive school management platform for modern educational institutions',
+      description: 'Comprehensive school management',
       icon: Building2,
       status: 'coming-soon',
       color: 'from-green-500 to-green-600',
-      onClick: () => {},
+      onClick: () => navigate('/school-administration'),
     }
   ];
 
@@ -73,26 +73,39 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
     }
   ];
 
-  const solutionsByDepartment = [
+  const resourcesMenu = [
     {
-      title: "Admissions & Enrollment",
-      icon: Users,
+      title: "Case Studies",
+      icon: FileText,
+      onClick: () => navigate('/case-studies'),
     },
     {
-      title: "Academic Management",
+      title: "Blog",
       icon: BookOpen,
+      onClick: () => navigate('/blog'),
     },
     {
-      title: "HR & Payroll",
-      icon: Building2,
-    },
+      title: "Knowledge Base",
+      icon: HelpCircle,
+      onClick: () => navigate('/knowledge-base'),
+    }
+  ];
+
+  const aboutMenu = [
     {
-      title: "Finance & Billing",
-      icon: TrendingUp,
-    },
-    {
-      title: "Communication Hub",
+      title: "Partners & Integrations",
       icon: Zap,
+      onClick: () => navigate('/partners-integrations'),
+    },
+    {
+      title: "Data Protection & GDPR",
+      icon: Shield,
+      onClick: () => navigate('/data-protection'),
+    },
+    {
+      title: "Contact Us",
+      icon: Mail,
+      onClick: () => navigate('/contact-us'),
     }
   ];
 
@@ -125,7 +138,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         {products.map((product) => (
                           <div 
                             key={product.id} 
-                            className={`flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors ${product.status === 'available' ? 'cursor-pointer' : 'cursor-default'} hover-scale`}
+                            className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
                             onClick={product.onClick}
                           >
                             <div className={`p-2 rounded-lg bg-gradient-to-r ${product.color}`}>
@@ -154,77 +167,81 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                     Solutions
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-96 p-6 bg-white shadow-lg border border-gray-200 animate-fade-in z-50">
-                      <div className="mb-6">
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">Solutions for Every Institution</h3>
-                        <p className="text-sm text-gray-600">Find the perfect fit for your educational needs</p>
-                      </div>
-                      
-                      <div className="space-y-6">
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                            <Sparkles className="h-4 w-4 mr-2 text-purple-500" />
-                            By Institution Type
-                          </h4>
-                          <div className="grid grid-cols-2 gap-3">
-                            {solutionsByCategory.map((solution, index) => (
-                              <div key={index} className="group p-3 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-purple-50 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-center space-x-3">
-                                  <div className={`p-2 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
-                                    <solution.icon className="h-4 w-4 text-white" />
-                                  </div>
-                                  <h5 className="font-medium text-gray-900 group-hover:text-purple-700 transition-colors text-sm">
-                                    {solution.title}
-                                  </h5>
+                    <div className="w-72 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                      <div className="mb-4">
+                        <h3 className="font-semibold text-gray-900 mb-3">By Institution Type</h3>
+                        <div className="grid grid-cols-2 gap-2">
+                          {solutionsByCategory.map((solution, index) => (
+                            <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
+                              <div className="flex items-center space-x-2">
+                                <div className={`p-1.5 rounded-md bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
+                                  <solution.icon className="h-3 w-3 text-white" />
                                 </div>
+                                <span className="text-sm font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
+                                  {solution.title}
+                                </span>
                               </div>
-                            ))}
-                          </div>
+                            </div>
+                          ))}
                         </div>
+                      </div>
+                      <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full">
+                        Book Demo
+                      </Button>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
 
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                            <Zap className="h-4 w-4 mr-2 text-blue-500" />
-                            By Department
-                          </h4>
-                          <div className="grid grid-cols-2 gap-3">
-                            {solutionsByDepartment.map((department, index) => (
-                              <div key={index} className="group p-3 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-center space-x-3">
-                                  <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:scale-110 transition-transform duration-200">
-                                    <department.icon className="h-4 w-4 text-white" />
-                                  </div>
-                                  <h5 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-sm">
-                                    {department.title}
-                                  </h5>
-                                </div>
-                              </div>
-                            ))}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
+                    Resources
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                      <div className="space-y-2">
+                        {resourcesMenu.map((item, index) => (
+                          <div 
+                            key={index}
+                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
+                            onClick={item.onClick}
+                          >
+                            <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500">
+                              <item.icon className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="font-medium text-gray-900 hover:text-orange-700 transition-colors">
+                              {item.title}
+                            </span>
                           </div>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-6 pt-4 border-t border-gray-200">
-                        <div className="text-center">
-                          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full">
-                            Book a Personalized Demo
-                          </Button>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuLink className="text-gray-700 hover:text-purple-600 px-3 py-2 hover:bg-purple-50 rounded-md transition-colors">
-                    Resources
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuLink className="text-gray-700 hover:text-purple-600 px-3 py-2 hover:bg-purple-50 rounded-md transition-colors">
+                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
                     About Us
-                  </NavigationMenuLink>
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                      <div className="space-y-2">
+                        {aboutMenu.map((item, index) => (
+                          <div 
+                            key={index}
+                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
+                            onClick={item.onClick}
+                          >
+                            <div className="p-2 rounded-lg bg-gradient-to-r from-slate-500 to-blue-500">
+                              <item.icon className="h-4 w-4 text-white" />
+                            </div>
+                            <span className="font-medium text-gray-900 hover:text-slate-700 transition-colors">
+                              {item.title}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
