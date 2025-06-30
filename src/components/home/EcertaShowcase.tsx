@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Network, Zap, Users, TrendingUp, Globe, BookOpen, GraduationCap, Building2, CheckCircle } from "lucide-react";
@@ -12,21 +11,21 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
     {
       title: "Unified AI Intelligence",
       description: "Our three products share a common AI brain that learns from every interaction across the platform, creating smarter solutions for everyone.",
-      image: "photo-1677442136019-21780ecad995",
+      image: "photo-1498050108023-c5249f4df085",
       icon: Brain,
       features: ["Cross-platform learning", "Shared intelligence", "Continuous improvement", "Predictive insights"]
     },
     {
       title: "Seamless Integration",
       description: "All our products work together seamlessly, creating a unified experience from individual teaching to institutional management.",
-      image: "photo-1559526324-4b87b5e36e44",
+      image: "photo-1488590528505-98d2b5aba04b",
       icon: Network,
       features: ["Data synchronization", "Single sign-on", "Unified analytics", "Shared resources"]
     },
     {
       title: "Revolutionary Impact",
       description: "We're not just improving education - we're revolutionizing it by creating the first truly integrated AI-powered education ecosystem.",
-      image: "photo-1451187580459-43490279c0fa",
+      image: "photo-1498050108023-c5249f4df085",
       icon: Zap,
       features: ["Industry transformation", "Future-ready solutions", "Global accessibility", "Scalable architecture"]
     }
