@@ -2,9 +2,10 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, User, Bot } from "lucide-react";
+import { Search, User, Bot, Menu } from "lucide-react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AppSidebar from "@/components/layout/AppSidebar";
 import AppHeader from "@/components/layout/AppHeader";
 import WelcomeSection from "@/components/sections/WelcomeSection";
@@ -21,6 +22,7 @@ const EasyTeachApp = () => {
   const [showProfile, setShowProfile] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const categories = [
     { name: "Lesson Planning", icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
@@ -54,14 +56,51 @@ const EasyTeachApp = () => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
-        <AppSidebar />
-        <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-          <AppHeader 
-            teacherProfile={teacherProfile}
-            onProfileClick={() => setShowProfile(true)}
-          />
+        {/* Desktop Sidebar */}
+        <div className="hidden lg:block">
+          <AppSidebar />
+        </div>
 
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-8">
+        {/* Mobile Sidebar */}
+        <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+          <SheetContent side="left" className="p-0 w-72 lg:hidden">
+            <AppSidebar />
+          </SheetContent>
+        </Sheet>
+
+        <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+          {/* Mobile Header with Menu Button */}
+          <div className="lg:hidden bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="lg:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="p-0 w-72">
+                <AppSidebar />
+              </SheetContent>
+            </Sheet>
+            <h1 className="text-lg font-semibold text-gray-800">EasyTeach</h1>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowProfile(true)}
+              className="p-2"
+            >
+              <User className="h-5 w-5" />
+            </Button>
+          </div>
+
+          {/* Desktop Header */}
+          <div className="hidden lg:block">
+            <AppHeader 
+              teacherProfile={teacherProfile}
+              onProfileClick={() => setShowProfile(true)}
+            />
+          </div>
+
+          <div className="container-responsive section-responsive">
             <WelcomeSection 
               teacherProfile={teacherProfile} 
               onQuickAction={handleQuickAction}
@@ -69,30 +108,31 @@ const EasyTeachApp = () => {
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-8">
-                <TabsTrigger value="tools" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8">
+                <TabsTrigger value="tools" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
                   Teaching Tools
                 </TabsTrigger>
-                <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
-                  <Bot className="h-4 w-4 mr-2" />
-                  Kribi Assistant
+                <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
+                  <Bot className="h-4 w-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Kribi Assistant</span>
+                  <span className="sm:hidden">AI</span>
                 </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="tools" className="space-y-8">
+              <TabsContent value="tools" className="space-y-6 sm:space-y-8">
                 {/* Enhanced Search Section */}
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Find Your Perfect Tool</h3>
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Find Your Perfect Tool</h3>
                   
                   {/* Search Bar */}
-                  <div className="relative mb-6">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <div className="relative mb-4 sm:mb-6">
+                    <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                     <Input
                       type="text"
-                      placeholder="Search for lesson plans, worksheets, assessments, and more..."
+                      placeholder="Search for lesson plans, worksheets, assessments..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-12 py-4 text-base border-2 border-gray-200 focus:border-blue-400 rounded-xl bg-white shadow-sm focus:shadow-md transition-all duration-200"
+                      className="pl-10 sm:pl-12 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-200 focus:border-blue-400 rounded-xl bg-white shadow-sm focus:shadow-md transition-all duration-200"
                     />
                   </div>
 
@@ -115,8 +155,8 @@ const EasyTeachApp = () => {
               <TabsContent value="ai-assistant">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-6">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Kribi Teaching Assistant</h2>
-                    <p className="text-gray-600 text-sm">Get instant help with educational questions, lesson planning, and teaching strategies</p>
+                    <h2 className="subheading-responsive text-gray-800 mb-2">Kribi Teaching Assistant</h2>
+                    <p className="text-gray-600 text-sm sm:text-base">Get instant help with educational questions, lesson planning, and teaching strategies</p>
                   </div>
                   <AIAssistant />
                 </div>
