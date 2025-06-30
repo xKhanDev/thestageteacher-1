@@ -53,64 +53,46 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
   const solutionsByCategory = [
     {
       title: "Primary Schools",
-      description: "Tailored solutions for young learners",
       icon: Heart,
       color: "from-pink-500 to-rose-500",
-      features: ["Age-appropriate interfaces", "Parental engagement tools", "Fun learning activities"]
     },
     {
       title: "Secondary Schools",
-      description: "Advanced tools for growing minds",
       icon: TrendingUp,
       color: "from-blue-500 to-cyan-500",
-      features: ["Subject specialization", "Exam preparation", "Career guidance"]
     },
     {
       title: "Universities",
-      description: "Research-focused academic solutions",
       icon: Award,
       color: "from-purple-500 to-indigo-500",
-      features: ["Research management", "Advanced analytics", "Global collaboration"]
     },
     {
       title: "Independent Schools",
-      description: "Flexible solutions for unique needs",
       icon: Target,
       color: "from-green-500 to-emerald-500",
-      features: ["Custom workflows", "Branded experiences", "Flexible pricing"]
     }
   ];
 
   const solutionsByDepartment = [
     {
       title: "Admissions & Enrollment",
-      description: "Streamline your admission process",
       icon: Users,
-      benefits: "50% faster processing"
     },
     {
       title: "Academic Management",
-      description: "Complete academic oversight",
       icon: BookOpen,
-      benefits: "Real-time insights"
     },
     {
       title: "HR & Payroll",
-      description: "Staff management made simple",
       icon: Building2,
-      benefits: "Automated workflows"
     },
     {
       title: "Finance & Billing",
-      description: "Smart financial management",
       icon: TrendingUp,
-      benefits: "99% accuracy rate"
     },
     {
       title: "Communication Hub",
-      description: "Connected school community",
       icon: Zap,
-      benefits: "Instant notifications"
     }
   ];
 
@@ -172,38 +154,28 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                     Solutions
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-[500px] p-6 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-96 p-6 bg-white shadow-lg border border-gray-200 animate-fade-in z-50">
                       <div className="mb-6">
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">Transform Your Institution</h3>
-                        <p className="text-sm text-gray-600">Discover solutions tailored to your specific needs</p>
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">Solutions for Every Institution</h3>
+                        <p className="text-sm text-gray-600">Find the perfect fit for your educational needs</p>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="space-y-6">
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                             <Sparkles className="h-4 w-4 mr-2 text-purple-500" />
-                            By Institution
+                            By Institution Type
                           </h4>
-                          <div className="space-y-3">
+                          <div className="grid grid-cols-2 gap-3">
                             {solutionsByCategory.map((solution, index) => (
                               <div key={index} className="group p-3 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-purple-50 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-start space-x-3">
+                                <div className="flex items-center space-x-3">
                                   <div className={`p-2 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
                                     <solution.icon className="h-4 w-4 text-white" />
                                   </div>
-                                  <div className="flex-1">
-                                    <h5 className="font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
-                                      {solution.title}
-                                    </h5>
-                                    <p className="text-xs text-gray-600 mt-1">{solution.description}</p>
-                                    <div className="flex flex-wrap gap-1 mt-2">
-                                      {solution.features.slice(0, 2).map((feature, idx) => (
-                                        <span key={idx} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                                          {feature}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  </div>
+                                  <h5 className="font-medium text-gray-900 group-hover:text-purple-700 transition-colors text-sm">
+                                    {solution.title}
+                                  </h5>
                                 </div>
                               </div>
                             ))}
@@ -211,28 +183,20 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                             <Zap className="h-4 w-4 mr-2 text-blue-500" />
                             By Department
                           </h4>
-                          <div className="space-y-3">
+                          <div className="grid grid-cols-2 gap-3">
                             {solutionsByDepartment.map((department, index) => (
                               <div key={index} className="group p-3 rounded-lg hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-start space-x-3">
+                                <div className="flex items-center space-x-3">
                                   <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:scale-110 transition-transform duration-200">
                                     <department.icon className="h-4 w-4 text-white" />
                                   </div>
-                                  <div className="flex-1">
-                                    <h5 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
-                                      {department.title}
-                                    </h5>
-                                    <p className="text-xs text-gray-600 mt-1">{department.description}</p>
-                                    <div className="mt-2">
-                                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
-                                        {department.benefits}
-                                      </span>
-                                    </div>
-                                  </div>
+                                  <h5 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-sm">
+                                    {department.title}
+                                  </h5>
                                 </div>
                               </div>
                             ))}
@@ -241,13 +205,9 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                       </div>
                       
                       <div className="mt-6 pt-4 border-t border-gray-200">
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <p className="text-sm font-medium text-gray-900">Ready to get started?</p>
-                            <p className="text-xs text-gray-600">Book a personalized demo today</p>
-                          </div>
-                          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm">
-                            Book Demo
+                        <div className="text-center">
+                          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full">
+                            Book a Personalized Demo
                           </Button>
                         </div>
                       </div>
