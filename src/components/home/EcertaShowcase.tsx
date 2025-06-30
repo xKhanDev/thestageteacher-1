@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Network, Zap, Users, TrendingUp, Globe, BookOpen, GraduationCap, Building2, CheckCircle } from "lucide-react";
@@ -11,21 +12,21 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
     {
       title: "Unified AI Intelligence",
       description: "Our three products share a common AI brain that learns from every interaction across the platform, creating smarter solutions for everyone.",
-      image: "photo-1498050108023-c5249f4df085",
+      image: "/lovable-uploads/dc2fd0a8-0698-463a-809a-9f703ef302b4.png",
       icon: Brain,
       features: ["Cross-platform learning", "Shared intelligence", "Continuous improvement", "Predictive insights"]
     },
     {
       title: "Seamless Integration",
       description: "All our products work together seamlessly, creating a unified experience from individual teaching to institutional management.",
-      image: "photo-1488590528505-98d2b5aba04b",
+      image: "/lovable-uploads/dc2fd0a8-0698-463a-809a-9f703ef302b4.png",
       icon: Network,
       features: ["Data synchronization", "Single sign-on", "Unified analytics", "Shared resources"]
     },
     {
       title: "Revolutionary Impact",
       description: "We're not just improving education - we're revolutionizing it by creating the first truly integrated AI-powered education ecosystem.",
-      image: "photo-1498050108023-c5249f4df085",
+      image: "/lovable-uploads/dc2fd0a8-0698-463a-809a-9f703ef302b4.png",
       icon: Zap,
       features: ["Industry transformation", "Future-ready solutions", "Global accessibility", "Scalable architecture"]
     }
@@ -101,7 +102,7 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
                         
                         <div className="bg-white rounded-lg overflow-hidden aspect-video relative">
                           <img 
-                            src={`https://images.unsplash.com/${feature.image}?auto=format&fit=crop&w=800&q=80`}
+                            src={feature.image}
                             alt={feature.title}
                             className="w-full h-full object-cover"
                           />
