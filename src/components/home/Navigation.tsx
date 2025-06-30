@@ -109,6 +109,11 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
     }
   ];
 
+  const handleBookDemo = () => {
+    // For now, just show an alert - you can replace this with actual demo booking logic
+    alert('Demo booking functionality will be implemented soon!');
+  };
+
   return (
     <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -167,15 +172,15 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                     Solutions
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-72 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
                       <div className="mb-4">
                         <h3 className="font-semibold text-gray-900 mb-3">By Institution Type</h3>
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="space-y-2">
                           {solutionsByCategory.map((solution, index) => (
                             <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
-                              <div className="flex items-center space-x-2">
-                                <div className={`p-1.5 rounded-md bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
-                                  <solution.icon className="h-3 w-3 text-white" />
+                              <div className="flex items-center space-x-3">
+                                <div className={`p-2 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
+                                  <solution.icon className="h-4 w-4 text-white" />
                                 </div>
                                 <span className="text-sm font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
                                   {solution.title}
@@ -185,7 +190,10 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                           ))}
                         </div>
                       </div>
-                      <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full">
+                      <Button 
+                        onClick={handleBookDemo}
+                        className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full"
+                      >
                         Book Demo
                       </Button>
                     </div>
@@ -247,7 +255,11 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             </NavigationMenu>
 
             <div className="flex items-center space-x-3">
-              <Button variant="outline" className="text-purple-600 border-purple-200 hover:bg-purple-50 hover-scale transition-all duration-200">
+              <Button 
+                variant="outline" 
+                className="text-purple-600 border-purple-200 hover:bg-purple-50 hover-scale transition-all duration-200"
+                onClick={handleBookDemo}
+              >
                 Book a Demo
               </Button>
               <Button 
