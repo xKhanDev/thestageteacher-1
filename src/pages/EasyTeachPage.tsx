@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BookOpen, ArrowRight, CheckCircle, Users, Clock, Brain, Zap, Target, Award, Shield, Sparkles, TrendingUp } from "lucide-react";
+import { BookOpen, ArrowRight, CheckCircle, Users, Clock, Brain, Zap, Target, Award, Shield, Sparkles, TrendingUp, PenTool, BookText, MessageSquare, FileText, Calculator, Globe } from "lucide-react";
 import Navigation from "@/components/home/Navigation";
 import Footer from "@/components/home/Footer";
 import LoginModal from "@/components/auth/LoginModal";
@@ -11,24 +10,245 @@ import LoginModal from "@/components/auth/LoginModal";
 const EasyTeachPage = () => {
   const [showLogin, setShowLogin] = useState(false);
 
+  // Custom Dashboard Mockup Components
+  const LessonPlanDashboard = () => (
+    <div className="relative mx-auto max-w-lg">
+      <div className="bg-gray-800 rounded-t-2xl p-4 shadow-2xl">
+        <div className="bg-gray-900 rounded-lg p-2 mb-2">
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="flex-1 bg-gray-700 rounded px-3 py-1 text-xs text-gray-300">easyteach.ai/lesson-planner</div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg overflow-hidden aspect-video relative">
+            {/* Sidebar */}
+            <div className="absolute left-0 top-0 w-16 h-full bg-white border-r border-purple-100 flex flex-col items-center py-3 space-y-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center shadow-md">
+                <BookText className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
+                <PenTool className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <FileText className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                <Calculator className="h-4 w-4 text-white" />
+              </div>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="ml-16 p-4 h-full">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-bold text-gray-800">Lesson Plan Generator</h3>
+                <div className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">AI Ready</div>
+              </div>
+
+              {/* Form Fields */}
+              <div className="space-y-2 mb-3">
+                <div className="bg-white rounded-lg p-2 border border-blue-200">
+                  <div className="text-xs text-gray-600 mb-1">Subject</div>
+                  <div className="text-xs font-medium text-blue-600">Mathematics</div>
+                </div>
+                <div className="bg-white rounded-lg p-2 border border-purple-200">
+                  <div className="text-xs text-gray-600 mb-1">Grade Level</div>
+                  <div className="text-xs font-medium text-purple-600">5th Grade</div>
+                </div>
+              </div>
+
+              {/* Floating Tooltips */}
+              <div className="absolute top-16 right-4 bg-blue-500 text-white text-xs px-2 py-1 rounded-full shadow-lg animate-bounce">
+                <Sparkles className="h-2 w-2 inline mr-1" />
+                Generate Plan
+              </div>
+              <div className="absolute bottom-8 left-20 bg-purple-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                Curriculum Aligned
+              </div>
+            </div>
+
+            {/* AI Status */}
+            <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+              <div className="flex items-center space-x-1">
+                <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded flex items-center justify-center">
+                  <Sparkles className="h-1 w-1 text-white" />
+                </div>
+                <span className="text-xs text-gray-800 font-medium">AI Generating...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-gray-700 h-6 rounded-b-2xl mx-4 shadow-lg"></div>
+      <div className="bg-gray-600 h-2 rounded-b-lg mx-8 shadow-md"></div>
+    </div>
+  );
+
+  const CommunicationDashboard = () => (
+    <div className="relative mx-auto max-w-lg">
+      <div className="bg-gray-800 rounded-t-2xl p-4 shadow-2xl">
+        <div className="bg-gray-900 rounded-lg p-2 mb-2">
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="flex-1 bg-gray-700 rounded px-3 py-1 text-xs text-gray-300">easyteach.ai/communication</div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg overflow-hidden aspect-video relative">
+            {/* Sidebar */}
+            <div className="absolute left-0 top-0 w-16 h-full bg-white border-r border-green-100 flex flex-col items-center py-3 space-y-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center shadow-md">
+                <MessageSquare className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                <Users className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <FileText className="h-4 w-4 text-white" />
+              </div>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="ml-16 p-4 h-full">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-bold text-gray-800">Parent Communication</h3>
+                <div className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Smart Draft</div>
+              </div>
+
+              {/* Email Draft Preview */}
+              <div className="bg-white rounded-lg p-2 border border-green-200 mb-2">
+                <div className="text-xs text-gray-600 mb-1">To: Parent</div>
+                <div className="text-xs text-gray-800">Subject: Emma's Progress Update</div>
+                <div className="text-xs text-gray-600 mt-1">Dear Mr. & Mrs. Johnson...</div>
+              </div>
+
+              {/* Floating Features */}
+              <div className="absolute top-12 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                Auto-Generate
+              </div>
+              <div className="absolute bottom-6 left-20 bg-blue-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                Professional Tone
+              </div>
+            </div>
+
+            {/* AI Assistant */}
+            <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+              <div className="flex items-center space-x-1">
+                <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded flex items-center justify-center">
+                  <Zap className="h-1 w-1 text-white" />
+                </div>
+                <span className="text-xs text-gray-800 font-medium">Writing Assistant</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-gray-700 h-6 rounded-b-2xl mx-4 shadow-lg"></div>
+      <div className="bg-gray-600 h-2 rounded-b-lg mx-8 shadow-md"></div>
+    </div>
+  );
+
+  const AnalyticsDashboard = () => (
+    <div className="relative mx-auto max-w-lg">
+      <div className="bg-gray-800 rounded-t-2xl p-4 shadow-2xl">
+        <div className="bg-gray-900 rounded-lg p-2 mb-2">
+          <div className="flex items-center space-x-2 mb-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="flex-1 bg-gray-700 rounded px-3 py-1 text-xs text-gray-300">easyteach.ai/analytics</div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg overflow-hidden aspect-video relative">
+            {/* Sidebar */}
+            <div className="absolute left-0 top-0 w-16 h-full bg-white border-r border-purple-100 flex flex-col items-center py-3 space-y-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center shadow-md">
+                <TrendingUp className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                <Target className="h-4 w-4 text-white" />
+              </div>
+              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-lg flex items-center justify-center">
+                <Brain className="h-4 w-4 text-white" />
+              </div>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="ml-16 p-4 h-full">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-bold text-gray-800">Student Analytics</h3>
+                <div className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Real-time</div>
+              </div>
+
+              {/* Analytics Cards */}
+              <div className="grid grid-cols-2 gap-2 mb-2">
+                <div className="bg-white rounded-lg p-2 border border-purple-200">
+                  <div className="text-xs text-purple-600 font-bold">85%</div>
+                  <div className="text-xs text-gray-600">Engagement</div>
+                </div>
+                <div className="bg-white rounded-lg p-2 border border-pink-200">
+                  <div className="text-xs text-pink-600 font-bold">92%</div>
+                  <div className="text-xs text-gray-600">Performance</div>
+                </div>
+              </div>
+
+              {/* Chart Visualization */}
+              <div className="bg-white rounded-lg p-2 border border-purple-100">
+                <div className="flex items-end space-x-1 h-8">
+                  <div className="w-2 bg-purple-400 rounded-t" style={{ height: '60%' }}></div>
+                  <div className="w-2 bg-purple-500 rounded-t" style={{ height: '80%' }}></div>
+                  <div className="w-2 bg-purple-600 rounded-t" style={{ height: '100%' }}></div>
+                  <div className="w-2 bg-pink-400 rounded-t" style={{ height: '70%' }}></div>
+                  <div className="w-2 bg-pink-500 rounded-t" style={{ height: '90%' }}></div>
+                </div>
+              </div>
+
+              {/* Floating Insights */}
+              <div className="absolute top-16 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                Smart Insights
+              </div>
+              <div className="absolute bottom-8 left-20 bg-pink-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                Predictive Data
+              </div>
+            </div>
+
+            {/* AI Badge */}
+            <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm rounded-lg p-2 shadow-lg">
+              <div className="flex items-center space-x-1">
+                <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded flex items-center justify-center">
+                  <Brain className="h-1 w-1 text-white" />
+                </div>
+                <span className="text-xs text-gray-800 font-medium">AI Insights</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-gray-700 h-6 rounded-b-2xl mx-4 shadow-lg"></div>
+      <div className="bg-gray-600 h-2 rounded-b-lg mx-8 shadow-md"></div>
+    </div>
+  );
+
   // EasyTeach specific showcase features
   const easyteachFeatures = [
     {
       title: "AI-Powered Lesson Planning",
       description: "Generate comprehensive lesson plans in minutes with our advanced AI that understands curriculum standards and learning objectives.",
-      image: "photo-1461749280684-dccba630e2f6",
+      component: LessonPlanDashboard,
       features: ["Curriculum-aligned content", "Differentiated instruction", "Assessment integration", "Real-time collaboration"]
     },
     {
       title: "Smart Communication Hub", 
       description: "Streamline parent communication with AI-generated emails, progress reports, and behavioral updates that maintain professional tone.",
-      image: "photo-1486312338219-ce68d2c6f44d",
+      component: CommunicationDashboard,
       features: ["Automated parent emails", "Progress tracking", "Behavioral reports", "Multi-language support"]
     },
     {
       title: "Intelligent Analytics Dashboard",
       description: "Get deep insights into student performance, engagement patterns, and learning outcomes with our comprehensive analytics suite.",
-      image: "photo-1498050108023-c5249f4df085",
+      component: AnalyticsDashboard,
       features: ["Performance analytics", "Engagement tracking", "Predictive insights", "Custom reporting"]
     }
   ];
@@ -124,7 +344,7 @@ const EasyTeachPage = () => {
         </div>
       </section>
 
-      {/* Feature Showcase with Laptop Mockups */}
+      {/* Feature Showcase with Dashboard Mockups */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -159,51 +379,9 @@ const EasyTeachPage = () => {
                   </Button>
                 </div>
                 
-                {/* Laptop Mockup */}
+                {/* Custom Dashboard Mockup */}
                 <div className="flex-1 relative">
-                  <div className="relative mx-auto max-w-lg">
-                    <div className="bg-gray-800 rounded-t-2xl p-4 shadow-2xl">
-                      <div className="bg-gray-900 rounded-lg p-2 mb-2">
-                        <div className="flex items-center space-x-2 mb-2">
-                          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <div className="flex-1 bg-gray-700 rounded px-3 py-1 text-xs text-gray-300">easyteach.ai</div>
-                        </div>
-                        
-                        <div className="bg-white rounded-lg overflow-hidden aspect-video relative">
-                          <img 
-                            src={`https://images.unsplash.com/${feature.image}?auto=format&fit=crop&w=800&q=80`}
-                            alt={feature.title}
-                            className="w-full h-full object-cover"
-                          />
-                          
-                          <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent">
-                            <div className="absolute bottom-4 left-4 right-4">
-                              <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-                                <div className="flex items-center justify-between mb-2">
-                                  <div className="flex items-center space-x-2">
-                                    <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded flex items-center justify-center">
-                                      <Sparkles className="h-3 w-3 text-white" />
-                                    </div>
-                                    <span className="text-xs font-semibold text-gray-800">EasyTeach AI</span>
-                                  </div>
-                                  <div className="text-xs text-green-600 font-medium">● Active</div>
-                                </div>
-                                <div className="text-xs text-gray-600">
-                                  {index === 0 && "Generating personalized lesson plan for Grade 5 Mathematics..."}
-                                  {index === 1 && "Drafting parent communication for student progress update..."}
-                                  {index === 2 && "Analyzing student performance data and generating insights..."}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-gray-700 h-6 rounded-b-2xl mx-4 shadow-lg"></div>
-                    <div className="bg-gray-600 h-2 rounded-b-lg mx-8 shadow-md"></div>
-                  </div>
+                  <feature.component />
                 </div>
               </div>
             ))}
