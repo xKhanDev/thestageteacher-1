@@ -1,93 +1,76 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Copy, Download, Sparkles, Clock, Loader2, Bot, AlertCircle } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import SatisfactionSurvey from "./SatisfactionSurvey";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Loader2, Download, Save, Copy, CheckCircle } from "lucide-react";
 import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent } from "@/utils/aiService";
+import { saveGeneratedContent } from "@/utils/contentService";
+import { useToast } from "@/hooks/use-toast";
 
-interface FormData {
-  [key: string]: string;
+interface ToolModalProps {
+  tool: any;
+  isOpen: boolean;
+  onClose: () => void;
+  teacherProfile: any;
 }
 
-const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState<FormData>({});
-  const [isGenerating, setIsGenerating] = useState(false);
+const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) => {
+  const [formData, setFormData] = useState<Record<string, string>>({});
   const [generatedContent, setGeneratedContent] = useState('');
-  const [showSurvey, setShowSurvey] = useState(false);
-  const [hasGeneratedContent, setHasGeneratedContent] = useState(false);
-  const [error, setError] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const { toast } = useToast();
 
-  const handleInputChange = (fieldName: string, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [fieldName]: value
-    }));
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const generateContent = async () => {
+  const handleGenerate = async () => {
     setIsGenerating(true);
-    setError('');
-    
     try {
-      let aiContent = '';
+      let content = '';
       
-      // Use AI to generate content based on tool type
       switch (tool.id) {
-        case 1: // Lesson Plan Generator
-          aiContent = await generateLessonPlan(
-            formData.subject || 'General',
-            formData.topic || 'Learning Activity',
-            formData.grade || 'Elementary'
+        case 'lesson-plan':
+          content = await generateLessonPlan(
+            formData.subject || '',
+            formData.topic || '',
+            formData.grade || ''
           );
           break;
-        case 4: // Parent Email
-        case 17: // Parent Email Composer
-          aiContent = await generateParentEmail(
-            formData.studentName || 'Student',
-            formData.situation || 'General update',
-            formData.emailType || 'Positive Update'
+        case 'parent-email':
+          content = await generateParentEmail(
+            formData.studentName || '',
+            formData.situation || '',
+            formData.emailType || ''
           );
           break;
-        case 7: // Behavior Plan
-        case 20: // Behavior Plan Creator
-          aiContent = await generateBehaviorPlan(
-            formData.behaviorConcern || 'Classroom behavior',
-            formData.studentAge || '10',
-            formData.strengths || 'Eager to learn'
+        case 'behavior-plan':
+          content = await generateBehaviorPlan(
+            formData.behaviorConcern || '',
+            formData.studentAge || '',
+            formData.strengths || ''
           );
           break;
         default:
-          // Generic content generation for other tools
-          const prompt = `Create educational content for ${tool.name} with the following details: ${JSON.stringify(formData)}`;
-          aiContent = await generateEducationalContent(prompt, tool.category);
+          const prompt = Object.entries(formData)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join(', ');
+          content = await generateEducationalContent(prompt, tool.name);
+          break;
       }
-
-      const enhancedContent = enhanceGeneratedContent(tool, formData, teacherProfile, aiContent);
-      setGeneratedContent(enhancedContent);
-      setHasGeneratedContent(true);
       
-      toast({
-        title: "AI Content Generated! ✨",
-        description: "Your personalized teaching content is ready.",
-      });
-
+      setGeneratedContent(content);
+      setIsSaved(false); // Reset saved status when new content is generated
     } catch (error) {
-      console.error('Generation error:', error);
-      const errorMessage = error.message || 'Unable to generate content. Please try again.';
-      setError(errorMessage);
-      
       toast({
         title: "Generation Error",
-        description: errorMessage,
+        description: "Failed to generate content. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -95,252 +78,293 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }) => {
     }
   };
 
-  const enhanceGeneratedContent = (tool, data: FormData, profile, aiContent: string) => {
-    const teacherName = profile?.name || "Teacher";
-    const grade = profile?.grade || "your grade";
-    
-    return `# ${tool.name} - AI Generated Content
-**Created for:** ${teacherName} | **Grade:** ${grade} | **Date:** ${new Date().toLocaleDateString()}
+  const handleSave = async () => {
+    if (!generatedContent.trim()) {
+      toast({
+        title: "No Content",
+        description: "Please generate content first before saving.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-## AI-Powered Educational Content
+    setIsSaving(true);
+    try {
+      await saveGeneratedContent(
+        tool.name,
+        tool.category,
+        generatedContent,
+        formData.topic || formData.subject || tool.name,
+        formData.subject,
+        formData.topic
+      );
 
-${aiContent}
-
----
-
-## Input Summary
-${Object.entries(data).map(([key, value]) => `**${key}:** ${value}`).join('\n')}
-
-*This content was generated using AI to assist with your teaching needs. Please review and customize as needed for your specific classroom context.*
-
-**Powered by AI Teaching Assistant** 🤖✨`;
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedContent);
-    toast({
-      title: "Copied! 📋",
-      description: "Content copied to clipboard.",
-    });
-  };
-
-  const handleClose = () => {
-    if (hasGeneratedContent && !showSurvey) {
-      setShowSurvey(true);
-    } else {
-      onClose();
+      setIsSaved(true);
+      toast({
+        title: "Content Saved",
+        description: "Your generated content has been saved successfully!",
+      });
+    } catch (error) {
+      toast({
+        title: "Save Error",
+        description: "Failed to save content. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
     }
   };
 
-  const handleSurveyClose = () => {
-    setShowSurvey(false);
-    onClose();
+  const handleDownload = () => {
+    if (!generatedContent) return;
+    
+    const blob = new Blob([generatedContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${tool.name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
-  const handleSurveySubmit = (feedback) => {
-    const existingFeedback = JSON.parse(localStorage.getItem('toolFeedback') || '[]');
-    const newFeedback = {
-      id: Date.now(),
-      toolId: tool.id,
-      toolName: tool.name,
-      feedback,
-      timestamp: new Date().toISOString(),
-      teacherProfile: teacherProfile?.name || 'Anonymous'
-    };
+  const handleCopy = async () => {
+    if (!generatedContent) return;
     
-    existingFeedback.push(newFeedback);
-    localStorage.setItem('toolFeedback', JSON.stringify(existingFeedback));
-    
-    console.log('Feedback saved:', newFeedback);
-    setShowSurvey(false);
-    onClose();
-  };
-
-  const IconComponent = tool.icon;
-
-  useEffect(() => {
-    if (!isOpen) {
-      setFormData({});
-      setGeneratedContent('');
-      setHasGeneratedContent(false);
-      setShowSurvey(false);
-      setError('');
+    try {
+      await navigator.clipboard.writeText(generatedContent);
+      toast({
+        title: "Copied!",
+        description: "Content copied to clipboard",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Failed to copy content to clipboard",
+        variant: "destructive",
+      });
     }
-  }, [isOpen]);
+  };
+
+  const renderInputFields = () => {
+    switch (tool.id) {
+      case 'lesson-plan':
+        return (
+          <>
+            <div className="space-y-2">
+              <Label htmlFor="subject">Subject</Label>
+              <Input
+                id="subject"
+                placeholder="e.g., Mathematics, Science, English"
+                value={formData.subject || ''}
+                onChange={(e) => handleInputChange('subject', e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="topic">Topic</Label>
+              <Input
+                id="topic"
+                placeholder="e.g., Fractions, Photosynthesis, Shakespeare"
+                value={formData.topic || ''}
+                onChange={(e) => handleInputChange('topic', e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="grade">Grade Level</Label>
+              <Select onValueChange={(value) => handleInputChange('grade', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select grade level" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Array.from({ length: 12 }, (_, i) => (
+                    <SelectItem key={i + 1} value={`Grade ${i + 1}`}>
+                      Grade {i + 1}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </>
+        );
+      case 'parent-email':
+        return (
+          <>
+            <div className="space-y-2">
+              <Label htmlFor="studentName">Student Name</Label>
+              <Input
+                id="studentName"
+                placeholder="Enter student's name"
+                value={formData.studentName || ''}
+                onChange={(e) => handleInputChange('studentName', e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="emailType">Email Type</Label>
+              <Select onValueChange={(value) => handleInputChange('emailType', value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select email type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Progress Update">Progress Update</SelectItem>
+                  <SelectItem value="Behavior Concern">Behavior Concern</SelectItem>
+                  <SelectItem value="Academic Achievement">Academic Achievement</SelectItem>
+                  <SelectItem value="Parent Conference">Parent Conference Request</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="situation">Situation Details</Label>
+              <Textarea
+                id="situation"
+                placeholder="Describe the situation or update you want to communicate"
+                value={formData.situation || ''}
+                onChange={(e) => handleInputChange('situation', e.target.value)}
+              />
+            </div>
+          </>
+        );
+      case 'behavior-plan':
+        return (
+          <>
+            <div className="space-y-2">
+              <Label htmlFor="behaviorConcern">Behavior Concern</Label>
+              <Textarea
+                id="behaviorConcern"
+                placeholder="Describe the specific behavior concern"
+                value={formData.behaviorConcern || ''}
+                onChange={(e) => handleInputChange('behaviorConcern', e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="studentAge">Student Age</Label>
+              <Input
+                id="studentAge"
+                placeholder="e.g., 8 years old"
+                value={formData.studentAge || ''}
+                onChange={(e) => handleInputChange('studentAge', e.target.value)}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="strengths">Student Strengths</Label>
+              <Textarea
+                id="strengths"
+                placeholder="Describe the student's strengths and interests"
+                value={formData.strengths || ''}
+                onChange={(e) => handleInputChange('strengths', e.target.value)}
+              />
+            </div>
+          </>
+        );
+      default:
+        return (
+          <div className="space-y-2">
+            <Label htmlFor="prompt">What would you like to create?</Label>
+            <Textarea
+              id="prompt"
+              placeholder={`Describe what you'd like to generate with ${tool.name}`}
+              value={formData.prompt || ''}
+              onChange={(e) => handleInputChange('prompt', e.target.value)}
+            />
+          </div>
+        );
+    }
+  };
 
   return (
-    <>
-      <Dialog open={isOpen && !showSurvey} onOpenChange={handleClose}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <div className="flex items-center space-x-3">
-              <div className={`p-2 rounded-lg ${tool.color}`}>
-                <IconComponent className="h-6 w-6" />
-              </div>
-              <div>
-                <DialogTitle className="text-xl font-bold text-gray-800">{tool.name}</DialogTitle>
-                <p className="text-gray-600 mt-1 text-sm">{tool.description}</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4 mt-4">
-              <Badge variant="secondary" className="bg-emerald-100 text-emerald-800">{tool.category}</Badge>
-              <div className="flex items-center space-x-1 text-sm text-amber-600">
-                <Clock className="h-4 w-4" />
-                <span>Saves {tool.timesSaved}</span>
-              </div>
-              <div className="flex items-center space-x-1 text-sm text-emerald-600">
-                <Bot className="h-4 w-4" />
-                <span>AI-Powered</span>
-              </div>
-            </div>
-          </DialogHeader>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <DialogTitle className="flex items-center space-x-2">
+            <span className="text-2xl">{tool.icon}</span>
+            <span>{tool.name}</span>
+          </DialogTitle>
+        </DialogHeader>
 
-          <div className="py-6">
-            {!generatedContent ? (
-              // Input Form
-              <div className="space-y-6">
-                <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
-                  <h3 className="font-semibold text-emerald-800 mb-2">
-                    🤖 AI-Enhanced Content Creation
-                  </h3>
-                  <p className="text-emerald-700 text-sm">
-                    Our AI assistant will help generate personalized educational content based on your inputs.
-                  </p>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Input Section */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Input Details</h3>
+            {renderInputFields()}
+            
+            <Button 
+              onClick={handleGenerate} 
+              disabled={isGenerating || Object.values(formData).every(v => !v?.trim())}
+              className="w-full"
+            >
+              {isGenerating ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Generating...
+                </>
+              ) : (
+                'Generate Content'
+              )}
+            </Button>
+          </div>
 
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <div className="flex items-center space-x-2">
-                      <AlertCircle className="h-5 w-5 text-red-600" />
-                      <h4 className="font-semibold text-red-800">Generation Error</h4>
-                    </div>
-                    <p className="text-red-700 text-sm mt-2">{error}</p>
-                  </div>
-                )}
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {tool.fields.map((field) => (
-                    <div key={field.name} className={field.type === 'textarea' ? 'md:col-span-2' : ''}>
-                      <Label htmlFor={field.name} className="text-sm font-medium text-gray-700">
-                        {field.label}
-                      </Label>
-                      
-                      {field.type === 'text' && (
-                        <Input
-                          id={field.name}
-                          value={formData[field.name] || ''}
-                          onChange={(e) => handleInputChange(field.name, e.target.value)}
-                          placeholder={field.placeholder}
-                          className="mt-1 border-emerald-300 focus:border-emerald-500"
-                        />
-                      )}
-                      
-                      {field.type === 'select' && (
-                        <Select 
-                          value={formData[field.name] || ''} 
-                          onValueChange={(value) => handleInputChange(field.name, value)}
-                        >
-                          <SelectTrigger className="mt-1 border-emerald-300 focus:border-emerald-500">
-                            <SelectValue placeholder={field.placeholder || `Select ${field.label.toLowerCase()}`} />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {field.options.map((option) => (
-                              <SelectItem key={option} value={option}>
-                                {option}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      )}
-                      
-                      {field.type === 'textarea' && (
-                        <Textarea
-                          id={field.name}
-                          value={formData[field.name] || ''}
-                          onChange={(e) => handleInputChange(field.name, e.target.value)}
-                          placeholder={field.placeholder}
-                          className="mt-1 border-emerald-300 focus:border-emerald-500"
-                          rows={3}
-                        />
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-                <Separator />
-
-                <div className="flex justify-end space-x-3">
-                  <Button variant="outline" onClick={handleClose}>
-                    Cancel
-                  </Button>
-                  <Button 
-                    onClick={generateContent} 
-                    disabled={isGenerating}
-                    className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+          {/* Output Section */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold">Generated Content</h3>
+              {generatedContent && (
+                <div className="flex space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleCopy}
                   >
-                    {isGenerating ? (
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleDownload}
+                  >
+                    <Download className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    onClick={handleSave}
+                    disabled={isSaving || isSaved}
+                    className={isSaved ? "bg-green-600 hover:bg-green-700" : ""}
+                  >
+                    {isSaving ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        AI is creating...
+                        Saving...
+                      </>
+                    ) : isSaved ? (
+                      <>
+                        <CheckCircle className="mr-2 h-4 w-4" />
+                        Saved
                       </>
                     ) : (
                       <>
-                        <Bot className="mr-2 h-4 w-4" />
-                        Generate with AI
+                        <Save className="mr-2 h-4 w-4" />
+                        Save
                       </>
                     )}
                   </Button>
                 </div>
-              </div>
-            ) : (
-              // Generated Content Display
-              <div className="space-y-6">
-                <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
-                  <h3 className="font-semibold text-emerald-800 mb-2">
-                    ✨ AI-Generated Content Ready!
-                  </h3>
-                  <p className="text-emerald-700 text-sm">
-                    Your personalized educational content has been created. Review, edit, and use as needed!
-                  </p>
+              )}
+            </div>
+            
+            <div className="min-h-[300px] border rounded-lg p-4 bg-gray-50">
+              {generatedContent ? (
+                <div className="whitespace-pre-wrap text-sm">
+                  {generatedContent}
                 </div>
-
-                <div className="bg-white border-2 border-emerald-200 rounded-lg p-6 max-h-96 overflow-y-auto">
-                  <pre className="whitespace-pre-wrap text-sm font-mono text-gray-800 leading-relaxed">
-                    {generatedContent}
-                  </pre>
+              ) : (
+                <div className="flex items-center justify-center h-full text-gray-500">
+                  Generated content will appear here
                 </div>
-
-                <div className="flex justify-between items-center">
-                  <div className="text-sm text-gray-500">
-                    Generated by AI for {teacherProfile?.name || 'your classroom'} • {new Date().toLocaleDateString()}
-                  </div>
-                  <div className="flex space-x-3">
-                    <Button variant="outline" onClick={copyToClipboard} className="border-emerald-300 hover:bg-emerald-50">
-                      <Copy className="mr-2 h-4 w-4" />
-                      Copy
-                    </Button>
-                    <Button variant="outline" className="border-emerald-300 hover:bg-emerald-50">
-                      <Download className="mr-2 h-4 w-4" />
-                      Save
-                    </Button>
-                    <Button onClick={() => setGeneratedContent('')} className="bg-emerald-600 hover:bg-emerald-700">
-                      Create Another
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
-
-      <SatisfactionSurvey
-        isOpen={showSurvey}
-        onClose={handleSurveyClose}
-        toolName={tool.name}
-        onSubmit={handleSurveySubmit}
-      />
-    </>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 

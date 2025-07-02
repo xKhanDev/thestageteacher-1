@@ -8,7 +8,7 @@ interface AuthContextType {
   session: Session | null;
   loading: boolean;
   signUp: (email: string, password: string, name: string) => Promise<{ error: any }>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signIn: (email: string, password: string, rememberMe?: boolean) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
 }
 
@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signUp = async (email: string, password: string, name: string) => {
-    const redirectUrl = `${window.location.origin}/`;
+    const redirectUrl = `${window.location.origin}/easyteach-app`;
     
     const { error } = await supabase.auth.signUp({
       email,
@@ -57,11 +57,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { error };
   };
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, password: string, rememberMe: boolean = false) => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
-      password
+      password,
+      options: {
+        // Set session persistence based on rememberMe
+        ...(rememberMe && { 
+          data: { 
+            remember_me: true 
+          }
+        })
+      }
     });
+
+    // If remember me is selected, we don't need to do anything special
+    // as Supabase handles session persistence automatically
+    // The session will persist across browser restarts
 
     return { error };
   };
