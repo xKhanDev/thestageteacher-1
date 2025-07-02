@@ -160,6 +160,6 @@ Please include:
 
 // Legacy function for backward compatibility
 export const initializeAI = async () => {
-  // No longer needed - using OpenAI via edge function
+  // No longer needed - using OpenRouter via edge function
   return null;
 };

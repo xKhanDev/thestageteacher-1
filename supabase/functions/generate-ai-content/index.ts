@@ -2,7 +2,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const openAIApiKey = Deno.env.get('OPENAI_API_KEY');
+const openRouterApiKey = Deno.env.get('OPENROUTER_API_KEY');
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -17,8 +17,8 @@ serve(async (req) => {
   try {
     const { prompt, toolType, context } = await req.json();
 
-    if (!openAIApiKey) {
-      throw new Error('OpenAI API key not configured');
+    if (!openRouterApiKey) {
+      throw new Error('OpenRouter API key not configured');
     }
 
     // Create specialized prompts based on tool type
@@ -39,16 +39,18 @@ serve(async (req) => {
         systemPrompt = 'You are an AI teaching assistant. Provide helpful, practical educational content that supports effective teaching and learning. Be specific, actionable, and professional in your responses.';
     }
 
-    console.log('Generating content with OpenAI for tool type:', toolType);
+    console.log('Generating content with OpenRouter for tool type:', toolType);
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openAIApiKey}`,
+        'Authorization': `Bearer ${openRouterApiKey}`,
         'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://easyteach.app', // Optional: Your app's URL
+        'X-Title': 'EasyTeach AI Assistant', // Optional: Your app's name
       },
       body: JSON.stringify({
-        model: 'gpt-4.1-2025-04-14',
+        model: 'anthropic/claude-3.5-sonnet', // Using Claude 3.5 Sonnet as default
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
@@ -60,15 +62,15 @@ serve(async (req) => {
 
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('OpenAI API error:', errorData);
-      throw new Error(`OpenAI API error: ${errorData.error?.message || 'Unknown error'}`);
+      console.error('OpenRouter API error:', errorData);
+      throw new Error(`OpenRouter API error: ${errorData.error?.message || 'Unknown error'}`);
     }
 
     const data = await response.json();
     const generatedContent = data.choices[0]?.message?.content;
 
     if (!generatedContent) {
-      throw new Error('No content generated from OpenAI');
+      throw new Error('No content generated from OpenRouter');
     }
 
     console.log('Successfully generated content');
