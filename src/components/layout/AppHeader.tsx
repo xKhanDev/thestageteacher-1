@@ -1,8 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Clock, User, Sparkles, Zap, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 interface AppHeaderProps {
   teacherProfile: any;
@@ -11,9 +11,11 @@ interface AppHeaderProps {
 
 const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
   const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     await signOut();
+    navigate('/');
   };
 
   return (
