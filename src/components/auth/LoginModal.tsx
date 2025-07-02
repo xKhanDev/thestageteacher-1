@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff, Loader2, Sparkles, Mail, Lock } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -28,13 +29,16 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
 
   const { signIn, signUp, user } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
-  // Handle auto-close when user becomes authenticated
+  // Handle auto-close and navigation when user becomes authenticated
   useEffect(() => {
     if (user && isOpen) {
       onClose();
+      // Navigate to the main app after successful login
+      navigate('/easyteach-app');
     }
-  }, [user, isOpen, onClose]);
+  }, [user, isOpen, onClose, navigate]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -77,7 +81,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           description: "You have successfully signed in.",
         });
         resetForm();
-        // Don't manually close - let the useEffect handle it
+        // Navigation will be handled by useEffect when user state updates
       }
     } catch (error) {
       toast({
@@ -246,7 +250,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
             <Button 
               onClick={handleSignIn} 
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px]"
             >
               {isLoading ? (
                 <>
@@ -328,7 +332,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
             <Button 
               onClick={handleSignUp} 
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px]"
             >
               {isLoading ? (
                 <>
