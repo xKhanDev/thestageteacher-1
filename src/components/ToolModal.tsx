@@ -36,21 +36,21 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
       let content = '';
       
       switch (tool.id) {
-        case 'lesson-plan':
+        case 1: // lesson-plan
           content = await generateLessonPlan(
             formData.subject || '',
             formData.topic || '',
             formData.grade || ''
           );
           break;
-        case 'parent-email':
+        case 17: // parent-email
           content = await generateParentEmail(
             formData.studentName || '',
             formData.situation || '',
             formData.emailType || ''
           );
           break;
-        case 'behavior-plan':
+        case 20: // behavior-plan
           content = await generateBehaviorPlan(
             formData.behaviorConcern || '',
             formData.studentAge || '',
@@ -66,7 +66,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
       }
       
       setGeneratedContent(content);
-      setIsSaved(false); // Reset saved status when new content is generated
+      setIsSaved(false);
     } catch (error) {
       toast({
         title: "Generation Error",
@@ -148,127 +148,54 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
   };
 
   const renderInputFields = () => {
-    switch (tool.id) {
-      case 'lesson-plan':
-        return (
-          <>
-            <div className="space-y-2">
-              <Label htmlFor="subject">Subject</Label>
-              <Input
-                id="subject"
-                placeholder="e.g., Mathematics, Science, English"
-                value={formData.subject || ''}
-                onChange={(e) => handleInputChange('subject', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="topic">Topic</Label>
-              <Input
-                id="topic"
-                placeholder="e.g., Fractions, Photosynthesis, Shakespeare"
-                value={formData.topic || ''}
-                onChange={(e) => handleInputChange('topic', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="grade">Grade Level</Label>
-              <Select onValueChange={(value) => handleInputChange('grade', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select grade level" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Array.from({ length: 12 }, (_, i) => (
-                    <SelectItem key={i + 1} value={`Grade ${i + 1}`}>
-                      Grade {i + 1}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </>
-        );
-      case 'parent-email':
-        return (
-          <>
-            <div className="space-y-2">
-              <Label htmlFor="studentName">Student Name</Label>
-              <Input
-                id="studentName"
-                placeholder="Enter student's name"
-                value={formData.studentName || ''}
-                onChange={(e) => handleInputChange('studentName', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="emailType">Email Type</Label>
-              <Select onValueChange={(value) => handleInputChange('emailType', value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select email type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Progress Update">Progress Update</SelectItem>
-                  <SelectItem value="Behavior Concern">Behavior Concern</SelectItem>
-                  <SelectItem value="Academic Achievement">Academic Achievement</SelectItem>
-                  <SelectItem value="Parent Conference">Parent Conference Request</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="situation">Situation Details</Label>
-              <Textarea
-                id="situation"
-                placeholder="Describe the situation or update you want to communicate"
-                value={formData.situation || ''}
-                onChange={(e) => handleInputChange('situation', e.target.value)}
-              />
-            </div>
-          </>
-        );
-      case 'behavior-plan':
-        return (
-          <>
-            <div className="space-y-2">
-              <Label htmlFor="behaviorConcern">Behavior Concern</Label>
-              <Textarea
-                id="behaviorConcern"
-                placeholder="Describe the specific behavior concern"
-                value={formData.behaviorConcern || ''}
-                onChange={(e) => handleInputChange('behaviorConcern', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="studentAge">Student Age</Label>
-              <Input
-                id="studentAge"
-                placeholder="e.g., 8 years old"
-                value={formData.studentAge || ''}
-                onChange={(e) => handleInputChange('studentAge', e.target.value)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="strengths">Student Strengths</Label>
-              <Textarea
-                id="strengths"
-                placeholder="Describe the student's strengths and interests"
-                value={formData.strengths || ''}
-                onChange={(e) => handleInputChange('strengths', e.target.value)}
-              />
-            </div>
-          </>
-        );
-      default:
-        return (
-          <div className="space-y-2">
-            <Label htmlFor="prompt">What would you like to create?</Label>
-            <Textarea
-              id="prompt"
-              placeholder={`Describe what you'd like to generate with ${tool.name}`}
-              value={formData.prompt || ''}
-              onChange={(e) => handleInputChange('prompt', e.target.value)}
-            />
-          </div>
-        );
+    if (!tool.fields || !Array.isArray(tool.fields)) {
+      return (
+        <div className="space-y-2">
+          <Label htmlFor="prompt">What would you like to create?</Label>
+          <Textarea
+            id="prompt"
+            placeholder={`Describe what you'd like to generate with ${tool.name}`}
+            value={formData.prompt || ''}
+            onChange={(e) => handleInputChange('prompt', e.target.value)}
+          />
+        </div>
+      );
     }
+
+    return tool.fields.map((field: any, index: number) => (
+      <div key={index} className="space-y-2">
+        <Label htmlFor={field.name}>{field.label}</Label>
+        {field.type === 'select' ? (
+          <Select onValueChange={(value) => handleInputChange(field.name, value)}>
+            <SelectTrigger>
+              <SelectValue placeholder={field.placeholder || `Select ${field.label.toLowerCase()}`} />
+            </SelectTrigger>
+            <SelectContent>
+              {field.options?.map((option: string) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        ) : field.type === 'textarea' ? (
+          <Textarea
+            id={field.name}
+            placeholder={field.placeholder}
+            value={formData[field.name] || ''}
+            onChange={(e) => handleInputChange(field.name, e.target.value)}
+          />
+        ) : (
+          <Input
+            id={field.name}
+            type={field.type || 'text'}
+            placeholder={field.placeholder}
+            value={formData[field.name] || ''}
+            onChange={(e) => handleInputChange(field.name, e.target.value)}
+          />
+        )}
+      </div>
+    ));
   };
 
   // Get the icon component
