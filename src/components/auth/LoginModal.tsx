@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,10 +29,12 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const { signIn, signUp, user } = useAuth();
   const { toast } = useToast();
 
-  // Auto-close modal if user becomes authenticated
-  if (user && isOpen) {
-    onClose();
-  }
+  // Handle auto-close when user becomes authenticated
+  useEffect(() => {
+    if (user && isOpen) {
+      onClose();
+    }
+  }, [user, isOpen, onClose]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -76,7 +77,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           description: "You have successfully signed in.",
         });
         resetForm();
-        // Don't manually close - let the user state change handle it
+        // Don't manually close - let the useEffect handle it
       }
     } catch (error) {
       toast({
