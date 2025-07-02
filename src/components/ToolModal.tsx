@@ -271,12 +271,15 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
     }
   };
 
+  // Get the icon component
+  const IconComponent = tool.icon;
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
-            <span className="text-2xl">{tool.icon}</span>
+            {IconComponent && <IconComponent className="h-6 w-6" />}
             <span>{tool.name}</span>
           </DialogTitle>
         </DialogHeader>
