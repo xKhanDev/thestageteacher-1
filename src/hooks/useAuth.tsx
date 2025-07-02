@@ -60,20 +60,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signIn = async (email: string, password: string, rememberMe: boolean = false) => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
-      password,
-      options: {
-        // Set session persistence based on rememberMe
-        ...(rememberMe && { 
-          data: { 
-            remember_me: true 
-          }
-        })
-      }
+      password
     });
 
-    // If remember me is selected, we don't need to do anything special
-    // as Supabase handles session persistence automatically
-    // The session will persist across browser restarts
+    // Session persistence is handled automatically by Supabase
+    // The rememberMe parameter is kept for UI consistency but 
+    // Supabase already persists sessions across browser restarts by default
 
     return { error };
   };
