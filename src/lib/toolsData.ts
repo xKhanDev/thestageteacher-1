@@ -4,7 +4,7 @@ import {
   CheckCircle, AlertCircle, TrendingUp, Award,
   Lightbulb, Heart, Clock, Puzzle, Brain, Zap,
   Presentation, Calculator, Eye, Layers, HelpCircle,
-  FileQuestion, Edit, Plus, BarChart
+  FileQuestion, Edit, Plus, BarChart, Shield
 } from "lucide-react";
 
 export const tools = [
@@ -289,10 +289,27 @@ export const tools = [
       { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific difficulty requirements, real-world contexts, or student accommodations for the math problems..." }
     ]
   },
+  {
+    id: 17,
+    name: "AI Text Detector",
+    description: "Analyze student text submissions to identify potential AI-generated content and maintain academic integrity.",
+    category: "Assessment",
+    icon: Shield,
+    color: "bg-purple-100 text-purple-600",
+    timesSaved: "15m",
+    estimatedTime: "2 min",
+    fields: [
+      { name: "studentText", label: "Student Text", type: "textarea", placeholder: "Paste the student's text submission here for analysis..." },
+      { name: "assignmentType", label: "Assignment Type", type: "select", options: ["Essay", "Research Paper", "Creative Writing", "Short Answer", "Lab Report", "Other"] },
+      { name: "studentGrade", label: "Student Grade Level", type: "select", options: ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
+      { name: "analysisDepth", label: "Analysis Depth", type: "select", options: ["Quick Check", "Standard Analysis", "Detailed Review"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include information about the assignment, student's usual writing style, or any specific concerns..." }
+    ]
+  },
 
   // Communication
   {
-    id: 17,
+    id: 18,
     name: "Parent Email Composer",
     description: "Draft professional, warm emails to parents about student progress, concerns, or celebrations.",
     category: "Communication",
@@ -308,7 +325,7 @@ export const tools = [
     ]
   },
   {
-    id: 18,
+    id: 19,
     name: "Student Report/Feedback Writer",
     description: "Create personalized, constructive progress reports and detailed feedback for students.",
     category: "Communication",
@@ -325,7 +342,7 @@ export const tools = [
     ]
   },
   {
-    id: 19,
+    id: 20,
     name: "Class Newsletter Creator",
     description: "Design engaging newsletters to keep parents informed about classroom happenings and learning.",
     category: "Communication",
@@ -344,7 +361,7 @@ export const tools = [
 
   // Behaviour Support
   {
-    id: 20,
+    id: 21,
     name: "Behavior Plan Creator",
     description: "Develop positive behavior intervention plans tailored to individual student needs.",
     category: "Behaviour Support",
@@ -360,7 +377,7 @@ export const tools = [
     ]
   },
   {
-    id: 21,
+    id: 22,
     name: "Calm Down Strategies",
     description: "Get personalized de-escalation techniques and calm-down strategies for different situations.",
     category: "Behaviour Support",
@@ -377,7 +394,7 @@ export const tools = [
 
   // Differentiation
   {
-    id: 22,
+    id: 23,
     name: "Learning Accommodations",
     description: "Generate specific accommodations and modifications for diverse learners and special needs.",
     category: "Differentiation",
@@ -393,7 +410,7 @@ export const tools = [
     ]
   },
   {
-    id: 23,
+    id: 24,
     name: "Multilevel Activities",
     description: "Create the same activity with different difficulty levels for mixed-ability classes.",
     category: "Differentiation",
