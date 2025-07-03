@@ -86,8 +86,8 @@ export const exportToPowerPoint = async (content: string, title: string) => {
     // Generate and download the presentation
     const fileName = `${title.replace(/[^a-zA-Z0-9\s]/g, '_').replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pptx`;
     
-    // Use the save method instead of writeFile
-    await pptx.save(fileName);
+    // Use writeFile method to download the presentation
+    await pptx.writeFile(fileName);
     
   } catch (error) {
     console.error('PowerPoint export error:', error);
