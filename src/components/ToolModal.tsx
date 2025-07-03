@@ -302,15 +302,10 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
       <Dialog open={isOpen} onOpenChange={handleModalClose}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <div className="flex items-center justify-between">
-              <DialogTitle className="flex items-center space-x-2">
-                {IconComponent && <IconComponent className="h-6 w-6" />}
-                <span>{tool.name}</span>
-              </DialogTitle>
-              <Button variant="ghost" size="sm" onClick={handleModalClose}>
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
+            <DialogTitle className="flex items-center space-x-2">
+              {IconComponent && <IconComponent className="h-6 w-6" />}
+              <span>{tool.name}</span>
+            </DialogTitle>
           </DialogHeader>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

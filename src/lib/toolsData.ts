@@ -183,7 +183,8 @@ export const tools = [
       { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
       { name: "assessmentType", label: "Assessment Type", type: "select", options: ["Quiz", "Test", "Performance Task", "Project Rubric"] },
       { name: "questionCount", label: "Number of Questions", type: "select", options: ["5", "10", "15", "20", "25"] },
-      { name: "questionTypes", label: "Question Types", type: "select", options: ["Multiple Choice", "Short Answer", "Essay", "Mixed"] }
+      { name: "questionTypes", label: "Question Types", type: "select", options: ["Multiple Choice", "Short Answer", "Essay", "Mixed"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific requirements, student needs, learning objectives, or assessment criteria that should be considered..." }
     ]
   },
   {
@@ -216,7 +217,8 @@ export const tools = [
       { name: "topic", label: "Topic/Skill", type: "text", placeholder: "What skill will students practice?" },
       { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
       { name: "problemCount", label: "Number of Problems", type: "select", options: ["10", "15", "20", "25", "30"] },
-      { name: "includeAnswerKey", label: "Include Answer Key", type: "select", options: ["Yes", "No"] }
+      { name: "includeAnswerKey", label: "Include Answer Key", type: "select", options: ["Yes", "No"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific requirements, difficulty adjustments, student accommodations, or worksheet format preferences..." }
     ]
   },
   {
@@ -266,7 +268,8 @@ export const tools = [
       { name: "topic", label: "Topic", type: "text", placeholder: "What will you quiz on?" },
       { name: "questionCount", label: "Number of Questions", type: "select", options: ["5", "10", "15"] },
       { name: "questionType", label: "Question Type", type: "select", options: ["Multiple Choice", "True/False", "Fill in the Blank", "Mixed"] },
-      { name: "difficulty", label: "Difficulty", type: "select", options: ["Easy", "Medium", "Hard"] }
+      { name: "difficulty", label: "Difficulty", type: "select", options: ["Easy", "Medium", "Hard"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific learning standards, student accommodations, or quiz format preferences..." }
     ]
   },
   {
@@ -282,7 +285,8 @@ export const tools = [
       { name: "mathTopic", label: "Math Topic", type: "select", options: ["Addition", "Subtraction", "Multiplication", "Division", "Fractions", "Decimals", "Geometry", "Algebra", "Word Problems"] },
       { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "Algebra", "Geometry"] },
       { name: "problemCount", label: "Number of Problems", type: "select", options: ["10", "15", "20", "25"] },
-      { name: "includeWordProblems", label: "Include Word Problems", type: "select", options: ["Yes", "No", "Only Word Problems"] }
+      { name: "includeWordProblems", label: "Include Word Problems", type: "select", options: ["Yes", "No", "Only Word Problems"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific difficulty requirements, real-world contexts, or student accommodations for the math problems..." }
     ]
   },
 

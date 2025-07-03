@@ -1,6 +1,7 @@
 
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, SidebarFooter } from "@/components/ui/sidebar";
 import { Wand2, Bot, History, BrainCircuit, Star, Heart, GraduationCap } from "lucide-react";
+import easyTeachLogo from "@/assets/easyteach-logo.png";
 
 const AppSidebar = () => {
   const sidebarItems = [
@@ -38,8 +39,8 @@ const AppSidebar = () => {
     <Sidebar className="border-0 shadow-lg">
       <SidebarHeader className="p-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-slate-50 border-b border-slate-200">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
-            <GraduationCap className="h-4 w-4 text-white" />
+          <div className="w-8 h-8 rounded-lg overflow-hidden shadow-md">
+            <img src={easyTeachLogo} alt="EasyTeach Logo" className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-base font-bold text-slate-800">
