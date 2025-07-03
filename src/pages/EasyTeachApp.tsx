@@ -71,16 +71,14 @@ const EasyTeachApp = () => {
         <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
           {/* Mobile Header with Menu Button */}
           <div className="lg:hidden bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="lg:hidden">
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="p-0 w-72">
-                <AppSidebar />
-              </SheetContent>
-            </Sheet>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
             <h1 className="text-lg font-semibold text-gray-800">EasyTeach</h1>
             <Button
               variant="ghost"
