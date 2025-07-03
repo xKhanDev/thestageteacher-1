@@ -1,6 +1,6 @@
 
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, SidebarFooter } from "@/components/ui/sidebar";
-import { Wand2, Bot, History, BrainCircuit, Star, Heart, GraduationCap } from "lucide-react";
+import { Wand2, Bot, History, BrainCircuit, Star, Heart, GraduationCap, BarChart3 } from "lucide-react";
 import easyTeachLogo from "@/assets/easyteach-logo.png";
 
 const AppSidebar = () => {
@@ -32,6 +32,13 @@ const AppSidebar = () => {
       href: "/tools-suggestions",
       description: "Suggest new features",
       gradient: "from-purple-500 to-pink-500"
+    },
+    { 
+      name: "Feedback Dashboard", 
+      icon: BarChart3, 
+      href: "/feedback-dashboard",
+      description: "View user feedback",
+      gradient: "from-green-500 to-emerald-500"
     },
   ];
 

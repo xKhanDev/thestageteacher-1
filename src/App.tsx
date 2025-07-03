@@ -22,6 +22,7 @@ import KnowledgeBase from "./pages/KnowledgeBase";
 import PartnersIntegrations from "./pages/PartnersIntegrations";
 import DataProtection from "./pages/DataProtection";
 import ContactUs from "./pages/ContactUs";
+import FeedbackDashboard from "./pages/FeedbackDashboard";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/partners-integrations" element={<PartnersIntegrations />} />
             <Route path="/data-protection" element={<DataProtection />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/feedback-dashboard" element={<FeedbackDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
