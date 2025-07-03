@@ -158,7 +158,10 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
 
     setIsExportingSlides(true);
     try {
-      const title = formData.topic || formData.subject || tool.name;
+      const title = formData.topic || formData.subject || tool.name || 'Presentation';
+      console.log('Exporting slides with title:', title);
+      console.log('Content length:', generatedContent.length);
+      
       await exportToPowerPoint(generatedContent, title);
       
       toast({
@@ -166,9 +169,10 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
         description: "PowerPoint presentation has been downloaded to your device.",
       });
     } catch (error) {
+      console.error('Slide export error:', error);
       toast({
         title: "Export Error",
-        description: "Failed to export slides. Please try again.",
+        description: error.message || "Failed to export slides. Please try again.",
         variant: "destructive",
       });
     } finally {

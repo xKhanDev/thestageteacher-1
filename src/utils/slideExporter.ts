@@ -2,87 +2,109 @@
 import PptxGenJS from 'pptxgenjs';
 
 export const exportToPowerPoint = async (content: string, title: string) => {
-  const pptx = new PptxGenJS();
-  
-  // Set presentation properties
-  pptx.author = 'EasyTeach';
-  pptx.company = 'EasyTeach';
-  pptx.subject = title;
-  pptx.title = title;
+  try {
+    const pptx = new PptxGenJS();
+    
+    // Set presentation properties
+    pptx.author = 'EasyTeach';
+    pptx.company = 'EasyTeach';
+    pptx.subject = title;
+    pptx.title = title;
 
-  // Split content into slides based on headers, bullet points, or sections
-  const slides = parseContentIntoSlides(content, title);
-  
-  slides.forEach((slideData, index) => {
-    const slide = pptx.addSlide();
+    // Split content into slides based on headers, bullet points, or sections
+    const slides = parseContentIntoSlides(content, title);
     
-    // Set background color
-    slide.background = { color: 'F5F5F5' };
-    
-    // Add title
-    if (slideData.title) {
-      slide.addText(slideData.title, {
-        x: 0.5,
-        y: 0.5,
-        w: 9,
-        h: 1,
-        fontSize: 28,
-        bold: true,
-        color: '2B4C8C',
-        align: 'center'
-      });
-    }
-    
-    // Add content
-    if (slideData.content && slideData.content.length > 0) {
-      // Handle bullet points
-      if (slideData.content.some(item => item.startsWith('•') || item.startsWith('-'))) {
-        slide.addText(slideData.content.map(item => 
-          item.replace(/^[•\-]\s*/, '• ')
-        ), {
-          x: 1,
-          y: 2,
-          w: 8,
-          h: 5,
-          fontSize: 16,
-          bullet: true,
-          color: '333333',
-          lineSpacing: 32
-        });
-      } else {
-        // Regular paragraph text
-        slide.addText(slideData.content.join('\n\n'), {
-          x: 1,
-          y: 2,
-          w: 8,
-          h: 5,
-          fontSize: 16,
-          color: '333333',
-          align: 'left',
-          valign: 'top'
+    slides.forEach((slideData, index) => {
+      const slide = pptx.addSlide();
+      
+      // Set background color
+      slide.background = { color: 'F5F5F5' };
+      
+      // Add title
+      if (slideData.title) {
+        slide.addText(slideData.title, {
+          x: 0.5,
+          y: 0.5,
+          w: 9,
+          h: 1,
+          fontSize: 28,
+          bold: true,
+          color: '2B4C8C',
+          align: 'center'
         });
       }
-    }
-    
-    // Add slide number
-    slide.addText(`${index + 1}`, {
-      x: 9.5,
-      y: 7,
-      w: 0.5,
-      h: 0.3,
-      fontSize: 12,
-      color: '666666',
-      align: 'center'
+      
+      // Add content
+      if (slideData.content && slideData.content.length > 0) {
+        // Handle bullet points
+        if (slideData.content.some(item => item.startsWith('•') || item.startsWith('-') || item.startsWith('*'))) {
+          const bulletText = slideData.content.map(item => {
+            // Clean up bullet points
+            return item.replace(/^[•\-\*]\s*/, '').trim();
+          }).filter(item => item.length > 0);
+          
+          slide.addText(bulletText, {
+            x: 1,
+            y: 2,
+            w: 8,
+            h: 5,
+            fontSize: 16,
+            bullet: true,
+            color: '333333',
+            lineSpacing: 32
+          });
+        } else {
+          // Regular paragraph text
+          const textContent = slideData.content.join('\n\n').trim();
+          if (textContent) {
+            slide.addText(textContent, {
+              x: 1,
+              y: 2,
+              w: 8,
+              h: 5,
+              fontSize: 16,
+              color: '333333',
+              align: 'left',
+              valign: 'top'
+            });
+          }
+        }
+      }
+      
+      // Add slide number
+      slide.addText(`${index + 1}`, {
+        x: 9.5,
+        y: 7,
+        w: 0.5,
+        h: 0.3,
+        fontSize: 12,
+        color: '666666',
+        align: 'center'
+      });
     });
-  });
-  
-  // Generate and download the presentation
-  const fileName = `${title.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.pptx`;
-  await pptx.writeFile({ fileName });
+    
+    // Generate and download the presentation
+    const fileName = `${title.replace(/[^a-zA-Z0-9\s]/g, '_').replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pptx`;
+    
+    // Use the save method instead of writeFile
+    await pptx.save(fileName);
+    
+  } catch (error) {
+    console.error('PowerPoint export error:', error);
+    throw new Error(`Failed to export PowerPoint: ${error.message || 'Unknown error'}`);
+  }
 };
 
 const parseContentIntoSlides = (content: string, mainTitle: string) => {
   const slides = [];
+  
+  if (!content || content.trim().length === 0) {
+    return [{
+      title: mainTitle,
+      content: ['No content available']
+    }];
+  }
+  
   const lines = content.split('\n').filter(line => line.trim());
   
   // Title slide
@@ -97,10 +119,12 @@ const parseContentIntoSlides = (content: string, mainTitle: string) => {
   for (const line of lines) {
     const trimmedLine = line.trim();
     
-    // Check if line is a header (starts with #, or is all caps, or ends with :)
+    if (!trimmedLine) continue;
+    
+    // Check if line is a header
     if (isHeader(trimmedLine)) {
       // Save previous slide if exists
-      if (currentSlide) {
+      if (currentSlide && currentContent.length > 0) {
         slides.push({
           title: currentSlide,
           content: [...currentContent]
@@ -108,21 +132,21 @@ const parseContentIntoSlides = (content: string, mainTitle: string) => {
       }
       
       // Start new slide
-      currentSlide = trimmedLine.replace(/^#+\s*/, '').replace(/:$/, '');
+      currentSlide = trimmedLine.replace(/^#+\s*/, '').replace(/:$/, '').trim();
       currentContent = [];
-    } else if (trimmedLine) {
+    } else {
       // Add content to current slide
       currentContent.push(trimmedLine);
       
       // If we have too much content, split into new slide
-      if (currentContent.length > 6) {
+      if (currentContent.length > 8) {
         slides.push({
           title: currentSlide || 'Content',
-          content: currentContent.slice(0, 6)
+          content: currentContent.slice(0, 8)
         });
         
         currentSlide = currentSlide ? `${currentSlide} (continued)` : 'Content (continued)';
-        currentContent = currentContent.slice(6);
+        currentContent = currentContent.slice(8);
       }
     }
   }
@@ -138,25 +162,48 @@ const parseContentIntoSlides = (content: string, mainTitle: string) => {
   // If no structured content found, create slides from paragraphs
   if (slides.length === 1) {
     const paragraphs = content.split('\n\n').filter(p => p.trim());
-    paragraphs.forEach((paragraph, index) => {
-      const sentences = paragraph.split('.').filter(s => s.trim());
-      slides.push({
-        title: `Content ${index + 1}`,
-        content: sentences.map(s => s.trim() + (s.trim() ? '.' : '')).filter(s => s.length > 1)
+    if (paragraphs.length > 0) {
+      paragraphs.forEach((paragraph, index) => {
+        const sentences = paragraph.split(/[.!?]+/).filter(s => s.trim());
+        if (sentences.length > 0) {
+          slides.push({
+            title: `Slide ${index + 1}`,
+            content: sentences.map(s => s.trim()).filter(s => s.length > 0)
+          });
+        }
       });
-    });
+    } else {
+      // Fallback: split content into chunks
+      const words = content.split(' ');
+      const chunkSize = 50;
+      for (let i = 0; i < words.length; i += chunkSize) {
+        const chunk = words.slice(i, i + chunkSize).join(' ');
+        if (chunk.trim()) {
+          slides.push({
+            title: `Content ${Math.floor(i / chunkSize) + 1}`,
+            content: [chunk.trim()]
+          });
+        }
+      }
+    }
   }
   
-  return slides;
+  return slides.length > 0 ? slides : [{
+    title: mainTitle,
+    content: [content.substring(0, 500) + (content.length > 500 ? '...' : '')]
+  }];
 };
 
 const isHeader = (line: string): boolean => {
+  if (!line || line.length === 0) return false;
+  
   // Check various header patterns
   return (
     line.startsWith('#') ||
     line.endsWith(':') ||
-    (line === line.toUpperCase() && line.length > 3 && line.length < 50) ||
-    /^(lesson|objective|activity|assessment|introduction|conclusion|summary)/i.test(line) ||
-    /^\d+\.\s/.test(line) // Numbered headers
+    (line === line.toUpperCase() && line.length > 3 && line.length < 80) ||
+    /^(lesson|objective|activity|assessment|introduction|conclusion|summary|overview|background|goals|materials|procedure|evaluation)/i.test(line) ||
+    /^\d+\.\s/.test(line) || // Numbered headers
+    line.startsWith('**') && line.endsWith('**') // Bold headers
   );
 };
