@@ -75,6 +75,45 @@ export type Database = {
         }
         Relationships: []
       }
+      user_feedback: {
+        Row: {
+          additional_feedback: string | null
+          created_at: string
+          id: string
+          missing_fields: string | null
+          response_quality: number
+          tool_appreciation: number
+          tool_name: string
+          updated_at: string
+          user_id: string | null
+          would_recommend: boolean
+        }
+        Insert: {
+          additional_feedback?: string | null
+          created_at?: string
+          id?: string
+          missing_fields?: string | null
+          response_quality: number
+          tool_appreciation: number
+          tool_name: string
+          updated_at?: string
+          user_id?: string | null
+          would_recommend?: boolean
+        }
+        Update: {
+          additional_feedback?: string | null
+          created_at?: string
+          id?: string
+          missing_fields?: string | null
+          response_quality?: number
+          tool_appreciation?: number
+          tool_name?: string
+          updated_at?: string
+          user_id?: string | null
+          would_recommend?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

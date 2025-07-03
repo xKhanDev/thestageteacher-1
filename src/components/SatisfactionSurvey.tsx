@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Star, ThumbsUp, ThumbsDown, MessageSquare, X } from "lucide-react";
+import { Star, ThumbsUp, ThumbsDown, MessageSquare, X, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { submitFeedback, type FeedbackData } from "@/utils/feedbackService";
 
 interface SatisfactionSurveyProps {
   isOpen: boolean;
@@ -25,6 +26,7 @@ interface SurveyFeedback {
 
 const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: SatisfactionSurveyProps) => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedback, setFeedback] = useState<SurveyFeedback>({
     toolAppreciation: 0,
     responseQuality: 0,
@@ -40,7 +42,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (feedback.toolAppreciation === 0 || feedback.responseQuality === 0) {
       toast({
         title: "Please complete the ratings",
@@ -50,12 +52,36 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
       return;
     }
 
-    onSubmit(feedback);
-    toast({
-      title: "Thank you for your feedback! 🙏",
-      description: "Your input helps us improve the teaching tools experience.",
-    });
-    onClose();
+    setIsSubmitting(true);
+    
+    try {
+      const feedbackData: FeedbackData = {
+        toolName,
+        toolAppreciation: feedback.toolAppreciation,
+        responseQuality: feedback.responseQuality,
+        missingFields: feedback.missingFields,
+        additionalFeedback: feedback.additionalFeedback,
+        wouldRecommend: feedback.wouldRecommend
+      };
+
+      await submitFeedback(feedbackData);
+      
+      onSubmit(feedback);
+      toast({
+        title: "Thank you for your feedback! 🙏",
+        description: "Your input helps us improve the teaching tools experience.",
+      });
+      onClose();
+    } catch (error) {
+      console.error('Failed to submit feedback:', error);
+      toast({
+        title: "Error submitting feedback",
+        description: "There was an issue saving your feedback. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const StarRating = ({ rating, onRate, label }: { rating: number; onRate: (rating: number) => void; label: string }) => (
@@ -68,6 +94,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
             type="button"
             onClick={() => onRate(star)}
             className="transition-colors hover:scale-110"
+            disabled={isSubmitting}
           >
             <Star
               className={`h-6 w-6 ${
@@ -94,7 +121,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
               <MessageSquare className="h-5 w-5 text-blue-600" />
               <span>How was your experience with {toolName}?</span>
             </DialogTitle>
-            <Button variant="ghost" size="sm" onClick={onClose}>
+            <Button variant="ghost" size="sm" onClick={onClose} disabled={isSubmitting}>
               <X className="h-4 w-4" />
             </Button>
           </div>
@@ -137,6 +164,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
               onChange={(e) => setFeedback(prev => ({ ...prev, missingFields: e.target.value }))}
               placeholder="e.g., 'Would love a field for student reading level', 'Missing options for special needs accommodations', etc."
               className="min-h-[80px]"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -150,6 +178,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
               onChange={(e) => setFeedback(prev => ({ ...prev, additionalFeedback: e.target.value }))}
               placeholder="Share any other thoughts about your experience..."
               className="min-h-[80px]"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -163,6 +192,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
                 variant={feedback.wouldRecommend ? "default" : "outline"}
                 onClick={() => setFeedback(prev => ({ ...prev, wouldRecommend: true }))}
                 className="flex items-center space-x-2"
+                disabled={isSubmitting}
               >
                 <ThumbsUp className="h-4 w-4" />
                 <span>Yes, I'd recommend it</span>
@@ -171,6 +201,7 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
                 variant={!feedback.wouldRecommend ? "default" : "outline"}
                 onClick={() => setFeedback(prev => ({ ...prev, wouldRecommend: false }))}
                 className="flex items-center space-x-2"
+                disabled={isSubmitting}
               >
                 <ThumbsDown className="h-4 w-4" />
                 <span>No, needs improvement</span>
@@ -180,11 +211,18 @@ const SatisfactionSurvey = ({ isOpen, onClose, toolName, onSubmit }: Satisfactio
 
           {/* Submit Button */}
           <div className="flex justify-end space-x-3 pt-4 border-t">
-            <Button variant="outline" onClick={onClose}>
+            <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
               Skip for now
             </Button>
-            <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700">
-              Submit Feedback
+            <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                'Submit Feedback'
+              )}
             </Button>
           </div>
         </div>
