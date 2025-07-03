@@ -1,4 +1,3 @@
-
 import PptxGenJS from 'pptxgenjs';
 
 export const exportToPowerPoint = async (content: string, title: string) => {
@@ -38,20 +37,19 @@ export const exportToPowerPoint = async (content: string, title: string) => {
       if (slideData.content && slideData.content.length > 0) {
         // Handle bullet points
         if (slideData.content.some(item => item.startsWith('•') || item.startsWith('-') || item.startsWith('*'))) {
-          const bulletText = slideData.content.map(item => {
+          const bulletPoints = slideData.content.map(item => {
             // Clean up bullet points
-            return item.replace(/^[•\-\*]\s*/, '').trim();
-          }).filter(item => item.length > 0);
+            return { text: item.replace(/^[•\-\*]\s*/, '').trim() };
+          }).filter(item => item.text.length > 0);
           
-          slide.addText(bulletText, {
+          slide.addText(bulletPoints, {
             x: 1,
             y: 2,
             w: 8,
             h: 5,
             fontSize: 16,
             bullet: true,
-            color: '333333',
-            lineSpacing: 32
+            color: '333333'
           });
         } else {
           // Regular paragraph text
@@ -86,8 +84,8 @@ export const exportToPowerPoint = async (content: string, title: string) => {
     // Generate and download the presentation
     const fileName = `${title.replace(/[^a-zA-Z0-9\s]/g, '_').replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pptx`;
     
-    // Use writeFile method with proper options object
-    await pptx.writeFile({ fileName: fileName });
+    // Use writeFile method with proper filename
+    await pptx.writeFile({ fileName });
     
   } catch (error) {
     console.error('PowerPoint export error:', error);
