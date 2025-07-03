@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -6,9 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Download, Save, Copy, CheckCircle, MessageSquare, X } from "lucide-react";
+import { Loader2, Download, Save, Copy, CheckCircle, MessageSquare, X, Presentation } from "lucide-react";
 import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent } from "@/utils/aiService";
 import { saveGeneratedContent } from "@/utils/contentService";
+import { exportToPowerPoint } from "@/utils/slideExporter";
 import { useToast } from "@/hooks/use-toast";
 import SatisfactionSurvey from "@/components/SatisfactionSurvey";
 
@@ -29,6 +29,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
   const [showChatOption, setShowChatOption] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
   const [isRegenerating, setIsRegenerating] = useState(false);
+  const [isExportingSlides, setIsExportingSlides] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
@@ -145,6 +146,36 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
     }
   };
 
+  const handleExportSlides = async () => {
+    if (!generatedContent.trim()) {
+      toast({
+        title: "No Content",
+        description: "Please generate content first before exporting slides.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsExportingSlides(true);
+    try {
+      const title = formData.topic || formData.subject || tool.name;
+      await exportToPowerPoint(generatedContent, title);
+      
+      toast({
+        title: "Slides Exported!",
+        description: "PowerPoint presentation has been downloaded to your device.",
+      });
+    } catch (error) {
+      toast({
+        title: "Export Error",
+        description: "Failed to export slides. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsExportingSlides(false);
+    }
+  };
+
   const handleDownload = () => {
     if (!generatedContent) return;
     
@@ -255,6 +286,10 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
     ));
   };
 
+  // Check if this tool supports slide export
+  const supportsSlideExport = tool.name.toLowerCase().includes('presentation') || 
+                             tool.name.toLowerCase().includes('academic content');
+
   // Get the icon component
   const IconComponent = tool.icon;
 
@@ -316,6 +351,26 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
                     >
                       <Download className="h-4 w-4" />
                     </Button>
+                    {supportsSlideExport && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleExportSlides}
+                        disabled={isExportingSlides}
+                      >
+                        {isExportingSlides ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Exporting...
+                          </>
+                        ) : (
+                          <>
+                            <Presentation className="h-4 w-4 mr-1" />
+                            Slides
+                          </>
+                        )}
+                      </Button>
+                    )}
                     <Button
                       size="sm"
                       onClick={handleSave}
