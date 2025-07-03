@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 
 export const generateEducationalContent = async (prompt: string, toolContext?: string) => {
@@ -15,6 +14,16 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
 
     if (error) {
       console.error('Supabase function error:', error);
+      
+      // Handle specific error types
+      if (error.message?.includes('Failed to fetch')) {
+        throw new Error('Connection error. Please check your internet connection and try again.');
+      }
+      
+      if (error.message?.includes('credits') || error.message?.includes('tokens')) {
+        throw new Error('Service temporarily unavailable. Please try again in a few minutes.');
+      }
+      
       throw new Error('Failed to generate content. Please try again.');
     }
 
@@ -25,6 +34,14 @@ export const generateEducationalContent = async (prompt: string, toolContext?: s
     return data.content;
   } catch (error) {
     console.error('AI generation error:', error);
+    
+    // Return more specific error messages
+    if (error.message.includes('Connection error') || 
+        error.message.includes('Service temporarily unavailable') ||
+        error.message.includes('No content received')) {
+      throw error; // Re-throw specific errors
+    }
+    
     throw new Error('Unable to generate AI response. Please check your connection and try again.');
   }
 };
@@ -58,6 +75,16 @@ Grade Level: ${grade}`;
 
     if (error) {
       console.error('Lesson plan generation error:', error);
+      
+      // Handle specific error types
+      if (error.message?.includes('Failed to fetch')) {
+        throw new Error('Connection error. Please check your internet connection and try again.');
+      }
+      
+      if (error.message?.includes('credits') || error.message?.includes('tokens')) {
+        throw new Error('Service temporarily unavailable. Please try again in a few minutes.');
+      }
+      
       throw error;
     }
     
@@ -68,6 +95,14 @@ Grade Level: ${grade}`;
     return data.content;
   } catch (error) {
     console.error('Lesson plan generation error:', error);
+    
+    // Return more specific error messages
+    if (error.message.includes('Connection error') || 
+        error.message.includes('Service temporarily unavailable') ||
+        error.message.includes('No lesson plan content received')) {
+      throw error; // Re-throw specific errors
+    }
+    
     throw new Error('Unable to generate lesson plan. Please try again.');
   }
 };
@@ -100,6 +135,16 @@ Please include:
 
     if (error) {
       console.error('Parent email generation error:', error);
+      
+      // Handle specific error types
+      if (error.message?.includes('Failed to fetch')) {
+        throw new Error('Connection error. Please check your internet connection and try again.');
+      }
+      
+      if (error.message?.includes('credits') || error.message?.includes('tokens')) {
+        throw new Error('Service temporarily unavailable. Please try again in a few minutes.');
+      }
+      
       throw error;
     }
 
@@ -110,6 +155,14 @@ Please include:
     return data.content;
   } catch (error) {
     console.error('Parent email generation error:', error);
+    
+    // Return more specific error messages
+    if (error.message.includes('Connection error') || 
+        error.message.includes('Service temporarily unavailable') ||
+        error.message.includes('No email content received')) {
+      throw error; // Re-throw specific errors
+    }
+    
     throw new Error('Unable to generate parent email. Please try again.');
   }
 };
@@ -144,6 +197,16 @@ Please include:
 
     if (error) {
       console.error('Behavior plan generation error:', error);
+      
+      // Handle specific error types
+      if (error.message?.includes('Failed to fetch')) {
+        throw new Error('Connection error. Please check your internet connection and try again.');
+      }
+      
+      if (error.message?.includes('credits') || error.message?.includes('tokens')) {
+        throw new Error('Service temporarily unavailable. Please try again in a few minutes.');
+      }
+      
       throw error;
     }
 
@@ -154,6 +217,14 @@ Please include:
     return data.content;
   } catch (error) {
     console.error('Behavior plan generation error:', error);
+    
+    // Return more specific error messages
+    if (error.message.includes('Connection error') || 
+        error.message.includes('Service temporarily unavailable') ||
+        error.message.includes('No behavior plan content received')) {
+      throw error; // Re-throw specific errors
+    }
+    
     throw new Error('Unable to generate behavior plan. Please try again.');
   }
 };

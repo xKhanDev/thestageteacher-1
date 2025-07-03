@@ -41,46 +41,74 @@ serve(async (req) => {
 
     console.log('Generating content with OpenRouter for tool type:', toolType);
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${openRouterApiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://easyteach.app', // Optional: Your app's URL
-        'X-Title': 'EasyTeach AI Assistant', // Optional: Your app's name
-      },
-      body: JSON.stringify({
-        model: 'anthropic/claude-3.5-sonnet', // Using Claude 3.5 Sonnet as default
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userPrompt }
-        ],
-        max_tokens: 1500,
-        temperature: 0.7,
-      }),
-    });
+    // Try primary model first with reduced token limit
+    const models = [
+      'anthropic/claude-3.5-sonnet',
+      'openai/gpt-4o-mini',
+      'anthropic/claude-3-haiku'
+    ];
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('OpenRouter API error:', errorData);
-      throw new Error(`OpenRouter API error: ${errorData.error?.message || 'Unknown error'}`);
+    let lastError = null;
+
+    for (const model of models) {
+      try {
+        console.log(`Attempting with model: ${model}`);
+        
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${openRouterApiKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://easyteach.app',
+            'X-Title': 'EasyTeach AI Assistant',
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt }
+            ],
+            max_tokens: 1000, // Reduced from 1500 to avoid credit issues
+            temperature: 0.7,
+          }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error(`${model} API error:`, errorData);
+          lastError = errorData;
+          continue; // Try next model
+        }
+
+        const data = await response.json();
+        const generatedContent = data.choices[0]?.message?.content;
+
+        if (!generatedContent) {
+          console.error(`No content generated from ${model}`);
+          continue; // Try next model
+        }
+
+        console.log(`Successfully generated content with ${model}`);
+
+        return new Response(JSON.stringify({ content: generatedContent }), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+
+      } catch (error) {
+        console.error(`Error with model ${model}:`, error);
+        lastError = error;
+        continue; // Try next model
+      }
     }
 
-    const data = await response.json();
-    const generatedContent = data.choices[0]?.message?.content;
+    // If all models failed, return the last error
+    throw new Error(`All models failed. Last error: ${lastError?.error?.message || lastError?.message || 'Unknown error'}`);
 
-    if (!generatedContent) {
-      throw new Error('No content generated from OpenRouter');
-    }
-
-    console.log('Successfully generated content');
-
-    return new Response(JSON.stringify({ content: generatedContent }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
   } catch (error) {
     console.error('Error in generate-ai-content function:', error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ 
+      error: error.message || 'Failed to generate content. Please try again.'
+    }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
