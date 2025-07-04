@@ -1,0 +1,126 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "features": "Características",
+    "pricing": "Precios",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "dashboard": "Panel"
+  },
+  "hero": {
+    "title": "El Ecosistema EdTech Completo",
+    "subtitle1": "Para la Educación Moderna",
+    "subtitle2": "Plataforma de Aprendizaje Digital",
+    "subtitle3": "Solución de Enseñanza Inteligente",
+    "subtitle4": "Centro de Innovación Educativa",
+    "description": "Transforma tu experiencia de enseñanza con herramientas impulsadas por IA, integración LMS fluida y recursos educativos integrales diseñados para educadores modernos.",
+    "getStarted": "Comenzar Gratis",
+    "watchDemo": "Ver Demo"
+  },
+  "videoShowcase": {
+    "title": "Ve Ecerta en Acción",
+    "description": "Mira cómo nuestro ecosistema educativo impulsado por IA transforma las experiencias de enseñanza y aprendizaje.",
+    "fullDemo": "Demo Completa Disponible",
+    "duration": "Duración: 3:42",
+    "watchFull": "Ver Demo Completa"
+  },
+  "ecertaShowcase": {
+    "title": "Experimenta el Futuro de la Educación",
+    "description": "Descubre cómo Ecerta transforma los métodos de enseñanza tradicionales con tecnología de vanguardia.",
+    "aiPowered": "Impulsado por IA",
+    "aiDescription": "Generación de Contenido Inteligente",
+    "seamlessIntegration": "Integración Perfecta",
+    "integrationDescription": "Todas las Herramientas Conectadas",
+    "timeSaving": "Ahorro de Tiempo",
+    "timeDescription": "15+ Horas Semanales",
+    "tryNow": "Probar Ecerta Ahora"
+  },
+  "products": {
+    "title": "Nuestra Suite de Productos",
+    "description": "Herramientas integrales diseñadas para mejorar cada aspecto de tu experiencia de enseñanza.",
+    "easyTeach": "EasyTeach",
+    "easyTeachDesc": "Asistente de enseñanza impulsado por IA con planificación de lecciones y herramientas de generación de contenido.",
+    "advancedLMS": "LMS Avanzado",
+    "advancedLMSDesc": "Sistema completo de gestión del aprendizaje con análisis y seguimiento de estudiantes.",
+    "aiChatbot": "Chatbot IA",
+    "aiChatbotDesc": "Asistente virtual inteligente para estudiantes y profesores.",
+    "learnMore": "Aprender Más",
+    "comingSoon": "Próximamente",
+    "joinWaitlist": "Unirse a Lista de Espera"
+  },
+  "cta": {
+    "title": "¿Listo para Transformar tu Enseñanza?",
+    "description": "Únete a miles de educadores que ya están usando nuestra plataforma para mejorar su experiencia de enseñanza.",
+    "getStarted": "Comenzar Hoy",
+    "joinWaitlist": "Unirse a Nuestra Lista de Espera"
+  },
+  "footer": {
+    "tagline": "Empoderando educadores con herramientas basadas en IA para la enseñanza moderna",
+    "products": "Productos",
+    "company": "Empresa",
+    "support": "Soporte",
+    "legal": "Legal",
+    "about": "Acerca de",
+    "careers": "Carreras",
+    "blog": "Blog",
+    "help": "Centro de Ayuda",
+    "documentation": "Documentación",
+    "community": "Comunidad",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "cookies": "Política de Cookies",
+    "allRights": "Todos los derechos reservados."
+  },
+  "auth": {
+    "loginTitle": "Bienvenido de Vuelta",
+    "loginDescription": "Inicia sesión en tu cuenta para continuar",
+    "email": "Email",
+    "password": "Contraseña",
+    "signIn": "Iniciar Sesión",
+    "signUp": "Registrarse",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "noAccount": "¿No tienes cuenta?",
+    "hasAccount": "¿Ya tienes cuenta?",
+    "createAccount": "Crear Cuenta",
+    "signUpDescription": "Crea tu cuenta para comenzar"
+  },
+  "waitlist": {
+    "title": "Unirse a la Lista de Espera",
+    "description": "Sé el primero en saber cuando lancemos nuevas características",
+    "name": "Nombre Completo",
+    "email": "Dirección de Email",
+    "product": "Producto de Interés",
+    "join": "Unirse a Lista de Espera",
+    "success": "¡Gracias por unirte a nuestra lista de espera!"
+  },
+  "tools": {
+    "lessonPlan": "Generador de Plan de Lección",
+    "parentEmail": "Generador de Email para Padres",
+    "behaviorPlan": "Generador de Plan de Comportamiento",
+    "aiTextDetector": "Detector de Texto IA",
+    "generate": "Generar",
+    "regenerate": "Regenerar",
+    "copy": "Copiar",
+    "download": "Descargar",
+    "save": "Guardar",
+    "export": "Exportar a Slides"
+  },
+  "grades": {
+    "selectGrade": "Seleccionar Nivel de Grado",
+    "selectSystem": "Seleccionar Sistema Educativo"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "¡Éxito!",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "language": "Idioma"
+  }
+}

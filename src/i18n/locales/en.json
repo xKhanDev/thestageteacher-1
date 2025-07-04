@@ -1,0 +1,126 @@
+{
+  "navigation": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "The Complete EdTech",
+    "subtitle1": "Ecosystem for Modern Education",
+    "subtitle2": "Platform for Digital Learning",
+    "subtitle3": "Solution for Smart Teaching",
+    "subtitle4": "Hub for Educational Innovation",
+    "description": "Transform your teaching experience with AI-powered tools, seamless LMS integration, and comprehensive educational resources designed for modern educators.",
+    "getStarted": "Get Started Free",
+    "watchDemo": "Watch Demo"
+  },
+  "videoShowcase": {
+    "title": "See Ecerta in Action",
+    "description": "Watch how our AI-powered education ecosystem transforms teaching and learning experiences.",
+    "fullDemo": "Full Demo Available",
+    "duration": "Duration: 3:42",
+    "watchFull": "Watch Full Demo"
+  },
+  "ecertaShowcase": {
+    "title": "Experience the Future of Education",
+    "description": "Discover how Ecerta transforms traditional teaching methods with cutting-edge technology.",
+    "aiPowered": "AI-Powered",
+    "aiDescription": "Smart Content Generation",
+    "seamlessIntegration": "Seamless Integration",
+    "integrationDescription": "All Tools Connected",
+    "timeSaving": "Time Saving",
+    "timeDescription": "15+ Hours Weekly",
+    "tryNow": "Try Ecerta Now"
+  },
+  "products": {
+    "title": "Our Product Suite",
+    "description": "Comprehensive tools designed to enhance every aspect of your teaching experience.",
+    "easyTeach": "EasyTeach",
+    "easyTeachDesc": "AI-powered teaching assistant with lesson planning and content generation tools.",
+    "advancedLMS": "Advanced LMS",
+    "advancedLMSDesc": "Complete learning management system with analytics and student tracking.",
+    "aiChatbot": "AI Chatbot",
+    "aiChatbotDesc": "Intelligent virtual assistant for students and teachers.",
+    "learnMore": "Learn More",
+    "comingSoon": "Coming Soon",
+    "joinWaitlist": "Join Waitlist"
+  },
+  "cta": {
+    "title": "Ready to Transform Your Teaching?",
+    "description": "Join thousands of educators who are already using our platform to enhance their teaching experience.",
+    "getStarted": "Get Started Today",
+    "joinWaitlist": "Join Our Waitlist"
+  },
+  "footer": {
+    "tagline": "Empowering educators with AI-driven tools for modern teaching",
+    "products": "Products",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "about": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "help": "Help Center",
+    "documentation": "Documentation",
+    "community": "Community",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "allRights": "All rights reserved."
+  },
+  "auth": {
+    "loginTitle": "Welcome Back",
+    "loginDescription": "Sign in to your account to continue",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "createAccount": "Create Account",
+    "signUpDescription": "Create your account to get started"
+  },
+  "waitlist": {
+    "title": "Join the Waitlist",
+    "description": "Be the first to know when we launch new features",
+    "name": "Full Name",
+    "email": "Email Address",
+    "product": "Product Interest",
+    "join": "Join Waitlist",
+    "success": "Thank you for joining our waitlist!"
+  },
+  "tools": {
+    "lessonPlan": "Lesson Plan Generator",
+    "parentEmail": "Parent Email Generator",
+    "behaviorPlan": "Behavior Plan Generator",
+    "aiTextDetector": "AI Text Detector",
+    "generate": "Generate",
+    "regenerate": "Regenerate",
+    "copy": "Copy",
+    "download": "Download",
+    "save": "Save",
+    "export": "Export to Slides"
+  },
+  "grades": {
+    "selectGrade": "Select Grade Level",
+    "selectSystem": "Select Education System"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "language": "Language"
+  }
+}

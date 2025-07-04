@@ -1,7 +1,9 @@
 
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import LanguageSelector from '@/components/LanguageSelector';
 import { 
   NavigationMenu,
   NavigationMenuContent,
@@ -19,6 +21,7 @@ interface NavigationProps {
 
 const Navigation = ({ onShowLogin }: NavigationProps) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   const products = [
     {
@@ -309,18 +312,19 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             </NavigationMenu>
 
             <div className="flex items-center space-x-3">
+              <LanguageSelector />
               <Button 
                 variant="outline" 
                 className="text-purple-600 border-purple-200 hover:bg-purple-50 hover-scale transition-all duration-200"
                 onClick={handleBookDemo}
               >
-                Book a Demo
+                {t('navigation.contact')}
               </Button>
               <Button 
                 onClick={onShowLogin}
                 className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white hover-scale transition-all duration-200"
               >
-                Login to EasyTeach
+                {t('navigation.login')}
               </Button>
             </div>
           </div>

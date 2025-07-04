@@ -1,0 +1,126 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "signUp": "Inscription",
+    "dashboard": "Tableau de bord"
+  },
+  "hero": {
+    "title": "L'Écosystème EdTech Complet",
+    "subtitle1": "Pour l'Éducation Moderne",
+    "subtitle2": "Plateforme d'Apprentissage Numérique",
+    "subtitle3": "Solution d'Enseignement Intelligent",
+    "subtitle4": "Hub d'Innovation Éducative",
+    "description": "Transformez votre expérience d'enseignement avec des outils alimentés par l'IA, une intégration LMS transparente et des ressources éducatives complètes conçues pour les éducateurs modernes.",
+    "getStarted": "Commencer Gratuitement",
+    "watchDemo": "Voir la Démo"
+  },
+  "videoShowcase": {
+    "title": "Voir Ecerta en Action",
+    "description": "Découvrez comment notre écosystème éducatif alimenté par l'IA transforme les expériences d'enseignement et d'apprentissage.",
+    "fullDemo": "Démo Complète Disponible",
+    "duration": "Durée : 3:42",
+    "watchFull": "Voir la Démo Complète"
+  },
+  "ecertaShowcase": {
+    "title": "Découvrez l'Avenir de l'Éducation",
+    "description": "Découvrez comment Ecerta transforme les méthodes d'enseignement traditionnelles avec une technologie de pointe.",
+    "aiPowered": "Alimenté par l'IA",
+    "aiDescription": "Génération de Contenu Intelligent",
+    "seamlessIntegration": "Intégration Transparente",
+    "integrationDescription": "Tous les Outils Connectés",
+    "timeSaving": "Gain de Temps",
+    "timeDescription": "15+ Heures par Semaine",
+    "tryNow": "Essayer Ecerta Maintenant"
+  },
+  "products": {
+    "title": "Notre Suite de Produits",
+    "description": "Outils complets conçus pour améliorer chaque aspect de votre expérience d'enseignement.",
+    "easyTeach": "EasyTeach",
+    "easyTeachDesc": "Assistant d'enseignement alimenté par l'IA avec planification de cours et outils de génération de contenu.",
+    "advancedLMS": "LMS Avancé",
+    "advancedLMSDesc": "Système de gestion de l'apprentissage complet avec analyses et suivi des étudiants.",
+    "aiChatbot": "Chatbot IA",
+    "aiChatbotDesc": "Assistant virtuel intelligent pour étudiants et enseignants.",
+    "learnMore": "En Savoir Plus",
+    "comingSoon": "Bientôt Disponible",
+    "joinWaitlist": "Rejoindre la Liste d'Attente"
+  },
+  "cta": {
+    "title": "Prêt à Transformer Votre Enseignement ?",
+    "description": "Rejoignez des milliers d'éducateurs qui utilisent déjà notre plateforme pour améliorer leur expérience d'enseignement.",
+    "getStarted": "Commencer Aujourd'hui",
+    "joinWaitlist": "Rejoindre Notre Liste d'Attente"
+  },
+  "footer": {
+    "tagline": "Autonomiser les éducateurs avec des outils basés sur l'IA pour l'enseignement moderne",
+    "products": "Produits",
+    "company": "Entreprise",
+    "support": "Support",
+    "legal": "Légal",
+    "about": "À Propos",
+    "careers": "Carrières",
+    "blog": "Blog",
+    "help": "Centre d'Aide",
+    "documentation": "Documentation",
+    "community": "Communauté",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "cookies": "Politique des Cookies",
+    "allRights": "Tous droits réservés."
+  },
+  "auth": {
+    "loginTitle": "Bon Retour",
+    "loginDescription": "Connectez-vous à votre compte pour continuer",
+    "email": "Email",
+    "password": "Mot de passe",
+    "signIn": "Se Connecter",
+    "signUp": "S'Inscrire",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Pas de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "createAccount": "Créer un Compte",
+    "signUpDescription": "Créez votre compte pour commencer"
+  },
+  "waitlist": {
+    "title": "Rejoindre la Liste d'Attente",
+    "description": "Soyez le premier à savoir quand nous lançons de nouvelles fonctionnalités",
+    "name": "Nom Complet",
+    "email": "Adresse Email",
+    "product": "Produit d'Intérêt",
+    "join": "Rejoindre la Liste d'Attente",
+    "success": "Merci de rejoindre notre liste d'attente !"
+  },
+  "tools": {
+    "lessonPlan": "Générateur de Plan de Cours",
+    "parentEmail": "Générateur d'Email Parent",
+    "behaviorPlan": "Générateur de Plan de Comportement",
+    "aiTextDetector": "Détecteur de Texte IA",
+    "generate": "Générer",
+    "regenerate": "Régénérer",
+    "copy": "Copier",
+    "download": "Télécharger",
+    "save": "Enregistrer",
+    "export": "Exporter vers Slides"
+  },
+  "grades": {
+    "selectGrade": "Sélectionner le Niveau",
+    "selectSystem": "Sélectionner le Système Éducatif"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Éditer",
+    "view": "Voir",
+    "language": "Langue"
+  }
+}
