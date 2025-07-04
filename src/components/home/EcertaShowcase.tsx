@@ -66,22 +66,21 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
             </p>
           </div>
 
-          {/* Ecosystem Features */}
           <div className="space-y-20">
             {ecosystemFeatures.map((feature, index) => (
-              <div key={index} className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} animate-fade-in`} style={{ animationDelay: `${index * 0.2}s` }}>
+              <div key={index} className={`flex flex-col lg:flex-row items-center gap-12 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''} animate-fade-in hover:scale-105 transition-all duration-700`} style={{ animationDelay: `${index * 0.3}s` }}>
                 <div className="flex-1 space-y-6">
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg">
+                    <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg animate-pulse">
                       <feature.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-gray-900">{feature.title}</h3>
+                    <h3 className="text-3xl font-bold text-gray-900 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:bg-clip-text hover:text-transparent transition-all duration-300">{feature.title}</h3>
                   </div>
-                  <p className="text-lg text-gray-600 leading-relaxed">{feature.description}</p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <p className="text-lg text-gray-600 leading-relaxed animate-fade-in" style={{ animationDelay: `${index * 0.3 + 0.2}s` }}>{feature.description}</p>
+                  <div className="grid grid-cols-2 gap-3 animate-fade-in" style={{ animationDelay: `${index * 0.3 + 0.4}s` }}>
                     {feature.features.map((item, idx) => (
-                      <div key={idx} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                      <div key={idx} className="flex items-center text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0 animate-pulse" style={{ animationDelay: `${idx * 0.1}s` }} />
                         {item}
                       </div>
                     ))}
@@ -90,13 +89,16 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
                 
                 <div className="flex-1 relative">
                   <div className="relative mx-auto max-w-lg">
-                    <div className="bg-white rounded-2xl p-4 shadow-2xl overflow-hidden">
+                    <div className="bg-white rounded-2xl p-4 shadow-2xl overflow-hidden hover:shadow-3xl hover:scale-105 transition-all duration-500">
                       <img 
                         src={feature.image}
                         alt={feature.title}
-                        className="w-full h-64 object-cover rounded-lg"
+                        className="w-full h-64 object-cover rounded-lg hover:scale-110 transition-transform duration-700"
                       />
                     </div>
+                    {/* Floating decoration around images */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-60 animate-ping"></div>
+                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-r from-pink-400 to-red-400 rounded-full opacity-60 animate-ping" style={{ animationDelay: '1s' }}></div>
                   </div>
                 </div>
               </div>

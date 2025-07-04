@@ -28,8 +28,8 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
   }, [messages.length]);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center relative">
         <div className="flex justify-center mb-8 animate-fade-in">
           <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 border-purple-200 text-sm font-medium px-4 py-2 hover-scale">
             <Sparkles className="h-4 w-4 mr-2" />
@@ -43,6 +43,13 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
             {messages[currentMessageIndex]}
           </span>
         </h1>
+        
+        {/* Floating Animation Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+          <div className="absolute top-40 right-20 w-16 h-16 bg-purple-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute bottom-40 left-20 w-12 h-12 bg-pink-200 rounded-full opacity-20 animate-bounce" style={{ animationDelay: '2s', animationDuration: '5s' }}></div>
+        </div>
         
         <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in">
           Ecerta is the driving force behind the future of education, providing a comprehensive suite of 
