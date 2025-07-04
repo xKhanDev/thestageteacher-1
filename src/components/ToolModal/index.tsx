@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent } from "@/utils/aiService";
+import { generateLessonPlan, generateParentEmail, generateBehaviorPlan, generateEducationalContent, generateAITextAnalysis } from "@/utils/aiService";
 import { saveGeneratedContent } from "@/utils/contentService";
 import { exportToPowerPoint } from "@/utils/slideExporter";
 import { useToast } from "@/hooks/use-toast";
@@ -43,14 +43,23 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
             formData.grade || ''
           );
           break;
-        case 17: // parent-email
+        case 17: // ai-text-detector
+          content = await generateAITextAnalysis(
+            formData.studentText || '',
+            formData.assignmentType || '',
+            formData.studentGrade || '',
+            formData.analysisDepth || '',
+            formData.additionalContext || ''
+          );
+          break;
+        case 18: // parent-email
           content = await generateParentEmail(
             formData.studentName || '',
             formData.situation || '',
             formData.emailType || ''
           );
           break;
-        case 20: // behavior-plan
+        case 21: // behavior-plan
           content = await generateBehaviorPlan(
             formData.behaviorConcern || '',
             formData.studentAge || '',
