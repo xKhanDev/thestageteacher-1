@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, TrendingUp, Clock, Shield, Globe, Star, Sparkles } from "lucide-react";
@@ -9,6 +9,24 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+  
+  const messages = [
+    "Ecosystem for Modern Education",
+    "Platform for Digital Learning",
+    "Suite for Smart Teaching",
+    "Solution for Future Schools",
+    "Network for Global Education"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
+    }, 25000); // 25 seconds
+
+    return () => clearInterval(interval);
+  }, [messages.length]);
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
@@ -21,8 +39,8 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
         
         <h1 className="text-6xl font-bold text-gray-900 mb-8 leading-tight animate-scale-in">
           The Complete EdTech 
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent block">
-            Ecosystem for Modern Education
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent block transition-all duration-1000 animate-fade-in">
+            {messages[currentMessageIndex]}
           </span>
         </h1>
         
