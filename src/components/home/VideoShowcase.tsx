@@ -25,7 +25,7 @@ const VideoShowcase = () => {
             {/* Video Embed */}
             <div className="aspect-video relative">
               <iframe
-                src="https://www.youtube.com/embed/watch?v=QB6C94EVAdA"
+                src="https://www.youtube.com/embed/QB6C94EVAdA"
                 title="Ecerta EdTech Platform Overview"
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

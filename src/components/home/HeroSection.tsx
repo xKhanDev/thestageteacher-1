@@ -22,7 +22,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
-    }, 25000); // 25 seconds
+    }, 5000); // 5 seconds
 
     return () => clearInterval(interval);
   }, [messages.length]);
