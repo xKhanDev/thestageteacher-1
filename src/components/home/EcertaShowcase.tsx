@@ -10,7 +10,7 @@ interface EcertaShowcaseProps {
 const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
   const ecosystemFeatures = [
     {
-      title: "Unified AI Intelligence",
+      title: "Consolidated AI Intelligence",
       description: "Our three products share a common AI brain that learns from every interaction across the platform, creating smarter solutions for everyone.",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
       icon: Brain,
