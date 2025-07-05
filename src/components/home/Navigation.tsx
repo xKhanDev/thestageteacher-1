@@ -145,19 +145,19 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
   };
 
   return (
-    <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50 animate-fade-in">
+    <nav className="bg-background/95 backdrop-blur-sm border-b border-border shadow-lg sticky top-0 z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2 sm:space-x-3 animate-scale-in cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
-              <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 text-white" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary via-accent to-secondary rounded-2xl flex items-center justify-center shadow-xl hover:scale-110 transition-transform duration-300 border-2 border-white">
+              <span className="text-white font-bold text-lg sm:text-xl">V</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Ecerta
+              <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+                Vivicerta
               </h1>
-              <p className="text-xs text-gray-500 hidden lg:block">Educational Technology Platform</p>
+              <p className="text-xs text-muted-foreground hidden lg:block">Educational Technology Platform</p>
             </div>
           </div>
           
@@ -166,16 +166,16 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             <NavigationMenu>
               <NavigationMenuList className="space-x-2">
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
+                  <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.products')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-80 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-80 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-3">
                         {products.map((product) => (
                           <div 
                             key={product.id} 
-                            className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
+                            className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors cursor-pointer hover-scale"
                             onClick={product.onClick}
                           >
                             <div className={`p-2 rounded-lg bg-gradient-to-r ${product.color}`}>
@@ -183,14 +183,14 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center space-x-2">
-                                <h4 className="font-semibold text-gray-900">{product.name}</h4>
+                                <h4 className="font-semibold text-foreground">{product.name}</h4>
                                 {product.status === 'available' ? (
                                   <Badge className="bg-green-100 text-green-800 border-green-200 text-xs">{t('navigation.available')}</Badge>
                                 ) : (
                                   <Badge className="bg-amber-100 text-amber-800 border-amber-200 text-xs">{t('navigation.comingSoon')}</Badge>
                                 )}
                               </div>
-                              <p className="text-sm text-gray-600 mt-1">{product.description}</p>
+                              <p className="text-sm text-muted-foreground mt-1">{product.description}</p>
                             </div>
                           </div>
                         ))}
@@ -200,23 +200,23 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
+                  <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.solutions')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-96 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-96 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="grid grid-cols-2 gap-6">
                         {/* By Category */}
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">{t('navigation.byCategory')}</h3>
+                          <h3 className="font-semibold text-foreground mb-3">{t('navigation.byCategory')}</h3>
                           <div className="space-y-2">
                             {solutionsByCategory.map((solution, index) => (
-                              <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
+                              <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer">
                                 <div className="flex items-center space-x-3">
                                   <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
                                     <solution.icon className="h-3 w-3 text-white" />
                                   </div>
-                                  <span className="text-sm font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
+                                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                                     {solution.title}
                                   </span>
                                 </div>
@@ -227,15 +227,15 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
 
                         {/* By Department */}
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">{t('navigation.byDepartment')}</h3>
+                          <h3 className="font-semibold text-foreground mb-3">{t('navigation.byDepartment')}</h3>
                           <div className="space-y-2">
                             {solutionsByDepartment.map((solution, index) => (
-                              <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
+                              <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer">
                                 <div className="flex items-center space-x-3">
                                   <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
                                     <solution.icon className="h-3 w-3 text-white" />
                                   </div>
-                                  <span className="text-sm font-medium text-gray-900 group-hover:text-purple-700 transition-colors">
+                                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                                     {solution.title}
                                   </span>
                                 </div>
@@ -245,10 +245,10 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         </div>
                       </div>
                       
-                      <div className="mt-4 pt-4 border-t border-gray-100">
+                      <div className="mt-4 pt-4 border-t border-border">
                         <Button 
                           onClick={handleBookDemo}
-                          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full"
+                          className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white text-sm w-full"
                         >
                           {t('navigation.bookDemo')}
                         </Button>
@@ -258,22 +258,22 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
+                  <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.resources')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {resourcesMenu.map((item, index) => (
                           <div 
                             key={index}
-                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
+                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors cursor-pointer hover-scale"
                             onClick={item.onClick}
                           >
                             <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500">
                               <item.icon className="h-4 w-4 text-white" />
                             </div>
-                            <span className="font-medium text-gray-900 hover:text-orange-700 transition-colors">
+                            <span className="font-medium text-foreground hover:text-orange-700 transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -284,22 +284,22 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
+                  <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.aboutUs')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
+                    <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {aboutMenu.map((item, index) => (
                           <div 
                             key={index}
-                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer hover-scale"
+                            className="flex items-center space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors cursor-pointer hover-scale"
                             onClick={item.onClick}
                           >
                             <div className="p-2 rounded-lg bg-gradient-to-r from-slate-500 to-blue-500">
                               <item.icon className="h-4 w-4 text-white" />
                             </div>
-                            <span className="font-medium text-gray-900 hover:text-slate-700 transition-colors">
+                            <span className="font-medium text-foreground hover:text-slate-700 transition-colors">
                               {item.title}
                             </span>
                           </div>
@@ -315,14 +315,14 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
               <LanguageSelector />
               <Button 
                 variant="outline" 
-                className="text-purple-600 border-purple-200 hover:bg-purple-50 hover-scale transition-all duration-200"
+                className="text-primary border-border hover:bg-accent/10 hover-scale transition-all duration-200"
                 onClick={handleBookDemo}
               >
                 {t('navigation.contact')}
               </Button>
               <Button 
                 onClick={onShowLogin}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white hover-scale transition-all duration-200"
+                className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white hover-scale transition-all duration-200"
               >
                 {t('navigation.login')}
               </Button>
@@ -334,7 +334,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             <Button 
               onClick={onShowLogin}
               size="sm"
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white text-sm px-4"
+              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white text-sm px-4"
             >
               Login
             </Button>
