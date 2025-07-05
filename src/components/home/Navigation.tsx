@@ -155,7 +155,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-                Vivicerta
+                Vicerta
               </h1>
               <p className="text-xs text-muted-foreground hidden lg:block">Educational Technology Platform</p>
             </div>
