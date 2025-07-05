@@ -20,6 +20,7 @@ import LanguageSelector from "@/components/LanguageSelector";
 import { tools } from "@/lib/toolsData";
 
 const EasyTeachApp = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Lesson Planning");
   const [showProfile, setShowProfile] = useState(false);
@@ -111,12 +112,12 @@ const EasyTeachApp = () => {
             <Tabs defaultValue="tools" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8">
                 <TabsTrigger value="tools" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
-                  Teaching Tools
+                  {t('easyteach.tabs.teachingTools')}
                 </TabsTrigger>
                 <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
                   <Bot className="h-4 w-4 mr-1 sm:mr-2" />
-                  <span className="hidden sm:inline">Kribi Assistant</span>
-                  <span className="sm:hidden">AI</span>
+                  <span className="hidden sm:inline">{t('easyteach.tabs.kribiAssistant')}</span>
+                  <span className="sm:hidden">{t('easyteach.tabs.ai')}</span>
                 </TabsTrigger>
               </TabsList>
 

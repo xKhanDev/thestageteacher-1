@@ -149,12 +149,28 @@
   },
   "easyteach": {
     "title": "EasyTeach",
-    "searchPlaceholder": "Search for lesson plans, worksheets, assessments...",
-    "findPerfectTool": "Find Your Perfect Tool",
-    "teachingTools": "Teaching Tools",
-    "aiAssistant": "Kribi Assistant",
-    "assistantTitle": "Kribi Teaching Assistant",
-    "assistantDescription": "Get instant help with educational questions, lesson planning, and teaching strategies",
+    "welcome": {
+      "welcomeBack": "Welcome back, {{name}}",
+      "readyToCreate": "Ready to create something amazing today?",
+      "cogitatio": "Cogitatio",
+      "favoriteTools": "Your Favorite Tools"
+    },
+    "tabs": {
+      "teachingTools": "Teaching Tools",
+      "kribiAssistant": "Kribi Assistant",
+      "ai": "AI"
+    },
+    "search": {
+      "findPerfectTool": "Find Your Perfect Tool",
+      "searchPlaceholder": "Search for lesson plans, worksheets, assessments...",
+      "noToolsFound": "No tools found for \"{{searchTerm}}\"",
+      "tryDifferentSearch": "Try a different search term or browse our categories above."
+    },
+    "tools": {
+      "useToolButton": "Use Tool →",
+      "readyIn": "Ready in {{time}}",
+      "timeSaved": "Save {{time}} weekly"
+    },
     "categories": {
       "lessonPlanning": "Lesson Planning",
       "contentHub": "Content Hub",
@@ -162,6 +178,38 @@
       "communication": "Communication",
       "behaviourSupport": "Behaviour Support",
       "differentiation": "Differentiation"
+    },
+    "sidebar": {
+      "quickAccess": "Quick Access",
+      "wizardTools": "Wizard Tools",
+      "wizardToolsDesc": "AI-powered teaching tools",
+      "kribiChatbot": "Kribi Chatbot",
+      "kribiChatbotDesc": "Teaching assistant bot",
+      "outputHistory": "Output History",
+      "outputHistoryDesc": "Your past creations",
+      "toolsSuggestions": "Tools Suggestions",
+      "toolsSuggestionsDesc": "Suggest new features",
+      "feedbackDashboard": "Feedback Dashboard",
+      "feedbackDashboardDesc": "View user feedback",
+      "trustedByEducators": "Trusted by Educators",
+      "testimonial": "EasyTeach transforms my lesson planning and saves hours every week!",
+      "empoweringEducators": "Empowering educators"
+    },
+    "header": {
+      "aiTeachingAssistant": "AI Teaching Assistant",
+      "saveHours": "Save {{hours}}+ hrs weekly",
+      "profile": "Profile",
+      "signOut": "Sign Out"
+    },
+    "aiAssistant": {
+      "title": "Kribi Teaching Assistant",
+      "description": "Get instant help with educational questions, lesson planning, and teaching strategies"
+    },
+    "favoriteToolsList": {
+      "lessonPlannerPro": "Lesson Planner Pro",
+      "smartGrading": "Smart Grading",
+      "classOrganizer": "Class Organizer",
+      "quizMaster": "Quiz Master"
     }
   },
   "showcase": {
