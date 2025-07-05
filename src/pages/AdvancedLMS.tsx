@@ -5,12 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, GraduationCap, Brain, BarChart3, Users, BookOpen, Clock, Target, CheckCircle, ArrowRight, MessageSquare, FileText, Globe, Shield, Gamepad2, Award, TrendingUp, Bot } from "lucide-react";
-import aiPersonalizationImg from "@/assets/ai-personalization.jpg";
-import aiContentImg from "@/assets/ai-content-generation.jpg";
-import smartProctoringImg from "@/assets/smart-proctoring.jpg";
-import gamificationImg from "@/assets/gamification.jpg";
-import predictiveAnalyticsImg from "@/assets/predictive-analytics.jpg";
-import corporateCertificationImg from "@/assets/corporate-certification.jpg";
+import aiPersonalizationImg from "@/assets/ai-personalization-professional.jpg";
+import aiContentImg from "@/assets/ai-content-professional.jpg";
+import smartProctoringImg from "@/assets/smart-proctoring-professional.jpg";
+import gamificationImg from "@/assets/gamification-professional.jpg";
+import predictiveAnalyticsImg from "@/assets/predictive-analytics-professional.jpg";
+import corporateCertificationImg from "@/assets/corporate-certification-professional.jpg";
 
 const AdvancedLMS = () => {
   const navigate = useNavigate();
@@ -200,48 +200,61 @@ const AdvancedLMS = () => {
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
             Revolutionary AI-Powered Features
           </h2>
-          <div className="space-y-16">
+          <div className="space-y-24">
             {featureCategories.map((category, categoryIndex) => (
-              <div key={category.id} className={`animate-fade-in ${categoryIndex % 2 === 1 ? 'lg:flex-row-reverse' : ''}`} style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                  {/* Image Section */}
-                  <div className="relative">
-                    <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
-                      <img 
-                        src={category.image} 
-                        alt={category.title}
-                        className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
-                    </div>
-                  </div>
-                  
-                  {/* Content Section */}
-                  <div className="space-y-6">
+              <div key={category.id} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${categoryIndex % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  {/* Content Section - Left for even, Right for odd */}
+                  <div className={`space-y-8 ${categoryIndex % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="flex items-center space-x-4">
                       <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} shadow-lg`}>
                         <category.icon className="h-8 w-8 text-white" />
                       </div>
-                      <h3 className="text-3xl font-bold text-gray-900">{category.title}</h3>
+                      <div>
+                        <h3 className="text-3xl font-bold text-gray-900 mb-2">{category.title}</h3>
+                        <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded"></div>
+                      </div>
                     </div>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                       {category.features.map((feature, featureIndex) => (
-                        <Card key={featureIndex} className="border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-blue-50 hover:shadow-lg transition-all duration-300">
-                          <CardContent className="p-6">
-                            <div className="flex items-start space-x-4">
-                              <div className="p-2 rounded-lg bg-white shadow-sm">
-                                <feature.icon className="h-5 w-5 text-purple-600" />
-                              </div>
-                              <div>
-                                <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
-                                <p className="text-gray-600">{feature.description}</p>
-                              </div>
+                        <div key={featureIndex} className="group hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 p-6 rounded-2xl transition-all duration-300 border border-transparent hover:border-purple-200">
+                          <div className="flex items-start space-x-4">
+                            <div className="p-3 rounded-xl bg-white shadow-md border group-hover:shadow-lg transition-shadow duration-300">
+                              <feature.icon className="h-6 w-6 text-purple-600" />
                             </div>
-                          </CardContent>
-                        </Card>
+                            <div className="flex-1">
+                              <h4 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors">{feature.title}</h4>
+                              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                            </div>
+                          </div>
+                        </div>
                       ))}
                     </div>
+                  </div>
+                  
+                  {/* Image Section - Right for even, Left for odd */}
+                  <div className={`relative ${categoryIndex % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
+                      <div className="aspect-[4/3] relative">
+                        <img 
+                          src={category.image} 
+                          alt={category.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
+                      </div>
+                      {/* Floating badge */}
+                      <div className="absolute top-6 left-6">
+                        <div className={`px-4 py-2 rounded-full bg-gradient-to-r ${category.color} text-white text-sm font-semibold shadow-lg`}>
+                          AI-Powered
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full opacity-15 group-hover:opacity-25 transition-opacity duration-500"></div>
                   </div>
                 </div>
               </div>
