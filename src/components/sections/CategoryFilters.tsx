@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { BookOpen, FileText, CheckCircle, MessageCircle, Users, Target } from "lucide-react";
+import { BookOpen, FileText, CheckCircle, MessageCircle, Users, Target, Grid } from "lucide-react";
 
 interface CategoryFiltersProps {
   categories: any[];
@@ -9,6 +9,7 @@ interface CategoryFiltersProps {
 }
 
 const iconMap = {
+  Grid,
   BookOpen,
   FileText,
   CheckCircle,

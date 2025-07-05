@@ -15,20 +15,7 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
   const { t } = useTranslation();
   const [currentQuote, setCurrentQuote] = useState({ text: "", author: "" });
   
-  const educationalQuotes = [
-    { text: "You are not just teaching a subject, you are teaching hearts and minds. Your impact reaches far beyond the classroom and into the future of humanity.", author: "Unknown" },
-    { text: "Every great mind was once taught by someone who believed in them. You are that someone for countless students. Take pride in shaping tomorrow's leaders.", author: "Educational Proverb" },
-    { text: "Teaching is the profession that creates all other professions. You are the architect of dreams and the builder of futures. Your work matters immensely.", author: "Unknown" },
-    { text: "In a world where you can be anything, be the teacher who inspires, encourages, and believes in every student. You have the power to change lives.", author: "Modern Teaching Wisdom" },
-    { text: "Your patience plants seeds of knowledge, your wisdom nurtures growth, and your dedication harvests success. You are growing the future, one student at a time.", author: "Educational Philosophy" },
-    { text: "Behind every successful person is a teacher who saw their potential before they did. You are that beacon of hope and possibility.", author: "Teaching Truth" },
-    { text: "Teaching is not about filling empty vessels, but about igniting flames of curiosity and passion. You are a flame-lighter, a dream-awakener.", author: "Modern Educator" },
-    { text: "The influence of a great teacher extends beyond the classroom and lasts a lifetime. You are not just teaching lessons, you are touching souls.", author: "Educational Inspiration" },
-    { text: "Every child needs a champion – an adult who will never give up on them, who understands the power of connection. You are that champion.", author: "Rita Pearson" },
-    { text: "Your classroom is a sanctuary of learning, your words are seeds of wisdom, and your care is the sunshine that helps every child grow.", author: "Teaching Tribute" },
-    { text: "In your hands lies the power to shape minds, inspire hearts, and change the world. Never underestimate the incredible impact you make every single day.", author: "Educator's Creed" },
-    { text: "You chose teaching not for fame or fortune, but for the privilege of watching young minds discover their potential. That choice makes you extraordinary.", author: "Teacher's Pride" }
-  ];
+  const educationalQuotes = t('easyteach.quotes', { returnObjects: true }) as Array<{ text: string; author: string }>;
 
   const favoriteTools = [
     { name: t('easyteach.favoriteToolsList.lessonPlannerPro'), icon: BookOpen, color: "from-blue-500 to-indigo-500", category: "Lesson Planning" },

@@ -172,6 +172,7 @@
       "timeSaved": "Économisez {{time}} par semaine"
     },
     "categories": {
+      "all": "Tous les Outils",
       "lessonPlanning": "Planification de Cours",
       "contentHub": "Centre de Contenu",
       "assessment": "Évaluation",
@@ -210,7 +211,33 @@
       "smartGrading": "Notation Intelligente",
       "classOrganizer": "Organisateur de Classe",
       "quizMaster": "Maître Quiz"
-    }
+    },
+    "quotes": [
+      {
+        "text": "Vous n'enseignez pas seulement une matière, vous enseignez aux cœurs et aux esprits. Votre impact va bien au-delà de la salle de classe vers l'avenir de l'humanité.",
+        "author": "Inconnu"
+      },
+      {
+        "text": "Chaque grand esprit a été enseigné par quelqu'un qui croyait en lui. Vous êtes cette personne pour d'innombrables élèves. Soyez fier de façonner les leaders de demain.",
+        "author": "Proverbe Éducatif"
+      },
+      {
+        "text": "L'enseignement est la profession qui crée toutes les autres professions. Vous êtes l'architecte des rêves et le bâtisseur d'avenirs. Votre travail compte énormément.",
+        "author": "Inconnu"
+      },
+      {
+        "text": "Dans un monde où vous pouvez être n'importe quoi, soyez l'enseignant qui inspire, encourage et croit en chaque élève. Vous avez le pouvoir de changer des vies.",
+        "author": "Sagesse Pédagogique Moderne"
+      },
+      {
+        "text": "Votre patience plante des graines de connaissance, votre sagesse nourrit la croissance, et votre dévouement récolte le succès. Vous cultivez l'avenir, un élève à la fois.",
+        "author": "Philosophie Éducative"
+      },
+      {
+        "text": "Derrière chaque personne qui réussit se trouve un enseignant qui a vu son potentiel avant elle. Vous êtes ce phare d'espoir et de possibilité.",
+        "author": "Vérité Pédagogique"
+      }
+    ]
   },
   "showcase": {
     "drivingForce": "La Force Motrice",

@@ -172,6 +172,7 @@
       "timeSaved": "Ahorra {{time}} semanalmente"
     },
     "categories": {
+      "all": "Todas las Herramientas",
       "lessonPlanning": "Planificación de Lecciones",
       "contentHub": "Centro de Contenido",
       "assessment": "Evaluación",
@@ -210,7 +211,33 @@
       "smartGrading": "Calificación Inteligente",
       "classOrganizer": "Organizador de Clase",
       "quizMaster": "Maestro de Cuestionarios"
-    }
+    },
+    "quotes": [
+      {
+        "text": "No solo enseñas una materia, enseñas corazones y mentes. Tu impacto llega mucho más allá del aula hacia el futuro de la humanidad.",
+        "author": "Desconocido"
+      },
+      {
+        "text": "Cada gran mente fue enseñada por alguien que creyó en ella. Tú eres esa persona para innumerables estudiantes. Enorgullécete de formar a los líderes del mañana.",
+        "author": "Proverbio Educativo"
+      },
+      {
+        "text": "La enseñanza es la profesión que crea todas las demás profesiones. Eres el arquitecto de sueños y el constructor de futuros. Tu trabajo importa enormemente.",
+        "author": "Desconocido"
+      },
+      {
+        "text": "En un mundo donde puedes ser cualquier cosa, sé el maestro que inspira, anima y cree en cada estudiante. Tienes el poder de cambiar vidas.",
+        "author": "Sabiduría Pedagógica Moderna"
+      },
+      {
+        "text": "Tu paciencia planta semillas de conocimiento, tu sabiduría nutre el crecimiento, y tu dedicación cosecha el éxito. Estás cultivando el futuro, un estudiante a la vez.",
+        "author": "Filosofía Educativa"
+      },
+      {
+        "text": "Detrás de cada persona exitosa hay un maestro que vio su potencial antes que ellos. Eres ese faro de esperanza y posibilidad.",
+        "author": "Verdad Pedagógica"
+      }
+    ]
   },
   "showcase": {
     "drivingForce": "La Fuerza Motriz",

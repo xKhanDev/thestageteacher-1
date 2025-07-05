@@ -29,6 +29,7 @@ const EasyTeachApp = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const categories = [
+    { name: t('easyteach.categories.all'), icon: "Grid", color: "bg-gray-100 text-gray-800", gradient: "from-gray-500 to-gray-600" },
     { name: t('easyteach.categories.lessonPlanning'), icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
     { name: t('easyteach.categories.contentHub'), icon: "FileText", color: "bg-indigo-100 text-indigo-800", gradient: "from-indigo-500 to-indigo-600" },
     { name: t('easyteach.categories.assessment'), icon: "CheckCircle", color: "bg-purple-100 text-purple-800", gradient: "from-purple-500 to-purple-600" },
@@ -39,6 +40,7 @@ const EasyTeachApp = () => {
 
   // Map translated categories back to English for tool filtering
   const categoryMapping = {
+    [t('easyteach.categories.all')]: "All",
     [t('easyteach.categories.lessonPlanning')]: "Lesson Planning",
     [t('easyteach.categories.contentHub')]: "Content Hub", 
     [t('easyteach.categories.assessment')]: "Assessment",
@@ -50,7 +52,7 @@ const EasyTeachApp = () => {
   const filteredTools = tools.filter(tool => {
     const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          tool.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = tool.category === categoryMapping[selectedCategory];
+    const matchesCategory = categoryMapping[selectedCategory] === "All" || tool.category === categoryMapping[selectedCategory];
     return matchesSearch && matchesCategory;
   });
 

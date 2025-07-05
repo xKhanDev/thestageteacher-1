@@ -172,6 +172,7 @@
       "timeSaved": "Save {{time}} weekly"
     },
     "categories": {
+      "all": "All Tools",
       "lessonPlanning": "Lesson Planning",
       "contentHub": "Content Hub",
       "assessment": "Assessment",
@@ -210,7 +211,33 @@
       "smartGrading": "Smart Grading",
       "classOrganizer": "Class Organizer",
       "quizMaster": "Quiz Master"
-    }
+    },
+    "quotes": [
+      {
+        "text": "You are not just teaching a subject, you are teaching hearts and minds. Your impact reaches far beyond the classroom and into the future of humanity.",
+        "author": "Unknown"
+      },
+      {
+        "text": "Every great mind was once taught by someone who believed in them. You are that someone for countless students. Take pride in shaping tomorrow's leaders.",
+        "author": "Educational Proverb"
+      },
+      {
+        "text": "Teaching is the profession that creates all other professions. You are the architect of dreams and the builder of futures. Your work matters immensely.",
+        "author": "Unknown"
+      },
+      {
+        "text": "In a world where you can be anything, be the teacher who inspires, encourages, and believes in every student. You have the power to change lives.",
+        "author": "Modern Teaching Wisdom"
+      },
+      {
+        "text": "Your patience plants seeds of knowledge, your wisdom nurtures growth, and your dedication harvests success. You are growing the future, one student at a time.",
+        "author": "Educational Philosophy"
+      },
+      {
+        "text": "Behind every successful person is a teacher who saw their potential before they did. You are that beacon of hope and possibility.",
+        "author": "Teaching Truth"
+      }
+    ]
   },
   "showcase": {
     "drivingForce": "The Driving Force",
