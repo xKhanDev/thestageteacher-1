@@ -1,4 +1,5 @@
 
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,8 @@ import ToolsGrid from "@/components/sections/ToolsGrid";
 import TeacherProfile from "@/components/TeacherProfile";
 import ToolModal from "@/components/ToolModal";
 import AIAssistant from "@/components/AIAssistant";
+import GradeSystemSelector from "@/components/GradeSystemSelector";
+import LanguageSelector from "@/components/LanguageSelector";
 import { tools } from "@/lib/toolsData";
 
 const EasyTeachApp = () => {

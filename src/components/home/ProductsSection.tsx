@@ -1,4 +1,5 @@
 
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,11 +12,13 @@ interface ProductsSectionProps {
 }
 
 const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) => {
+  const { t } = useTranslation();
+  
   const products = [
     {
       id: 'easyteach',
-      name: 'EasyTeach',
-      description: 'AI-powered teaching tools that save educators 15+ hours every week',
+      name: t('products.easyTeach'),
+      description: t('products.easyTeachDesc'),
       longDescription: 'Transform your teaching experience with smart lesson planning, instant communication tools, behavior support, and personalized learning resources.',
       icon: BookOpen,
       status: 'available',
@@ -28,17 +31,17 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
     },
     {
       id: 'lms',
-      name: 'Advanced AI LMS',
-      description: 'Next-generation learning management system powered by artificial intelligence',
+      name: t('products.advancedLMS'),
+      description: t('products.advancedLMSDesc'),
       longDescription: 'Revolutionary LMS that adapts to student learning patterns, provides intelligent analytics, and automates administrative tasks for seamless education delivery.',
       icon: GraduationCap,
       status: 'coming-soon',
       color: 'from-purple-500 to-purple-600',
       bgColor: 'bg-purple-50',
       features: ['Adaptive Learning Paths', 'AI-Powered Analytics', 'Smart Assessments', 'Automated Grading'],
-      users: 'Coming Soon',
+      users: t('products.comingSoon'),
       action: () => onJoinWaitlist('Advanced AI LMS'),
-      actionText: 'Join Waitlist'
+      actionText: t('products.joinWaitlist')
     },
     {
       id: 'admin',
@@ -50,9 +53,9 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       color: 'from-green-500 to-green-600',
       bgColor: 'bg-green-50',
       features: ['Student Information System', 'Staff Management', 'Financial Tracking', 'Communication Hub'],
-      users: 'Coming Soon',
+      users: t('products.comingSoon'),
       action: () => onJoinWaitlist('School Administration Platform'),
-      actionText: 'Join Waitlist'
+      actionText: t('products.joinWaitlist')
     }
   ];
 
@@ -61,11 +64,11 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Our Product 
+            {t('products.title')} 
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Ecosystem</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive solutions for every aspect of modern education, from individual teachers to entire institutions
+            {t('products.description')}
           </p>
         </div>
 

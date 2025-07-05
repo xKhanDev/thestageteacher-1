@@ -1,4 +1,5 @@
 
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Network, Zap, Users, TrendingUp, Globe, BookOpen, GraduationCap, Building2, CheckCircle } from "lucide-react";
@@ -8,24 +9,26 @@ interface EcertaShowcaseProps {
 }
 
 const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
+  const { t } = useTranslation();
+  
   const ecosystemFeatures = [
     {
-      title: "Consolidated AI Intelligence",
-      description: "Our three products share a common AI brain that learns from every interaction across the platform, creating smarter solutions for everyone.",
+      title: t('showcase.consolidatedAI'),
+      description: t('showcase.consolidatedAIDesc'),
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
       icon: Brain,
       features: ["Cross-platform learning", "Shared intelligence", "Continuous improvement", "Predictive insights"]
     },
     {
-      title: "Seamless Integration",
-      description: "All our products work together seamlessly, creating a unified experience from individual teaching to institutional management.",
+      title: t('showcase.seamlessIntegration'),
+      description: t('showcase.seamlessIntegrationDesc'),
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
       icon: Network,
       features: ["Data synchronization", "Single sign-on", "Unified analytics", "Shared resources"]
     },
     {
-      title: "Revolutionary Impact",
-      description: "We're not just improving education - we're revolutionizing it by creating the first truly integrated AI-powered education ecosystem.",
+      title: t('showcase.revolutionaryImpact'),
+      description: t('showcase.revolutionaryImpactDesc'),
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       icon: Zap,
       features: ["Industry transformation", "Future-ready solutions", "Global accessibility", "Scalable architecture"]
@@ -35,18 +38,18 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
   const whyEcerta = [
     {
       icon: Users,
-      title: "Complete Ecosystem Approach",
-      description: "Unlike fragmented solutions, Ecerta provides a unified platform that serves every stakeholder in the education process - from individual teachers to entire institutions."
+      title: t('showcase.completeEcosystem'),
+      description: t('showcase.completeEcosystemDesc')
     },
     {
       icon: TrendingUp,
-      title: "Exponential Growth Impact",
-      description: "Our integrated approach creates exponential benefits. As one product improves, it enhances the entire ecosystem, multiplying value for all users."
+      title: t('showcase.exponentialGrowth'),
+      description: t('showcase.exponentialGrowthDesc')
     },
     {
       icon: Globe,
-      title: "Global Education Transformation",
-      description: "We're building the infrastructure for global education transformation, connecting educators, students, and institutions worldwide through AI."
+      title: t('showcase.globalTransformation'),
+      description: t('showcase.globalTransformationDesc')
     }
   ];
 
@@ -57,12 +60,11 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              The 
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Driving Force</span>
-              <br />Behind Educational Innovation
+              {t('showcase.drivingForce')} 
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> {t('showcase.behindEducation')}</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ecerta isn't just a platform - it's the foundation of the new educational era, seamlessly connecting teaching, learning, and administration through intelligent AI.
+              {t('showcase.platformDescription')}
             </p>
           </div>
 
@@ -112,11 +114,11 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Why Ecerta is the 
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Future of Education</span>
+              {t('showcase.whyEcerta')}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"></span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're not just building products - we're creating the foundation for the next generation of education technology.
+              {t('showcase.whyEcertaDesc')}
             </p>
           </div>
 
@@ -147,7 +149,7 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
               onClick={onShowLogin}
               className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-3 rounded-xl hover-scale"
             >
-              Experience the Future
+              {t('showcase.experienceFuture')}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

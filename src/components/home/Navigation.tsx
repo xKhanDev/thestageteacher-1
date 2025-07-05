@@ -167,7 +167,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
               <NavigationMenuList className="space-x-2">
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
-                    Products
+                    {t('navigation.products')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-80 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
@@ -185,9 +185,9 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                               <div className="flex items-center space-x-2">
                                 <h4 className="font-semibold text-gray-900">{product.name}</h4>
                                 {product.status === 'available' ? (
-                                  <Badge className="bg-green-100 text-green-800 border-green-200 text-xs">Available</Badge>
+                                  <Badge className="bg-green-100 text-green-800 border-green-200 text-xs">{t('navigation.available')}</Badge>
                                 ) : (
-                                  <Badge className="bg-amber-100 text-amber-800 border-amber-200 text-xs">Coming Soon</Badge>
+                                  <Badge className="bg-amber-100 text-amber-800 border-amber-200 text-xs">{t('navigation.comingSoon')}</Badge>
                                 )}
                               </div>
                               <p className="text-sm text-gray-600 mt-1">{product.description}</p>
@@ -201,14 +201,14 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
-                    Solutions
+                    {t('navigation.solutions')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-96 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
                       <div className="grid grid-cols-2 gap-6">
                         {/* By Category */}
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">By Category</h3>
+                          <h3 className="font-semibold text-gray-900 mb-3">{t('navigation.byCategory')}</h3>
                           <div className="space-y-2">
                             {solutionsByCategory.map((solution, index) => (
                               <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
@@ -227,7 +227,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
 
                         {/* By Department */}
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-3">By Department</h3>
+                          <h3 className="font-semibold text-gray-900 mb-3">{t('navigation.byDepartment')}</h3>
                           <div className="space-y-2">
                             {solutionsByDepartment.map((solution, index) => (
                               <div key={index} className="group p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer">
@@ -250,7 +250,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                           onClick={handleBookDemo}
                           className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-sm w-full"
                         >
-                          Book Demo
+                          {t('navigation.bookDemo')}
                         </Button>
                       </div>
                     </div>
@@ -259,7 +259,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
-                    Resources
+                    {t('navigation.resources')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
@@ -285,7 +285,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-gray-700 hover:text-purple-600 bg-transparent hover:bg-purple-50 transition-all duration-200">
-                    About Us
+                    {t('navigation.aboutUs')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-64 p-4 bg-white shadow-lg border border-gray-200 animate-fade-in">
