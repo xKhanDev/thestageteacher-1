@@ -30,18 +30,18 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
   }, [messages.length]);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-background via-muted to-background">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto text-center relative">
         <div className="flex justify-center mb-8 animate-fade-in">
-          <Badge className="bg-gradient-to-r from-primary/10 to-accent/10 text-primary border-primary/20 text-sm font-medium px-6 py-3 rounded-full shadow-lg backdrop-blur-sm">
+          <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 border-purple-200 text-sm font-medium px-4 py-2 hover-scale">
             <Sparkles className="h-4 w-4 mr-2" />
             {t('hero.transformingEducation')}
           </Badge>
         </div>
         
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight animate-scale-in">
+        <h1 className="text-6xl font-bold text-gray-900 mb-8 leading-tight animate-scale-in">
           {t('hero.title')}
-          <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent block transition-all duration-1000 animate-fade-in bg-[length:200%_100%] animate-gradient-shift">
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent block transition-all duration-1000 animate-fade-in">
             {messages[currentMessageIndex]}
           </span>
         </h1>
@@ -57,36 +57,36 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
           {t('hero.description')}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16 animate-fade-in">
-          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border hover:shadow-xl transition-all duration-300 hover-scale animate-float">
-            <div className="flex items-center justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-primary to-primary/80 shadow-lg">
-                <Users className="h-8 w-8 text-primary-foreground" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 hover-scale">
+            <div className="flex items-center justify-center mb-4">
+              <div className="p-3 rounded-full bg-gradient-to-r from-blue-500 to-blue-600">
+                <Users className="h-6 w-6 text-white" />
               </div>
             </div>
-            <div className="text-4xl font-bold text-primary mb-3">100K+</div>
-            <div className="text-foreground font-semibold mb-2">{t('hero.activeEducators')}</div>
-            <div className="text-sm text-muted-foreground">{t('hero.acrossAllPlatforms')}</div>
+            <div className="text-3xl font-bold text-blue-600 mb-2">100K+</div>
+            <div className="text-gray-700 font-medium mb-2">{t('hero.activeEducators')}</div>
+            <div className="text-sm text-gray-500">{t('hero.acrossAllPlatforms')}</div>
           </div>
-          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border hover:shadow-xl transition-all duration-300 hover-scale animate-float" style={{ animationDelay: '0.5s' }}>
-            <div className="flex items-center justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-accent to-accent/80 shadow-lg">
-                <TrendingUp className="h-8 w-8 text-accent-foreground" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-purple-200 hover:shadow-lg transition-all duration-300 hover-scale">
+            <div className="flex items-center justify-center mb-4">
+              <div className="p-3 rounded-full bg-gradient-to-r from-purple-500 to-purple-600">
+                <TrendingUp className="h-6 w-6 text-white" />
               </div>
             </div>
-            <div className="text-4xl font-bold text-accent mb-3">3</div>
-            <div className="text-foreground font-semibold mb-2">{t('hero.integratedProducts')}</div>
-            <div className="text-sm text-muted-foreground">{t('hero.completeEcosystem')}</div>
+            <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
+            <div className="text-gray-700 font-medium mb-2">{t('hero.integratedProducts')}</div>
+            <div className="text-sm text-gray-500">{t('hero.completeEcosystem')}</div>
           </div>
-          <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-8 border border-border hover:shadow-xl transition-all duration-300 hover-scale animate-float" style={{ animationDelay: '1s' }}>
-            <div className="flex items-center justify-center mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-secondary to-secondary/80 shadow-lg">
-                <Clock className="h-8 w-8 text-secondary-foreground" />
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300 hover-scale">
+            <div className="flex items-center justify-center mb-4">
+              <div className="p-3 rounded-full bg-gradient-to-r from-green-500 to-green-600">
+                <Clock className="h-6 w-6 text-white" />
               </div>
             </div>
-            <div className="text-4xl font-bold text-secondary mb-3">50+</div>
-            <div className="text-foreground font-semibold mb-2">{t('hero.hoursSavedMonthly')}</div>
-            <div className="text-sm text-muted-foreground">{t('hero.perInstitution')}</div>
+            <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
+            <div className="text-gray-700 font-medium mb-2">{t('hero.hoursSavedMonthly')}</div>
+            <div className="text-sm text-gray-500">{t('hero.perInstitution')}</div>
           </div>
         </div>
 
@@ -106,11 +106,11 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg"
             onClick={onShowLogin}
-            className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-16 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover-scale border-0"
+            className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
           >
             {t('hero.exploreEcosystem')}
             <Sparkles className="ml-3 h-6 w-6" />
