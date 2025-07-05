@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 interface ToolsGridProps {
   tools: any[];
@@ -12,15 +13,17 @@ interface ToolsGridProps {
 }
 
 const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProps) => {
+  const { t } = useTranslation();
+  
   if (tools.length === 0) {
     return (
       <div className="text-center py-16">
         <div className="text-8xl mb-6">🔍</div>
         <h3 className="text-2xl font-bold text-gray-700 mb-3">
-          No tools found for "{searchTerm}"
+          {t('easyteach.search.noToolsFound', { searchTerm })}
         </h3>
         <p className="text-lg text-gray-500">
-          Try a different search term or browse our categories above.
+          {t('easyteach.search.tryDifferentSearch')}
         </p>
       </div>
     );
@@ -73,14 +76,14 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
               </CardDescription>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-green-600 font-semibold bg-green-50 px-3 py-1 rounded-full">
-                  ✓ Ready in {tool.estimatedTime}
+                  ✓ {t('easyteach.tools.readyIn', { time: tool.estimatedTime })}
                 </span>
                 <Button 
                   size="sm" 
                   className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200"
                   onClick={(e) => handleToolClick(tool, e)}
                 >
-                  Use Tool →
+                  {t('easyteach.tools.useToolButton')}
                 </Button>
               </div>
             </CardContent>

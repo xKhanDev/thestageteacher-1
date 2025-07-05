@@ -3,6 +3,8 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Clock, User, Sparkles, Zap, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from "../LanguageSelector";
 
 interface AppHeaderProps {
   teacherProfile: any;
@@ -12,6 +14,7 @@ interface AppHeaderProps {
 const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSignOut = async () => {
     await signOut();
@@ -31,17 +34,18 @@ const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-indigo-700 bg-clip-text text-transparent">
                 EasyTeach
               </h1>
-              <p className="text-xs text-gray-700 font-medium">AI Teaching Assistant</p>
+              <p className="text-xs text-gray-700 font-medium">{t('easyteach.header.aiTeachingAssistant')}</p>
             </div>
           </div>
           
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-50 to-indigo-50 px-3 py-2 rounded-full border-2 border-blue-200">
               <Clock className="h-4 w-4 text-blue-700" />
-              <span className="text-xs font-semibold text-blue-800">Save 10+ hrs weekly</span>
+              <span className="text-xs font-semibold text-blue-800">{t('easyteach.header.saveHours', { hours: '10' })}</span>
               <Zap className="h-4 w-4 text-amber-600" />
             </div>
             <div className="flex items-center space-x-2">
+              <LanguageSelector />
               <Button
                 variant="outline"
                 size="sm"
@@ -49,7 +53,7 @@ const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
                 className="flex items-center space-x-2 bg-blue-50 border-2 border-blue-300 hover:border-blue-400 hover:bg-blue-100 transition-all duration-200 text-xs text-gray-800 font-medium"
               >
                 <User className="h-4 w-4" />
-                <span className="max-w-20 truncate">{teacherProfile?.name || user?.user_metadata?.name || user?.email || "Profile"}</span>
+                <span className="max-w-20 truncate">{teacherProfile?.name || user?.user_metadata?.name || user?.email || t('easyteach.header.profile')}</span>
               </Button>
               <Button
                 variant="outline"
@@ -58,7 +62,7 @@ const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
                 className="flex items-center space-x-2 text-red-700 border-2 border-red-300 hover:bg-red-100 hover:border-red-400 transition-all duration-200 text-xs font-medium"
               >
                 <LogOut className="h-4 w-4" />
-                <span>Sign Out</span>
+                <span>{t('easyteach.header.signOut')}</span>
               </Button>
             </div>
           </div>

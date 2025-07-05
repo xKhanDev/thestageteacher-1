@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, MessageCircle, Users, Quote, Star, Heart, Zap } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 interface WelcomeSectionProps {
   teacherProfile: any;
@@ -11,6 +12,7 @@ interface WelcomeSectionProps {
 
 const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) => {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [currentQuote, setCurrentQuote] = useState({ text: "", author: "" });
   
   const educationalQuotes = [
@@ -29,10 +31,10 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
   ];
 
   const favoriteTools = [
-    { name: "Lesson Planner Pro", icon: BookOpen, color: "from-blue-500 to-indigo-500", category: "Lesson Planning" },
-    { name: "Smart Grading", icon: Star, color: "from-purple-500 to-pink-500", category: "Assessment" },
-    { name: "Class Organizer", icon: Heart, color: "from-green-500 to-emerald-500", category: "Communication" },
-    { name: "Quiz Master", icon: Zap, color: "from-orange-500 to-red-500", category: "Assessment" }
+    { name: t('easyteach.favoriteToolsList.lessonPlannerPro'), icon: BookOpen, color: "from-blue-500 to-indigo-500", category: "Lesson Planning" },
+    { name: t('easyteach.favoriteToolsList.smartGrading'), icon: Star, color: "from-purple-500 to-pink-500", category: "Assessment" },
+    { name: t('easyteach.favoriteToolsList.classOrganizer'), icon: Heart, color: "from-green-500 to-emerald-500", category: "Communication" },
+    { name: t('easyteach.favoriteToolsList.quizMaster'), icon: Zap, color: "from-orange-500 to-red-500", category: "Assessment" }
   ];
 
   useEffect(() => {
@@ -52,10 +54,10 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
       {/* Compact Welcome Message */}
       <div className="text-center mb-4">
         <h1 className="text-xl font-semibold text-gray-800 mb-1">
-          Welcome back, {getUserName()}
+          {t('easyteach.welcome.welcomeBack', { name: getUserName() })}
         </h1>
         <p className="text-xs text-gray-700">
-          Ready to create something amazing today?
+          {t('easyteach.welcome.readyToCreate')}
         </p>
       </div>
 
@@ -66,7 +68,7 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
             <Quote className="h-5 w-5 text-white" />
           </div>
           <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Cogitatio
+            {t('easyteach.welcome.cogitatio')}
           </h2>
           <div className="flex space-x-1 ml-auto">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
@@ -87,7 +89,7 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
       <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
         <div className="flex items-center space-x-2 mb-3">
           <Heart className="h-4 w-4 text-red-500" />
-          <h2 className="text-base font-semibold text-gray-800">Your Favorite Tools</h2>
+          <h2 className="text-base font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
         </div>
         <div className="flex flex-wrap gap-3 justify-center">
           {favoriteTools.map((tool, index) => (

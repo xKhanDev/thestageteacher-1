@@ -2,42 +2,45 @@
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, SidebarFooter } from "@/components/ui/sidebar";
 import { Wand2, Bot, History, BrainCircuit, Star, Heart, GraduationCap, BarChart3 } from "lucide-react";
 import easyTeachLogo from "@/assets/easyteach-logo.png";
+import { useTranslation } from 'react-i18next';
 
 const AppSidebar = () => {
+  const { t } = useTranslation();
+  
   const sidebarItems = [
     { 
-      name: "Wizard Tools", 
+      name: t('easyteach.sidebar.wizardTools'), 
       icon: Wand2, 
       href: "/wizard-tools",
-      description: "AI-powered teaching tools",
+      description: t('easyteach.sidebar.wizardToolsDesc'),
       gradient: "from-blue-500 to-indigo-500"
     },
     { 
-      name: "Kribi Chatbot", 
+      name: t('easyteach.sidebar.kribiChatbot'), 
       icon: Bot, 
       href: "/ai-chatbot",
-      description: "Teaching assistant bot",
+      description: t('easyteach.sidebar.kribiChatbotDesc'),
       gradient: "from-indigo-500 to-purple-500"
     },
     { 
-      name: "Output History", 
+      name: t('easyteach.sidebar.outputHistory'), 
       icon: History, 
       href: "/output-history",
-      description: "Your past creations",
+      description: t('easyteach.sidebar.outputHistoryDesc'),
       gradient: "from-blue-600 to-cyan-500"
     },
     { 
-      name: "Tools Suggestions", 
+      name: t('easyteach.sidebar.toolsSuggestions'), 
       icon: BrainCircuit, 
       href: "/tools-suggestions",
-      description: "Suggest new features",
+      description: t('easyteach.sidebar.toolsSuggestionsDesc'),
       gradient: "from-purple-500 to-pink-500"
     },
     { 
-      name: "Feedback Dashboard", 
+      name: t('easyteach.sidebar.feedbackDashboard'), 
       icon: BarChart3, 
       href: "/feedback-dashboard",
-      description: "View user feedback",
+      description: t('easyteach.sidebar.feedbackDashboardDesc'),
       gradient: "from-green-500 to-emerald-500"
     },
   ];
@@ -62,7 +65,7 @@ const AppSidebar = () => {
         <SidebarGroup className="px-3 py-4">
           <SidebarGroupLabel className="text-slate-700 font-semibold text-xs mb-3 flex items-center space-x-2">
             <Star className="h-3 w-3 text-blue-600" />
-            <span>Quick Access</span>
+            <span>{t('easyteach.sidebar.quickAccess')}</span>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1">
@@ -97,10 +100,10 @@ const AppSidebar = () => {
           <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-slate-50 rounded-lg p-3 border border-blue-200/50">
             <div className="flex items-center space-x-2 mb-2">
               <Heart className="h-3 w-3 text-red-500" />
-              <span className="font-semibold text-slate-800 text-xs">Trusted by Educators</span>
+              <span className="font-semibold text-slate-800 text-xs">{t('easyteach.sidebar.trustedByEducators')}</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              "EasyTeach transforms my lesson planning and saves hours every week!" 
+              "{t('easyteach.sidebar.testimonial')}" 
             </p>
             <div className="flex items-center mt-2 space-x-1">
               {[...Array(5)].map((_, i) => (
@@ -115,7 +118,7 @@ const AppSidebar = () => {
       <SidebarFooter className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-t border-slate-200">
         <div className="flex items-center justify-center space-x-2 text-xs text-slate-500">
           <GraduationCap className="h-3 w-3 text-blue-600" />
-          <span>Empowering educators</span>
+          <span>{t('easyteach.sidebar.empoweringEducators')}</span>
         </div>
       </SidebarFooter>
     </Sidebar>

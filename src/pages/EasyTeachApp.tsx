@@ -22,25 +22,35 @@ import { tools } from "@/lib/toolsData";
 const EasyTeachApp = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Lesson Planning");
+  const [selectedCategory, setSelectedCategory] = useState(t('easyteach.categories.lessonPlanning'));
   const [showProfile, setShowProfile] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const categories = [
-    { name: "Lesson Planning", icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
-    { name: "Content Hub", icon: "FileText", color: "bg-indigo-100 text-indigo-800", gradient: "from-indigo-500 to-indigo-600" },
-    { name: "Assessment", icon: "CheckCircle", color: "bg-purple-100 text-purple-800", gradient: "from-purple-500 to-purple-600" },
-    { name: "Communication", icon: "MessageCircle", color: "bg-cyan-100 text-cyan-800", gradient: "from-cyan-500 to-cyan-600" },
-    { name: "Behaviour Support", icon: "Users", color: "bg-teal-100 text-teal-800", gradient: "from-teal-500 to-teal-600" },
-    { name: "Differentiation", icon: "Target", color: "bg-slate-100 text-slate-800", gradient: "from-slate-500 to-slate-600" },
+    { name: t('easyteach.categories.lessonPlanning'), icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
+    { name: t('easyteach.categories.contentHub'), icon: "FileText", color: "bg-indigo-100 text-indigo-800", gradient: "from-indigo-500 to-indigo-600" },
+    { name: t('easyteach.categories.assessment'), icon: "CheckCircle", color: "bg-purple-100 text-purple-800", gradient: "from-purple-500 to-purple-600" },
+    { name: t('easyteach.categories.communication'), icon: "MessageCircle", color: "bg-cyan-100 text-cyan-800", gradient: "from-cyan-500 to-cyan-600" },
+    { name: t('easyteach.categories.behaviourSupport'), icon: "Users", color: "bg-teal-100 text-teal-800", gradient: "from-teal-500 to-teal-600" },
+    { name: t('easyteach.categories.differentiation'), icon: "Target", color: "bg-slate-100 text-slate-800", gradient: "from-slate-500 to-slate-600" },
   ];
+
+  // Map translated categories back to English for tool filtering
+  const categoryMapping = {
+    [t('easyteach.categories.lessonPlanning')]: "Lesson Planning",
+    [t('easyteach.categories.contentHub')]: "Content Hub", 
+    [t('easyteach.categories.assessment')]: "Assessment",
+    [t('easyteach.categories.communication')]: "Communication",
+    [t('easyteach.categories.behaviourSupport')]: "Behaviour Support",
+    [t('easyteach.categories.differentiation')]: "Differentiation"
+  };
 
   const filteredTools = tools.filter(tool => {
     const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          tool.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = tool.category === selectedCategory;
+    const matchesCategory = tool.category === categoryMapping[selectedCategory];
     return matchesSearch && matchesCategory;
   });
 
@@ -50,8 +60,9 @@ const EasyTeachApp = () => {
 
   const handleQuickAction = (category) => {
     setSelectedCategory(category);
-    // Find the first tool in the selected category
-    const categoryTool = tools.find(tool => tool.category === category);
+    // Find the first tool in the selected category using English mapping
+    const englishCategory = categoryMapping[category];
+    const categoryTool = tools.find(tool => tool.category === englishCategory);
     if (categoryTool) {
       setSelectedTool(categoryTool);
     }
@@ -124,14 +135,14 @@ const EasyTeachApp = () => {
               <TabsContent value="tools" className="space-y-6 sm:space-y-8">
                 {/* Enhanced Search Section */}
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">Find Your Perfect Tool</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">{t('easyteach.search.findPerfectTool')}</h3>
                   
                   {/* Search Bar */}
                   <div className="relative mb-4 sm:mb-6">
                     <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                     <Input
                       type="text"
-                      placeholder="Search for lesson plans, worksheets, assessments..."
+                      placeholder={t('easyteach.search.searchPlaceholder')}
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="pl-10 sm:pl-12 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-200 focus:border-blue-400 rounded-xl bg-white shadow-sm focus:shadow-md transition-all duration-200"
@@ -157,8 +168,8 @@ const EasyTeachApp = () => {
               <TabsContent value="ai-assistant">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-6">
-                    <h2 className="subheading-responsive text-gray-800 mb-2">Kribi Teaching Assistant</h2>
-                    <p className="text-gray-600 text-sm sm:text-base">Get instant help with educational questions, lesson planning, and teaching strategies</p>
+                    <h2 className="subheading-responsive text-gray-800 mb-2">{t('easyteach.aiAssistant.title')}</h2>
+                    <p className="text-gray-600 text-sm sm:text-base">{t('easyteach.aiAssistant.description')}</p>
                   </div>
                   <AIAssistant />
                 </div>
