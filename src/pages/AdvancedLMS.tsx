@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, GraduationCap, Brain, BarChart3, Users, BookOpen, Clock, Target, CheckCircle, ArrowRight } from "lucide-react";
+import { ArrowLeft, GraduationCap, Brain, BarChart3, Users, BookOpen, Clock, Target, CheckCircle, ArrowRight, MessageSquare, FileText, Globe, Shield, Gamepad2, Award, TrendingUp, Bot } from "lucide-react";
+import aiPersonalizationImg from "@/assets/ai-personalization.jpg";
+import aiContentImg from "@/assets/ai-content-generation.jpg";
+import smartProctoringImg from "@/assets/smart-proctoring.jpg";
+import gamificationImg from "@/assets/gamification.jpg";
+import predictiveAnalyticsImg from "@/assets/predictive-analytics.jpg";
+import corporateCertificationImg from "@/assets/corporate-certification.jpg";
 
 const AdvancedLMS = () => {
   const navigate = useNavigate();
@@ -14,36 +20,130 @@ const AdvancedLMS = () => {
     setIsVisible(true);
   }, []);
 
-  const features = [
+  const featureCategories = [
     {
+      id: 1,
+      title: "AI-Powered Personalization & Adaptive Learning",
+      image: aiPersonalizationImg,
       icon: Brain,
-      title: "AI-Powered Personalization",
-      description: "Adaptive learning paths that adjust to each student's pace and learning style"
+      color: "from-blue-500 to-purple-500",
+      features: [
+        {
+          icon: Target,
+          title: "Dynamic Course Recommendations",
+          description: "AI analyzes learning patterns to suggest optimal courses and learning paths"
+        },
+        {
+          icon: MessageSquare,
+          title: "AI Tutor (Chatbot Assistant)",
+          description: "24/7 intelligent tutoring support with personalized explanations"
+        },
+        {
+          icon: BarChart3,
+          title: "Real-Time Skill Gap Analysis",
+          description: "Identifies knowledge gaps and provides targeted learning recommendations"
+        }
+      ]
     },
     {
-      icon: BarChart3,
-      title: "Intelligent Analytics",
-      description: "Real-time insights into student progress and engagement patterns"
-    },
-    {
-      icon: Users,
-      title: "Collaborative Learning",
-      description: "Enhanced group work and peer-to-peer learning experiences"
-    },
-    {
+      id: 2,
+      title: "AI-Generated & Enhanced Content",
+      image: aiContentImg,
       icon: BookOpen,
-      title: "Content Intelligence",
-      description: "AI-generated quizzes, summaries, and supplementary materials"
+      color: "from-green-500 to-blue-500",
+      features: [
+        {
+          icon: FileText,
+          title: "Automated Summaries & Flashcards",
+          description: "AI creates comprehensive summaries and interactive flashcards from content"
+        },
+        {
+          icon: BookOpen,
+          title: "AI-Generated Quizzes",
+          description: "Automatically generate assessments based on learning materials"
+        },
+        {
+          icon: Globe,
+          title: "Multilingual Support (AI Translation & Dubbing)",
+          description: "Break language barriers with AI-powered translation and voice dubbing"
+        }
+      ]
     },
     {
-      icon: Clock,
-      title: "Automated Grading",
-      description: "Smart assessment tools that save time and provide detailed feedback"
+      id: 3,
+      title: "Smart Proctoring & Auto-Grading",
+      image: smartProctoringImg,
+      icon: Shield,
+      color: "from-red-500 to-pink-500",
+      features: [
+        {
+          icon: Shield,
+          title: "AI Proctoring (Anti-Cheating)",
+          description: "Advanced AI monitoring ensures exam integrity with real-time behavior analysis"
+        },
+        {
+          icon: FileText,
+          title: "AI Essay & Code Grading",
+          description: "Intelligent grading for written assignments and programming tasks"
+        }
+      ]
     },
     {
-      icon: Target,
-      title: "Learning Objectives",
-      description: "Clear pathways aligned with curriculum standards and goals"
+      id: 4,
+      title: "Gamification & Engagement",
+      image: gamificationImg,
+      icon: Gamepad2,
+      color: "from-yellow-500 to-orange-500",
+      features: [
+        {
+          icon: Target,
+          title: "AI-Driven Adaptive Gamification",
+          description: "Personalized rewards and challenges based on individual learning styles"
+        },
+        {
+          icon: Gamepad2,
+          title: "VR/AR Labs (Advanced)",
+          description: "Immersive virtual and augmented reality learning experiences"
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: "Predictive Analytics & Instructor AI Assistant",
+      image: predictiveAnalyticsImg,
+      icon: TrendingUp,
+      color: "from-purple-500 to-indigo-500",
+      features: [
+        {
+          icon: BarChart3,
+          title: "Dropout Risk Prediction",
+          description: "Early warning system identifies at-risk students for intervention"
+        },
+        {
+          icon: Bot,
+          title: "AI Teaching Assistant",
+          description: "Intelligent assistant helps instructors with content creation and student support"
+        }
+      ]
+    },
+    {
+      id: 6,
+      title: "Corporate & Certification Features",
+      image: corporateCertificationImg,
+      icon: Award,
+      color: "from-indigo-500 to-purple-500",
+      features: [
+        {
+          icon: Award,
+          title: "Blockchain Certificates",
+          description: "Secure, verifiable digital certificates using blockchain technology"
+        },
+        {
+          icon: Users,
+          title: "LinkedIn Integration",
+          description: "Seamlessly share achievements and certifications to professional profiles"
+        }
+      ]
     }
   ];
 
@@ -94,29 +194,57 @@ const AdvancedLMS = () => {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Features Categories */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Revolutionary Features
+            Revolutionary AI-Powered Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-purple-50 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CardHeader>
-                  <div className="p-3 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg w-fit group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="h-6 w-6 text-white" />
+          <div className="space-y-16">
+            {featureCategories.map((category, categoryIndex) => (
+              <div key={category.id} className={`animate-fade-in ${categoryIndex % 2 === 1 ? 'lg:flex-row-reverse' : ''}`} style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  {/* Image Section */}
+                  <div className="relative">
+                    <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
+                      <img 
+                        src={category.image} 
+                        alt={category.title}
+                        className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                    </div>
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
-                    {feature.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-base">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                  
+                  {/* Content Section */}
+                  <div className="space-y-6">
+                    <div className="flex items-center space-x-4">
+                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} shadow-lg`}>
+                        <category.icon className="h-8 w-8 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-bold text-gray-900">{category.title}</h3>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      {category.features.map((feature, featureIndex) => (
+                        <Card key={featureIndex} className="border-l-4 border-purple-500 bg-gradient-to-r from-purple-50 to-blue-50 hover:shadow-lg transition-all duration-300">
+                          <CardContent className="p-6">
+                            <div className="flex items-start space-x-4">
+                              <div className="p-2 rounded-lg bg-white shadow-sm">
+                                <feature.icon className="h-5 w-5 text-purple-600" />
+                              </div>
+                              <div>
+                                <h4 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h4>
+                                <p className="text-gray-600">{feature.description}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

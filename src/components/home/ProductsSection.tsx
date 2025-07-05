@@ -33,12 +33,19 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       id: 'lms',
       name: t('products.advancedLMS'),
       description: t('products.advancedLMSDesc'),
-      longDescription: 'Revolutionary LMS that adapts to student learning patterns, provides intelligent analytics, and automates administrative tasks for seamless education delivery.',
+      longDescription: 'Revolutionary AI-powered LMS with personalized learning paths, smart proctoring, automated content generation, gamification, predictive analytics, and blockchain certifications.',
       icon: GraduationCap,
       status: 'coming-soon',
       color: 'from-purple-500 to-purple-600',
       bgColor: 'bg-purple-50',
-      features: ['Adaptive Learning Paths', 'AI-Powered Analytics', 'Smart Assessments', 'Automated Grading'],
+      features: [
+        'AI-Powered Personalization & Adaptive Learning',
+        'AI-Generated Content & Multilingual Support', 
+        'Smart Proctoring & Auto-Grading',
+        'Gamification & VR/AR Integration',
+        'Predictive Analytics & AI Assistant',
+        'Blockchain Certificates & Corporate Features'
+      ],
       users: t('products.comingSoon'),
       action: () => onJoinWaitlist('Advanced AI LMS'),
       actionText: t('products.joinWaitlist')
