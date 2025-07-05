@@ -76,7 +76,7 @@ const AIAssistant = () => {
       <CardHeader className="pb-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
         <CardTitle className="flex items-center space-x-2 text-lg">
           <Bot className="h-5 w-5" />
-          <span>Kribi Teaching Assistant</span>
+          <span>Kribi AI Chatbot</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col p-4">

@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional educator color scheme - mature and friendly */
+/* Modern tech aesthetic inspired by Airship.com */
 
 @layer base {
   :root {
@@ -16,25 +16,25 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Professional educator colors - warm blues and grays with better contrast */
-    --primary: 212 70% 40%; /* Darker blue for better contrast */
-    --primary-foreground: 0 0% 98%;
+    /* Modern vibrant colors - tech-forward aesthetic */
+    --primary: 217 89% 61%; /* Vibrant blue like Airship */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 45%; /* Darker blue-gray for better contrast */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 142 76% 36%; /* Fresh green accent */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 94%; /* Slightly darker for better contrast */
-    --muted-foreground: 212 25% 35%; /* Much darker for better readability */
+    --muted: 210 40% 98%; /* Ultra clean white background */
+    --muted-foreground: 215 16% 47%; /* Sophisticated gray text */
 
-    --accent: 207 82% 60%; /* Slightly darker sky blue */
+    --accent: 262 83% 58%; /* Purple accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 30% 82%; /* Darker border for better visibility */
-    --input: 210 30% 82%;
-    --ring: 212 70% 40%;
+    --border: 220 13% 91%; /* Clean, subtle borders */
+    --input: 220 13% 91%;
+    --ring: 217 89% 61%;
 
     --radius: 0.75rem;
 
