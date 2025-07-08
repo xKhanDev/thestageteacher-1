@@ -25,6 +25,7 @@ import ContactUs from "./pages/ContactUs";
 import FeedbackDashboard from "./pages/FeedbackDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import LMSApp from "./pages/LMSApp";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 
@@ -57,6 +58,7 @@ const App = () => (
             <Route path="/feedback-dashboard" element={<FeedbackDashboard />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/lms" element={<LMSApp />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />

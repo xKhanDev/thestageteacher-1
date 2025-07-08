@@ -47,8 +47,8 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
         'Blockchain Certificates & Corporate Features'
       ],
       users: t('products.comingSoon'),
-      action: () => onJoinWaitlist('Advanced AI LMS'),
-      actionText: t('products.joinWaitlist')
+      action: () => window.location.href = '/lms',
+      actionText: 'Enter LMS Beta'
     },
     {
       id: 'admin',
