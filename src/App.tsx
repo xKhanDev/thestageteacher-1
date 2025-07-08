@@ -28,6 +28,9 @@ import TermsOfService from "./pages/TermsOfService";
 import LMSApp from "./pages/LMSApp";
 import StudentPortal from "./pages/StudentPortal";
 import TeacherPortal from "./pages/TeacherPortal";
+import PrimarySchools from "./pages/solutions/PrimarySchools";
+import Universities from "./pages/solutions/Universities";
+import Admissions from "./pages/solutions/Admissions";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 
@@ -63,6 +66,9 @@ const App = () => (
             <Route path="/lms" element={<LMSApp />} />
             <Route path="/student" element={<StudentPortal />} />
             <Route path="/teacher" element={<TeacherPortal />} />
+            <Route path="/solutions/primary-schools" element={<PrimarySchools />} />
+            <Route path="/solutions/universities" element={<Universities />} />
+            <Route path="/solutions/admissions" element={<Admissions />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />

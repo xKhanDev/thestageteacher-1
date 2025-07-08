@@ -58,21 +58,25 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
       title: "Primary Schools",
       icon: Heart,
       color: "from-pink-500 to-rose-500",
+      onClick: () => navigate('/solutions/primary-schools'),
     },
     {
       title: "Secondary Schools",
       icon: TrendingUp,
       color: "from-blue-500 to-cyan-500",
+      onClick: () => navigate('/solutions/secondary-schools'),
     },
     {
       title: "Universities",
       icon: Award,
       color: "from-purple-500 to-indigo-500",
+      onClick: () => navigate('/solutions/universities'),
     },
     {
       title: "Independent Schools",
       icon: Target,
       color: "from-green-500 to-emerald-500",
+      onClick: () => navigate('/solutions/independent-schools'),
     }
   ];
 
@@ -81,26 +85,31 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
       title: "Admissions",
       icon: UserCheck,
       color: "from-blue-500 to-cyan-500",
+      onClick: () => navigate('/solutions/admissions'),
     },
     {
       title: "General Report",
       icon: FileBarChart,
       color: "from-purple-500 to-indigo-500",
+      onClick: () => navigate('/solutions/reporting'),
     },
     {
       title: "HR & Payroll",
       icon: Users,
       color: "from-green-500 to-emerald-500",
+      onClick: () => navigate('/solutions/hr-payroll'),
     },
     {
       title: "Finance",
       icon: DollarSign,
       color: "from-yellow-500 to-orange-500",
+      onClick: () => navigate('/solutions/finance'),
     },
     {
       title: "Communication",
       icon: MessageSquare,
       color: "from-pink-500 to-rose-500",
+      onClick: () => navigate('/solutions/communication'),
     }
   ];
 
@@ -210,18 +219,18 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         <div>
                           <h3 className="font-semibold text-foreground mb-3">{t('navigation.byCategory')}</h3>
                           <div className="space-y-2">
-                            {solutionsByCategory.map((solution, index) => (
-                              <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-center space-x-3">
-                                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
-                                    <solution.icon className="h-3 w-3 text-white" />
-                                  </div>
-                                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                                    {solution.title}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
+                             {solutionsByCategory.map((solution, index) => (
+                               <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer" onClick={solution.onClick}>
+                                 <div className="flex items-center space-x-3">
+                                   <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
+                                     <solution.icon className="h-3 w-3 text-white" />
+                                   </div>
+                                   <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                                     {solution.title}
+                                   </span>
+                                 </div>
+                               </div>
+                             ))}
                           </div>
                         </div>
 
@@ -229,18 +238,18 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         <div>
                           <h3 className="font-semibold text-foreground mb-3">{t('navigation.byDepartment')}</h3>
                           <div className="space-y-2">
-                            {solutionsByDepartment.map((solution, index) => (
-                              <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer">
-                                <div className="flex items-center space-x-3">
-                                  <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
-                                    <solution.icon className="h-3 w-3 text-white" />
-                                  </div>
-                                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                                    {solution.title}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
+                             {solutionsByDepartment.map((solution, index) => (
+                               <div key={index} className="group p-2 rounded-lg hover:bg-accent/10 transition-all duration-200 cursor-pointer" onClick={solution.onClick}>
+                                 <div className="flex items-center space-x-3">
+                                   <div className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}>
+                                     <solution.icon className="h-3 w-3 text-white" />
+                                   </div>
+                                   <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                                     {solution.title}
+                                   </span>
+                                 </div>
+                               </div>
+                             ))}
                           </div>
                         </div>
                       </div>
@@ -261,7 +270,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.resources')}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="left-0">
                     <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {resourcesMenu.map((item, index) => (
@@ -287,7 +296,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.aboutUs')}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="right-0">
                     <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {aboutMenu.map((item, index) => (
