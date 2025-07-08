@@ -26,6 +26,8 @@ import FeedbackDashboard from "./pages/FeedbackDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import LMSApp from "./pages/LMSApp";
+import StudentPortal from "./pages/StudentPortal";
+import TeacherPortal from "./pages/TeacherPortal";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 
@@ -59,6 +61,8 @@ const App = () => (
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/lms" element={<LMSApp />} />
+            <Route path="/student" element={<StudentPortal />} />
+            <Route path="/teacher" element={<TeacherPortal />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />

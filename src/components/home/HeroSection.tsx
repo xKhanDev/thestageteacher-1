@@ -109,11 +109,24 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg"
-            onClick={onShowLogin}
+            asChild
             className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
           >
-            {t('hero.exploreEcosystem')}
-            <Sparkles className="ml-3 h-6 w-6" />
+            <a href="/student">
+              Student Portal
+              <Sparkles className="ml-3 h-6 w-6" />
+            </a>
+          </Button>
+          <Button 
+            size="lg"
+            asChild
+            variant="outline"
+            className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
+          >
+            <a href="/teacher">
+              Teacher Portal
+              <Users className="ml-3 h-6 w-6" />
+            </a>
           </Button>
         </div>
       </div>
