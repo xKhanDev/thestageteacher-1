@@ -270,7 +270,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.resources')}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="left-0">
+                  <NavigationMenuContent className="data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-start]:slide-out-to-left-52">
                     <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {resourcesMenu.map((item, index) => (
@@ -296,7 +296,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent hover:bg-accent/10 transition-all duration-200">
                     {t('navigation.aboutUs')}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="right-0">
+                  <NavigationMenuContent className="data-[motion=from-end]:slide-in-from-right-52 data-[motion=to-end]:slide-out-to-right-52">
                     <div className="w-64 p-4 bg-background shadow-lg border border-border animate-fade-in">
                       <div className="space-y-2">
                         {aboutMenu.map((item, index) => (
