@@ -23,6 +23,10 @@ import PartnersIntegrations from "./pages/PartnersIntegrations";
 import DataProtection from "./pages/DataProtection";
 import ContactUs from "./pages/ContactUs";
 import FeedbackDashboard from "./pages/FeedbackDashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookieConsent from "./components/compliance/CookieConsent";
+import ConsentManager from "./components/compliance/ConsentManager";
 
 const queryClient = new QueryClient();
 
@@ -51,8 +55,12 @@ const App = () => (
             <Route path="/data-protection" element={<DataProtection />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/feedback-dashboard" element={<FeedbackDashboard />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <CookieConsent />
+          <ConsentManager />
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
