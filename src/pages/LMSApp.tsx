@@ -46,6 +46,7 @@ const LMSApp = () => {
         <LoginModal 
           isOpen={showLogin} 
           onClose={() => setShowLogin(false)} 
+          redirectPath="/lms"
         />
       </div>
     );
@@ -258,6 +259,7 @@ const LMSApp = () => {
       <LoginModal 
         isOpen={showLogin} 
         onClose={() => setShowLogin(false)} 
+        redirectPath="/lms"
       />
     </div>
   );

@@ -13,9 +13,10 @@ import { useNavigate } from "react-router-dom";
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
+  redirectPath?: string;
 }
 
-const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
+const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginModalProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -35,10 +36,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   useEffect(() => {
     if (user && isOpen) {
       onClose();
-      // Navigate to the main app after successful login
-      navigate('/easyteach-app');
+      // Navigate to the specified redirect path after successful login
+      navigate(redirectPath);
     }
-  }, [user, isOpen, onClose, navigate]);
+  }, [user, isOpen, onClose, navigate, redirectPath]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
