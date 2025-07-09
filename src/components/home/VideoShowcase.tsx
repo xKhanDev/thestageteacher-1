@@ -44,50 +44,53 @@ const VideoShowcase = () => {
                     
                     {/* Content Area with Animated Features */}
                     <div className="p-6 h-full bg-gradient-to-br from-gray-50 to-blue-50">
-                      {/* Feature 1: Lesson Planning (0-3s) */}
-                      <div className="animate-[fade-in_3s_ease-in-out_infinite]">
-                        <div className="bg-blue-100 rounded-lg p-4 mb-4">
+                      {/* Feature 1: Lesson Planning */}
+                      <div className="animate-[fadeIn_2s_ease-in-out_0s_infinite_alternate]">
+                        <div className="bg-blue-100 rounded-lg p-4 mb-4 transition-all duration-500">
                           <div className="flex items-center mb-2">
-                            <div className="w-8 h-8 bg-blue-500 rounded-lg mr-3 flex items-center justify-center">
+                            <div className="w-8 h-8 bg-blue-500 rounded-lg mr-3 flex items-center justify-center animate-pulse">
                               <div className="w-4 h-4 bg-white rounded"></div>
                             </div>
                             <div className="text-blue-800 font-semibold">Lesson Plan Generator</div>
                           </div>
                           <div className="space-y-2">
-                            <div className="h-2 bg-blue-300 rounded w-3/4 animate-pulse"></div>
-                            <div className="h-2 bg-blue-300 rounded w-1/2 animate-pulse"></div>
+                            <div className="h-2 bg-blue-300 rounded w-3/4 animate-[loading_2s_ease-in-out_infinite]"></div>
+                            <div className="h-2 bg-blue-300 rounded w-1/2 animate-[loading_2s_ease-in-out_0.5s_infinite]"></div>
+                            <div className="h-2 bg-blue-300 rounded w-2/3 animate-[loading_2s_ease-in-out_1s_infinite]"></div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* Feature 2: AI Assistant (3-6s) */}
-                      <div className="animate-[fade-in_3s_ease-in-out_3s_infinite]">
-                        <div className="bg-purple-100 rounded-lg p-4 mb-4">
+                      {/* Feature 2: AI Assistant */}
+                      <div className="animate-[fadeIn_2s_ease-in-out_2s_infinite_alternate]">
+                        <div className="bg-purple-100 rounded-lg p-4 mb-4 transition-all duration-500">
                           <div className="flex items-center mb-2">
-                            <div className="w-8 h-8 bg-purple-500 rounded-lg mr-3 flex items-center justify-center">
+                            <div className="w-8 h-8 bg-purple-500 rounded-lg mr-3 flex items-center justify-center animate-spin">
                               <div className="w-4 h-4 bg-white rounded-full"></div>
                             </div>
                             <div className="text-purple-800 font-semibold">Virtual Assistant</div>
                           </div>
                           <div className="space-y-2">
-                            <div className="h-2 bg-purple-300 rounded w-2/3 animate-pulse"></div>
-                            <div className="h-2 bg-purple-300 rounded w-4/5 animate-pulse"></div>
+                            <div className="h-2 bg-purple-300 rounded w-2/3 animate-[typing_1.5s_ease-in-out_infinite]"></div>
+                            <div className="h-2 bg-purple-300 rounded w-4/5 animate-[typing_1.5s_ease-in-out_0.5s_infinite]"></div>
+                            <div className="h-2 bg-purple-300 rounded w-1/2 animate-[typing_1.5s_ease-in-out_1s_infinite]"></div>
                           </div>
                         </div>
                       </div>
                       
-                      {/* Feature 3: Assessment Tools (6-9s) */}
-                      <div className="animate-[fade-in_3s_ease-in-out_6s_infinite]">
-                        <div className="bg-green-100 rounded-lg p-4">
+                      {/* Feature 3: Assessment Tools */}
+                      <div className="animate-[fadeIn_2s_ease-in-out_4s_infinite_alternate]">
+                        <div className="bg-green-100 rounded-lg p-4 transition-all duration-500">
                           <div className="flex items-center mb-2">
-                            <div className="w-8 h-8 bg-green-500 rounded-lg mr-3 flex items-center justify-center">
+                            <div className="w-8 h-8 bg-green-500 rounded-lg mr-3 flex items-center justify-center animate-bounce">
                               <div className="w-4 h-4 bg-white rounded"></div>
                             </div>
                             <div className="text-green-800 font-semibold">Smart Assessments</div>
                           </div>
                           <div className="space-y-2">
-                            <div className="h-2 bg-green-300 rounded w-5/6 animate-pulse"></div>
-                            <div className="h-2 bg-green-300 rounded w-2/3 animate-pulse"></div>
+                            <div className="h-2 bg-green-300 rounded w-5/6 animate-[progress_3s_ease-in-out_infinite]"></div>
+                            <div className="h-2 bg-green-300 rounded w-2/3 animate-[progress_3s_ease-in-out_0.5s_infinite]"></div>
+                            <div className="h-2 bg-green-300 rounded w-3/4 animate-[progress_3s_ease-in-out_1s_infinite]"></div>
                           </div>
                         </div>
                       </div>
@@ -95,12 +98,19 @@ const VideoShowcase = () => {
                   </div>
                   
                   {/* Floating Feature Indicators */}
-                  <div className="absolute top-6 right-6 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse">
+                  <div className="absolute top-6 right-6 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-[bounce_2s_infinite]">
                     15+ AI Tools
                   </div>
                   
-                  <div className="absolute bottom-6 left-6 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '2s' }}>
+                  <div className="absolute bottom-6 left-6 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-[pulse_2s_infinite]">
                     Save 15h/week
+                  </div>
+                  
+                  {/* Progress Indicator */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-[ping_2s_infinite]"></div>
+                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-[ping_2s_infinite]" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-[ping_2s_infinite]" style={{ animationDelay: '1s' }}></div>
                   </div>
                 </div>
               </div>
