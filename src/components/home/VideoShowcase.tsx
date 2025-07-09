@@ -24,19 +24,90 @@ const VideoShowcase = () => {
             <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-pulse"></div>
             <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-pink-400 to-red-400 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
             
-            {/* Video Embed */}
-            <div className="aspect-video relative">
-              <iframe
-                src="https://www.youtube.com/embed/QB6C94EVAdA"
-                title="Ecerta EdTech Platform Overview"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+            {/* Product Showcase Video */}
+            <div className="aspect-video relative bg-gradient-to-br from-blue-100 to-purple-100 overflow-hidden">
+              {/* Animated Product Demo */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-full h-full">
+                  {/* Main App Interface Mockup */}
+                  <div className="absolute inset-4 bg-white rounded-xl shadow-lg overflow-hidden animate-fade-in">
+                    {/* App Header */}
+                    <div className="h-12 bg-gradient-to-r from-blue-600 to-purple-600 flex items-center px-4">
+                      <div className="w-6 h-6 bg-white/20 rounded mr-3"></div>
+                      <div className="text-white font-semibold">EasyTeach</div>
+                      <div className="ml-auto flex space-x-2">
+                        <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                        <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                        <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                      </div>
+                    </div>
+                    
+                    {/* Content Area with Animated Features */}
+                    <div className="p-6 h-full bg-gradient-to-br from-gray-50 to-blue-50">
+                      {/* Feature 1: Lesson Planning (0-3s) */}
+                      <div className="animate-[fade-in_3s_ease-in-out_infinite]">
+                        <div className="bg-blue-100 rounded-lg p-4 mb-4">
+                          <div className="flex items-center mb-2">
+                            <div className="w-8 h-8 bg-blue-500 rounded-lg mr-3 flex items-center justify-center">
+                              <div className="w-4 h-4 bg-white rounded"></div>
+                            </div>
+                            <div className="text-blue-800 font-semibold">Lesson Plan Generator</div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="h-2 bg-blue-300 rounded w-3/4 animate-pulse"></div>
+                            <div className="h-2 bg-blue-300 rounded w-1/2 animate-pulse"></div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Feature 2: AI Assistant (3-6s) */}
+                      <div className="animate-[fade-in_3s_ease-in-out_3s_infinite]">
+                        <div className="bg-purple-100 rounded-lg p-4 mb-4">
+                          <div className="flex items-center mb-2">
+                            <div className="w-8 h-8 bg-purple-500 rounded-lg mr-3 flex items-center justify-center">
+                              <div className="w-4 h-4 bg-white rounded-full"></div>
+                            </div>
+                            <div className="text-purple-800 font-semibold">Virtual Assistant</div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="h-2 bg-purple-300 rounded w-2/3 animate-pulse"></div>
+                            <div className="h-2 bg-purple-300 rounded w-4/5 animate-pulse"></div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Feature 3: Assessment Tools (6-9s) */}
+                      <div className="animate-[fade-in_3s_ease-in-out_6s_infinite]">
+                        <div className="bg-green-100 rounded-lg p-4">
+                          <div className="flex items-center mb-2">
+                            <div className="w-8 h-8 bg-green-500 rounded-lg mr-3 flex items-center justify-center">
+                              <div className="w-4 h-4 bg-white rounded"></div>
+                            </div>
+                            <div className="text-green-800 font-semibold">Smart Assessments</div>
+                          </div>
+                          <div className="space-y-2">
+                            <div className="h-2 bg-green-300 rounded w-5/6 animate-pulse"></div>
+                            <div className="h-2 bg-green-300 rounded w-2/3 animate-pulse"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Feature Indicators */}
+                  <div className="absolute top-6 right-6 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse">
+                    15+ AI Tools
+                  </div>
+                  
+                  <div className="absolute bottom-6 left-6 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '2s' }}>
+                    Save 15h/week
+                  </div>
+                </div>
+              </div>
               
-              {/* Overlay with Play Button (visible until video starts) */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
-                <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg animate-pulse">
+              {/* Play button overlay for interaction */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg">
                   <Play className="h-12 w-12 text-blue-600" />
                 </div>
               </div>
@@ -51,7 +122,7 @@ const VideoShowcase = () => {
                     <span className="text-sm font-medium">{t('videoShowcase.fullDemo')}</span>
                   </div>
                   <div className="flex items-center space-x-2 text-gray-600">
-                    <span className="text-sm">{t('videoShowcase.duration')}</span>
+                    <span className="text-sm">10s Product Demo</span>
                   </div>
                 </div>
                 <Button 
