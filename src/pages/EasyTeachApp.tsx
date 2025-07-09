@@ -60,13 +60,12 @@ const EasyTeachApp = () => {
     setSelectedTool(tool);
   };
 
-  const handleQuickAction = (category) => {
+  const handleQuickAction = (category, toolId) => {
     setSelectedCategory(category);
-    // Find the first tool in the selected category using English mapping
-    const englishCategory = categoryMapping[category];
-    const categoryTool = tools.find(tool => tool.category === englishCategory);
-    if (categoryTool) {
-      setSelectedTool(categoryTool);
+    // Find the specific tool by ID
+    const tool = tools.find(tool => tool.id === toolId);
+    if (tool) {
+      setSelectedTool(tool);
     }
   };
 

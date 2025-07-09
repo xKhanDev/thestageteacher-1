@@ -158,7 +158,7 @@
     },
     "tabs": {
       "teachingTools": "Teaching Tools",
-      "kribiAssistant": "Kribi Assistant",
+      "kribiAssistant": "Virtual Assistant",
       "ai": "AI"
     },
     "search": {
@@ -204,7 +204,7 @@
       "signOut": "Sign Out"
     },
     "aiAssistant": {
-      "title": "Kribi Teaching Assistant",
+      "title": "Virtual Teaching Assistant",
       "description": "Get instant help with educational questions, lesson planning, and teaching strategies"
     },
     "favoriteToolsList": {

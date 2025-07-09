@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 interface WelcomeSectionProps {
   teacherProfile: any;
-  onQuickAction?: (category: string) => void;
+  onQuickAction?: (category: string, toolId: number) => void;
 }
 
 const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) => {
@@ -17,11 +17,12 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
   
   const educationalQuotes = t('easyteach.quotes', { returnObjects: true }) as Array<{ text: string; author: string }>;
 
+  // Get actual tools from toolsData, selecting popular ones from each category
   const favoriteTools = [
-    { name: t('easyteach.favoriteToolsList.lessonPlannerPro'), icon: BookOpen, color: "from-blue-500 to-indigo-500", category: "Lesson Planning" },
-    { name: t('easyteach.favoriteToolsList.smartGrading'), icon: Star, color: "from-purple-500 to-pink-500", category: "Assessment" },
-    { name: t('easyteach.favoriteToolsList.classOrganizer'), icon: Heart, color: "from-green-500 to-emerald-500", category: "Communication" },
-    { name: t('easyteach.favoriteToolsList.quizMaster'), icon: Zap, color: "from-orange-500 to-red-500", category: "Assessment" }
+    { name: "Lesson Plan Generator", icon: BookOpen, color: "from-blue-500 to-indigo-500", category: "Lesson Planning", toolId: 1 },
+    { name: "General Assessment", icon: Star, color: "from-purple-500 to-pink-500", category: "Assessment", toolId: 10 },
+    { name: "Parent Email Composer", icon: Heart, color: "from-green-500 to-emerald-500", category: "Communication", toolId: 18 },
+    { name: "Quiz Creator", icon: Zap, color: "from-orange-500 to-red-500", category: "Assessment", toolId: 15 }
   ];
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
           {favoriteTools.map((tool, index) => (
             <Button 
               key={index}
-              onClick={() => onQuickAction?.(tool.category)}
+              onClick={() => onQuickAction?.(tool.category, tool.toolId)}
               className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-3 py-1 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer`}
             >
               <tool.icon className="mr-1 h-3 w-3" />

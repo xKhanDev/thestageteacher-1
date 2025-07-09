@@ -157,7 +157,7 @@
     },
     "tabs": {
       "teachingTools": "Herramientas de Enseñanza",
-      "kribiAssistant": "Asistente Kribi",
+      "kribiAssistant": "Asistente Virtual",
       "ai": "IA"
     },
     "search": {
@@ -203,7 +203,7 @@
       "signOut": "Cerrar Sesión"
     },
     "aiAssistant": {
-      "title": "Asistente de Enseñanza Kribi",
+      "title": "Asistente Virtual de Enseñanza",
       "description": "Obtén ayuda instantánea con preguntas educativas, planificación de lecciones y estrategias de enseñanza"
     },
     "favoriteToolsList": {
