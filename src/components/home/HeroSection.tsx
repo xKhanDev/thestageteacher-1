@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, TrendingUp, Clock, Shield, Globe, Star, Sparkles } from "lucide-react";
+import { Users, TrendingUp, Clock, Shield, Globe, Star, Sparkles, ArrowRight, Play } from "lucide-react";
 
 interface HeroSectionProps {
   onShowLogin: () => void;
@@ -109,24 +109,19 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg"
-            asChild
+            onClick={onShowLogin}
             className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
           >
-            <a href="/student">
-              Student Portal
-              <Sparkles className="ml-3 h-6 w-6" />
-            </a>
+            Get Started Free
+            <ArrowRight className="ml-3 h-6 w-6" />
           </Button>
           <Button 
             size="lg"
-            asChild
             variant="outline"
             className="border-2 border-purple-300 text-purple-700 hover:bg-purple-50 px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-scale"
           >
-            <a href="/teacher">
-              Teacher Portal
-              <Users className="ml-3 h-6 w-6" />
-            </a>
+            <Play className="mr-3 h-6 w-6" />
+            Watch Demo
           </Button>
         </div>
       </div>
