@@ -66,7 +66,7 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
     },
     {
       id: 'school-admin',
-      name: t('products.schoolAdmin'),
+      name: 'School Administration',
       description: t('products.schoolAdminDesc'),
       longDescription: 'Comprehensive school management system with AI-powered administrative tools, student tracking, and institutional analytics.',
       icon: Building2,
@@ -127,7 +127,7 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
             <Card key={product.id} className={`group hover:shadow-2xl transition-all duration-500 border-0 ${product.bgColor} overflow-hidden relative ${product.status === 'available' ? 'hover:-translate-y-2' : ''} animate-fade-in ${product.popular ? 'ring-2 ring-purple-400 scale-105' : ''}`} style={{ animationDelay: `${index * 0.1}s` }}>
               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -143,60 +143,65 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
               
               <CardHeader className="pb-4 relative">
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`p-4 rounded-2xl bg-gradient-to-r ${product.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <product.icon className="h-8 w-8 text-white" />
+                  <div className={`p-3 rounded-2xl bg-gradient-to-r ${product.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <product.icon className="h-6 w-6 text-white" />
                   </div>
                   {product.status === 'available' ? (
-                    <Badge className="bg-green-100 text-green-800 border-green-200 pulse">
+                    <Badge className="bg-green-100 text-green-800 border-green-200 pulse text-xs">
                       <CheckCircle className="h-3 w-3 mr-1" />
-                      Available Now
+                      Available
                     </Badge>
                   ) : (
-                    <Badge className="bg-amber-100 text-amber-800 border-amber-200">
+                    <Badge className="bg-amber-100 text-amber-800 border-amber-200 text-xs">
                       Coming Soon
                     </Badge>
                   )}
                 </div>
                 
-                <CardTitle className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
+                <CardTitle className="text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
                   {product.name}
                 </CardTitle>
                 
-                <div className="mb-4">
+                <div className="mb-3">
                   <div className="flex items-baseline">
-                    <span className="text-4xl font-bold text-gray-900">{product.price}</span>
+                    <span className="text-2xl font-bold text-gray-900">{product.price}</span>
                     {product.priceSubtext && (
-                      <span className="text-gray-600 ml-2">/{product.priceSubtext}</span>
+                      <span className="text-gray-600 ml-1 text-sm">/{product.priceSubtext}</span>
                     )}
                   </div>
                 </div>
                 
-                <CardDescription className="text-gray-600 text-base leading-relaxed mb-4">
+                <CardDescription className="text-gray-600 text-sm leading-relaxed mb-3">
                   {product.description}
                 </CardDescription>
                 
-                <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <Users className="h-4 w-4 mr-2" />
+                <div className="flex items-center text-xs text-gray-500 mb-3">
+                  <Users className="h-3 w-3 mr-1" />
                   {product.users}
                 </div>
               </CardHeader>
 
-              <CardContent className="relative">
-                <div className="space-y-3 mb-8">
-                  {product.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+              <CardContent className="relative pt-0">
+                <div className="space-y-2 mb-6">
+                  {product.features.slice(0, 4).map((feature, idx) => (
+                    <div key={idx} className="flex items-start text-xs text-gray-600">
+                      <CheckCircle className="h-3 w-3 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                       <span className={feature.startsWith('Everything in Free') ? 'font-semibold text-gray-800' : ''}>{feature}</span>
                     </div>
                   ))}
+                  {product.features.length > 4 && (
+                    <div className="text-xs text-gray-500 italic">
+                      +{product.features.length - 4} more features
+                    </div>
+                  )}
                 </div>
 
                 <Button 
                   onClick={product.action}
-                  className={`w-full rounded-2xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white font-medium py-3 transition-all duration-300 ${product.status === 'available' ? 'group-hover:scale-105' : ''}`}
+                  className={`w-full rounded-2xl bg-gradient-to-r ${product.color} hover:opacity-90 text-white font-medium py-2 text-sm transition-all duration-300 ${product.status === 'available' ? 'group-hover:scale-105' : ''}`}
                 >
                   {product.actionText}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-1 h-3 w-3" />
                 </Button>
               </CardContent>
             </Card>
