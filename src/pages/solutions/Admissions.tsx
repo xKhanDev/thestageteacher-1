@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { UserCheck, FileText, Users, CheckCircle, Clock, BarChart } from "lucide-react";
+import { UserCheck, FileText, Users, CheckCircle, Clock, BarChart, Bot, MessageSquare, Monitor } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState } from "react";
 import LoginModal from "@/components/auth/LoginModal";
@@ -11,23 +12,28 @@ const Admissions = () => {
   const features = [
     {
       icon: FileText,
-      title: "Application Management",
-      description: "Streamlined application process with automated document verification"
-    },
-    {
-      icon: Users,
-      title: "Applicant Tracking",
-      description: "Comprehensive tracking system from application to enrollment"
+      title: "Online Application Forms",
+      description: "Customizable fields that adapt to your school's specific requirements"
     },
     {
       icon: CheckCircle,
-      title: "Automated Evaluation",
-      description: "AI-powered evaluation and scoring system for fair assessments"
+      title: "Automatic Document Verification",
+      description: "Automated verification and comprehensive applicant tracking system"
     },
     {
-      icon: BarChart,
-      title: "Admission Analytics",
-      description: "Data-driven insights to optimize your admission process"
+      icon: Bot,
+      title: "AI-Based Student Profiling",
+      description: "Faster evaluations through intelligent student profiling algorithms"
+    },
+    {
+      icon: MessageSquare,
+      title: "Seamless Communication",
+      description: "Direct communication channels with parents and applicants"
+    },
+    {
+      icon: Monitor,
+      title: "Centralized Dashboard",
+      description: "Monitor every stage of enrollment from a single interface"
     }
   ];
 
@@ -44,23 +50,22 @@ const Admissions = () => {
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Admissions Management
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Simplify and streamline your admissions process with our comprehensive 
-            management system designed for educational institutions.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+            Simplify and streamline your entire admissions process with our intuitive, AI-assisted platform.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 mb-4">
                   <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </div>
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 text-base">
@@ -71,8 +76,18 @@ const Admissions = () => {
           ))}
         </div>
 
-        {/* Benefits */}
+        {/* Why it Matters Section */}
         <div className="bg-white rounded-2xl p-8 shadow-lg mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8">Why it Matters</h2>
+          <p className="text-lg text-gray-600 text-center max-w-4xl mx-auto leading-relaxed">
+            Cut down administrative time and reduce errors by automating repetitive tasks. 
+            Offer prospective families a smooth and responsive admissions journey that reflects 
+            your school's professionalism.
+          </p>
+        </div>
+
+        {/* Benefits */}
+        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg mb-16">
           <h2 className="text-3xl font-bold text-center mb-8">Transform Your Admissions Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
@@ -104,7 +119,7 @@ const Admissions = () => {
             onClick={() => setShowLogin(true)}
             className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-4 text-lg"
           >
-            Get Started Today
+            Streamline Admissions Today
           </Button>
         </div>
       </div>
