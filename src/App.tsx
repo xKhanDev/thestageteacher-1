@@ -33,6 +33,10 @@ import SecondarySchools from "./pages/solutions/SecondarySchools";
 import Universities from "./pages/solutions/Universities";
 import IndependentSchools from "./pages/solutions/IndependentSchools";
 import Admissions from "./pages/solutions/Admissions";
+import GeneralReports from "./pages/solutions/GeneralReports";
+import HRPayroll from "./pages/solutions/HRPayroll";
+import Finance from "./pages/solutions/Finance";
+import Communication from "./pages/solutions/Communication";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 
@@ -73,6 +77,10 @@ const App = () => (
             <Route path="/solutions/universities" element={<Universities />} />
             <Route path="/solutions/independent-schools" element={<IndependentSchools />} />
             <Route path="/solutions/admissions" element={<Admissions />} />
+            <Route path="/solutions/reporting" element={<GeneralReports />} />
+            <Route path="/solutions/hr-payroll" element={<HRPayroll />} />
+            <Route path="/solutions/finance" element={<Finance />} />
+            <Route path="/solutions/communication" element={<Communication />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />
