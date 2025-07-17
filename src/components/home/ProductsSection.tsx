@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BookOpen, GraduationCap, Building2, ArrowRight, CheckCircle, Users, Sparkles, PenTool, BookText, MessageSquare, Target, Zap } from "lucide-react";
+import { BookOpen, GraduationCap, Building2, ArrowRight, CheckCircle, Users, Sparkles, PenTool, BookText, MessageSquare, Target, Zap, Crown } from "lucide-react";
 
 interface ProductsSectionProps {
   onShowLogin: () => void;
@@ -16,18 +16,53 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
   
   const products = [
     {
-      id: 'easyteach',
-      name: t('products.easyTeach'),
-      description: t('products.easyTeachDesc'),
-      longDescription: 'Transform your teaching experience with smart lesson planning, instant communication tools, behavior support, and personalized learning resources.',
+      id: 'easyteach-free',
+      name: 'EasyTeach Free',
+      description: 'Perfect for getting started with AI-powered teaching tools',
+      longDescription: 'Get started with essential AI teaching tools including lesson planning, communication assistance, and basic content generation.',
       icon: BookOpen,
       status: 'available',
       color: 'from-blue-500 to-blue-600',
       bgColor: 'bg-blue-50',
-      features: ['Smart Lesson Planning', 'Parent Communication', 'Behavior Management', '50+ AI Tools'],
+      price: 'Free',
+      priceSubtext: 'Forever',
+      features: [
+        'Basic Lesson Planning',
+        'Parent Communication Templates', 
+        'Limited AI Generations (50/month)',
+        'Basic Behavior Management Tools',
+        'Community Support'
+      ],
       users: '100,000+ Teachers',
       action: () => onShowLogin(),
-      actionText: 'Start Teaching Smarter'
+      actionText: 'Get Started Free',
+      popular: false
+    },
+    {
+      id: 'easyteach-pro',
+      name: 'EasyTeach Pro',
+      description: 'Everything in Free, plus unlimited AI power and exclusive features',
+      longDescription: 'Unlock the full potential of AI-powered teaching with unlimited generations, advanced features, and exclusive early access to new tools.',
+      icon: Crown,
+      status: 'available',
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50',
+      price: '$89',
+      priceSubtext: 'per year',
+      features: [
+        'Everything in Free, plus...',
+        'Unlimited AI generations',
+        'Continue threads with Kribi Chatbot',
+        'Unlimited AI Slides generation',
+        'Export to Google Slides',
+        'EasyTeach for students',
+        'Lifetime output history',
+        'Exclusive early access to new features'
+      ],
+      users: 'Most Popular',
+      action: () => onShowLogin(),
+      actionText: 'Upgrade to Pro',
+      popular: true
     },
     {
       id: 'lms',
@@ -36,8 +71,10 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       longDescription: 'Revolutionary AI-powered LMS with personalized learning paths, smart proctoring, automated content generation, gamification, predictive analytics, and blockchain certifications.',
       icon: GraduationCap,
       status: 'coming-soon',
-      color: 'from-purple-500 to-purple-600',
-      bgColor: 'bg-purple-50',
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50',
+      price: 'Coming Soon',
+      priceSubtext: '',
       features: [
         'AI-Powered Personalization & Adaptive Learning',
         'AI-Generated Content & Multilingual Support', 
@@ -48,21 +85,8 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       ],
       users: t('products.comingSoon'),
       action: () => window.location.href = '/lms',
-      actionText: 'Enter LMS Beta'
-    },
-    {
-      id: 'admin',
-      name: 'School Administration',
-      description: 'Comprehensive school management platform for modern educational institutions',
-      longDescription: 'Streamline your school operations with integrated student information systems, staff management, financial tracking, and communication tools.',
-      icon: Building2,
-      status: 'coming-soon',
-      color: 'from-green-500 to-green-600',
-      bgColor: 'bg-green-50',
-      features: ['Student Information System', 'Staff Management', 'Financial Tracking', 'Communication Hub'],
-      users: t('products.comingSoon'),
-      action: () => onJoinWaitlist('School Administration Platform'),
-      actionText: t('products.joinWaitlist')
+      actionText: 'Enter LMS Beta',
+      popular: false
     }
   ];
 
@@ -71,18 +95,27 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            {t('products.title')} 
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Ecosystem</span>
+            Choose Your 
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Plan</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('products.description')}
+            Start free and upgrade when you're ready for unlimited AI power
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <Card key={product.id} className={`group hover:shadow-2xl transition-all duration-500 border-0 ${product.bgColor} overflow-hidden relative ${product.status === 'available' ? 'hover:-translate-y-2' : ''} animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+            <Card key={product.id} className={`group hover:shadow-2xl transition-all duration-500 border-0 ${product.bgColor} overflow-hidden relative ${product.status === 'available' ? 'hover:-translate-y-2' : ''} animate-fade-in ${product.popular ? 'ring-2 ring-purple-400 scale-105' : ''}`} style={{ animationDelay: `${index * 0.1}s` }}>
               <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+              
+              {product.popular && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                  <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 px-4 py-1">
+                    <Sparkles className="h-3 w-3 mr-1" />
+                    Most Popular
+                  </Badge>
+                </div>
+              )}
               
               <CardHeader className="pb-4 relative">
                 <div className="flex items-start justify-between mb-4">
@@ -104,6 +137,16 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
                 <CardTitle className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">
                   {product.name}
                 </CardTitle>
+                
+                <div className="mb-4">
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-bold text-gray-900">{product.price}</span>
+                    {product.priceSubtext && (
+                      <span className="text-gray-600 ml-2">/{product.priceSubtext}</span>
+                    )}
+                  </div>
+                </div>
+                
                 <CardDescription className="text-gray-600 text-base leading-relaxed mb-4">
                   {product.description}
                 </CardDescription>
@@ -115,15 +158,11 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
               </CardHeader>
 
               <CardContent className="relative">
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  {product.longDescription}
-                </p>
-                
-                <div className="space-y-2 mb-8">
+                <div className="space-y-3 mb-8">
                   {product.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-gray-600">
-                      <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                      {feature}
+                    <div key={idx} className="flex items-start text-sm text-gray-600">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className={feature.startsWith('Everything in Free') ? 'font-semibold text-gray-800' : ''}>{feature}</span>
                     </div>
                   ))}
                 </div>
