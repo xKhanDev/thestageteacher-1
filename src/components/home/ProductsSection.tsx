@@ -65,6 +65,30 @@ const ProductsSection = ({ onShowLogin, onJoinWaitlist }: ProductsSectionProps) 
       popular: true
     },
     {
+      id: 'school-admin',
+      name: t('products.schoolAdmin'),
+      description: t('products.schoolAdminDesc'),
+      longDescription: 'Comprehensive school management system with AI-powered administrative tools, student tracking, and institutional analytics.',
+      icon: Building2,
+      status: 'coming-soon',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-50',
+      price: 'Coming Soon',
+      priceSubtext: '',
+      features: [
+        'School-wide Management Dashboard',
+        'AI-Powered Administrative Assistance',
+        'Student Performance Analytics',
+        'Staff Management & Scheduling',
+        'Parent-School Communication Hub',
+        'Institutional Reporting & Insights'
+      ],
+      users: t('products.comingSoon'),
+      action: () => onJoinWaitlist('School Administration'),
+      actionText: t('products.joinWaitlist'),
+      popular: false
+    },
+    {
       id: 'lms',
       name: t('products.advancedLMS'),
       description: t('products.advancedLMSDesc'),
