@@ -1,6 +1,6 @@
 
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, User, Bot, Menu } from "lucide-react";
@@ -17,6 +17,7 @@ import ToolModal from "@/components/ToolModal";
 import AIAssistant from "@/components/AIAssistant";
 import GradeSystemSelector from "@/components/GradeSystemSelector";
 import LanguageSelector from "@/components/LanguageSelector";
+import OnboardingFlow from "@/components/onboarding/OnboardingFlow";
 import { tools } from "@/lib/toolsData";
 
 const EasyTeachApp = () => {
@@ -27,6 +28,15 @@ const EasyTeachApp = () => {
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  // Check if user is new (no profile exists)
+  useEffect(() => {
+    const hasCompletedOnboarding = localStorage.getItem('easyteach-onboarding-completed');
+    if (!hasCompletedOnboarding && !teacherProfile) {
+      setShowOnboarding(true);
+    }
+  }, [teacherProfile]);
 
   const categories = [
     { name: t('easyteach.categories.all'), icon: "Grid", color: "bg-gray-100 text-gray-800", gradient: "from-gray-500 to-gray-600" },
@@ -67,6 +77,21 @@ const EasyTeachApp = () => {
     if (tool) {
       setSelectedTool(tool);
     }
+  };
+
+  const handleOnboardingComplete = (onboardingData) => {
+    // Save profile data from onboarding
+    if (onboardingData.profile) {
+      setTeacherProfile(onboardingData.profile);
+    }
+    
+    // Mark onboarding as completed
+    localStorage.setItem('easyteach-onboarding-completed', 'true');
+    setShowOnboarding(false);
+  };
+
+  const handleStartOnboarding = () => {
+    setShowOnboarding(true);
   };
 
   return (
@@ -118,6 +143,7 @@ const EasyTeachApp = () => {
             <WelcomeSection 
               teacherProfile={teacherProfile} 
               onQuickAction={handleQuickAction}
+              onStartOnboarding={handleStartOnboarding}
             />
 
             {/* Main Content Tabs */}
@@ -196,6 +222,13 @@ const EasyTeachApp = () => {
               teacherProfile={teacherProfile}
             />
           )}
+
+          {/* Onboarding Flow */}
+          <OnboardingFlow
+            isOpen={showOnboarding}
+            onClose={() => setShowOnboarding(false)}
+            onComplete={handleOnboardingComplete}
+          />
         </div>
       </div>
     </SidebarProvider>
