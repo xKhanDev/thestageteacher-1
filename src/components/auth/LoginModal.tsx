@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,16 +22,20 @@ interface LoginModalProps {
   redirectPath?: string;
 }
 
-const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginModalProps) => {
+const LoginModal = ({
+  isOpen,
+  onClose,
+  redirectPath = "/easyteach-app",
+}: LoginModalProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [activeTab, setActiveTab] = useState("signin");
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: '',
-    confirmPassword: ''
+    email: "",
+    password: "",
+    name: "",
+    confirmPassword: "",
   });
 
   const { signIn, signUp, user } = useAuth();
@@ -42,15 +52,15 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
   }, [user, isOpen, onClose, navigate, redirectPath]);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const resetForm = () => {
     setFormData({
-      email: '',
-      password: '',
-      name: '',
-      confirmPassword: ''
+      email: "",
+      password: "",
+      name: "",
+      confirmPassword: "",
     });
     setIsLoading(false);
   };
@@ -67,8 +77,12 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
 
     setIsLoading(true);
     try {
-      const { error } = await signIn(formData.email, formData.password, rememberMe);
-      
+      const { error } = await signIn(
+        formData.email,
+        formData.password,
+        rememberMe
+      );
+
       if (error) {
         toast({
           title: "Sign In Failed",
@@ -124,8 +138,12 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
 
     setIsLoading(true);
     try {
-      const { error } = await signUp(formData.email, formData.password, formData.name);
-      
+      const { error } = await signUp(
+        formData.email,
+        formData.password,
+        formData.name
+      );
+
       if (error) {
         toast({
           title: "Sign Up Failed",
@@ -160,7 +178,7 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
 
   return (
     <Dialog open={isOpen} onOpenChange={handleModalChange}>
-      <DialogContent className="sm:max-w-md bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 border-0 shadow-2xl">
+      <DialogContent className="h-screen no-scrollbar sm:max-w-md bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 border-0 shadow-2xl">
         <DialogHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <div className="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
@@ -171,22 +189,21 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
             Welcome to EasyTeach
           </DialogTitle>
           <DialogDescription className="text-gray-600 text-base">
-            {activeTab === "signin" 
-              ? "Sign in to access your AI-powered teaching tools" 
-              : "Join thousands of educators transforming their teaching experience"
-            }
+            {activeTab === "signin"
+              ? "Sign in to access your AI-powered teaching tools"
+              : "Join thousands of educators transforming their teaching experience"}
           </DialogDescription>
         </DialogHeader>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 bg-gray-100/80 backdrop-blur-sm">
-            <TabsTrigger 
-              value="signin" 
+            <TabsTrigger
+              value="signin"
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white font-semibold transition-all duration-200"
             >
               Sign In
             </TabsTrigger>
-            <TabsTrigger 
+            <TabsTrigger
               value="signup"
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white font-semibold transition-all duration-200"
             >
@@ -196,7 +213,12 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
 
           <TabsContent value="signin" className="space-y-5 mt-6">
             <div className="space-y-2">
-              <Label htmlFor="signin-email" className="text-gray-700 font-medium">Email Address</Label>
+              <Label
+                htmlFor="signin-email"
+                className="text-gray-700 font-medium"
+              >
+                Email Address
+              </Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
@@ -204,14 +226,19 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                   className="pl-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="signin-password" className="text-gray-700 font-medium">Password</Label>
+              <Label
+                htmlFor="signin-password"
+                className="text-gray-700 font-medium"
+              >
+                Password
+              </Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
@@ -219,7 +246,9 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                   className="pl-10 pr-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
                 />
                 <button
@@ -237,19 +266,22 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
             </div>
 
             <div className="flex items-center space-x-2 pt-2">
-              <Checkbox 
-                id="remember-me" 
+              <Checkbox
+                id="remember-me"
                 checked={rememberMe}
                 onCheckedChange={(checked) => setRememberMe(checked as boolean)}
                 className="border-gray-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-500 data-[state=checked]:to-purple-500"
               />
-              <Label htmlFor="remember-me" className="text-sm text-gray-600 font-medium">
+              <Label
+                htmlFor="remember-me"
+                className="text-sm text-gray-600 font-medium"
+              >
                 Keep me signed in
               </Label>
             </div>
 
-            <Button 
-              onClick={handleSignIn} 
+            <Button
+              onClick={handleSignIn}
               disabled={isLoading}
               className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px]"
             >
@@ -259,26 +291,36 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   Signing In...
                 </>
               ) : (
-                'Sign In to EasyTeach'
+                "Sign In to EasyTeach"
               )}
             </Button>
           </TabsContent>
 
           <TabsContent value="signup" className="space-y-5 mt-6">
             <div className="space-y-2">
-              <Label htmlFor="signup-name" className="text-gray-700 font-medium">Full Name</Label>
+              <Label
+                htmlFor="signup-name"
+                className="text-gray-700 font-medium"
+              >
+                Full Name
+              </Label>
               <Input
                 id="signup-name"
                 type="text"
                 placeholder="Enter your full name"
                 value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
+                onChange={(e) => handleInputChange("name", e.target.value)}
                 className="bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="signup-email" className="text-gray-700 font-medium">Email Address</Label>
+              <Label
+                htmlFor="signup-email"
+                className="text-gray-700 font-medium"
+              >
+                Email Address
+              </Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
@@ -286,14 +328,19 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                   className="pl-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="signup-password" className="text-gray-700 font-medium">Password</Label>
+              <Label
+                htmlFor="signup-password"
+                className="text-gray-700 font-medium"
+              >
+                Password
+              </Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
@@ -301,7 +348,9 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   type={showPassword ? "text" : "password"}
                   placeholder="Create a password (min. 6 characters)"
                   value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                   className="pl-10 pr-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
                 />
                 <button
@@ -319,19 +368,26 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirm-password" className="text-gray-700 font-medium">Confirm Password</Label>
+              <Label
+                htmlFor="confirm-password"
+                className="text-gray-700 font-medium"
+              >
+                Confirm Password
+              </Label>
               <Input
                 id="confirm-password"
                 type="password"
                 placeholder="Confirm your password"
                 value={formData.confirmPassword}
-                onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange("confirmPassword", e.target.value)
+                }
                 className="bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
               />
             </div>
 
-            <Button 
-              onClick={handleSignUp} 
+            <Button
+              onClick={handleSignUp}
               disabled={isLoading}
               className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 min-h-[48px]"
             >
@@ -341,12 +397,13 @@ const LoginModal = ({ isOpen, onClose, redirectPath = '/easyteach-app' }: LoginM
                   Creating Account...
                 </>
               ) : (
-                'Create Your Account'
+                "Create Your Account"
               )}
             </Button>
 
             <p className="text-xs text-gray-500 text-center mt-4">
-              By creating an account, you agree to our Terms of Service and Privacy Policy
+              By creating an account, you agree to our Terms of Service and
+              Privacy Policy
             </p>
           </TabsContent>
         </Tabs>

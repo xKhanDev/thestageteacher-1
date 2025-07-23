@@ -1,25 +1,26 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Globe, Check } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Globe, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 
 const languages = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' }
+  { code: "en", name: "English", flag: "🇺🇸" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
+  { code: "es", name: "Español", flag: "🇪🇸" },
 ];
 
 const LanguageSelector = () => {
   const { i18n, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const currentLanguage =
+    languages.find((lang) => lang.code === i18n.language) || languages[0];
 
   const handleLanguageChange = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
@@ -29,13 +30,13 @@ const LanguageSelector = () => {
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="h-9 w-9 p-0 hover:bg-gray-100"
+        <Button
+          variant="ghost"
+          size="sm"
+          className="h-9 w-9 p-0 hover:bg-gray-100 hover:text-primary"
         >
           <Globe className="h-4 w-4" />
-          <span className="sr-only">{t('common.language')}</span>
+          <span className="sr-only">{t("common.language")}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">

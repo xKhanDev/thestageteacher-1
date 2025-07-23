@@ -1,18 +1,45 @@
-
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, GraduationCap, Brain, BarChart3, Users, BookOpen, Clock, Target, CheckCircle, ArrowRight, MessageSquare, FileText, Globe, Shield, Gamepad2, Award, TrendingUp, Bot } from "lucide-react";
+import {
+  ArrowLeft,
+  GraduationCap,
+  Brain,
+  BarChart3,
+  Users,
+  BookOpen,
+  Clock,
+  Target,
+  CheckCircle,
+  ArrowRight,
+  MessageSquare,
+  FileText,
+  Globe,
+  Shield,
+  Gamepad2,
+  Award,
+  TrendingUp,
+  Bot,
+} from "lucide-react";
 import aiPersonalizationImg from "@/assets/ai-personalization-professional.jpg";
 import aiContentImg from "@/assets/ai-content-professional.jpg";
 import smartProctoringImg from "@/assets/smart-proctoring-professional.jpg";
 import gamificationImg from "@/assets/gamification-professional.jpg";
 import predictiveAnalyticsImg from "@/assets/predictive-analytics-professional.jpg";
 import corporateCertificationImg from "@/assets/corporate-certification-professional.jpg";
+import Navigation from "@/components/home/Navigation";
+import Footer from "@/components/home/Footer";
 
 const AdvancedLMS = () => {
+  const [onShowLogin, setOnShowLogin] = useState(false);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -31,19 +58,22 @@ const AdvancedLMS = () => {
         {
           icon: Target,
           title: "Dynamic Course Recommendations",
-          description: "AI analyzes learning patterns to suggest optimal courses and learning paths"
+          description:
+            "AI analyzes learning patterns to suggest optimal courses and learning paths",
         },
         {
           icon: MessageSquare,
           title: "AI Tutor (Chatbot Assistant)",
-          description: "24/7 intelligent tutoring support with personalized explanations"
+          description:
+            "24/7 intelligent tutoring support with personalized explanations",
         },
         {
           icon: BarChart3,
           title: "Real-Time Skill Gap Analysis",
-          description: "Identifies knowledge gaps and provides targeted learning recommendations"
-        }
-      ]
+          description:
+            "Identifies knowledge gaps and provides targeted learning recommendations",
+        },
+      ],
     },
     {
       id: 2,
@@ -55,19 +85,22 @@ const AdvancedLMS = () => {
         {
           icon: FileText,
           title: "Automated Summaries & Flashcards",
-          description: "AI creates comprehensive summaries and interactive flashcards from content"
+          description:
+            "AI creates comprehensive summaries and interactive flashcards from content",
         },
         {
           icon: BookOpen,
           title: "AI-Generated Quizzes",
-          description: "Automatically generate assessments based on learning materials"
+          description:
+            "Automatically generate assessments based on learning materials",
         },
         {
           icon: Globe,
           title: "Multilingual Support (AI Translation & Dubbing)",
-          description: "Break language barriers with AI-powered translation and voice dubbing"
-        }
-      ]
+          description:
+            "Break language barriers with AI-powered translation and voice dubbing",
+        },
+      ],
     },
     {
       id: 3,
@@ -79,14 +112,16 @@ const AdvancedLMS = () => {
         {
           icon: Shield,
           title: "AI Proctoring (Anti-Cheating)",
-          description: "Advanced AI monitoring ensures exam integrity with real-time behavior analysis"
+          description:
+            "Advanced AI monitoring ensures exam integrity with real-time behavior analysis",
         },
         {
           icon: FileText,
           title: "AI Essay & Code Grading",
-          description: "Intelligent grading for written assignments and programming tasks"
-        }
-      ]
+          description:
+            "Intelligent grading for written assignments and programming tasks",
+        },
+      ],
     },
     {
       id: 4,
@@ -98,14 +133,16 @@ const AdvancedLMS = () => {
         {
           icon: Target,
           title: "AI-Driven Adaptive Gamification",
-          description: "Personalized rewards and challenges based on individual learning styles"
+          description:
+            "Personalized rewards and challenges based on individual learning styles",
         },
         {
           icon: Gamepad2,
           title: "VR/AR Labs (Advanced)",
-          description: "Immersive virtual and augmented reality learning experiences"
-        }
-      ]
+          description:
+            "Immersive virtual and augmented reality learning experiences",
+        },
+      ],
     },
     {
       id: 5,
@@ -117,14 +154,16 @@ const AdvancedLMS = () => {
         {
           icon: BarChart3,
           title: "Dropout Risk Prediction",
-          description: "Early warning system identifies at-risk students for intervention"
+          description:
+            "Early warning system identifies at-risk students for intervention",
         },
         {
           icon: Bot,
           title: "AI Teaching Assistant",
-          description: "Intelligent assistant helps instructors with content creation and student support"
-        }
-      ]
+          description:
+            "Intelligent assistant helps instructors with content creation and student support",
+        },
+      ],
     },
     {
       id: 6,
@@ -136,15 +175,17 @@ const AdvancedLMS = () => {
         {
           icon: Award,
           title: "Blockchain Certificates",
-          description: "Secure, verifiable digital certificates using blockchain technology"
+          description:
+            "Secure, verifiable digital certificates using blockchain technology",
         },
         {
           icon: Users,
           title: "LinkedIn Integration",
-          description: "Seamlessly share achievements and certifications to professional profiles"
-        }
-      ]
-    }
+          description:
+            "Seamlessly share achievements and certifications to professional profiles",
+        },
+      ],
+    },
   ];
 
   const benefits = [
@@ -152,137 +193,165 @@ const AdvancedLMS = () => {
     "Improved student engagement by 75%",
     "Personalized learning for every student",
     "Real-time progress tracking",
-    "Seamless integration with existing systems"
+    "Seamless integration with existing systems",
+    "AI-powered content creation and delivery",
   ];
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Button variant="ghost" onClick={() => navigate('/')} className="flex items-center space-x-2">
-              <ArrowLeft className="h-4 w-4" />
-              <span>Back to Home</span>
-            </Button>
-            <Badge className="bg-amber-100 text-amber-800 border-amber-200">
-              Coming Soon
-            </Badge>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="p-4 rounded-3xl bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
-              <GraduationCap className="h-10 w-10 text-white" />
+    <>
+      <Navigation onShowLogin={() => setOnShowLogin(true)} />
+      <div
+        className={`min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 transition-all duration-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        {/* Hero Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="mb-8">
+              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
+                <GraduationCap className="h-10 w-10 text-white" />
+              </div>
+              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+                Advanced
+                <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
+                  {" "}
+                  AI LMS
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                The next generation learning management system that adapts to
+                every student's needs through the power of artificial
+                intelligence.
+              </p>
+              <Button className="my-btn group text-white p-6 rounded-xl">
+                Join the Waitlist
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-all duration-300" />
+              </Button>
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Advanced 
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"> AI LMS</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              The next generation learning management system that adapts to every student's needs through the power of artificial intelligence.
-            </p>
-            <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3 rounded-xl text-lg">
-              Join the Waitlist
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Categories */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Revolutionary AI-Powered Features
-          </h2>
-          <div className="space-y-24">
-            {featureCategories.map((category, categoryIndex) => (
-              <div key={category.id} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.2}s` }}>
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${categoryIndex % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  {/* Content Section - Left for even, Right for odd */}
-                  <div className={`space-y-8 ${categoryIndex % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div className="flex items-center space-x-4">
-                      <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} shadow-lg`}>
-                        <category.icon className="h-8 w-8 text-white" />
+        {/* Features Categories */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+              Revolutionary AI-Powered{" "}
+              <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
+                Features
+              </span>
+            </h2>
+            <div className="space-y-24">
+              {featureCategories.map((category, categoryIndex) => (
+                <div
+                  key={category.id}
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${categoryIndex * 0.2}s` }}
+                >
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
+                      categoryIndex % 2 === 1 ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    {/* Content Section - Left for even, Right for odd */}
+                    <div
+                      className={`space-y-8 ${
+                        categoryIndex % 2 === 1 ? "lg:order-2" : "lg:order-1"
+                      }`}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-4 rounded-2xl icon-bg shadow-lg`}>
+                          <category.icon className="h-8 w-8 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                            {category.title}
+                          </h3>
+                          <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded"></div>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-3xl font-bold text-gray-900 mb-2">{category.title}</h3>
-                        <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded"></div>
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-6">
-                      {category.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="group hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 p-6 rounded-2xl transition-all duration-300 border border-transparent hover:border-purple-200">
-                          <div className="flex items-start space-x-4">
-                            <div className="p-3 rounded-xl bg-white shadow-md border group-hover:shadow-lg transition-shadow duration-300">
-                              <feature.icon className="h-6 w-6 text-purple-600" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors">{feature.title}</h4>
-                              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+
+                      <div className="space-y-2">
+                        {category.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="group hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-50 p-6 rounded-2xl transition-all duration-300 border border-transparent hover:border-purple-200"
+                          >
+                            <div className="flex items-start space-x-4">
+                              <div className="p-3 rounded-xl bg-white shadow-md border group-hover:shadow-lg transition-shadow duration-300">
+                                <feature.icon className="h-6 w-6 text-blue-600" />
+                              </div>
+                              <div className="flex-1">
+                                <h4 className="text-xl font-semibold text-gray-900 mb-3 ">
+                                  {feature.title}
+                                </h4>
+                                <p className="text-gray-600 leading-relaxed">
+                                  {feature.description}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* Image Section - Right for even, Left for odd */}
-                  <div className={`relative ${categoryIndex % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
-                      <div className="aspect-[4/3] relative">
-                        <img 
-                          src={category.image} 
-                          alt={category.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                      </div>
-                      {/* Floating badge */}
-                      <div className="absolute top-6 left-6">
-                        <div className={`px-4 py-2 rounded-full bg-gradient-to-r ${category.color} text-white text-sm font-semibold shadow-lg`}>
-                          AI-Powered
-                        </div>
+                        ))}
                       </div>
                     </div>
-                    
-                    {/* Decorative elements */}
-                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                    <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-blue-400 to-indigo-400 rounded-full opacity-15 group-hover:opacity-25 transition-opacity duration-500"></div>
+
+                    {/* Image Section - Right for even, Left for odd */}
+                    <div
+                      className={`relative ${
+                        categoryIndex % 2 === 1 ? "lg:order-1" : "lg:order-2"
+                      }`}
+                    >
+                      <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
+                        <div className="aspect-[4/3] relative">
+                          <img
+                            src={category.image}
+                            alt={category.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                        </div>
+                        {/* Floating badge */}
+                        <div className="absolute top-6 left-6">
+                          <div
+                            className={`px-4 py-2 rounded-full bg-blue-50 text-[#2901e3] text-sm font-semibold shadow-lg`}
+                          >
+                            AI-Powered
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">
-            Transform Your Institution
-          </h2>
-          <div className="space-y-4 mb-12">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center justify-center text-lg text-gray-700 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0" />
-                {benefit}
-              </div>
-            ))}
+        {/* Benefits Section */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-gray-900 mb-12">
+              Transform Your Institution
+            </h2>
+            <div className="space-y-4 mb-12 grid grid-cols-1 sm:grid-cols-2 place-content-center">
+              {benefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex items-center text-lg text-gray-700 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0" />
+                  {benefit}
+                </div>
+              ))}
+            </div>
+            <Button className="my-btn text-white px-8 py-6 rounded-xl">
+              Get Early Access
+            </Button>
           </div>
-          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-8 py-3 rounded-xl text-lg">
-            Get Early Access
-          </Button>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+      <Footer />
+    </>
   );
 };
 

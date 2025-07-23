@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -39,6 +38,7 @@ import Finance from "./pages/solutions/Finance";
 import Communication from "./pages/solutions/Communication";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
+import Navigation from "./components/home/Navigation";
 
 const queryClient = new QueryClient();
 
@@ -59,11 +59,17 @@ const App = () => (
             <Route path="/tools-suggestions" element={<ToolsSuggestions />} />
             <Route path="/output-history" element={<OutputHistory />} />
             <Route path="/advanced-lms" element={<AdvancedLMS />} />
-            <Route path="/school-administration" element={<SchoolAdministration />} />
+            <Route
+              path="/school-administration"
+              element={<SchoolAdministration />}
+            />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/knowledge-base" element={<KnowledgeBase />} />
-            <Route path="/partners-integrations" element={<PartnersIntegrations />} />
+            <Route
+              path="/partners-integrations"
+              element={<PartnersIntegrations />}
+            />
             <Route path="/data-protection" element={<DataProtection />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/feedback-dashboard" element={<FeedbackDashboard />} />
@@ -72,15 +78,27 @@ const App = () => (
             <Route path="/lms" element={<LMSApp />} />
             <Route path="/student" element={<StudentPortal />} />
             <Route path="/teacher" element={<TeacherPortal />} />
-            <Route path="/solutions/primary-schools" element={<PrimarySchools />} />
-            <Route path="/solutions/secondary-schools" element={<SecondarySchools />} />
+            <Route
+              path="/solutions/primary-schools"
+              element={<PrimarySchools />}
+            />
+            <Route
+              path="/solutions/secondary-schools"
+              element={<SecondarySchools />}
+            />
             <Route path="/solutions/universities" element={<Universities />} />
-            <Route path="/solutions/independent-schools" element={<IndependentSchools />} />
+            <Route
+              path="/solutions/independent-schools"
+              element={<IndependentSchools />}
+            />
             <Route path="/solutions/admissions" element={<Admissions />} />
             <Route path="/solutions/reporting" element={<GeneralReports />} />
             <Route path="/solutions/hr-payroll" element={<HRPayroll />} />
             <Route path="/solutions/finance" element={<Finance />} />
-            <Route path="/solutions/communication" element={<Communication />} />
+            <Route
+              path="/solutions/communication"
+              element={<Communication />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />

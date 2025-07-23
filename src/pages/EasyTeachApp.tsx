@@ -1,6 +1,5 @@
-
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, User, Bot, Menu } from "lucide-react";
@@ -22,37 +21,77 @@ import { tools } from "@/lib/toolsData";
 const EasyTeachApp = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(t('easyteach.categories.lessonPlanning'));
+  const [selectedCategory, setSelectedCategory] = useState(
+    t("easyteach.categories.lessonPlanning")
+  );
   const [showProfile, setShowProfile] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const categories = [
-    { name: t('easyteach.categories.all'), icon: "Grid", color: "bg-gray-100 text-gray-800", gradient: "from-gray-500 to-gray-600" },
-    { name: t('easyteach.categories.lessonPlanning'), icon: "BookOpen", color: "bg-blue-100 text-blue-800", gradient: "from-blue-500 to-blue-600" },
-    { name: t('easyteach.categories.contentHub'), icon: "FileText", color: "bg-indigo-100 text-indigo-800", gradient: "from-indigo-500 to-indigo-600" },
-    { name: t('easyteach.categories.assessment'), icon: "CheckCircle", color: "bg-purple-100 text-purple-800", gradient: "from-purple-500 to-purple-600" },
-    { name: t('easyteach.categories.communication'), icon: "MessageCircle", color: "bg-cyan-100 text-cyan-800", gradient: "from-cyan-500 to-cyan-600" },
-    { name: t('easyteach.categories.behaviourSupport'), icon: "Users", color: "bg-teal-100 text-teal-800", gradient: "from-teal-500 to-teal-600" },
-    { name: t('easyteach.categories.differentiation'), icon: "Target", color: "bg-slate-100 text-slate-800", gradient: "from-slate-500 to-slate-600" },
+    {
+      name: t("easyteach.categories.all"),
+      icon: "Grid",
+      color: "bg-gray-100 text-gray-800",
+      gradient: "from-gray-500 to-gray-600",
+    },
+    {
+      name: t("easyteach.categories.lessonPlanning"),
+      icon: "BookOpen",
+      color: "bg-blue-100 text-blue-800",
+      gradient: "from-blue-500 to-blue-600",
+    },
+    {
+      name: t("easyteach.categories.contentHub"),
+      icon: "FileText",
+      color: "bg-indigo-100 text-indigo-800",
+      gradient: "from-indigo-500 to-indigo-600",
+    },
+    {
+      name: t("easyteach.categories.assessment"),
+      icon: "CheckCircle",
+      color: "bg-purple-100 text-purple-800",
+      gradient: "from-purple-500 to-purple-600",
+    },
+    {
+      name: t("easyteach.categories.communication"),
+      icon: "MessageCircle",
+      color: "bg-cyan-100 text-cyan-800",
+      gradient: "from-cyan-500 to-cyan-600",
+    },
+    {
+      name: t("easyteach.categories.behaviourSupport"),
+      icon: "Users",
+      color: "bg-teal-100 text-teal-800",
+      gradient: "from-teal-500 to-teal-600",
+    },
+    {
+      name: t("easyteach.categories.differentiation"),
+      icon: "Target",
+      color: "bg-slate-100 text-slate-800",
+      gradient: "from-slate-500 to-slate-600",
+    },
   ];
 
   // Map translated categories back to English for tool filtering
   const categoryMapping = {
-    [t('easyteach.categories.all')]: "All",
-    [t('easyteach.categories.lessonPlanning')]: "Lesson Planning",
-    [t('easyteach.categories.contentHub')]: "Content Hub", 
-    [t('easyteach.categories.assessment')]: "Assessment",
-    [t('easyteach.categories.communication')]: "Communication",
-    [t('easyteach.categories.behaviourSupport')]: "Behaviour Support",
-    [t('easyteach.categories.differentiation')]: "Differentiation"
+    [t("easyteach.categories.all")]: "All",
+    [t("easyteach.categories.lessonPlanning")]: "Lesson Planning",
+    [t("easyteach.categories.contentHub")]: "Content Hub",
+    [t("easyteach.categories.assessment")]: "Assessment",
+    [t("easyteach.categories.communication")]: "Communication",
+    [t("easyteach.categories.behaviourSupport")]: "Behaviour Support",
+    [t("easyteach.categories.differentiation")]: "Differentiation",
   };
 
-  const filteredTools = tools.filter(tool => {
-    const matchesSearch = tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         tool.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = categoryMapping[selectedCategory] === "All" || tool.category === categoryMapping[selectedCategory];
+  const filteredTools = tools.filter((tool) => {
+    const matchesSearch =
+      tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      categoryMapping[selectedCategory] === "All" ||
+      tool.category === categoryMapping[selectedCategory];
     return matchesSearch && matchesCategory;
   });
 
@@ -63,7 +102,7 @@ const EasyTeachApp = () => {
   const handleQuickAction = (category, toolId) => {
     setSelectedCategory(category);
     // Find the specific tool by ID
-    const tool = tools.find(tool => tool.id === toolId);
+    const tool = tools.find((tool) => tool.id === toolId);
     if (tool) {
       setSelectedTool(tool);
     }
@@ -87,9 +126,9 @@ const EasyTeachApp = () => {
         <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
           {/* Mobile Header with Menu Button */}
           <div className="lg:hidden bg-white border-b border-gray-200 p-4 flex items-center justify-between">
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setSidebarOpen(true)}
               className="lg:hidden"
             >
@@ -108,57 +147,67 @@ const EasyTeachApp = () => {
 
           {/* Desktop Header */}
           <div className="hidden lg:block">
-            <AppHeader 
+            <AppHeader
               teacherProfile={teacherProfile}
               onProfileClick={() => setShowProfile(true)}
             />
           </div>
 
           <div className="container-responsive section-responsive">
-            <WelcomeSection 
-              teacherProfile={teacherProfile} 
+            <WelcomeSection
+              teacherProfile={teacherProfile}
               onQuickAction={handleQuickAction}
             />
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8">
-                <TabsTrigger value="tools" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
-                  {t('easyteach.tabs.teachingTools')}
+              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8 h-14">
+                <TabsTrigger
+                  value="tools"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                >
+                  {t("easyteach.tabs.teachingTools")}
                 </TabsTrigger>
-                <TabsTrigger value="ai-assistant" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base">
+                <TabsTrigger
+                  value="ai-assistant"
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                >
                   <Bot className="h-4 w-4 mr-1 sm:mr-2" />
-                  <span className="hidden sm:inline">{t('easyteach.tabs.kribiAssistant')}</span>
-                  <span className="sm:hidden">{t('easyteach.tabs.ai')}</span>
+                  <span className="hidden sm:inline">
+                    {t("easyteach.tabs.kribiAssistant")}
+                  </span>
+                  <span className="sm:hidden">{t("easyteach.tabs.ai")}</span>
                 </TabsTrigger>
               </TabsList>
 
               <TabsContent value="tools" className="space-y-6 sm:space-y-8">
                 {/* Enhanced Search Section */}
                 <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">{t('easyteach.search.findPerfectTool')}</h3>
-                  
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+                    {t("easyteach.search.findPerfectTool")}
+                  </h3>
+
                   {/* Search Bar */}
                   <div className="relative mb-4 sm:mb-6">
                     <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                     <Input
                       type="text"
-                      placeholder={t('easyteach.search.searchPlaceholder')}
+                      placeholder={t("easyteach.search.searchPlaceholder")}
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-10 sm:pl-12 py-3 sm:py-4 text-sm sm:text-base border-2 border-gray-200 focus:border-blue-400 rounded-xl bg-white shadow-sm focus:shadow-md transition-all duration-200"
+                      className="pl-10 sm:pl-12 h-12 sm:py-4 text-sm sm:text-base border border-primary focus:outline-none rounded-xl bg-white"
                     />
                   </div>
 
                   {/* Category Filters */}
-                  <CategoryFilters 
+                  <CategoryFilters
                     categories={categories}
                     selectedCategory={selectedCategory}
                     onCategorySelect={setSelectedCategory}
                   />
                 </div>
 
-                <ToolsGrid 
+                <ToolsGrid
                   tools={filteredTools}
                   categories={categories}
                   onToolClick={handleToolClick}
@@ -169,8 +218,12 @@ const EasyTeachApp = () => {
               <TabsContent value="ai-assistant">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-6">
-                    <h2 className="subheading-responsive text-gray-800 mb-2">{t('easyteach.aiAssistant.title')}</h2>
-                    <p className="text-gray-600 text-sm sm:text-base">{t('easyteach.aiAssistant.description')}</p>
+                    <h2 className="subheading-responsive text-gray-800 mb-2">
+                      {t("easyteach.aiAssistant.title")}
+                    </h2>
+                    <p className="text-gray-600 text-sm sm:text-base">
+                      {t("easyteach.aiAssistant.description")}
+                    </p>
                   </div>
                   <AIAssistant />
                 </div>

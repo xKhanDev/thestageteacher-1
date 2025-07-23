@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@plugin "daisyui";
 
 /* Professional educator color scheme - mature and friendly */
 
@@ -116,6 +117,40 @@
   }
 
   /* Better spacing for educational content with improved contrast */
+  .primary-text{
+    color: #fff;
+  }
+  .primary-bg{
+    background-color: #2901B3;
+  }
+  .secondary-text{
+    color: #4A4A68;
+  }
+  .secondary-bg{
+    background-color: #F4F6FD;
+  }
+  .no-scrollbar{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .icon-bg{
+    background: linear-gradient(to right, #2901B3, #5c2fff);
+  }
+
+  .my-btn {
+  background: linear-gradient(to right, #2901B3, #5c2fff);
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.my-btn:hover {
+  background: linear-gradient(to right, #5c2fff, #2901B3);
+}
+
   .compact-text {
     @apply text-xs sm:text-sm leading-tight text-gray-800;
   }

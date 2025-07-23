@@ -1,9 +1,14 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 interface ToolsGridProps {
   tools: any[];
@@ -12,18 +17,23 @@ interface ToolsGridProps {
   searchTerm: string;
 }
 
-const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProps) => {
+const ToolsGrid = ({
+  tools,
+  categories,
+  onToolClick,
+  searchTerm,
+}: ToolsGridProps) => {
   const { t } = useTranslation();
-  
+
   if (tools.length === 0) {
     return (
       <div className="text-center py-16">
         <div className="text-8xl mb-6">🔍</div>
         <h3 className="text-2xl font-bold text-gray-700 mb-3">
-          {t('easyteach.search.noToolsFound', { searchTerm })}
+          {t("easyteach.search.noToolsFound", { searchTerm })}
         </h3>
         <p className="text-lg text-gray-500">
-          {t('easyteach.search.tryDifferentSearch')}
+          {t("easyteach.search.tryDifferentSearch")}
         </p>
       </div>
     );
@@ -32,34 +42,43 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
   const handleToolClick = (tool: any, event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log('Tool clicked:', tool.name, tool.id);
+    console.log("Tool clicked:", tool.name, tool.id);
     onToolClick(tool);
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {tools.map((tool) => {
         const IconComponent = tool.icon;
-        const categoryInfo = categories.find(cat => cat.name === tool.category);
-        
+        const categoryInfo = categories.find(
+          (cat) => cat.name === tool.category
+        );
+
         return (
-          <Card 
+          <Card
             key={tool.id}
             className="group hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-2 border-0 bg-white/90 backdrop-blur-sm shadow-lg overflow-hidden relative"
             onClick={(e) => handleToolClick(tool, e)}
           >
-            <div className={`absolute inset-0 bg-gradient-to-br ${categoryInfo?.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${categoryInfo?.gradient} opacity-0 group-hover:opacity-1 transition-opacity duration-300`}
+            ></div>
             <CardHeader className="pb-4 relative">
               <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className={`p-3 rounded-2xl ${tool.color} group-hover:scale-110 transition-transform duration-200 shadow-md`}>
+                  <div
+                    className={`p-3 rounded-2xl ${tool.color} group-hover:scale-110 transition-transform duration-200 shadow-md`}
+                  >
                     <IconComponent className="h-7 w-7" />
                   </div>
                   <div>
                     <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
                       {tool.name}
                     </CardTitle>
-                    <Badge variant="secondary" className={`${categoryInfo?.color} font-medium mt-1`}>
+                    <Badge
+                      variant="secondary"
+                      className={`${categoryInfo?.color} font-medium mt-1`}
+                    >
                       {tool.category}
                     </Badge>
                   </div>
@@ -76,14 +95,14 @@ const ToolsGrid = ({ tools, categories, onToolClick, searchTerm }: ToolsGridProp
               </CardDescription>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-green-600 font-semibold bg-green-50 px-3 py-1 rounded-full">
-                  ✓ {t('easyteach.tools.readyIn', { time: tool.estimatedTime })}
+                  ✓ {t("easyteach.tools.readyIn", { time: tool.estimatedTime })}
                 </span>
-                <Button 
-                  size="sm" 
+                <Button
+                  size="sm"
                   className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200"
                   onClick={(e) => handleToolClick(tool, e)}
                 >
-                  {t('easyteach.tools.useToolButton')}
+                  {t("easyteach.tools.useToolButton")}
                 </Button>
               </div>
             </CardContent>
