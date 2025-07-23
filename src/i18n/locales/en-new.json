@@ -1,0 +1,43 @@
+{
+  "passwordReset": {
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "enterEmail": "Enter your email address",
+    "sendResetLink": "Send Reset Link",
+    "checkEmail": "Check Your Email",
+    "resetSent": "We've sent password reset instructions to your email address",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "updatePassword": "Update Password",
+    "passwordUpdated": "Password Updated Successfully!"
+  },
+  "solutions": {
+    "admissions": {
+      "title": "Admissions Management",
+      "description": "Simplify student enrollment with our smart, AI-powered school admissions software",
+      "startFreeTrial": "Start Free Trial",
+      "whyItMatters": "Why it Matters",
+      "transformProcess": "Transform Your Process",
+      "readyToModernize": "Ready to Modernize Your Admissions?"
+    },
+    "finance": {
+      "title": "Finance Management", 
+      "description": "Gain full control of your school's finances with automated billing, fee tracking, and smart financial reporting tools",
+      "optimizeFinances": "Optimize School Finances"
+    },
+    "reports": {
+      "title": "General Reports",
+      "description": "Generate real-time reports and insights across academics, operations, and behavior with our data-driven school reporting system",
+      "seeInsights": "See Insights in Action"
+    }
+  },
+  "knowledgeBase": {
+    "title": "Knowledge Base",
+    "description": "Find answers, tutorials, and guides to help you get the most out of Vicerta's educational platform",
+    "searchPlaceholder": "Search for help articles, guides, or tutorials...",
+    "toolFeatureGuides": "Tool Feature Guides",
+    "guideDescription": "Comprehensive guides for each tool in your EasyTeach toolkit",
+    "keyFeatures": "Key Features:",
+    "howToUse": "How to Use:"
+  }
+}

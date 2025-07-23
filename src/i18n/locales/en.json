@@ -272,5 +272,27 @@
     "edit": "Edit",
     "view": "View",
     "language": "Language"
+  },
+  "passwordReset": {
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "enterEmail": "Enter your email address",
+    "sendResetLink": "Send Reset Link",
+    "checkEmail": "Check Your Email",
+    "resetSent": "We've sent password reset instructions to your email address",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password", 
+    "updatePassword": "Update Password",
+    "passwordUpdated": "Password Updated Successfully!"
+  },
+  "solutions": {
+    "startFreeTrial": "Start Free Trial",
+    "whyItMatters": "Why it Matters",
+    "transformProcess": "Transform Your Process",
+    "readyToModernize": "Ready to Modernize?",
+    "keyFeatures": "Key Features:",
+    "howToUse": "How to Use:",
+    "optimizeFinances": "Optimize School Finances",
+    "seeInsights": "See Insights in Action"
   }
 }
