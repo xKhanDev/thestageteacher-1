@@ -3,11 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, FileSpreadsheet, Download, Brain, TrendingUp } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginModal from "@/components/auth/LoginModal";
 
 const GeneralReports = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const features = [
     {

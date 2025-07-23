@@ -36,6 +36,7 @@ import GeneralReports from "./pages/solutions/GeneralReports";
 import HRPayroll from "./pages/solutions/HRPayroll";
 import Finance from "./pages/solutions/Finance";
 import Communication from "./pages/solutions/Communication";
+import ResetPassword from "./pages/ResetPassword";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 import Navigation from "./components/home/Navigation";
@@ -99,6 +100,7 @@ const App = () => (
               path="/solutions/communication"
               element={<Communication />}
             />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <CookieConsent />

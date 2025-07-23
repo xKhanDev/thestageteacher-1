@@ -15,6 +15,7 @@ import { Eye, EyeOff, Loader2, Sparkles, Mail, Lock } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import ForgotPasswordModal from "./ForgotPasswordModal";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -31,6 +32,7 @@ const LoginModal = ({
   const [isLoading, setIsLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [activeTab, setActiveTab] = useState("signin");
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -265,19 +267,28 @@ const LoginModal = ({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2 pt-2">
-              <Checkbox
-                id="remember-me"
-                checked={rememberMe}
-                onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-                className="border-gray-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-500 data-[state=checked]:to-purple-500"
-              />
-              <Label
-                htmlFor="remember-me"
-                className="text-sm text-gray-600 font-medium"
+            <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="remember-me"
+                  checked={rememberMe}
+                  onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                  className="border-gray-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-500 data-[state=checked]:to-purple-500"
+                />
+                <Label
+                  htmlFor="remember-me"
+                  className="text-sm text-gray-600 font-medium"
+                >
+                  Keep me signed in
+                </Label>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowForgotPassword(true)}
+                className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
               >
-                Keep me signed in
-              </Label>
+                Forgot Password?
+              </button>
             </div>
 
             <Button
@@ -408,6 +419,15 @@ const LoginModal = ({
           </TabsContent>
         </Tabs>
       </DialogContent>
+      
+      <ForgotPasswordModal
+        isOpen={showForgotPassword}
+        onClose={() => setShowForgotPassword(false)}
+        onBackToLogin={() => {
+          setShowForgotPassword(false);
+          // Keep the main login modal open
+        }}
+      />
     </Dialog>
   );
 };
