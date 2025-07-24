@@ -82,8 +82,8 @@ const IndependentSchools = () => {
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-600/90 to-teal-600/90 text-white">
+        <div className="absolute inset-0">
           <img 
             src={independentSchoolsHero} 
             alt="Independent school classroom" 
@@ -98,10 +98,18 @@ const IndependentSchools = () => {
             <h1 className="text-6xl font-bold mb-6">
               Independent Schools
             </h1>
-            <p className="text-2xl mb-8 text-emerald-100 leading-relaxed">
+            <p className="text-2xl mb-6 text-emerald-100 leading-relaxed">
               Elevate your independent institution with premium educational technology 
               designed for excellence, prestige, and personalized learning experiences.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 text-emerald-50">
+              <p className="text-lg leading-relaxed">
+                Preserve your institution's distinctive character while embracing innovative educational 
+                technology. Our flexible platform adapts to your unique curriculum, pedagogical approach, 
+                and community values, ensuring that tradition and innovation work together to deliver 
+                unparalleled educational excellence.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
@@ -122,7 +130,7 @@ const IndependentSchools = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20">
         {/* Key Features Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Designed for Educational Excellence</h2>
@@ -152,7 +160,7 @@ const IndependentSchools = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-12 mb-16 animate-fade-in">
+        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-3xl p-12 mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Independent Schools Choose Vicerta</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -175,7 +183,7 @@ const IndependentSchools = () => {
         </div>
 
         {/* Testimonials Section */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Elite Institutions</h2>
             <p className="text-xl text-gray-600">Hear from leaders at prestigious independent schools</p>
@@ -207,7 +215,7 @@ const IndependentSchools = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl mb-16 animate-fade-in">
+        <div className="bg-white rounded-3xl p-12 shadow-xl mb-20 animate-fade-in">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Excellence in Independent Education</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="group">

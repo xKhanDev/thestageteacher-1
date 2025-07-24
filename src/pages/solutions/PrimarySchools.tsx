@@ -82,8 +82,8 @@ const PrimarySchools = () => {
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-rose-600 text-white">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-pink-600/90 to-rose-600/90 text-white">
+        <div className="absolute inset-0">
           <img 
             src={primarySchoolsHero} 
             alt="Primary school classroom" 
@@ -98,10 +98,17 @@ const PrimarySchools = () => {
             <h1 className="text-6xl font-bold mb-6">
               Primary Schools
             </h1>
-            <p className="text-2xl mb-8 text-pink-100 leading-relaxed">
+            <p className="text-2xl mb-6 text-pink-100 leading-relaxed">
               Nurture young minds with our specialized educational technology platform designed 
               specifically for primary school environments and early childhood development.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 text-pink-50">
+              <p className="text-lg leading-relaxed">
+                Create magical learning experiences that capture young imaginations while building essential 
+                foundational skills. Our platform combines playful interactive content with proven pedagogical 
+                methods to ensure every child develops confidence, curiosity, and a lifelong love of learning.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
@@ -122,7 +129,7 @@ const PrimarySchools = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20">
         {/* Key Features Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Built for Young Learners</h2>
@@ -152,7 +159,7 @@ const PrimarySchools = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-3xl p-12 mb-16 animate-fade-in">
+        <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-3xl p-12 mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Primary Schools Choose Vicerta</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -175,7 +182,7 @@ const PrimarySchools = () => {
         </div>
 
         {/* Testimonials Section */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Loved by Educators & Parents</h2>
             <p className="text-xl text-gray-600">See what our primary school community is saying</p>
@@ -207,7 +214,7 @@ const PrimarySchools = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl mb-16 animate-fade-in">
+        <div className="bg-white rounded-3xl p-12 shadow-xl mb-20 animate-fade-in">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Trusted by Primary Schools Worldwide</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="group">

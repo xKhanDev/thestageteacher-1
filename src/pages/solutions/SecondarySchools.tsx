@@ -82,8 +82,8 @@ const SecondarySchools = () => {
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-blue-600/90 to-cyan-600/90 text-white">
+        <div className="absolute inset-0">
           <img 
             src={secondarySchoolsHero} 
             alt="Secondary school classroom" 
@@ -98,10 +98,17 @@ const SecondarySchools = () => {
             <h1 className="text-6xl font-bold mb-6">
               Secondary Schools
             </h1>
-            <p className="text-2xl mb-8 text-blue-100 leading-relaxed">
+            <p className="text-2xl mb-6 text-blue-100 leading-relaxed">
               Prepare students for higher education and successful careers with our comprehensive 
               secondary education platform designed for grades 6-12 and beyond.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 text-blue-50">
+              <p className="text-lg leading-relaxed">
+                Bridge the critical gap between foundational learning and university readiness. Our platform empowers 
+                secondary schools to deliver advanced academic programs, comprehensive exam preparation, and essential 
+                life skills that ensure students thrive in higher education and their future careers.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
@@ -122,7 +129,7 @@ const SecondarySchools = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20">
         {/* Key Features Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Empowering Academic Excellence</h2>
@@ -131,7 +138,7 @@ const SecondarySchools = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {features.map((feature, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
               <CardHeader className="pb-4">
@@ -152,7 +159,7 @@ const SecondarySchools = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-12 mb-16 animate-fade-in">
+        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-3xl p-12 mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Secondary Schools Choose Vicerta</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -175,7 +182,7 @@ const SecondarySchools = () => {
         </div>
 
         {/* Testimonials Section */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Educational Leaders</h2>
             <p className="text-xl text-gray-600">Hear from principals and teachers making a difference</p>
@@ -207,7 +214,7 @@ const SecondarySchools = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl mb-16 animate-fade-in">
+        <div className="bg-white rounded-3xl p-12 shadow-xl mb-20 animate-fade-in">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Empowering Secondary Education Worldwide</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="group">

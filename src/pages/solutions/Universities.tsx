@@ -82,8 +82,8 @@ const Universities = () => {
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-        <div className="absolute inset-0 opacity-20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-purple-600/90 to-indigo-600/90 text-white">
+        <div className="absolute inset-0">
           <img 
             src={universitiesHero} 
             alt="University classroom" 
@@ -98,10 +98,18 @@ const Universities = () => {
             <h1 className="text-6xl font-bold mb-6">
               Universities
             </h1>
-            <p className="text-2xl mb-8 text-purple-100 leading-relaxed">
+            <p className="text-2xl mb-6 text-purple-100 leading-relaxed">
               Empower higher education with advanced learning management systems designed 
               for universities, research institutions, and academic excellence at scale.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 text-purple-50">
+              <p className="text-lg leading-relaxed">
+                Transform higher education with cutting-edge research tools, global collaboration platforms, 
+                and advanced analytics. Our comprehensive ecosystem supports everything from undergraduate 
+                programs to doctoral research, enabling institutions to lead in academic innovation and 
+                prepare students for tomorrow's challenges.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg"
@@ -122,7 +130,7 @@ const Universities = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-20">
         {/* Key Features Section */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Leading Innovation in Higher Education</h2>
@@ -131,7 +139,7 @@ const Universities = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {features.map((feature, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
               <CardHeader className="pb-4">
@@ -152,7 +160,7 @@ const Universities = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-3xl p-12 mb-16 animate-fade-in">
+        <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-3xl p-12 mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Universities Choose Vicerta</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -175,7 +183,7 @@ const Universities = () => {
         </div>
 
         {/* Testimonials Section */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-20 animate-fade-in">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Recognized by Academic Leaders</h2>
             <p className="text-xl text-gray-600">See how universities are advancing with Vicerta</p>
@@ -207,7 +215,7 @@ const Universities = () => {
         </div>
 
         {/* Statistics Section */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl mb-16 animate-fade-in">
+        <div className="bg-white rounded-3xl p-12 shadow-xl mb-20 animate-fade-in">
           <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Leading Universities Trust Vicerta</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="group">
