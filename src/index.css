@@ -302,10 +302,6 @@
     animation: scaleIn 0.2s ease-out;
   }
 
-  .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -343,5 +339,10 @@
 
   .safe-area-right {
     padding-right: env(safe-area-inset-right);
+  }
+
+  /* Hover scale animation */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
   }
 }

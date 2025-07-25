@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import AnimatedCounter from "@/components/ui/animated-counter";
+import ScrollReveal from "@/components/ui/scroll-reveal";
 import {
   Users,
   TrendingUp,
@@ -59,53 +61,62 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
           {t("hero.description")}
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 animate-fade-in px-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg ">
-            <div className="flex items-center justify-center mb-4">
-              <div className="p-3 rounded-full icon-bg">
-                <Users className="h-6 w-6 text-white" />
+        <ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16 px-8">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg hover-scale transition-all duration-300 border border-white/20">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full icon-bg shadow-lg">
+                  <Users className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-[#2901B3] mb-2">
+                <AnimatedCounter end={100} suffix="K+" />
+              </div>
+              <div className="text-gray-700 font-medium mb-2">
+                {t("hero.activeEducators")}
+              </div>
+              <div className="text-sm text-gray-500">
+                {t("hero.acrossAllPlatforms")}
               </div>
             </div>
-            <div className="text-3xl font-bold text-[#2901B3] mb-2">100K+</div>
-            <div className="text-gray-700 font-medium mb-2">
-              {t("hero.activeEducators")}
-            </div>
-            <div className="text-sm text-gray-500">
-              {t("hero.acrossAllPlatforms")}
-            </div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6  hover:shadow-lg ">
-            <div className="flex items-center justify-center mb-4">
-              <div className="p-3 rounded-full icon-bg">
-                <TrendingUp className="h-6 w-6 text-white" />
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg hover-scale transition-all duration-300 border border-white/20">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full icon-bg shadow-lg">
+                  <TrendingUp className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-[#2901B3] mb-2">
+                <AnimatedCounter end={3} />
+              </div>
+              <div className="text-gray-700 font-medium mb-2">
+                {t("hero.integratedProducts")}
+              </div>
+              <div className="text-sm text-gray-500">
+                {t("hero.completeEcosystem")}
               </div>
             </div>
-            <div className="text-3xl font-bold text-[#2901B3] mb-2">3</div>
-            <div className="text-gray-700 font-medium mb-2">
-              {t("hero.integratedProducts")}
-            </div>
-            <div className="text-sm text-gray-500">
-              {t("hero.completeEcosystem")}
-            </div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg">
-            <div className="flex items-center justify-center mb-4">
-              <div className="p-3 rounded-full icon-bg">
-                <Clock className="h-6 w-6 text-white" />
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg hover-scale transition-all duration-300 border border-white/20">
+              <div className="flex items-center justify-center mb-4">
+                <div className="p-3 rounded-full icon-bg shadow-lg">
+                  <Clock className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <div className="text-3xl font-bold text-[#2901B3] mb-2">
+                <AnimatedCounter end={50} suffix="+" />
+              </div>
+              <div className="text-gray-700 font-medium mb-2">
+                {t("hero.hoursSavedMonthly")}
+              </div>
+              <div className="text-sm text-gray-500">
+                {t("hero.perInstitution")}
               </div>
             </div>
-            <div className="text-3xl font-bold text-[#2901B3] mb-2">50+</div>
-            <div className="text-gray-700 font-medium mb-2">
-              {t("hero.hoursSavedMonthly")}
-            </div>
-            <div className="text-sm text-gray-500">
-              {t("hero.perInstitution")}
-            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Trust Indicators */}
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8 animate-fade-in">
+        <ScrollReveal delay={200}>
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
           <div className="flex items-center space-x-2 text-gray-600">
             <Shield className="h-5 w-5 text-green-500" />
             <span className="text-sm font-medium">
@@ -122,9 +133,11 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
             <Star className="h-5 w-5 text-yellow-500 fill-current" />
             <span className="text-sm font-medium">{t("hero.userRating")}</span>
           </div>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <ScrollReveal delay={400}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
             onClick={onShowLogin}
@@ -142,7 +155,8 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
             <Play className="mr-2 size-5 group-hover:scale-[1.04] transition-all duration-300" />
             Watch Demo
           </Button>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

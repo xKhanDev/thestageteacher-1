@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import ErrorBoundary from "@/components/ui/error-boundary";
 import Index from "./pages/Index";
 import EasyTeachApp from "./pages/EasyTeachApp";
 import EasyTeachPage from "./pages/EasyTeachPage";
@@ -44,13 +45,15 @@ import Navigation from "./components/home/Navigation";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ErrorBoundary>
+              <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/easyteach-app" element={<EasyTeachApp />} />
             <Route path="/easyteach" element={<EasyTeachPage />} />
@@ -102,13 +105,15 @@ const App = () => (
             />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
-          <CookieConsent />
-          <ConsentManager />
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+              </Routes>
+            </ErrorBoundary>
+            <CookieConsent />
+            <ConsentManager />
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
