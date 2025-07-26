@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import ErrorBoundary from "@/components/ui/error-boundary";
 import Index from "./pages/Index";
 import EasyTeachApp from "./pages/EasyTeachApp";
 import EasyTeachPage from "./pages/EasyTeachPage";
@@ -36,6 +37,7 @@ import GeneralReports from "./pages/solutions/GeneralReports";
 import HRPayroll from "./pages/solutions/HRPayroll";
 import Finance from "./pages/solutions/Finance";
 import Communication from "./pages/solutions/Communication";
+import ResetPassword from "./pages/ResetPassword";
 import CookieConsent from "./components/compliance/CookieConsent";
 import ConsentManager from "./components/compliance/ConsentManager";
 import Navigation from "./components/home/Navigation";
@@ -43,13 +45,15 @@ import Navigation from "./components/home/Navigation";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ErrorBoundary>
+              <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/easyteach-app" element={<EasyTeachApp />} />
             <Route path="/easyteach" element={<EasyTeachPage />} />
@@ -99,14 +103,17 @@ const App = () => (
               path="/solutions/communication"
               element={<Communication />}
             />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
-          <CookieConsent />
-          <ConsentManager />
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+              </Routes>
+            </ErrorBoundary>
+            <CookieConsent />
+            <ConsentManager />
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

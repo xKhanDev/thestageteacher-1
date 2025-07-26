@@ -188,6 +188,7 @@ const ProductsSection = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-3">
           {products.map((product, index) => (
             <div
+              key={product.id}
               className={`relative border border-gray-300 rounded-2xl hover:border-${product.bgColor}-600`}
             >
               {/* header */}
@@ -255,9 +256,9 @@ const ProductsSection = ({
                     What's included:
                   </h3>
                   <div className="flex flex-col gap-2">
-                    {product.features.slice(0, 4).map((feature, index) => (
+                    {product.features.slice(0, 4).map((feature, featureIndex) => (
                       <p
-                        key={index}
+                        key={`${product.id}-feature-${featureIndex}`}
                         className={`text-gray-600 flex items-start text-sm ${
                           feature.text.startsWith("Everything in Free")
                             ? "font-semibold"

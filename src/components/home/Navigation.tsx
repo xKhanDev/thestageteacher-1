@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import LanguageSelector from "@/components/LanguageSelector";
+import MobileNavigation from "./MobileNavigation";
 import { RiMenuLine } from "react-icons/ri";
-import { IoClose } from "react-icons/io5";
 import { Badge } from "@/components/ui/badge";
 import {
   BookOpen,
@@ -36,6 +36,7 @@ interface NavigationProps {
 const Navigation = ({ onShowLogin }: NavigationProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const products = [
     {
@@ -178,9 +179,12 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
           >
             <div className="flex items-center gap-2">
               {/* Mobile Menu Icon */}
-              <span className="block md:hidden">
+              <button
+                className="block md:hidden"
+                onClick={() => setIsMobileMenuOpen(true)}
+              >
                 <RiMenuLine size={28} />
-              </span>
+              </button>
 
               {/* Desktop Logo */}
               <img
@@ -205,7 +209,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 <span className="text-foreground hover:text-primary hover:bg-blue-100 px-3 py-2 rounded-md cursor-pointer">
                   {t("navigation.products")}
                 </span>
-                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-lg border border-border p-4 min-w-96 animate-fade-in duration-700 rounded-2xl">
+                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-xl border border-border p-4 min-w-96 animate-fade-in duration-700 rounded-2xl z-50">
                   <div className="space-y-3">
                     {products.map((product) => (
                       <div
@@ -247,7 +251,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 <span className="text-foreground hover:text-primary hover:bg-blue-100 px-3 py-2 rounded-md cursor-pointer">
                   {t("navigation.solutions")}
                 </span>
-                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-lg border border-border p-6 w-96 animate-fade-in rounded-2xl">
+                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-xl border border-border p-6 w-96 animate-fade-in rounded-2xl z-50">
                   <div className="grid grid-cols-2 gap-6">
                     {/* By Category */}
                     <div>
@@ -319,7 +323,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 <span className="text-foreground hover:text-primary hover:bg-blue-100 px-3 py-2 rounded-md cursor-pointer">
                   {t("navigation.resources")}
                 </span>
-                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-lg border border-border p-4 w-64 animate-fade-in rounded-2xl">
+                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-xl border border-border p-4 w-64 animate-fade-in rounded-2xl z-50">
                   <div className="space-y-2">
                     {resourcesMenu.map((item, index) => (
                       <div
@@ -343,7 +347,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 <span className="text-foreground hover:text-primary hover:bg-blue-100 px-3 py-2 rounded-md cursor-pointer w-fit">
                   {t("navigation.aboutUs")}
                 </span>
-                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-lg border border-border p-4 w-64 animate-fade-in rounded-2xl">
+                <div className="absolute left-0 top-6 hidden group-hover:block bg-background shadow-xl border border-border p-4 w-64 animate-fade-in rounded-2xl z-50">
                   <div className="space-y-2">
                     {aboutMenu.map((item, index) => (
                       <div
@@ -395,16 +399,16 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
               <LanguageSelector />
             </span>
 
-            {/* <div className="fixed top-20 left-0 w-full h-full bg-black opacity-50 md:hidden">
-              <span className="absolute top-4 right-4">
-                <IoClose size={28} />
-
-                <div className="text-sm font-medium text-foreground">Hello</div>
-              </span>
-            </div> */}
           </div>
         </div>
       </div>
+
+      {/* Mobile Navigation */}
+      <MobileNavigation
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        onShowLogin={onShowLogin}
+      />
     </nav>
   );
 };

@@ -1,0 +1,208 @@
+import { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Eye, EyeOff, Lock, Loader2, CheckCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+
+const ResetPassword = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    // Handle the auth callback
+    const handleAuthCallback = async () => {
+      const accessToken = searchParams.get('access_token');
+      const refreshToken = searchParams.get('refresh_token');
+      
+      if (accessToken && refreshToken) {
+        const { error } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
+        });
+        
+        if (error) {
+          toast({
+            title: "Invalid Reset Link",
+            description: "This password reset link is invalid or has expired",
+            variant: "destructive",
+          });
+          navigate('/');
+        }
+      } else {
+        toast({
+          title: "Invalid Reset Link",
+          description: "This password reset link is invalid or has expired",
+          variant: "destructive",
+        });
+        navigate('/');
+      }
+    };
+
+    handleAuthCallback();
+  }, [searchParams, navigate, toast]);
+
+  const handleUpdatePassword = async () => {
+    if (!password || !confirmPassword) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast({
+        title: "Password Mismatch",
+        description: "Passwords do not match",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (password.length < 6) {
+      toast({
+        title: "Password Too Short",
+        description: "Password must be at least 6 characters long",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: password
+      });
+
+      if (error) {
+        toast({
+          title: "Update Failed",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        setIsSuccess(true);
+        toast({
+          title: "Password Updated",
+          description: "Your password has been successfully updated",
+        });
+        
+        // Redirect to app after success
+        setTimeout(() => {
+          navigate('/easyteach-app');
+        }, 2000);
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-white/80 backdrop-blur-sm border-0 shadow-2xl">
+        <CardHeader className="text-center space-y-4">
+          <div className="flex justify-center">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+              {isSuccess ? (
+                <CheckCircle className="h-8 w-8 text-white" />
+              ) : (
+                <Lock className="h-8 w-8 text-white" />
+              )}
+            </div>
+          </div>
+          <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            {isSuccess ? "Password Updated!" : "Set New Password"}
+          </CardTitle>
+          <CardDescription className="text-gray-600">
+            {isSuccess 
+              ? "Your password has been successfully updated. Redirecting to your dashboard..."
+              : "Choose a strong password for your account"
+            }
+          </CardDescription>
+        </CardHeader>
+
+        {!isSuccess && (
+          <CardContent className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="new-password" className="text-gray-700 font-medium">
+                New Password
+              </Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Input
+                  id="new-password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your new password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="pl-10 pr-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="confirm-password" className="text-gray-700 font-medium">
+                Confirm Password
+              </Label>
+              <Input
+                id="confirm-password"
+                type="password"
+                placeholder="Confirm your new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
+              />
+            </div>
+
+            <Button
+              onClick={handleUpdatePassword}
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Updating Password...
+                </>
+              ) : (
+                "Update Password"
+              )}
+            </Button>
+          </CardContent>
+        )}
+      </Card>
+    </div>
+  );
+};
+
+export default ResetPassword;
