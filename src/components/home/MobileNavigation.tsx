@@ -73,7 +73,7 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
 
   const solutionsByDepartment = [
     { title: "Admissions", icon: UserCheck, path: "/solutions/admissions" },
-    { title: "General Report", icon: FileBarChart, path: "/solutions/reporting" },
+    { title: "General Report", icon: FileBarChart, path: "/solutions/general-reports" },
     { title: "HR & Payroll", icon: Users, path: "/solutions/hr-payroll" },
     { title: "Finance", icon: DollarSign, path: "/solutions/finance" },
     { title: "Communication", icon: MessageSquare, path: "/solutions/communication" },

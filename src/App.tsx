@@ -96,7 +96,7 @@ const App = () => (
               element={<IndependentSchools />}
             />
             <Route path="/solutions/admissions" element={<Admissions />} />
-            <Route path="/solutions/reporting" element={<GeneralReports />} />
+            <Route path="/solutions/general-reports" element={<GeneralReports />} />
             <Route path="/solutions/hr-payroll" element={<HRPayroll />} />
             <Route path="/solutions/finance" element={<Finance />} />
             <Route
