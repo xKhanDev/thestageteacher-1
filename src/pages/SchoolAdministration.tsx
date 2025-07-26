@@ -125,7 +125,7 @@ const SchoolAdministration = () => {
                 Solution
               </span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {features.map((feature, index) => (
                 <Card
                   key={index}
@@ -133,10 +133,10 @@ const SchoolAdministration = () => {
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardHeader>
-                    <div className="p-3 rounded-2xl icon-bg shadow-lg w-fit group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3 rounded-2xl icon-bg shadow-lg w-fit group-hover:scale-110 transition-transform duration-300 mx-auto">
                       <feature.icon className="h-6 w-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 ">
+                    <CardTitle className="text-xl font-bold text-gray-900 pt-4">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>

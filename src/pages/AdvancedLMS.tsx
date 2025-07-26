@@ -339,7 +339,7 @@ const AdvancedLMS = () => {
                   className="flex items-center text-lg text-gray-700 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CheckCircle className="h-6 w-6 text-green-500 mr-3 flex-shrink-0" />
+                  <CheckCircle className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
                   {benefit}
                 </div>
               ))}

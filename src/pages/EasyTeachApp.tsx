@@ -14,8 +14,6 @@ import ToolsGrid from "@/components/sections/ToolsGrid";
 import TeacherProfile from "@/components/TeacherProfile";
 import ToolModal from "@/components/ToolModal";
 import AIAssistant from "@/components/AIAssistant";
-import GradeSystemSelector from "@/components/GradeSystemSelector";
-import LanguageSelector from "@/components/LanguageSelector";
 import { tools } from "@/lib/toolsData";
 
 const EasyTeachApp = () => {
@@ -161,16 +159,16 @@ const EasyTeachApp = () => {
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8 h-14">
+              <TabsList className="grid w-full grid-cols-2 bg-blue-50 border border-gray-300 mb-6 sm:mb-8 h-14">
                 <TabsTrigger
                   value="tools"
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                  className="data-[state=active]:bg-[#2901b3] data-[state=active]:text-white text-sm sm:text-base"
                 >
                   {t("easyteach.tabs.teachingTools")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="ai-assistant"
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                  className="data-[state=active]:bg-[#2901b3] data-[state=active]:text-white text-sm sm:text-base"
                 >
                   <Bot className="h-4 w-4 mr-1 sm:mr-2" />
                   <span className="hidden sm:inline">

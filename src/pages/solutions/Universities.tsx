@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Award, Users, BookOpen, TrendingUp, Brain, Laptop } from "lucide-react";
+import { Award, Users, TrendingUp, Brain, Laptop } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState } from "react";
 import LoginModal from "@/components/auth/LoginModal";
@@ -12,94 +11,104 @@ const Universities = () => {
     {
       icon: Brain,
       title: "Advanced Research Tools",
-      description: "AI-powered research assistance and academic collaboration platforms"
+      description:
+        "AI-powered research assistance and academic collaboration platforms",
     },
     {
       icon: Users,
       title: "Large-Scale Management",
-      description: "Handle thousands of students with sophisticated enrollment and tracking systems"
+      description:
+        "Handle thousands of students with sophisticated enrollment and tracking systems",
     },
     {
       icon: Laptop,
       title: "Digital Campus",
-      description: "Complete virtual learning environment with interactive lecture halls"
+      description:
+        "Complete virtual learning environment with interactive lecture halls",
     },
     {
       icon: TrendingUp,
       title: "Analytics & Insights",
-      description: "Advanced analytics for academic performance and institutional efficiency"
-    }
+      description:
+        "Advanced analytics for academic performance and institutional efficiency",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
-      
+
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 icon-bg rounded-full mb-6">
             <Award className="h-8 w-8 text-white" />
           </div>
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Universities
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Empower higher education with advanced learning management systems designed 
-            for universities and research institutions.
+            Empower higher education with advanced learning management systems
+            designed for universities and research institutions.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           {features.map((feature, index) => (
-            <Card key={index} className="group hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg">
+            <div
+              key={index}
+              className="group bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+            >
+              <div>
+                <div className="flex flex-col items-start justify-center gap-2">
+                  <div className="p-3 icon-bg rounded-lg  group-hover:scale-105 transition-transform duration-300">
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <h2 className="text-lg/6 font-bold">{feature.title}</h2>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 text-base">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              </div>
+
+              <p className="text-gray-600 text-base/6 pt-2">
+                {feature.description}
+              </p>
+            </div>
           ))}
         </div>
 
         {/* Statistics */}
-        <div className="bg-white rounded-2xl p-8 shadow-lg mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Leading Universities Trust Us</h2>
+        <div className="bg-[#2901b3] rounded-2xl p-8 shadow-lg mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8 text-white">
+            Leading Universities Trust Us
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">250,000+</div>
-              <div className="text-gray-600">University Students</div>
+              <div className="text-4xl font-bold text-white mb-2">250,000+</div>
+              <div className="text-gray-200">University Students</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">150+</div>
-              <div className="text-gray-600">Universities</div>
+              <div className="text-4xl font-bold text-white mb-2">150+</div>
+              <div className="text-gray-200">Universities</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">95%</div>
-              <div className="text-gray-600">Research Efficiency</div>
+              <div className="text-4xl font-bold text-white mb-2">95%</div>
+              <div className="text-gray-200">Research Efficiency</div>
             </div>
           </div>
         </div>
 
         {/* CTA Section */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Revolutionize Higher Education?</h2>
+          <h2 className="text-3xl font-bold mb-6">
+            Ready to Revolutionize Higher Education?
+          </h2>
           <p className="text-xl text-gray-600 mb-8">
             Join leading universities worldwide in transforming education.
           </p>
-          <Button 
+          <Button
             size="lg"
             onClick={() => setShowLogin(true)}
-            className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white px-8 py-4 text-lg"
+            className="icon-bg my-btn text-white p-6"
           >
             Get Started Today
           </Button>
@@ -107,10 +116,7 @@ const Universities = () => {
       </div>
 
       {showLogin && (
-        <LoginModal
-          isOpen={showLogin}
-          onClose={() => setShowLogin(false)}
-        />
+        <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
       )}
     </div>
   );

@@ -30,26 +30,24 @@ const CategoryFilters = ({
   selectedCategory,
   onCategorySelect,
 }: CategoryFiltersProps) => {
+  const activeCategory = categories.find((c) => c.name === selectedCategory);
   return (
     <div className="flex flex-wrap gap-2 sm:gap-3">
       {categories.map((category) => {
         const IconComponent = iconMap[category.icon];
         return (
-          <Button
+          <button
             key={category.name}
-            variant={selectedCategory === category.name ? "default" : "outline"}
             onClick={() => onCategorySelect(category.name)}
-            className={`flex items-center space-x-1 sm:space-x-2 rounded-2xl px-3 sm:px-6 py-2 sm:py-3 transition-all duration-200 text-xs sm:text-sm ${
-              selectedCategory === category.name
-                ? `bg-gradient-to-r ${category.gradient} text-white shadow-lg transform scale-105`
-                : "bg-white/80 backdrop-blur-sm border-2 hover:border-purple-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black"
+            className={`flex items-center space-x-1 sm:space-x-2 rounded-2xl px-3 sm:px-6 py-2 sm:py-3 transition-all duration-200 text-xs sm:text-sm font-medium ${
+              category.name === selectedCategory ? "my-btn" : "bg-blue-50"
             }`}
           >
             <IconComponent className="h-3 w-3 sm:h-4 sm:w-4" />
             <span className="font-medium whitespace-nowrap">
               {category.name}
             </span>
-          </Button>
+          </button>
         );
       })}
     </div>

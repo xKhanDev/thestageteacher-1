@@ -95,7 +95,7 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-2 px-2 py-6 rounded-lg bg-white/70 backdrop-blur-sm border border-slate-200/60 hover:bg-white hover:border-blue-200 hover:shadow-md transition-all duration-200 hover:scale-[1.01] relative overflow-hidden"
+                      className="flex items-center space-x-2 px-2 py-6 rounded-lg bg-white backdrop-blur-sm hover:bg-white/30 hover:shadow-xl hover:scale-105 relative overflow-hidden"
                     >
                       <div
                         className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-3 transition-opacity duration-300 rounded-lg`}

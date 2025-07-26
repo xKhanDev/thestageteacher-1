@@ -151,6 +151,11 @@
   background: linear-gradient(to right, #5c2fff, #2901B3);
 }
 
+html::selection{
+  color: white;
+  background: #2901B3;
+}
+
   .compact-text {
     @apply text-xs sm:text-sm leading-tight text-gray-800;
   }

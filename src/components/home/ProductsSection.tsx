@@ -45,7 +45,8 @@ const ProductsSection = ({
     {
       id: "easyteach-free",
       name: "EasyTeach Free",
-      description: "Perfect for getting started with AI-powered teaching tools",
+      description:
+        "Perfect for getting started with AI-powered teaching tools and basic content generation.",
       longDescription:
         "Get started with essential AI teaching tools including lesson planning, communication assistance, and basic content generation.",
       icon: BookOpen,
@@ -67,38 +68,38 @@ const ProductsSection = ({
       btnIcon: ArrowRight,
       popular: false,
     },
-    {
-      id: "easyteach-pro",
-      name: "EasyTeach Pro",
-      description:
-        "Everything in Free, plus unlimited AI power and exclusive features",
-      longDescription:
-        "Unlock the full potential of AI-powered teaching with unlimited generations, advanced features, and exclusive early access to new tools.",
-      icon: Crown,
-      status: "available",
-      color: "from-purple-500 to-purple-600",
-      bgColor: "purple",
-      price: "$89",
-      priceSubtext: "per year",
-      features: [
-        { text: "Everything in Free, plus...", reactIcon: FaCheck },
-        { text: "Unlimited AI generations", reactIcon: IoMdInfinite },
-        {
-          text: "Continue threads with Kribi Chatbot",
-          reactIcon: IoIosChatbubbles,
-        },
-        { text: "Unlimited AI Slides generation", reactIcon: FaSlideshare },
-        { text: "Export to Google Slides", reactIcon: FaGoogle },
-        { text: "EasyTeach for students", reactIcon: FaCheck },
-        { text: "Lifetime output history", reactIcon: FaCheck },
-        { text: "Exclusive early access to new features", reactIcon: FaCheck },
-      ],
-      users: "Most Popular",
-      action: () => onShowLogin(),
-      actionText: "Upgrade to Pro",
-      btnIcon: FaCrown,
-      popular: true,
-    },
+    // {
+    //   id: "easyteach-pro",
+    //   name: "EasyTeach Pro",
+    //   description:
+    //     "Everything in Free, plus unlimited AI power and exclusive features",
+    //   longDescription:
+    //     "Unlock the full potential of AI-powered teaching with unlimited generations, advanced features, and exclusive early access to new tools.",
+    //   icon: Crown,
+    //   status: "available",
+    //   color: "from-purple-500 to-purple-600",
+    //   bgColor: "purple",
+    //   price: "$89",
+    //   priceSubtext: "per year",
+    //   features: [
+    //     { text: "Everything in Free, plus...", reactIcon: FaCheck },
+    //     { text: "Unlimited AI generations", reactIcon: IoMdInfinite },
+    //     {
+    //       text: "Continue threads with Kribi Chatbot",
+    //       reactIcon: IoIosChatbubbles,
+    //     },
+    //     { text: "Unlimited AI Slides generation", reactIcon: FaSlideshare },
+    //     { text: "Export to Google Slides", reactIcon: FaGoogle },
+    //     { text: "EasyTeach for students", reactIcon: FaCheck },
+    //     { text: "Lifetime output history", reactIcon: FaCheck },
+    //     { text: "Exclusive early access to new features", reactIcon: FaCheck },
+    //   ],
+    //   users: "Most Popular",
+    //   action: () => onShowLogin(),
+    //   actionText: "Upgrade to Pro",
+    //   btnIcon: FaCrown,
+    //   popular: true,
+    // },
     {
       id: "school-admin",
       name: "School Administration",
@@ -184,20 +185,15 @@ const ProductsSection = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 lg:gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-3">
           {products.map((product, index) => (
             <div
               className={`relative border border-gray-300 rounded-2xl hover:border-${product.bgColor}-600`}
             >
               {/* header */}
               <div
-                className={`flex items-center justify-between bg-${
-                  product.bgColor
-                }-600 text-white rounded-t-2xl px-4 py-12 ${
-                  product.name.startsWith("School")
-                    ? "md:py-9 bg-orange-600"
-                    : "md:py-12"
-                }`}
+                className={`flex items-center justify-between bg-${product.bgColor}-600 text-white rounded-t-2xl px-4 py-12 md:py-12
+                `}
               >
                 <h1 className="text-lg/6 font-bold text-white">
                   {product.name}
@@ -251,11 +247,11 @@ const ProductsSection = ({
                     </span>
                   )}
                 </div>
-                <p className="text-sm">{product.longDescription}</p>
+                {/* <p className="text-sm">{product.longDescription}</p> */}
 
                 {/* What's included */}
                 <div>
-                  <h3 className="text-sm font-semibold mb-1 mt-4">
+                  <h3 className="text-sm font-semibold mb-1">
                     What's included:
                   </h3>
                   <div className="flex flex-col gap-2">
@@ -282,13 +278,7 @@ const ProductsSection = ({
               </div>
 
               {/* button */}
-              <div
-                className={`p-4 relative ${
-                  product.actionText.startsWith("Enter LMS")
-                    ? "md:bottom-1"
-                    : "md:-bottom-14"
-                }`}
-              >
+              <div className={`p-4`}>
                 <Button
                   className={`mt-4 py-6 w-full flex items-center justify-center bg-${product.bgColor}-600 hover:bg-${product.bgColor}-700`}
                 >

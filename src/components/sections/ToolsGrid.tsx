@@ -67,17 +67,17 @@ const ToolsGrid = ({
               <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-4">
                   <div
-                    className={`p-3 rounded-2xl ${tool.color} group-hover:scale-110 transition-transform duration-200 shadow-md`}
+                    className={`p-3 rounded-2xl icon-bg group-hover:scale-110 transition-transform duration-200 shadow-md`}
                   >
-                    <IconComponent className="h-7 w-7" />
+                    <IconComponent className="h-7 w-7 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
+                    <CardTitle className="text-xl font-bold text-gray-900 ">
                       {tool.name}
                     </CardTitle>
                     <Badge
                       variant="secondary"
-                      className={`${categoryInfo?.color} font-medium mt-1`}
+                      className={`bg-blue-100 text-gray-800 font-medium mt-1`}
                     >
                       {tool.category}
                     </Badge>
@@ -97,13 +97,12 @@ const ToolsGrid = ({
                 <span className="text-sm text-green-600 font-semibold bg-green-50 px-3 py-1 rounded-full">
                   ✓ {t("easyteach.tools.readyIn", { time: tool.estimatedTime })}
                 </span>
-                <Button
-                  size="sm"
-                  className="rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-medium px-6 group-hover:scale-105 transition-all duration-200"
+                <button
+                  className="rounded-full bg-blue-100 hover:bg-blue-200 text-sm text-[#2901b3] py-1 px-3"
                   onClick={(e) => handleToolClick(tool, e)}
                 >
                   {t("easyteach.tools.useToolButton")}
-                </Button>
+                </button>
               </div>
             </CardContent>
           </Card>
