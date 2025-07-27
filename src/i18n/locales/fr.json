@@ -802,5 +802,24 @@
     "failedToExport": "Échec de l'exportation des diapositives. Veuillez réessayer.",
     "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
     "unexpectedError": "Une erreur inattendue s'est produite."
+  },
+  "products": {
+    "choosePlan": "Choisissez Votre Plan",
+    "readyToTransform": "Prêt à Transformer Votre Enseignement ?",
+    "getStartedFree": "Commencer Gratuitement", 
+    "watchDemo": "Regarder la Démo",
+    "whatsIncluded": "Ce qui est inclus :",
+    "featuresMore": "+{count} fonctionnalités supplémentaires"
+  },
+  "trustIndicators": {
+    "teachers": "100 000+ Enseignants",
+    "rating": "Note 4,9/5",
+    "lovedByEducators": "Apprécié par les Éducateurs"
+  },
+  "resetPassword": {
+    "title": "Réinitialiser le Mot de Passe",
+    "emailAddress": "Adresse Email",
+    "sendResetLink": "Envoyer le Lien",
+    "backToLogin": "Retour à la Connexion"
   }
 }

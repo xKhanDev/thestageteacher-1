@@ -803,4 +803,23 @@
     "networkError": "Error de red. Por favor verifica tu conexión.",
     "unexpectedError": "Ocurrió un error inesperado."
   }
-}
+  },
+  "products": {
+    "choosePlan": "Elige Tu Plan", 
+    "readyToTransform": "¿Listo para Transformar Tu Enseñanza?",
+    "getStartedFree": "Comenzar Gratis",
+    "watchDemo": "Ver Demo", 
+    "whatsIncluded": "Qué está incluido:",
+    "featuresMore": "+{count} características más"
+  },
+  "trustIndicators": {
+    "teachers": "100,000+ Maestros",
+    "rating": "Calificación 4.9/5",
+    "lovedByEducators": "Amado por Educadores"
+  },
+  "resetPassword": {
+    "title": "Restablecer Contraseña",
+    "emailAddress": "Dirección de Email", 
+    "sendResetLink": "Enviar Enlace",
+    "backToLogin": "Volver al Inicio"
+  }
