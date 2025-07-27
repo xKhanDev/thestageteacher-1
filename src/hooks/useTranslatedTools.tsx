@@ -8,13 +8,15 @@ export const useTranslatedTools = () => {
   const translatedTools = useMemo(() => {
     return tools.map(tool => ({
       ...tool,
-      name: t(tool.nameKey),
-      description: t(tool.descriptionKey),
-      category: t(tool.categoryKey),
+      // Use translation keys if available, otherwise use direct properties
+      name: tool.nameKey ? t(tool.nameKey) : tool.name,
+      description: tool.descriptionKey ? t(tool.descriptionKey) : tool.description,
+      category: tool.categoryKey ? t(tool.categoryKey) : tool.category,
       fields: tool.fields.map(field => ({
         ...field,
-        label: t(field.labelKey),
-        placeholder: field.placeholderKey ? t(field.placeholderKey) : undefined,
+        // Use translation keys if available, otherwise use direct properties
+        label: field.labelKey ? t(field.labelKey) : field.label,
+        placeholder: field.placeholderKey ? t(field.placeholderKey) : field.placeholder,
         options: field.optionsKey ? Object.values(t(field.optionsKey, { returnObjects: true }) as Record<string, string>) : field.options
       }))
     }));
