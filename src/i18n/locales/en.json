@@ -85,16 +85,29 @@
     "aiChatbotDesc": "Intelligent virtual assistant for students and teachers.",
     "learnMore": "Learn More",
     "comingSoon": "Coming Soon",
-    "joinWaitlist": "Join Waitlist"
+    "joinWaitlist": "Join Waitlist",
+    "choosePlan": "Choose Your Plan",
+    "planDescription": "Start free and upgrade when you're ready for unlimited AI power",
+    "whatsIncluded": "What's included:",
+    "featuresMore": "+{{count}} features more",
+    "mostPopular": "Most Popular"
   },
   "cta": {
     "title": "Ready to Transform Your Teaching?",
     "description": "Join thousands of educators who are already using our platform to enhance their teaching experience.",
     "getStarted": "Get Started Today",
-    "joinWaitlist": "Join Our Waitlist"
+    "joinWaitlist": "Join Our Waitlist",
+    "teachersCount": "100,000+ Teachers",
+    "rating": "4.9/5 Rating",
+    "lovedByEducators": "Loved by Educators",
+    "getStartedFree": "Get Started for Free",
+    "joinWaitlistButton": "Join Waitlist",
+    "noCreditCard": "No credit card required",
+    "freePlan": "Free forever plan available",
+    "setupTime": "Setup in under 5 minutes"
   },
   "footer": {
-    "tagline": "Empowering educators with AI-driven tools for modern teaching",
+    "tagline": "Empowering education worldwide with comprehensive AI-powered solutions.",
     "products": "Products",
     "company": "Company",
     "support": "Support",
@@ -109,7 +122,8 @@
     "terms": "Terms of Service",
     "cookies": "Cookie Policy",
     "dataProtection": "Data Protection",
-    "allRights": "All rights reserved."
+    "allRights": "All rights reserved.",
+    "contact": "Contact"
   },
   "auth": {
     "loginTitle": "Welcome Back",
@@ -283,7 +297,19 @@
     "newPassword": "New Password",
     "confirmPassword": "Confirm Password", 
     "updatePassword": "Update Password",
-    "passwordUpdated": "Password Updated Successfully!"
+    "passwordUpdated": "Password Updated Successfully!",
+    "emailAddress": "Email Address",
+    "enterEmailPlaceholder": "Enter your email",
+    "sendingResetLink": "Sending Reset Link...",
+    "backToLogin": "Back to Login",
+    "resetDescription": "Enter your email address and we'll send you a link to reset your password",
+    "emailSentMessage": "If an account with that email exists, you'll receive a password reset link shortly.",
+    "emailRequired": "Email Required",
+    "enterEmailError": "Please enter your email address",
+    "resetFailed": "Reset Failed",
+    "errorOccurred": "An unexpected error occurred",
+    "resetEmailSent": "Reset Email Sent",
+    "checkEmailMessage": "Check your email for password reset instructions"
   },
   "solutions": {
     "startFreeTrial": "Start Free Trial",
@@ -294,5 +320,29 @@
     "howToUse": "How to Use:",
     "optimizeFinances": "Optimize School Finances",
     "seeInsights": "See Insights in Action"
+  },
+  "feedback": {
+    "title": "How was your experience with {{toolName}}?",
+    "description": "Your feedback helps us improve our AI teaching tools. Please take a moment to share your experience! 📚✨",
+    "toolAppreciation": "How much did you appreciate this tool overall?",
+    "responseQuality": "How would you rate the quality of the generated content?",
+    "missingFields": "Were there any fields missing that could have made your request more detailed and accurate?",
+    "missingFieldsPlaceholder": "e.g., 'Would love a field for student reading level', 'Missing options for special needs accommodations', etc.",
+    "additionalFeedback": "Any additional feedback or suggestions?",
+    "additionalFeedbackPlaceholder": "Share any other thoughts about your experience...",
+    "wouldRecommend": "Would you recommend this tool to other educators?",
+    "yesRecommend": "Yes, I'd recommend it",
+    "noRecommend": "No, needs improvement",
+    "skipForNow": "Skip for now",
+    "submitFeedback": "Submit Feedback",
+    "submitting": "Submitting...",
+    "clickToRate": "Click to rate",
+    "starsRating": "{{rating}}/5 stars",
+    "completeRatings": "Please complete the ratings",
+    "ratingsRequired": "Both star ratings are required to submit your feedback.",
+    "thankYou": "Thank you for your feedback! 🙏",
+    "thanksDescription": "Your input helps us improve the teaching tools experience.",
+    "errorSubmitting": "Error submitting feedback",
+    "errorMessage": "There was an issue saving your feedback. Please try again."
   }
 }
