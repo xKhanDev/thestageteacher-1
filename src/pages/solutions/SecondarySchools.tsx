@@ -78,11 +78,11 @@ const SecondarySchools = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50">
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-600/90 to-cyan-600/90 text-white">
+      <div className="relative overflow-hidden bg-gradient-to-r from-primary/90 to-secondary/90 text-white">
         <div className="absolute inset-0">
           <img 
             src={secondarySchoolsHero} 

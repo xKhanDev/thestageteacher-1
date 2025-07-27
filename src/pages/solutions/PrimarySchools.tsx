@@ -78,11 +78,11 @@ const PrimarySchools = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50">
       <UniversalHeader onShowLogin={() => setShowLogin(true)} />
       
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-pink-600/90 to-rose-600/90 text-white">
+      <div className="relative overflow-hidden bg-gradient-to-r from-primary/90 to-secondary/90 text-white">
         <div className="absolute inset-0">
           <img 
             src={primarySchoolsHero} 
@@ -113,7 +113,7 @@ const PrimarySchools = () => {
               <Button 
                 size="lg"
                 onClick={() => setShowLogin(true)}
-                className="bg-white text-pink-600 hover:bg-pink-50 px-8 py-4 text-lg font-semibold"
+                className="bg-white text-primary hover:bg-purple-50 px-8 py-4 text-lg font-semibold"
               >
                 Start Free Trial
               </Button>
@@ -143,7 +143,7 @@ const PrimarySchools = () => {
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-0 shadow-lg">
               <CardHeader className="pb-4">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl shadow-lg">
+                  <div className="p-4 bg-gradient-to-r from-primary to-secondary rounded-xl shadow-lg">
                     <feature.icon className="h-7 w-7 text-white" />
                   </div>
                 </div>

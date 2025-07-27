@@ -201,7 +201,7 @@ const AdvancedLMS = () => {
     <>
       <Navigation onShowLogin={() => setOnShowLogin(true)} />
       <div
-        className={`min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 transition-all duration-1000 ${
+        className={`min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -214,7 +214,7 @@ const AdvancedLMS = () => {
               </div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
                 Advanced
-                <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {" "}
                   AI LMS
                 </span>
@@ -237,7 +237,7 @@ const AdvancedLMS = () => {
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
               Revolutionary AI-Powered{" "}
-              <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Features
               </span>
             </h2>
