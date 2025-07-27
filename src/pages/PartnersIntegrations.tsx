@@ -1,12 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Zap, Shield, Users, Globe, CheckCircle } from "lucide-react";
 
 const PartnersIntegrations = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -59,14 +61,14 @@ const PartnersIntegrations = () => {
   ];
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-primary/5 via-primary/10 to-primary/15 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b border-emerald-100 shadow-lg sticky top-0 z-50">
+      <header className="bg-background/90 backdrop-blur-sm border-b border-border shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Button variant="ghost" onClick={() => navigate('/')} className="flex items-center space-x-2">
               <ArrowLeft className="h-4 w-4" />
-              <span>Back to Home</span>
+              <span>{t("pages.partnersIntegrations.backToHome")}</span>
             </Button>
           </div>
         </div>
@@ -76,29 +78,29 @@ const PartnersIntegrations = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
-            <div className="p-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
+            <div className="p-4 rounded-3xl bg-gradient-primary shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
               <Zap className="h-10 w-10 text-white" />
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Partners & 
-              <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Integrations</span>
+            <h1 className="text-5xl font-bold text-foreground mb-6">
+              {t("pages.partnersIntegrations.title").split(' &')[0]} & 
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> {t("pages.partnersIntegrations.title").split(' & ')[1]}</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Seamlessly connect with the tools you already use and trust. Our extensive network of partners ensures you get the best educational experience.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t("pages.partnersIntegrations.subtitle")}
             </p>
           </div>
         </div>
       </section>
 
       {/* Integrations Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-            Platform Integrations
+          <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+            {t("pages.partnersIntegrations.platformIntegrations")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {integrations.map((integration, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-emerald-50 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-background to-primary/5 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader className="text-center">
                   <div className="mx-auto mb-4">
                     <img 
@@ -107,15 +109,15 @@ const PartnersIntegrations = () => {
                       className="w-16 h-16 rounded-lg object-cover mx-auto group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
-                  <CardTitle className="text-lg font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
+                  <CardTitle className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                     {integration.name}
                   </CardTitle>
-                  <div className="text-xs text-emerald-600 font-medium bg-emerald-100 px-2 py-1 rounded-full w-fit mx-auto">
+                  <div className="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded-full w-fit mx-auto">
                     {integration.category}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 text-center text-sm">
+                  <CardDescription className="text-muted-foreground text-center text-sm">
                     {integration.description}
                   </CardDescription>
                 </CardContent>
@@ -126,10 +128,10 @@ const PartnersIntegrations = () => {
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-teal-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 to-primary/10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-            Strategic Partners
+          <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+            {t("pages.partnersIntegrations.strategicPartners")}
           </h2>
           <div className="space-y-6">
             {partners.map((partner, index) => (
@@ -137,15 +139,15 @@ const PartnersIntegrations = () => {
                 <CardContent className="p-8">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">
+                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                         {partner.name}
                       </h3>
-                      <p className="text-gray-600 mb-2">{partner.description}</p>
-                      <span className="text-sm text-emerald-600 font-medium bg-emerald-100 px-3 py-1 rounded-full">
+                      <p className="text-muted-foreground mb-2">{partner.description}</p>
+                      <span className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
                         {partner.type}
                       </span>
                     </div>
-                    <CheckCircle className="h-8 w-8 text-emerald-500" />
+                    <CheckCircle className="h-8 w-8 text-primary" />
                   </div>
                 </CardContent>
               </Card>

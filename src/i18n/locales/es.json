@@ -148,6 +148,51 @@
     "selectGrade": "Seleccionar Nivel de Grado",
     "selectSystem": "Seleccionar Sistema Educativo"
   },
+  "pages": {
+    "contactUs": {
+      "title": "Contáctanos",
+      "subtitle": "Nos encantaría saber de ti. Ponte en contacto con nuestro equipo para soporte, asociaciones o cualquier pregunta sobre Vicerta.",
+      "getInTouch": "Ponte en Contacto",
+      "emailUs": "Envíanos un Email",
+      "emailAddress": "support@vicerta.com",
+      "emailDescription": "Ponte en contacto para consultas generales",
+      "callUs": "Llámanos",
+      "phoneNumber": "+1 (555) 123-4567",
+      "phoneDescription": "Habla con nuestro equipo de soporte",
+      "visitUs": "Visítanos",
+      "address": "123 Education Street, Tech City, TC 12345",
+      "addressDescription": "La ubicación de nuestra sede",
+      "supportHours": "Horarios de Soporte",
+      "hours": "Lun-Vie: 9AM-6PM EST",
+      "hoursDescription": "Cuando estamos disponibles para ayudar",
+      "sendMessage": "Envíanos un Mensaje",
+      "sendMessageDescription": "Completa el formulario a continuación y te responderemos lo antes posible.",
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "sendButton": "Enviar Mensaje",
+      "backToHome": "Volver al Inicio"
+    },
+    "blog": {
+      "title": "Blog Educativo",
+      "subtitle": "Perspectivas, consejos y tendencias del mundo de la tecnología educativa y la enseñanza moderna.",
+      "backToHome": "Volver al Inicio"
+    },
+    "caseStudies": {
+      "title": "Casos de Estudio",
+      "subtitle": "Descubre cómo las escuelas de todo el mundo están transformando la educación con las soluciones innovadoras de Vicerta.",
+      "readFullStudy": "Leer Estudio Completo",
+      "backToHome": "Volver al Inicio"
+    },
+    "partnersIntegrations": {
+      "title": "Socios e Integraciones",
+      "subtitle": "Conéctate perfectamente con las herramientas que ya usas y en las que confías. Nuestra extensa red de socios te asegura la mejor experiencia educativa.",
+      "platformIntegrations": "Integraciones de Plataforma",
+      "strategicPartners": "Socios Estratégicos",
+      "backToHome": "Volver al Inicio"
+    }
+  },
   "easyteach": {
     "title": "EasyTeach",
     "welcome": {

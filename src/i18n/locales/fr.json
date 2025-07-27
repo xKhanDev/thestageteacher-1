@@ -148,6 +148,51 @@
     "selectGrade": "Sélectionner le Niveau",
     "selectSystem": "Sélectionner le Système Éducatif"
   },
+  "pages": {
+    "contactUs": {
+      "title": "Nous Contacter",
+      "subtitle": "Nous aimerions avoir de vos nouvelles. Contactez notre équipe pour du support, des partenariats ou toute question sur Vicerta.",
+      "getInTouch": "Entrer en Contact",
+      "emailUs": "Nous Envoyer un Email",
+      "emailAddress": "support@vicerta.com",
+      "emailDescription": "Contactez-nous pour des demandes générales",
+      "callUs": "Nous Appeler",
+      "phoneNumber": "+1 (555) 123-4567",
+      "phoneDescription": "Parlez avec notre équipe de support",
+      "visitUs": "Nous Rendre Visite",
+      "address": "123 Education Street, Tech City, TC 12345",
+      "addressDescription": "L'emplacement de notre siège social",
+      "supportHours": "Heures de Support",
+      "hours": "Lun-Ven : 9h-18h EST",
+      "hoursDescription": "Quand nous sommes disponibles pour aider",
+      "sendMessage": "Nous Envoyer un Message",
+      "sendMessageDescription": "Remplissez le formulaire ci-dessous et nous vous répondrons dès que possible.",
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "sendButton": "Envoyer le Message",
+      "backToHome": "Retour à l'Accueil"
+    },
+    "blog": {
+      "title": "Blog Éducatif",
+      "subtitle": "Insights, conseils et tendances du monde de la technologie éducative et de l'enseignement moderne.",
+      "backToHome": "Retour à l'Accueil"
+    },
+    "caseStudies": {
+      "title": "Études de Cas",
+      "subtitle": "Découvrez comment les écoles du monde entier transforment l'éducation avec les solutions innovantes de Vicerta.",
+      "readFullStudy": "Lire l'Étude Complète",
+      "backToHome": "Retour à l'Accueil"
+    },
+    "partnersIntegrations": {
+      "title": "Partenaires & Intégrations",
+      "subtitle": "Connectez-vous facilement avec les outils que vous utilisez déjà et en qui vous avez confiance. Notre vaste réseau de partenaires vous assure la meilleure expérience éducative.",
+      "platformIntegrations": "Intégrations de Plateforme",
+      "strategicPartners": "Partenaires Stratégiques",
+      "backToHome": "Retour à l'Accueil"
+    }
+  },
   "easyteach": {
     "title": "EasyTeach",
     "welcome": {

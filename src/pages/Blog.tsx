@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +9,7 @@ import { ArrowLeft, BookOpen, Calendar, User, ArrowRight, Clock } from "lucide-r
 
 const Blog = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -54,14 +56,14 @@ const Blog = () => {
   ];
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-primary/5 via-primary/10 to-primary/15 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b border-orange-100 shadow-lg sticky top-0 z-50">
+      <header className="bg-background/90 backdrop-blur-sm border-b border-border shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Button variant="ghost" onClick={() => navigate('/')} className="flex items-center space-x-2">
               <ArrowLeft className="h-4 w-4" />
-              <span>Back to Home</span>
+              <span>{t("pages.blog.backToHome")}</span>
             </Button>
           </div>
         </div>
@@ -71,26 +73,26 @@ const Blog = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-8">
-            <div className="p-4 rounded-3xl bg-gradient-to-r from-orange-500 to-red-500 shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
+            <div className="p-4 rounded-3xl bg-gradient-primary shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
               <BookOpen className="h-10 w-10 text-white" />
             </div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              Education 
-              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"> Blog</span>
+            <h1 className="text-5xl font-bold text-foreground mb-6">
+              {t("pages.blog.title").split(' ')[0]} 
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> {t("pages.blog.title").split(' ').slice(1).join(' ')}</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Insights, tips, and trends from the world of educational technology and modern teaching.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t("pages.blog.subtitle")}
             </p>
           </div>
         </div>
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {blogPosts.map((post, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50 overflow-hidden cursor-pointer animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-background to-primary/5 overflow-hidden cursor-pointer animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="aspect-video overflow-hidden">
                   <img 
                     src={post.image}
@@ -100,7 +102,7 @@ const Blog = () => {
                 </div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-orange-100 text-orange-800 border-orange-200">
+                    <Badge className="bg-primary/10 text-primary border-primary/20">
                       {post.category}
                     </Badge>
                     <div className="flex items-center text-sm text-gray-500">
@@ -108,23 +110,23 @@ const Blog = () => {
                       {post.readTime}
                     </div>
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-orange-700 transition-colors line-clamp-2">
+                  <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-600 text-base leading-relaxed mb-4 line-clamp-3">
+                  <CardDescription className="text-muted-foreground text-base leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt}
                   </CardDescription>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                       <User className="h-4 w-4" />
                       <span>{post.author}</span>
                       <span>•</span>
                       <Calendar className="h-4 w-4" />
                       <span>{post.date}</span>
                     </div>
-                    <Button variant="ghost" className="text-orange-600 hover:text-orange-700 p-0">
+                    <Button variant="ghost" className="text-primary hover:text-primary/80 p-0">
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </div>
