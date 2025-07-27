@@ -235,10 +235,10 @@ const AdvancedLMS = () => {
         {/* Features Categories */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-              Revolutionary AI-Powered{" "}
+            <h2 className="text-4xl font-bold text-center text-foreground mb-16">
+              {t('advancedLMS.sections.revolutionary')}{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Features
+                {t('advancedLMS.sections.features')}
               </span>
             </h2>
             <div className="space-y-24">
@@ -329,8 +329,8 @@ const AdvancedLMS = () => {
         {/* Benefits Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">
-              Transform Your Institution
+            <h2 className="text-4xl font-bold text-foreground mb-12">
+              {t('advancedLMS.sections.transform')}
             </h2>
             <div className="space-y-4 mb-12 grid grid-cols-1 sm:grid-cols-2 place-content-center">
               {benefits.map((benefit, index) => (

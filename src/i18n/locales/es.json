@@ -894,5 +894,56 @@
     "failedToExport": "Falló al exportar diapositivas. Por favor intenta de nuevo.",
     "networkError": "Error de red. Por favor verifica tu conexión.",
     "unexpectedError": "Ocurrió un error inesperado."
+  },
+  "schoolAdmin": {
+    "sections": {
+      "complete": "Solución Administrativa",
+      "solution": "Completa",
+      "integratedModules": "Módulos Integrados"
+    },
+    "features": {
+      "sis": {
+        "title": "Sistema de Información Estudiantil",
+        "description": "Registros estudiantiles completos, inscripción y seguimiento académico"
+      },
+      "financial": {
+        "title": "Gestión Financiera",
+        "description": "Seguimiento de matrícula, facturación, presupuestación e informes financieros"
+      },
+      "scheduling": {
+        "title": "Programación y Horarios",
+        "description": "Programación automática de clases, asignación de aulas y gestión de recursos"
+      },
+      "communication": {
+        "title": "Centro de Comunicación",
+        "description": "Mensajería unificada para padres, maestros y administradores"
+      },
+      "analytics": {
+        "title": "Panel de Análisis",
+        "description": "Información en tiempo real sobre el rendimiento y operaciones escolares"
+      },
+      "security": {
+        "title": "Seguridad y Cumplimiento",
+        "description": "Protección de datos, cumplimiento GDPR y controles de acceso seguros"
+      }
+    },
+    "modules": {
+      "admissions": "Admisiones e Inscripción",
+      "records": "Gestión de Registros Académicos",
+      "staff": "Gestión de Personal y RRHH",
+      "financial": "Operaciones Financieras",
+      "portal": "Portal de Padres y Estudiantes",
+      "reporting": "Informes y Análisis"
+  },
+  "advancedLMS": {
+    "sections": {
+      "revolutionary": "Revolucionario Impulsado por IA",
+      "features": "Características",
+      "transform": "Transforma Tu Institución"
+    }
+  },
+    "buttons": {
+      "requestDemo": "Solicitar Demo"
+    }
   }
 }

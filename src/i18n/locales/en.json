@@ -661,5 +661,56 @@
     "studentGrades": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     "analysisDepths": ["Quick Check", "Standard Analysis", "Detailed Review"],
     "emailTypes": ["Progress Update", "Concern/Issue", "Celebration", "Conference Request", "Behavior Update"]
+  },
+  "schoolAdmin": {
+    "sections": {
+      "complete": "Complete Administrative",
+      "solution": "Solution",
+      "integratedModules": "Integrated Modules"
+    },
+    "features": {
+      "sis": {
+        "title": "Student Information System",
+        "description": "Comprehensive student records, enrollment, and academic tracking"
+      },
+      "financial": {
+        "title": "Financial Management",
+        "description": "Tuition tracking, billing, budgeting, and financial reporting"
+      },
+      "scheduling": {
+        "title": "Scheduling & Timetables",
+        "description": "Automated class scheduling, room allocation, and resource management"
+      },
+      "communication": {
+        "title": "Communication Hub",
+        "description": "Unified messaging for parents, teachers, and administrators"
+      },
+      "analytics": {
+        "title": "Analytics Dashboard",
+        "description": "Real-time insights into school performance and operations"
+      },
+      "security": {
+        "title": "Security & Compliance",
+        "description": "Data protection, GDPR compliance, and secure access controls"
+      }
+    },
+    "modules": {
+      "admissions": "Admissions & Enrollment",
+      "records": "Academic Records Management",
+      "staff": "Staff & HR Management",
+      "financial": "Financial Operations",
+      "portal": "Parent & Student Portal",
+      "reporting": "Reporting & Analytics"
+  },
+  "advancedLMS": {
+    "sections": {
+      "revolutionary": "Revolutionary AI-Powered",
+      "features": "Features",
+      "transform": "Transform Your Institution"
+    }
+  },
+    "buttons": {
+      "requestDemo": "Request Demo"
+    }
   }
 }

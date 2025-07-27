@@ -958,5 +958,56 @@
     "failedToExport": "Échec de l'exportation des diapositives. Veuillez réessayer.",
     "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
     "unexpectedError": "Une erreur inattendue s'est produite."
+  },
+  "schoolAdmin": {
+    "sections": {
+      "complete": "Solution Administrative",
+      "solution": "Complète",
+      "integratedModules": "Modules Intégrés"
+    },
+    "features": {
+      "sis": {
+        "title": "Système d'Information Étudiante",
+        "description": "Dossiers étudiants complets, inscription et suivi académique"
+      },
+      "financial": {
+        "title": "Gestion Financière",
+        "description": "Suivi des frais de scolarité, facturation, budgétisation et rapports financiers"
+      },
+      "scheduling": {
+        "title": "Planification et Horaires",
+        "description": "Planification automatisée des cours, allocation des salles et gestion des ressources"
+      },
+      "communication": {
+        "title": "Hub de Communication",
+        "description": "Messagerie unifiée pour les parents, enseignants et administrateurs"
+      },
+      "analytics": {
+        "title": "Tableau de Bord Analytique",
+        "description": "Aperçus en temps réel des performances et opérations scolaires"
+      },
+      "security": {
+        "title": "Sécurité et Conformité",
+        "description": "Protection des données, conformité RGPD et contrôles d'accès sécurisés"
+      }
+    },
+    "modules": {
+      "admissions": "Admissions et Inscription",
+      "records": "Gestion des Dossiers Académiques",
+      "staff": "Gestion du Personnel et RH",
+      "financial": "Opérations Financières",
+      "portal": "Portail Parents et Étudiants",
+      "reporting": "Rapports et Analyses"
+  },
+  "advancedLMS": {
+    "sections": {
+      "revolutionary": "Révolutionnaire Alimenté par l'IA",
+      "features": "Fonctionnalités",
+      "transform": "Transformez Votre Institution"
+    }
+  },
+    "buttons": {
+      "requestDemo": "Demander une Démo"
+    }
   }
 }

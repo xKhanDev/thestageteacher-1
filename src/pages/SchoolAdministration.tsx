@@ -39,48 +39,43 @@ const SchoolAdministration = () => {
   const features = [
     {
       icon: Users,
-      title: "Student Information System",
-      description:
-        "Comprehensive student records, enrollment, and academic tracking",
+      title: t('schoolAdmin.features.sis.title'),
+      description: t('schoolAdmin.features.sis.description'),
     },
     {
       icon: DollarSign,
-      title: "Financial Management",
-      description:
-        "Tuition tracking, billing, budgeting, and financial reporting",
+      title: t('schoolAdmin.features.financial.title'),
+      description: t('schoolAdmin.features.financial.description'),
     },
     {
       icon: Calendar,
-      title: "Scheduling & Timetables",
-      description:
-        "Automated class scheduling, room allocation, and resource management",
+      title: t('schoolAdmin.features.scheduling.title'),
+      description: t('schoolAdmin.features.scheduling.description'),
     },
     {
       icon: MessageSquare,
-      title: "Communication Hub",
-      description:
-        "Unified messaging for parents, teachers, and administrators",
+      title: t('schoolAdmin.features.communication.title'),
+      description: t('schoolAdmin.features.communication.description'),
     },
     {
       icon: BarChart3,
-      title: "Analytics Dashboard",
-      description: "Real-time insights into school performance and operations",
+      title: t('schoolAdmin.features.analytics.title'),
+      description: t('schoolAdmin.features.analytics.description'),
     },
     {
       icon: Shield,
-      title: "Security & Compliance",
-      description:
-        "Data protection, GDPR compliance, and secure access controls",
+      title: t('schoolAdmin.features.security.title'),
+      description: t('schoolAdmin.features.security.description'),
     },
   ];
 
   const modules = [
-    "Admissions & Enrollment",
-    "Academic Records Management",
-    "Staff & HR Management",
-    "Financial Operations",
-    "Parent & Student Portal",
-    "Reporting & Analytics",
+    t('schoolAdmin.modules.admissions'),
+    t('schoolAdmin.modules.records'),
+    t('schoolAdmin.modules.staff'),
+    t('schoolAdmin.modules.financial'),
+    t('schoolAdmin.modules.portal'),
+    t('schoolAdmin.modules.reporting'),
   ];
 
   return (
@@ -98,14 +93,14 @@ const SchoolAdministration = () => {
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <Building2 className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                {t('common.schoolAdministration')}
+              <h1 className="text-5xl font-bold text-foreground mb-6">
+                {t('products.schoolAdminTitle')}
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {" "}
                   
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 {t('products.schoolAdminDesc')}
               </p>
               <Button className="my-btn group text-white p-6 rounded-xl">
@@ -119,10 +114,10 @@ const SchoolAdministration = () => {
         {/* Features Grid */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-              Complete Administrative{" "}
+            <h2 className="text-4xl font-bold text-center text-foreground mb-16">
+              {t('schoolAdmin.sections.complete')}{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Solution
+                {t('schoolAdmin.sections.solution')}
               </span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -136,12 +131,12 @@ const SchoolAdministration = () => {
                     <div className="p-3 rounded-2xl icon-bg shadow-lg w-fit group-hover:scale-110 transition-transform duration-300">
                       <feature.icon className="h-6 w-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 ">
+                    <CardTitle className="text-xl font-bold text-foreground ">
                       {feature.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600 text-base">
+                    <CardDescription className="text-muted-foreground text-base">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -154,14 +149,14 @@ const SchoolAdministration = () => {
         {/* Modules Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">
-              Integrated Modules
+            <h2 className="text-4xl font-bold text-foreground mb-12">
+              {t('schoolAdmin.sections.integratedModules')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
               {modules.map((module, index) => (
                 <div
                   key={index}
-                  className="flex items-center text-lg text-gray-700 p-4 bg-white rounded-lg shadow-sm animate-fade-in"
+                  className="flex items-center text-lg text-muted-foreground p-4 bg-white rounded-lg shadow-sm animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CheckCircle className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
@@ -170,7 +165,7 @@ const SchoolAdministration = () => {
               ))}
             </div>
             <Button className="my-btn text-white p-6 rounded-xl">
-              Request Demo
+              {t('schoolAdmin.buttons.requestDemo')}
             </Button>
           </div>
         </section>
