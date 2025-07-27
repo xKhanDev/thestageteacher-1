@@ -16,7 +16,7 @@ import ToolModal from "@/components/ToolModal";
 import AIAssistant from "@/components/AIAssistant";
 import GradeSystemSelector from "@/components/GradeSystemSelector";
 import LanguageSelector from "@/components/LanguageSelector";
-import { tools } from "@/lib/toolsData";
+import { useTranslatedTools, useTranslatedCategories } from "@/hooks/useTranslatedTools";
 
 const EasyTeachApp = () => {
   const { t } = useTranslation();
@@ -28,6 +28,9 @@ const EasyTeachApp = () => {
   const [selectedTool, setSelectedTool] = useState(null);
   const [teacherProfile, setTeacherProfile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const translatedTools = useTranslatedTools();
+  const translatedCategories = useTranslatedCategories();
 
   const categories = [
     {
@@ -85,10 +88,10 @@ const EasyTeachApp = () => {
     [t("easyteach.categories.differentiation")]: "Differentiation",
   };
 
-  const filteredTools = tools.filter((tool) => {
+  const filteredTools = translatedTools.filter((tool) => {
     const matchesSearch =
-      tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      tool.description.toLowerCase().includes(searchTerm.toLowerCase());
+      tool.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tool.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory =
       categoryMapping[selectedCategory] === "All" ||
       tool.category === categoryMapping[selectedCategory];
@@ -102,7 +105,7 @@ const EasyTeachApp = () => {
   const handleQuickAction = (category, toolId) => {
     setSelectedCategory(category);
     // Find the specific tool by ID
-    const tool = tools.find((tool) => tool.id === toolId);
+    const tool = translatedTools.find((tool) => tool.id === toolId);
     if (tool) {
       setSelectedTool(tool);
     }
