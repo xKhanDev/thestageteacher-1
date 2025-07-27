@@ -126,23 +126,35 @@ const EasyTeachApp = () => {
           </SheetContent>
         </Sheet>
 
-        <div className="flex-1 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+        <div className="flex-1 bg-gradient-to-br from-background via-primary/5 to-secondary/10 min-h-screen">
           {/* Mobile Header with Menu Button */}
-          <div className="lg:hidden bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+          <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-primary/20 p-4 flex items-center justify-between shadow-sm">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden"
+              className="lg:hidden hover:bg-primary/10 text-primary"
             >
               <Menu className="h-5 w-5" />
             </Button>
-            <h1 className="text-lg font-semibold text-gray-800">EasyTeach</h1>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
+                <Bot className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h1 className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  EasyTeach
+                </h1>
+                <p className="text-xs text-muted-foreground font-medium">
+                  by Vicerta
+                </p>
+              </div>
+            </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowProfile(true)}
-              className="p-2"
+              className="p-2 hover:bg-primary/10 text-primary"
             >
               <User className="h-5 w-5" />
             </Button>
@@ -164,16 +176,16 @@ const EasyTeachApp = () => {
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-blue-100 mb-6 sm:mb-8 h-14">
+              <TabsList className="grid w-full grid-cols-2 bg-white/80 backdrop-blur-sm border border-primary/20 mb-6 sm:mb-8 h-14 rounded-xl shadow-sm">
                 <TabsTrigger
                   value="tools"
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-white text-sm sm:text-base font-medium rounded-lg transition-all duration-300"
                 >
                   {t("easyteach.tabs.teachingTools")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="ai-assistant"
-                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white text-sm sm:text-base"
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-white text-sm sm:text-base font-medium rounded-lg transition-all duration-300"
                 >
                   <Bot className="h-4 w-4 mr-1 sm:mr-2" />
                   <span className="hidden sm:inline">
@@ -185,20 +197,25 @@ const EasyTeachApp = () => {
 
               <TabsContent value="tools" className="space-y-6 sm:space-y-8">
                 {/* Enhanced Search Section */}
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-200 shadow-sm">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
-                    {t("easyteach.search.findPerfectTool")}
-                  </h3>
+                <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-primary/20 shadow-lg">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                      <Search className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      {t("easyteach.search.findPerfectTool")}
+                    </h3>
+                  </div>
 
                   {/* Search Bar */}
                   <div className="relative mb-4 sm:mb-6">
-                    <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                    <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 sm:h-5 sm:w-5" />
                     <Input
                       type="text"
                       placeholder={t("easyteach.search.searchPlaceholder")}
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="pl-10 sm:pl-12 h-12 sm:py-4 text-sm sm:text-base border border-primary focus:outline-none rounded-xl bg-white"
+                      className="pl-10 sm:pl-12 h-12 sm:py-4 text-sm sm:text-base border-2 border-primary/20 focus:border-primary focus:outline-none rounded-xl bg-white/90 backdrop-blur-sm transition-all duration-300"
                     />
                   </div>
 
@@ -220,15 +237,20 @@ const EasyTeachApp = () => {
 
               <TabsContent value="ai-assistant">
                 <div className="max-w-4xl mx-auto">
-                  <div className="text-center mb-6">
-                    <h2 className="subheading-responsive text-gray-800 mb-2">
-                      {t("easyteach.aiAssistant.title")}
-                    </h2>
-                    <p className="text-gray-600 text-sm sm:text-base">
+                  <div className="text-center mb-6 bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-primary/20 shadow-lg">
+                    <div className="flex items-center justify-center space-x-3 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                        <Bot className="h-6 w-6 text-white" />
+                      </div>
+                      <h2 className="subheading-responsive bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+                        {t("easyteach.aiAssistant.title")}
+                      </h2>
+                    </div>
+                    <p className="text-muted-foreground text-sm sm:text-base">
                       {t("easyteach.aiAssistant.description")}
                     </p>
                   </div>
-                  <AIAssistant />
+                  <AIAssistant tools={translatedTools} onToolRecommend={handleToolClick} />
                 </div>
               </TabsContent>
             </Tabs>

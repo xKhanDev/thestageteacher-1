@@ -34,19 +34,20 @@ const CategoryFilters = ({
     <div className="flex flex-wrap gap-2 sm:gap-3">
       {categories.map((category) => {
         const IconComponent = iconMap[category.icon];
+        const isSelected = selectedCategory === category.name;
         return (
           <Button
             key={category.name}
-            variant={selectedCategory === category.name ? "default" : "outline"}
+            variant={isSelected ? "default" : "outline"}
             onClick={() => onCategorySelect(category.name)}
-            className={`flex items-center space-x-1 sm:space-x-2 rounded-2xl px-3 sm:px-6 py-2 sm:py-3 transition-all duration-200 text-xs sm:text-sm ${
-              selectedCategory === category.name
-                ? `bg-gradient-to-r ${category.gradient} text-white shadow-lg transform scale-105`
-                : "bg-white/80 backdrop-blur-sm border-2 hover:border-purple-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-black"
+            className={`flex items-center space-x-1 sm:space-x-2 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 transition-all duration-300 text-xs sm:text-sm font-medium border-2 ${
+              isSelected
+                ? `bg-gradient-to-r ${category.gradient} text-white shadow-lg border-transparent hover:shadow-xl`
+                : "bg-white/80 backdrop-blur-sm border-primary/20 hover:border-primary/40 hover:bg-primary/5 text-foreground hover:shadow-md"
             }`}
           >
             <IconComponent className="h-3 w-3 sm:h-4 sm:w-4" />
-            <span className="font-medium whitespace-nowrap">
+            <span className="whitespace-nowrap">
               {category.name}
             </span>
           </Button>
