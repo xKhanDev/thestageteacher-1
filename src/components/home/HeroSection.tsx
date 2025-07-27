@@ -143,7 +143,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
             onClick={onShowLogin}
             className="my-btn text-white px-6 py-6 rounded-xl group"
           >
-            {t("products.getStartedFree")}
+            Get Started Free
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
 
@@ -153,7 +153,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
             className=" text-black hover:bg-gray-50 hover:text-[#2901B3] px-6 py-6 rounded-xl group"
           >
             <Play className="mr-2 size-5 group-hover:scale-[1.04] transition-all duration-300" />
-            {t("products.watchDemo")}
+            Watch Demo
           </Button>
           </div>
         </ScrollReveal>

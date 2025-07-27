@@ -11,21 +11,21 @@ export const tools = [
   // Lesson Planning
   {
     id: 1,
-    nameKey: "tools.lessonPlanGenerator.name",
-    descriptionKey: "tools.lessonPlanGenerator.description",
-    categoryKey: "categories.lessonPlanning",
+    name: "Lesson Plan Generator",
+    description: "Create comprehensive lesson plans with objectives, activities, and assessments tailored to your grade level and subject.",
+    category: "Lesson Planning",
     icon: BookOpen,
     color: "bg-blue-100 text-blue-600",
     timesSaved: "2h",
     estimatedTime: "3 min",
     fields: [
-      { name: "subject", labelKey: "fields.subject.label", type: "text", placeholderKey: "fields.subject.placeholder" },
-      { name: "grade", labelKey: "fields.grade.label", type: "select", optionsKey: "options.grades" },
-      { name: "topic", labelKey: "fields.topic.label", type: "text", placeholderKey: "fields.topic.placeholder" },
-      { name: "duration", labelKey: "fields.duration.label", type: "select", optionsKey: "options.duration" },
-      { name: "learningStyle", labelKey: "fields.learningStyle.label", type: "select", optionsKey: "options.learningStyle" },
-      { name: "additionalContext", labelKey: "fields.additionalContext.label", type: "textarea", placeholderKey: "fields.additionalContext.placeholder" },
-      { name: "standardAlignment", labelKey: "fields.standardAlignment.label", type: "text", placeholderKey: "fields.standardAlignment.placeholder" }
+      { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Mathematics, Science, English Literature, History" },
+      { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
+      { name: "topic", label: "Topic or Objectives", type: "text", placeholder: "e.g., Understanding photosynthesis, Adding fractions, Character analysis in literature" },
+      { name: "duration", label: "Lesson Duration", type: "select", options: ["1 hour", "1.5 hours", "2 hours", "2.5 hours", "3 hours"] },
+      { name: "learningStyle", label: "Focus Learning Style", type: "select", options: ["Visual", "Auditory", "Kinesthetic", "Mixed"] },
+      { name: "additionalContext", label: "Additional Context", type: "textarea", placeholder: "Include any specific requirements, student needs, available resources, or teaching constraints that should be considered..." },
+      { name: "standardAlignment", label: "Standard Alignment", type: "text", placeholder: "UK standard" }
     ]
   },
   {

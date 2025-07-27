@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +24,6 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
   const [isLoading, setIsLoading] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
   const { toast } = useToast();
-  const { t } = useTranslation();
 
   const handleResetPassword = async () => {
     if (!email) {
@@ -46,21 +44,21 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
 
       if (error) {
         toast({
-          title: t("resetPassword.resetFailed"),
+          title: "Reset Failed",
           description: error.message,
           variant: "destructive",
         });
       } else {
         setIsEmailSent(true);
         toast({
-          title: t("resetPassword.resetEmailSent"),
-          description: t("resetPassword.checkEmailInstructions"),
+          title: "Reset Email Sent",
+          description: "Check your email for password reset instructions",
         });
       }
     } catch (error) {
       toast({
-        title: t("resetPassword.error"),
-        description: t("resetPassword.unexpectedError"),
+        title: "Error",
+        description: "An unexpected error occurred",
         variant: "destructive",
       });
     } finally {
@@ -89,12 +87,12 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
             </div>
           </div>
           <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            {isEmailSent ? t("resetPassword.checkEmail") : t("resetPassword.title")}
+            {isEmailSent ? "Check Your Email" : "Reset Password"}
           </DialogTitle>
           <DialogDescription className="text-gray-600 text-base">
             {isEmailSent 
-              ? t("resetPassword.emailSent")
-              : t("resetPassword.enterEmail")
+              ? "We've sent password reset instructions to your email address"
+              : "Enter your email address and we'll send you a link to reset your password"
             }
           </DialogDescription>
         </DialogHeader>
@@ -103,14 +101,14 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
           <div className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="reset-email" className="text-gray-700 font-medium">
-                {t("resetPassword.emailAddress")}
+                Email Address
               </Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
                   id="reset-email"
                   type="email"
-                  placeholder={t("resetPassword.enterEmailPlaceholder")}
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10 bg-white/80 backdrop-blur-sm border-gray-200 focus:border-purple-300 focus:ring-purple-200 transition-all duration-200"
@@ -127,10 +125,10 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {t("resetPassword.sendingResetLink")}
+                    Sending Reset Link...
                   </>
                 ) : (
-                  t("resetPassword.sendResetLink")
+                  "Send Reset Link"
                 )}
               </Button>
 
@@ -140,7 +138,7 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
                 className="w-full text-gray-600 hover:text-gray-800"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                {t("resetPassword.backToLogin")}
+                Back to Login
               </Button>
             </div>
           </div>
@@ -148,7 +146,7 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
           <div className="space-y-6 text-center">
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <p className="text-green-800 text-sm">
-                {t("resetPassword.emailFoundNotice")}
+                If an account with that email exists, you'll receive a password reset link shortly.
               </p>
             </div>
             
@@ -157,7 +155,7 @@ const ForgotPasswordModal = ({ isOpen, onClose, onBackToLogin }: ForgotPasswordM
                 onClick={onBackToLogin}
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                {t("resetPassword.backToLogin")}
+                Back to Login
               </Button>
             </div>
           </div>

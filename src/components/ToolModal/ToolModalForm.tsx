@@ -4,7 +4,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 interface ToolModalFormProps {
   tool: any;
@@ -15,7 +14,6 @@ interface ToolModalFormProps {
 }
 
 const ToolModalForm = ({ tool, formData, onInputChange, onGenerate, isGenerating }: ToolModalFormProps) => {
-  const { t } = useTranslation();
   const renderInputFields = () => {
     if (!tool.fields || !Array.isArray(tool.fields)) {
       return (
@@ -82,10 +80,10 @@ const ToolModalForm = ({ tool, formData, onInputChange, onGenerate, isGenerating
         {isGenerating ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            {t('ui.buttons.generating')}
+            Generating...
           </>
         ) : (
-          t('ui.buttons.generateContent')
+          'Generate Content'
         )}
       </Button>
     </div>

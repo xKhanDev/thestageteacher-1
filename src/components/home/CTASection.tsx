@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight, Users, Award, Heart } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 interface CTASectionProps {
   onShowLogin: () => void;
@@ -8,8 +7,6 @@ interface CTASectionProps {
 }
 
 const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
-  const { t } = useTranslation();
-  
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -17,24 +14,25 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
         <div className="flex justify-center items-center space-x-8 mb-8 text-gray-600">
           <div className="flex items-center space-x-2">
             <Users className="h-5 w-5 text-blue-500" />
-            <span className="text-sm font-medium">{t("trustIndicators.teachers")}</span>
+            <span className="text-sm font-medium">100,000+ Teachers</span>
           </div>
           <div className="flex items-center space-x-2">
             <Award className="h-5 w-5 text-purple-500" />
-            <span className="text-sm font-medium">{t("trustIndicators.rating")}</span>
+            <span className="text-sm font-medium">4.9/5 Rating</span>
           </div>
           <div className="flex items-center space-x-2">
             <Heart className="h-5 w-5 text-pink-500" />
-            <span className="text-sm font-medium">{t("trustIndicators.lovedByEducators")}</span>
+            <span className="text-sm font-medium">Loved by Educators</span>
           </div>
         </div>
 
         <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
-          {t("products.readyToTransform")}
+          Ready to Transform Your Teaching?
         </h2>
 
         <p className="text-xl mb-12 text-gray-700 max-w-2xl mx-auto leading-relaxed">
-          {t("products.joinEducators")}
+          Join thousands of educators who are already saving time and creating
+          better learning experiences with our AI-powered platform.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -43,7 +41,7 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
             onClick={onShowLogin}
             className="my-btn text-white px-6 py-6 rounded-xl group"
           >
-            {t("products.getStartedFree")}
+            Get Started for Free
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
@@ -54,7 +52,7 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
             className=" hover:bg-purple-50 hover:text-primary px-6 py-6 rounded-xl group"
           >
             <Sparkles className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-            {t("products.joinWaitlistBtn")}
+            Join Waitlist
           </Button>
         </div>
 
@@ -62,11 +60,11 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
         <div className="backdrop-blur-2xl bg-white/60 rounded-2xl p-6">
           <p className="text-gray-600 text-lg">
             <span className="font-semibold text-purple-700">
-              {t("products.noCreditCard")}
+              No credit card required
             </span>{" "}
-            •<span className="mx-2">{t("products.freePlan")}</span> •
+            •<span className="mx-2">Free forever plan available</span> •
             <span className="font-semibold text-primary">
-              {t("products.setupMinutes")}
+              Setup in under 5 minutes
             </span>
           </p>
         </div>
