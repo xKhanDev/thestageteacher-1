@@ -73,63 +73,71 @@ const AppSidebar = () => {
   ];
 
   return (
-    <Sidebar className="border-0 shadow-2xl bg-white/95 backdrop-blur-md">
-      <SidebarHeader className="p-6 bg-gradient-to-br from-primary/5 via-secondary/5 to-background border-b border-primary/20">
+    <Sidebar className="border-0 shadow-2xl bg-white/98 backdrop-blur-xl">
+      <SidebarHeader className="p-6 bg-gradient-to-br from-primary/8 via-secondary/8 to-background border-b border-primary/15">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-            <Sparkles className="h-5 w-5 text-white" />
+          <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center shadow-lg ring-2 ring-primary/20">
+            <Sparkles className="h-5 w-5 text-white animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-lg font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               EasyTeach
             </h2>
-            <p className="text-xs text-muted-foreground font-medium">
+            <p className="text-xs text-muted-foreground font-medium tracking-wide">
               by Vicerta • AI Assistant
             </p>
           </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="bg-gradient-to-b from-background via-primary/2 to-secondary/5">
-        <SidebarGroup className="px-4 py-6">
-          <SidebarGroupLabel className="text-foreground font-semibold text-sm mb-4 flex items-center space-x-2">
-            <Star className="h-4 w-4 text-primary" />
+      <SidebarContent className="bg-gradient-to-b from-background via-primary/3 to-secondary/5 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.05),transparent)] pointer-events-none" />
+        
+        <SidebarGroup className="px-5 py-8 relative z-10">
+          <SidebarGroupLabel className="text-foreground font-bold text-sm mb-6 flex items-center space-x-2 tracking-wide">
+            <Star className="h-4 w-4 text-primary animate-pulse" />
             <span>{t("easyteach.sidebar.quickAccess")}</span>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-3">
-              {sidebarItems.map((item) => (
+            <SidebarMenu className="space-y-4">
+              {sidebarItems.map((item, index) => (
                 <SidebarMenuItem key={item.name}>
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-3 p-4 rounded-2xl bg-white/80 backdrop-blur-sm border border-primary/20 hover:bg-white hover:border-primary/40 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] relative overflow-hidden"
+                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/70 backdrop-blur-sm border border-primary/15 hover:bg-white/90 hover:border-primary/30 hover:shadow-xl transition-all duration-500 hover:scale-[1.03] relative overflow-hidden group/item"
                     >
                       <div
-                        className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`}
+                        className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover/item:opacity-8 transition-opacity duration-500 rounded-2xl`}
                       />
+                      
+                      {/* Animated background pattern */}
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-0 group-hover/item:opacity-30 transition-opacity duration-700 rounded-2xl" />
+                      
                       <div
-                        className={`p-2.5 rounded-xl bg-gradient-to-r ${item.gradient} shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}
+                        className={`relative z-10 p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg group-hover/item:shadow-xl group-hover/item:scale-110 transition-all duration-500 ring-2 ring-white/20`}
                       >
-                        <item.icon className="h-4 w-4 text-white" />
+                        <item.icon className="h-4 w-4 text-white drop-shadow-sm" />
                       </div>
-                      <div className="flex-1 relative min-w-0">
-                        <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors block">
+                      
+                      <div className="flex-1 relative z-10 min-w-0">
+                        <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors duration-300 block leading-tight">
                           {item.name}
                         </span>
-                        <p className="text-xs text-muted-foreground group-hover:text-primary/70 transition-colors mt-1 leading-relaxed">
+                        <p className="text-xs text-muted-foreground group-hover/item:text-primary/80 transition-colors duration-300 mt-1 leading-relaxed line-clamp-2">
                           {item.description}
                         </p>
                         {(item as any).isVicertaOnly && (
-                          <div className="inline-flex items-center mt-1">
-                            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">
-                              Vicerta Team
+                          <div className="inline-flex items-center mt-2">
+                            <span className="text-xs bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-2 py-1 rounded-full font-bold border border-emerald-200/50 shadow-sm">
+                              ✨ Vicerta Team
                             </span>
                           </div>
                         )}
                       </div>
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      
+                      <div className="relative z-10 opacity-0 group-hover/item:opacity-100 transition-all duration-300 group-hover/item:translate-x-1">
+                        <div className="w-2 h-8 bg-gradient-to-b from-primary to-secondary rounded-full animate-pulse shadow-lg"></div>
                       </div>
                     </a>
                   </SidebarMenuButton>
@@ -139,40 +147,59 @@ const AppSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <div className="px-6 py-4">
-          <div className="bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-2xl p-4 border border-primary/20 backdrop-blur-sm">
-            <div className="flex items-center space-x-2 mb-3">
-              <Heart className="h-4 w-4 text-red-500" />
-              <span className="font-semibold text-foreground text-sm">
-                {t("easyteach.sidebar.trustedByEducators")}
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              "{t("easyteach.sidebar.testimonial")}"
-            </p>
-            <div className="flex items-center mt-3 space-x-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-3 w-3 text-amber-500 fill-current"
-                />
-              ))}
-              <span className="text-xs text-muted-foreground ml-2">Sarah M.</span>
+        <div className="px-6 py-6 relative z-10">
+          <div className="bg-gradient-to-br from-primary/8 via-secondary/8 to-accent/8 rounded-2xl p-5 border border-primary/20 backdrop-blur-sm relative overflow-hidden shadow-lg">
+            {/* Decorative background */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(120,119,198,0.1),transparent)] pointer-events-none" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg shadow-md">
+                  <Heart className="h-4 w-4 text-white" />
+                </div>
+                <span className="font-bold text-foreground text-sm tracking-wide">
+                  {t("easyteach.sidebar.trustedByEducators")}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">
+                "{t("easyteach.sidebar.testimonial")}"
+              </p>
+              <div className="flex items-center mt-4 justify-between">
+                <div className="flex items-center space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-3 w-3 text-amber-500 fill-current drop-shadow-sm"
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-muted-foreground font-medium">Sarah M.</span>
+              </div>
             </div>
           </div>
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="p-4 bg-gradient-to-r from-primary/5 to-secondary/5 border-t border-primary/20">
-        <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
-          <GraduationCap className="h-4 w-4 text-primary" />
-          <span className="font-medium">{t("easyteach.sidebar.empoweringEducators")}</span>
-        </div>
-        <div className="text-center mt-2">
-          <span className="text-xs text-muted-foreground">Powered by</span>
-          <span className="text-xs font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent ml-1">
-            Vicerta
-          </span>
+      <SidebarFooter className="p-5 bg-gradient-to-br from-primary/10 to-secondary/10 border-t border-primary/20 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(120,119,198,0.05)_50%,transparent_75%)] pointer-events-none" />
+        
+        <div className="relative z-10 text-center space-y-3">
+          <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
+            <div className="p-1 bg-gradient-to-r from-primary to-secondary rounded-md">
+              <GraduationCap className="h-4 w-4 text-white" />
+            </div>
+            <span className="font-semibold tracking-wide">{t("easyteach.sidebar.empoweringEducators")}</span>
+          </div>
+          <div className="flex items-center justify-center space-x-2">
+            <span className="text-xs text-muted-foreground font-medium">Powered by</span>
+            <div className="relative">
+              <span className="text-sm font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent tracking-wider">
+                VICERTA
+              </span>
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full opacity-60"></div>
+            </div>
+          </div>
         </div>
       </SidebarFooter>
     </Sidebar>

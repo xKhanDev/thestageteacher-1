@@ -344,5 +344,281 @@
     "thanksDescription": "Your input helps us improve the teaching tools experience.",
     "errorSubmitting": "Error submitting feedback",
     "errorMessage": "There was an issue saving your feedback. Please try again."
+  },
+  "tools": {
+    "lessonPlanGenerator": {
+      "name": "Lesson Plan Generator",
+      "description": "Create comprehensive lesson plans with objectives, activities, and assessments tailored to your grade level and subject."
+    },
+    "lessonHookIdeas": {
+      "name": "Lesson Hook Ideas",
+      "description": "Generate creative and engaging opening activities to capture student attention at the start of your lesson."
+    },
+    "iepGenerator": {
+      "name": "IEP Generator",
+      "description": "Create individualized education program goals and accommodations tailored to specific student needs."
+    },
+    "learningObjectiveWriter": {
+      "name": "Learning Objective Writer",
+      "description": "Write clear, measurable learning objectives that align with standards and guide instruction."
+    },
+    "presentationGenerator": {
+      "name": "Presentation Generator",
+      "description": "Create engaging slide presentations with content, activities, and visual suggestions for your lessons."
+    },
+    "academicContentGenerator": {
+      "name": "Academic Content Generator",
+      "description": "Generate curriculum-aligned content, explanations, and examples for any topic or subject area."
+    },
+    "mathSpiralReview": {
+      "name": "Math Spiral Review",
+      "description": "Create math practice problems that review previously taught concepts alongside new material."
+    },
+    "textValidation": {
+      "name": "Text Validation",
+      "description": "Check reading level, complexity, and appropriateness of texts for your target grade level."
+    },
+    "multipleExplanationsGenerator": {
+      "name": "Multiple Explanations Generator",
+      "description": "Generate different ways to explain the same concept to help diverse learners understand."
+    },
+    "generalAssessment": {
+      "name": "General Assessment",
+      "description": "Create comprehensive assessments including quizzes, tests, and performance tasks for any subject."
+    },
+    "questionStemGenerator": {
+      "name": "Question Stem Generator",
+      "description": "Generate thought-provoking question stems to deepen student thinking and discussion."
+    },
+    "worksheetGenerator": {
+      "name": "Worksheet Generator",
+      "description": "Create practice worksheets with problems, exercises, and activities for any subject area."
+    },
+    "multiStepAssignmentCreator": {
+      "name": "Multi-Step Assignment Creator",
+      "description": "Design complex assignments that break down into manageable steps with clear instructions."
+    },
+    "dokQuestionsGenerator": {
+      "name": "DOK Questions Generator",
+      "description": "Create questions at different Depth of Knowledge levels to assess various thinking skills."
+    },
+    "quizCreator": {
+      "name": "Quiz Creator",
+      "description": "Generate quick formative assessment quizzes to check student understanding."
+    },
+    "mathProblemGenerator": {
+      "name": "Math Problem Generator",
+      "description": "Create custom math problems and word problems for practice or assessment."
+    },
+    "aiTextDetector": {
+      "name": "AI Text Detector",
+      "description": "Analyze student text submissions to identify potential AI-generated content and maintain academic integrity."
+    },
+    "parentEmailComposer": {
+      "name": "Parent Email Composer",
+      "description": "Draft professional, warm emails to parents about student progress, concerns, or celebrations."
+    }
+  },
+  "categories": {
+    "all": "All Tools",
+    "lessonPlanning": "Lesson Planning",
+    "contentHub": "Content Hub",
+    "assessment": "Assessment",
+    "communication": "Communication",
+    "classroomManagement": "Classroom Management",
+    "languageArts": "Language Arts",
+    "math": "Mathematics",
+    "science": "Science",
+    "socialStudies": "Social Studies"
+  },
+  "fields": {
+    "subject": {
+      "label": "Subject",
+      "placeholder": "e.g., Mathematics, Science, History"
+    },
+    "grade": {
+      "label": "Grade Level",
+      "placeholder": "Select grade level"
+    },
+    "topic": {
+      "label": "Topic",
+      "placeholder": "What topic are you teaching?"
+    },
+    "duration": {
+      "label": "Duration",
+      "placeholder": "Lesson duration"
+    },
+    "learningStyle": {
+      "label": "Learning Style",
+      "placeholder": "How do students learn best?"
+    },
+    "additionalContext": {
+      "label": "Additional Context",
+      "placeholder": "Add specific details, student needs, or requirements..."
+    },
+    "standardAlignment": {
+      "label": "Standards Alignment",
+      "placeholder": "Specific standards or competencies to address"
+    },
+    "resources": {
+      "label": "Available Resources"
+    },
+    "studentAge": {
+      "label": "Student Age/Grade"
+    },
+    "disability": {
+      "label": "Primary Disability"
+    },
+    "currentLevel": {
+      "label": "Current Performance Level",
+      "placeholder": "Describe the student's current abilities and challenges..."
+    },
+    "goalArea": {
+      "label": "Goal Area",
+      "placeholder": "What specific skill or behavior needs improvement?"
+    },
+    "bloomsLevel": {
+      "label": "Thinking Level"
+    },
+    "standard": {
+      "label": "Related Standard (optional)",
+      "placeholder": "Common Core, state standard..."
+    },
+    "slideCount": {
+      "label": "Number of Slides"
+    },
+    "includeActivities": {
+      "label": "Include Interactive Elements"
+    },
+    "contentType": {
+      "label": "Content Type"
+    },
+    "length": {
+      "label": "Content Length"
+    },
+    "currentTopic": {
+      "label": "Current Topic",
+      "placeholder": "What are you currently teaching?"
+    },
+    "reviewTopics": {
+      "label": "Topics to Review",
+      "placeholder": "List previous topics to include in the review..."
+    },
+    "problemCount": {
+      "label": "Number of Problems"
+    },
+    "difficulty": {
+      "label": "Difficulty Level"
+    },
+    "text": {
+      "label": "Text to Analyze",
+      "placeholder": "Paste the text you want to validate..."
+    },
+    "targetGrade": {
+      "label": "Target Grade Level"
+    },
+    "purpose": {
+      "label": "Text Purpose"
+    },
+    "proofreading": {
+      "label": "Proofreading"
+    },
+    "rewriteTo": {
+      "label": "Re-write to make it"
+    },
+    "textSummariser": {
+      "label": "Text Summariser"
+    },
+    "concept": {
+      "label": "Concept to Explain",
+      "placeholder": "What concept needs multiple explanations?"
+    },
+    "explanationTypes": {
+      "label": "Types of Explanations"
+    },
+    "assessmentType": {
+      "label": "Assessment Type"
+    },
+    "questionCount": {
+      "label": "Number of Questions"
+    },
+    "questionTypes": {
+      "label": "Question Types"
+    },
+    "includeAnswerKey": {
+      "label": "Include Answer Key"
+    },
+    "assignmentType": {
+      "label": "Assignment Type"
+    },
+    "learningGoals": {
+      "label": "Learning Goals",
+      "placeholder": "What should students learn from this assignment?"
+    },
+    "dokLevel": {
+      "label": "DOK Level"
+    },
+    "questionType": {
+      "label": "Question Type"
+    },
+    "mathTopic": {
+      "label": "Math Topic"
+    },
+    "includeWordProblems": {
+      "label": "Include Word Problems"
+    },
+    "studentText": {
+      "label": "Student Text",
+      "placeholder": "Paste the student's text submission here for analysis..."
+    },
+    "analysisDepth": {
+      "label": "Analysis Depth"
+    },
+    "studentName": {
+      "label": "Student Name",
+      "placeholder": "Student's first name"
+    },
+    "situation": {
+      "label": "Situation",
+      "placeholder": "Describe the situation you need to address..."
+    },
+    "emailType": {
+      "label": "Email Type"
+    },
+    "subjectArea": {
+      "label": "Subject Area"
+    }
+  },
+  "fieldOptions": {
+    "grades": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "durations": ["1 hour", "1.5 hours", "2 hours", "2.5 hours", "3 hours"],
+    "learningStyles": ["Visual", "Auditory", "Kinesthetic", "Mixed"],
+    "resources": ["Basic supplies only", "Technology available", "Manipulatives", "No special resources"],
+    "ageGroups": ["K-2", "3-5", "6-8", "9-12"],
+    "disabilities": ["Learning Disability", "ADHD", "Autism Spectrum", "Intellectual Disability", "Other"],
+    "subjects": ["Reading", "Math", "Writing", "Social Skills", "Behavior", "Communication"],
+    "bloomsLevels": ["Remember", "Understand", "Apply", "Analyze", "Evaluate", "Create"],
+    "slideCounts": ["5-8 slides", "10-12 slides", "15-20 slides"],
+    "yesNo": ["Yes", "No"],
+    "contentTypes": ["Explanation", "Examples", "Practice Problems", "Vocabulary", "Summary"],
+    "contentLengths": ["Brief", "Moderate", "Detailed"],
+    "mathGrades": ["K", "1", "2", "3", "4", "5", "6", "7", "8", "Algebra", "Geometry"],
+    "problemCounts": ["10", "15", "20", "25", "30"],
+    "difficulties": ["Easy", "Medium", "Hard", "Mixed"],
+    "textPurposes": ["Independent Reading", "Guided Reading", "Instructional Text", "Assessment"],
+    "rewriteOptions": ["Simpler", "More Complex", "More Engaging", "More Formal", "More Informal"],
+    "summaryOptions": ["Brief Summary", "Detailed Summary", "Key Points Only", "No Summary"],
+    "explanationTypes": ["Visual & Verbal", "Simple & Complex", "Analogy & Direct", "All Types"],
+    "assessmentTypes": ["Quiz", "Test", "Performance Task", "Project Rubric"],
+    "questionTypes": ["Multiple Choice", "Short Answer", "Essay", "Mixed", "True/False", "Fill in the Blank"],
+    "questionCounts": ["5", "8", "10", "12", "15", "20"],
+    "assignmentTypes": ["Research Project", "Lab Report", "Essay", "Creative Project", "Problem Solving"],
+    "durations": ["1 week", "2 weeks", "1 month", "Quarter-long"],
+    "dokLevels": ["Level 1 (Recall)", "Level 2 (Application)", "Level 3 (Analysis)", "Level 4 (Extended Thinking)", "Mixed Levels"],
+    "mathTopics": ["Addition", "Subtraction", "Multiplication", "Division", "Fractions", "Decimals", "Geometry", "Algebra", "Word Problems"],
+    "wordProblemOptions": ["Yes", "No", "Only Word Problems"],
+    "studentGrades": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    "analysisDepths": ["Quick Check", "Standard Analysis", "Detailed Review"],
+    "emailTypes": ["Progress Update", "Concern/Issue", "Celebration", "Conference Request", "Behavior Update"]
   }
 }

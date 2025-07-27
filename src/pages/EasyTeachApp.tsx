@@ -22,7 +22,7 @@ const EasyTeachApp = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(
-    t("easyteach.categories.lessonPlanning")
+    t("categories.all")
   );
   const [showProfile, setShowProfile] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
@@ -34,58 +34,79 @@ const EasyTeachApp = () => {
 
   const categories = [
     {
-      name: t("easyteach.categories.all"),
+      name: t("categories.all"),
       icon: "Grid",
       color: "bg-gray-100 text-gray-800",
       gradient: "from-gray-500 to-gray-600",
     },
     {
-      name: t("easyteach.categories.lessonPlanning"),
+      name: t("categories.lessonPlanning"),
       icon: "BookOpen",
       color: "bg-blue-100 text-blue-800",
-      gradient: "from-blue-500 to-blue-600",
+      gradient: "from-blue-500 to-indigo-600",
     },
     {
-      name: t("easyteach.categories.contentHub"),
+      name: t("categories.contentHub"),
       icon: "FileText",
-      color: "bg-indigo-100 text-indigo-800",
-      gradient: "from-indigo-500 to-indigo-600",
+      color: "bg-green-100 text-green-800",
+      gradient: "from-green-500 to-emerald-600",
     },
     {
-      name: t("easyteach.categories.assessment"),
+      name: t("categories.assessment"),
       icon: "CheckCircle",
       color: "bg-purple-100 text-purple-800",
-      gradient: "from-purple-500 to-purple-600",
+      gradient: "from-purple-500 to-violet-600",
     },
     {
-      name: t("easyteach.categories.communication"),
+      name: t("categories.communication"),
       icon: "MessageCircle",
-      color: "bg-cyan-100 text-cyan-800",
-      gradient: "from-cyan-500 to-cyan-600",
+      color: "bg-orange-100 text-orange-800",
+      gradient: "from-orange-500 to-red-600",
     },
     {
-      name: t("easyteach.categories.behaviourSupport"),
+      name: t("categories.classroomManagement"),
       icon: "Users",
-      color: "bg-teal-100 text-teal-800",
-      gradient: "from-teal-500 to-teal-600",
+      color: "bg-yellow-100 text-yellow-800",
+      gradient: "from-yellow-500 to-orange-600",
     },
     {
-      name: t("easyteach.categories.differentiation"),
+      name: t("categories.languageArts"),
       icon: "Target",
-      color: "bg-slate-100 text-slate-800",
-      gradient: "from-slate-500 to-slate-600",
+      color: "bg-pink-100 text-pink-800",
+      gradient: "from-pink-500 to-rose-600",
+    },
+    {
+      name: t("categories.math"),
+      icon: "Target",
+      color: "bg-teal-100 text-teal-800",
+      gradient: "from-teal-500 to-cyan-600",
+    },
+    {
+      name: t("categories.science"),
+      icon: "Target",
+      color: "bg-indigo-100 text-indigo-800",
+      gradient: "from-indigo-500 to-purple-600",
+    },
+    {
+      name: t("categories.socialStudies"),
+      icon: "Target",
+      color: "bg-amber-100 text-amber-800",
+      gradient: "from-amber-500 to-yellow-600",
     },
   ];
 
   // Map translated categories back to English for tool filtering
   const categoryMapping = {
-    [t("easyteach.categories.all")]: "All",
-    [t("easyteach.categories.lessonPlanning")]: "Lesson Planning",
-    [t("easyteach.categories.contentHub")]: "Content Hub",
-    [t("easyteach.categories.assessment")]: "Assessment",
-    [t("easyteach.categories.communication")]: "Communication",
-    [t("easyteach.categories.behaviourSupport")]: "Behaviour Support",
-    [t("easyteach.categories.differentiation")]: "Differentiation",
+    [t("categories.all")]: "All",
+    [t("categories.lessonPlanning")]: "Lesson Planning",
+    [t("categories.contentHub")]: "Content Hub", 
+    [t("categories.assessment")]: "Assessment",
+    [t("categories.communication")]: "Communication",
+    [t("categories.classroomManagement")]: "Behaviour Support",
+    [t("categories.languageArts")]: "Differentiation",
+    [t("categories.math")]: "Math",
+    [t("categories.science")]: "Science",
+    [t("categories.socialStudies")]: "Social Studies",
   };
 
   const filteredTools = translatedTools.filter((tool) => {
