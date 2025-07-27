@@ -315,7 +315,8 @@
     "delete": "Supprimer",
     "edit": "Éditer",
     "view": "Voir",
-    "language": "Langue"
+    "language": "Langue",
+    "chooseYourPlan": "Choisissez Votre Plan"
   },
   "tools": {
     "lessonPlanGenerator": {
