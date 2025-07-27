@@ -20,7 +20,7 @@ export const tools = [
     estimatedTime: "3 min",
     fields: [
       { name: "subject", labelKey: "fields.subject.label", type: "text", placeholderKey: "fields.subject.placeholder" },
-      { name: "grade", labelKey: "fields.grade.label", type: "select", optionsKey: "options.grades" },
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
       { name: "topic", labelKey: "fields.topic.label", type: "text", placeholderKey: "fields.topic.placeholder" },
       { name: "duration", labelKey: "fields.duration.label", type: "select", optionsKey: "options.duration" },
       { name: "learningStyle", labelKey: "fields.learningStyle.label", type: "select", optionsKey: "options.learningStyle" },
@@ -30,19 +30,19 @@ export const tools = [
   },
   {
     id: 2,
-    name: "Lesson Hook Ideas",
-    description: "Generate creative and engaging opening activities to capture student attention at the start of your lesson.",
-    category: "Lesson Planning",
+    nameKey: "tools.lessonHookIdeas.name",
+    descriptionKey: "tools.lessonHookIdeas.description",
+    categoryKey: "categories.lessonPlanning",
     icon: Zap,
     color: "bg-blue-100 text-blue-600",
     timesSaved: "30m",
     estimatedTime: "2 min",
     fields: [
-      { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Mathematics, Science, History" },
-      { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
-      { name: "topic", label: "Topic", type: "text", placeholder: "What topic are you introducing?" },
-      { name: "duration", label: "Hook Duration", type: "select", options: ["5 minutes", "10 minutes", "15 minutes"] },
-      { name: "resources", label: "Available Resources", type: "select", options: ["Basic supplies only", "Technology available", "Manipulatives", "No special resources"] }
+      { name: "subject", labelKey: "fields.subject.label", type: "text", placeholderKey: "fields.subject.placeholder" },
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
+      { name: "topic", labelKey: "fields.topic.label", type: "text", placeholderKey: "fields.topic.placeholder" },
+      { name: "duration", labelKey: "fields.duration.label", type: "select", optionsKey: "fieldOptions.durations" },
+      { name: "resources", labelKey: "fields.resources.label", type: "select", optionsKey: "fieldOptions.resources" }
     ]
   },
   {
@@ -72,8 +72,8 @@ export const tools = [
     timesSaved: "30m",
     estimatedTime: "3 min",
     fields: [
-      { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Mathematics, Science, English" },
-      { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
+      { name: "subject", labelKey: "fields.subject.label", type: "text", placeholderKey: "fields.subject.placeholder" },
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
       { name: "topic", label: "Topic/Skill", type: "text", placeholder: "What will students learn?" },
       { name: "bloomsLevel", label: "Thinking Level", type: "select", options: ["Remember", "Understand", "Apply", "Analyze", "Evaluate", "Create"] },
       { name: "standard", label: "Related Standard (optional)", type: "text", placeholder: "Common Core, state standard..." }
@@ -93,7 +93,7 @@ export const tools = [
     fields: [
       { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Biology, World History, Algebra" },
       { name: "topic", label: "Presentation Topic", type: "text", placeholder: "What is your presentation about?" },
-      { name: "grade", label: "Grade Level", type: "select", options: ["K-2", "3-5", "6-8", "9-12"] },
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
       { name: "slideCount", label: "Number of Slides", type: "select", options: ["5-8 slides", "10-12 slides", "15-20 slides"] },
       { name: "includeActivities", label: "Include Interactive Elements", type: "select", options: ["Yes", "No"] }
     ]
@@ -110,7 +110,7 @@ export const tools = [
     fields: [
       { name: "subject", label: "Subject", type: "text", placeholder: "e.g., Chemistry, Literature, Geography" },
       { name: "topic", label: "Topic", type: "text", placeholder: "What content do you need?" },
-      { name: "grade", label: "Grade Level", type: "select", options: ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] },
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
       { name: "contentType", label: "Content Type", type: "select", options: ["Explanation", "Examples", "Practice Problems", "Vocabulary", "Summary"] },
       { name: "length", label: "Content Length", type: "select", options: ["Brief", "Moderate", "Detailed"] }
     ]

@@ -361,6 +361,66 @@
       "name": "Guide d'Accommodations",
       "description": "Obtenez des recommandations d'accommodations spécifiques pour les élèves avec divers besoins d'apprentissage."
     },
+    "lessonHookIdeas": {
+      "name": "Idées d'Amorces de Cours",
+      "description": "Générez des activités d'ouverture créatives et engageantes pour captiver l'attention des élèves au début de votre cours."
+    },
+    "iepGenerator": {
+      "name": "Générateur de PEI",
+      "description": "Créez des objectifs et accommodations de programme éducatif individualisé adaptés aux besoins spécifiques des élèves."
+    },
+    "learningObjectiveWriter": {
+      "name": "Rédacteur d'Objectifs d'Apprentissage",
+      "description": "Rédigez des objectifs d'apprentissage clairs et mesurables qui s'alignent sur les standards et guident l'instruction."
+    },
+    "presentationGenerator": {
+      "name": "Générateur de Présentations",
+      "description": "Créez des présentations diapositives engageantes avec contenu, activités et suggestions visuelles pour vos cours."
+    },
+    "academicContentGenerator": {
+      "name": "Générateur de Contenu Académique",
+      "description": "Générez du contenu aligné sur le curriculum, des explications et des exemples pour tout sujet ou domaine."
+    },
+    "mathSpiralReview": {
+      "name": "Révision Spiralée de Mathématiques",
+      "description": "Créez des problèmes de mathématiques qui révisent les concepts précédemment enseignés avec la nouvelle matière."
+    },
+    "textValidation": {
+      "name": "Validation de Texte",
+      "description": "Vérifiez le niveau de lecture, la complexité et l'adéquation des textes pour votre niveau cible."
+    },
+    "multipleExplanationsGenerator": {
+      "name": "Générateur d'Explications Multiples",
+      "description": "Générez différentes façons d'expliquer le même concept pour aider divers apprenants à comprendre."
+    },
+    "generalAssessment": {
+      "name": "Évaluation Générale",
+      "description": "Créez des évaluations complètes incluant quiz, tests et tâches de performance pour toute matière."
+    },
+    "questionStemGenerator": {
+      "name": "Générateur d'Amorces de Questions",
+      "description": "Générez des amorces de questions stimulantes pour approfondir la réflexion et la discussion des élèves."
+    },
+    "worksheetGenerator": {
+      "name": "Générateur de Feuilles de Travail",
+      "description": "Créez des feuilles de travail pratiques avec problèmes, exercices et activités pour tout domaine."
+    },
+    "multiStepAssignmentCreator": {
+      "name": "Créateur de Devoirs Multi-Étapes",
+      "description": "Concevez des devoirs complexes qui se décomposent en étapes gérables avec instructions claires."
+    },
+    "dokQuestionsGenerator": {
+      "name": "Générateur de Questions DOK",
+      "description": "Créez des questions à différents niveaux de Profondeur de Connaissance pour évaluer diverses compétences de réflexion."
+    },
+    "quizCreator": {
+      "name": "Créateur de Quiz",
+      "description": "Générez des quiz d'évaluation formative rapides pour vérifier la compréhension des élèves."
+    },
+    "mathProblemGenerator": {
+      "name": "Générateur de Problèmes de Mathématiques",
+      "description": "Créez des problèmes de mathématiques personnalisés et des problèmes de mots pour la pratique ou l'évaluation."
+    },
     "readingLevelAdapter": {
       "name": "Adaptateur de Niveau de Lecture",
       "description": "Adaptez les textes à différents niveaux de lecture tout en maintenant le contenu essentiel et le sens."
@@ -431,8 +491,11 @@
     "contentHub": "Centre de Contenu",
     "assessment": "Évaluation",
     "communication": "Communication",
-    "behaviourSupport": "Support Comportemental",
-    "differentiation": "Différenciation"
+    "classroomManagement": "Gestion de Classe",
+    "languageArts": "Arts du Langage",
+    "math": "Mathématiques",
+    "science": "Sciences",
+    "socialStudies": "Sciences Sociales"
   },
   "fields": {
     "subject": {

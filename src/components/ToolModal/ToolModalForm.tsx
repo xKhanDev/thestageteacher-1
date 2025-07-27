@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import LanguageBasedGradeSelector from "@/components/LanguageBasedGradeSelector";
 
 interface ToolModalFormProps {
   tool: any;
@@ -34,7 +35,12 @@ const ToolModalForm = ({ tool, formData, onInputChange, onGenerate, isGenerating
     return tool.fields.map((field: any, index: number) => (
       <div key={index} className="space-y-2">
         <Label htmlFor={field.name}>{field.label}</Label>
-        {field.type === 'select' ? (
+        {field.type === 'grade_selector' ? (
+          <LanguageBasedGradeSelector
+            selectedGrade={formData[field.name] || ''}
+            onGradeChange={(value) => onInputChange(field.name, value)}
+          />
+        ) : field.type === 'select' ? (
           <Select onValueChange={(value) => onInputChange(field.name, value)}>
             <SelectTrigger>
               <SelectValue placeholder={field.placeholder || `Select ${field.label.toLowerCase()}`} />
