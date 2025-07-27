@@ -173,14 +173,10 @@ const ProductsSection = ({
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Choose Your
-            <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
-              {" "}
-              Plan
-            </span>
+            {t("products.choosePlan")}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Start free and upgrade when you're ready for unlimited AI power
+            {t("products.planSubtitle")}
           </p>
         </div>
 
@@ -257,7 +253,7 @@ const ProductsSection = ({
                 {/* What's included */}
                 <div>
                   <h3 className="text-sm font-semibold mb-1 mt-4">
-                    What's included:
+                    {t("products.whatsIncluded")}
                   </h3>
                   <div className="flex flex-col gap-2">
                     {product.features.slice(0, 4).map((feature, featureIndex) => (
@@ -276,7 +272,7 @@ const ProductsSection = ({
                       </p>
                     ))}
                     <span className="text-gray-500 italic text-sm">
-                      +{product.features.length - 4} features more
+                      {t("products.featuresMore", { count: product.features.length - 4 })}
                     </span>
                   </div>
                 </div>
