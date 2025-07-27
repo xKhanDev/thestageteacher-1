@@ -15,6 +15,8 @@
     "bookDemo": "Réserver une Démo",
     "available": "Disponible",
     "comingSoon": "Bientôt Disponible",
+    "pricingPlan": "Choisissez Votre Plan",
+    "joinWaitlist": "Rejoindre la Liste d'Attente",
     "byCategory": "Par Catégorie",
     "byDepartment": "Par Département",
     "primarySchools": "Écoles Primaires",
@@ -40,7 +42,7 @@
     "subtitle3": "Suite d'Enseignement Intelligent",
     "subtitle4": "Solution pour les Écoles du Futur",
     "subtitle5": "Réseau d'Éducation Globale",
-    "description": "Vivicerta est la force motrice derrière l'avenir de l'éducation, fournissant une suite complète de solutions alimentées par l'IA qui transforment la façon dont nous enseignons, apprenons et gérons les institutions éducatives.",
+    "description": "Vicerta est la force motrice derrière l'avenir de l'éducation, fournissant une suite complète de solutions alimentées par l'IA qui transforment la façon dont nous enseignons, apprenons et gérons les institutions éducatives.",
     "getStarted": "Commencer Gratuitement",
     "watchDemo": "Voir la Démo",
     "transformingEducation": "Transformer l'Éducation avec l'IA",
@@ -56,7 +58,7 @@
     "userRating": "Note Utilisateur 4.9/5"
   },
   "videoShowcase": {
-    "title": "Voir Vivicerta en Action",
+    "title": "Voir Vicerta en Action",
     "description": "Découvrez comment notre écosystème éducatif alimenté par l'IA transforme les expériences d'enseignement et d'apprentissage.",
     "fullDemo": "Démo Complète Disponible",
     "duration": "Durée : 3:42",
@@ -64,14 +66,14 @@
   },
   "ecertaShowcase": {
     "title": "Découvrez l'Avenir de l'Éducation",
-    "description": "Découvrez comment Vivicerta transforme les méthodes d'enseignement traditionnelles avec une technologie de pointe.",
+    "description": "Découvrez comment Vicerta transforme les méthodes d'enseignement traditionnelles avec une technologie de pointe.",
     "aiPowered": "Alimenté par l'IA",
     "aiDescription": "Génération de Contenu Intelligent",
     "seamlessIntegration": "Intégration Transparente",
     "integrationDescription": "Tous les Outils Connectés",
     "timeSaving": "Gain de Temps",
     "timeDescription": "15+ Heures par Semaine",
-    "tryNow": "Essayer Vivicerta Maintenant"
+    "tryNow": "Essayer Vicerta Maintenant"
   },
   "products": {
     "title": "Notre Suite de Produits",
@@ -288,7 +290,7 @@
   "showcase": {
     "drivingForce": "La Force Motrice",
     "behindEducation": "Derrière l'Innovation Éducative",
-    "platformDescription": "Vivicerta n'est pas seulement une plateforme - c'est la fondation de la nouvelle ère éducative, connectant de manière transparente l'enseignement, l'apprentissage et l'administration grâce à l'IA intelligente.",
+    "platformDescription": "Vicerta n'est pas seulement une plateforme - c'est la fondation de la nouvelle ère éducative, connectant de manière transparente l'enseignement, l'apprentissage et l'administration grâce à l'IA intelligente.",
     "consolidatedAI": "Intelligence IA Consolidée",
     "consolidatedAIDesc": "Nos trois produits partagent un cerveau IA commun qui apprend de chaque interaction sur la plateforme, créant des solutions plus intelligentes pour tous.",
     "seamlessIntegration": "Intégration Transparente",
@@ -298,7 +300,7 @@
     "whyEcerta": "Pourquoi Vicerta est l'Avenir de l'Éducation",
     "whyEcertaDesc": "Nous ne construisons pas seulement des produits - nous créons la fondation pour la prochaine génération de technologie éducative.",
     "completeEcosystem": "Approche Écosystème Complet",
-    "completeEcosystemDesc": "Contrairement aux solutions fragmentées, Vivicerta fournit une plateforme unifiée qui sert tous les acteurs du processus éducatif - des enseignants individuels aux institutions entières.",
+    "completeEcosystemDesc": "Contrairement aux solutions fragmentées, Vicerta fournit une plateforme unifiée qui sert tous les acteurs du processus éducatif - des enseignants individuels aux institutions entières.",
     "exponentialGrowth": "Impact de Croissance Exponentielle",
     "exponentialGrowthDesc": "Notre approche intégrée crée des avantages exponentiels. À mesure qu'un produit s'améliore, il améliore tout l'écosystème, multipliant la valeur pour tous les utilisateurs.",
     "globalTransformation": "Transformation Éducative Globale",

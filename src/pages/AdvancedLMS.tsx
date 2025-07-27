@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   CardContent,
@@ -42,6 +43,7 @@ const AdvancedLMS = () => {
   const [onShowLogin, setOnShowLogin] = useState(false);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -213,19 +215,17 @@ const AdvancedLMS = () => {
                 <GraduationCap className="h-10 w-10 text-white" />
               </div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Advanced
+                {t('common.advancedLMS')}
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {" "}
                   AI LMS
                 </span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                The next generation learning management system that adapts to
-                every student's needs through the power of artificial
-                intelligence.
+                {t('products.advancedLMSDesc')}
               </p>
               <Button className="my-btn group text-white p-6 rounded-xl">
-                Join the Waitlist
+                {t('common.joinWaitlist')}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-all duration-300" />
               </Button>
             </div>

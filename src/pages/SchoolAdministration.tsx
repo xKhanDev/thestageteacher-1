@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   CardContent,
@@ -29,6 +30,7 @@ const SchoolAdministration = () => {
   const [onShowLogin, setOnShowLogin] = useState(false);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -97,19 +99,17 @@ const SchoolAdministration = () => {
                 <Building2 className="h-10 w-10 text-white" />
               </div>
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                School
+                {t('common.schoolAdministration')}
                 <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   {" "}
-                  Administration
+                  
                 </span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                Streamline your entire school operations with our comprehensive
-                administration platform designed for modern educational
-                institutions.
+                {t('products.schoolAdminDesc')}
               </p>
               <Button className="my-btn group text-white p-6 rounded-xl">
-                Join the Waitlist
+                {t('common.joinWaitlist')}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>

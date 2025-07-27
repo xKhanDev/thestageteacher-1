@@ -17,8 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Vivicerta brand colors - vibrant purple-blue theme */
-    --primary: 258 70% 52%; /* Vivicerta purple */
+    /* Vicerta brand colors - vibrant purple-blue theme */
+    --primary: 258 70% 52%; /* Vicerta purple */
     --primary-foreground: 0 0% 98%;
 
     --secondary: 245 58% 48%; /* Complementary blue */
@@ -27,7 +27,7 @@
     --muted: 250 20% 95%; 
     --muted-foreground: 258 25% 35%;
 
-    --accent: 258 85% 65%; /* Bright Vivicerta purple */
+    --accent: 258 85% 65%; /* Bright Vicerta purple */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -59,7 +59,7 @@
     --popover: 212 25% 8%;
     --popover-foreground: 210 30% 95%;
 
-    --primary: 258 70% 60%; /* Brighter Vivicerta purple in dark mode */
+    --primary: 258 70% 60%; /* Brighter Vicerta purple in dark mode */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 258 25% 18%; 
