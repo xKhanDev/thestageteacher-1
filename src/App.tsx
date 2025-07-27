@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import { SubscriptionProvider } from "@/hooks/useSubscription";
 import ErrorBoundary from "@/components/ui/error-boundary";
 import Index from "./pages/Index";
 import EasyTeachApp from "./pages/EasyTeachApp";
@@ -48,9 +49,10 @@ const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
+        <SubscriptionProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
           <BrowserRouter>
             <ErrorBoundary>
               <Routes>
@@ -111,6 +113,7 @@ const App = () => (
             <ConsentManager />
           </BrowserRouter>
         </TooltipProvider>
+        </SubscriptionProvider>
       </AuthProvider>
     </QueryClientProvider>
   </ErrorBoundary>

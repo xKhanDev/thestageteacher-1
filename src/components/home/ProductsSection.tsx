@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import { useSubscription } from "@/hooks/useSubscription";
+import { useState } from "react";
 import {
   BookOpen,
   GraduationCap,
@@ -41,6 +43,19 @@ const ProductsSection = ({
   onJoinWaitlist,
 }: ProductsSectionProps) => {
   const { t } = useTranslation();
+  const { createCheckout } = useSubscription();
+  const [upgrading, setUpgrading] = useState(false);
+
+  const handleUpgrade = async () => {
+    try {
+      setUpgrading(true);
+      await createCheckout(); // Use default Pro plan price
+    } catch (error) {
+      console.error('Error upgrading:', error);
+    } finally {
+      setUpgrading(false);
+    }
+  };
   const products = [
     {
       id: "easyteach-free",
@@ -91,7 +106,7 @@ const ProductsSection = ({
         { text: t("products.exclusiveEarlyAccess"), reactIcon: FaCheck },
       ],
       users: t("products.mostPopular"),
-      action: () => onShowLogin(),
+      action: () => handleUpgrade(),
       actionText: t("products.upgradeToPro"),
       btnIcon: FaCrown,
       popular: true,
@@ -282,9 +297,11 @@ const ProductsSection = ({
                 }`}
               >
                 <Button
+                  onClick={product.action}
+                  disabled={product.id === "easyteach-pro" && upgrading}
                   className={`mt-4 py-6 w-full flex items-center justify-center bg-${product.bgColor}-600 hover:bg-${product.bgColor}-700`}
                 >
-                  {product.actionText}{" "}
+                  {product.id === "easyteach-pro" && upgrading ? "Opening Checkout..." : product.actionText}{" "}
                   <product.btnIcon className="h-4 w-4 ml-2" />
                 </Button>
               </div>
