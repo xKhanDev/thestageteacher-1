@@ -1009,5 +1009,260 @@
     "buttons": {
       "requestDemo": "Demander une Démo"
     }
+  },
+  "solutions": {
+    "admissions": {
+      "title": "Gestion des Admissions",
+      "subtitle": "Simplifiez l'inscription des étudiants avec notre logiciel intelligent d'admissions scolaires alimenté par l'IA. Facilitez l'intégration pour les familles et l'efficacité pour votre équipe.",
+      "features": {
+        "title": "Fonctionnalités Puissantes",
+        "subtitle": "Tout ce dont vous avez besoin pour rationaliser votre processus d'admission",
+        "onlineForms": {
+          "title": "Formulaires de Candidature en Ligne",
+          "description": "Champs personnalisables qui s'adaptent aux exigences spécifiques de votre école"
+        },
+        "verification": {
+          "title": "Vérification Automatique des Documents",
+          "description": "Vérification automatisée et système complet de suivi des candidats"
+        },
+        "aiProfiling": {
+          "title": "Profilage Étudiant basé sur l'IA",
+          "description": "Évaluations plus rapides grâce aux algorithmes intelligents de profilage étudiant"
+        },
+        "communication": {
+          "title": "Communication Fluide",
+          "description": "Canaux de communication directs avec les parents et les candidats"
+        },
+        "dashboard": {
+          "title": "Tableau de Bord Centralisé",
+          "description": "Surveillez chaque étape de l'inscription depuis une interface unique"
+        }
+      },
+      "whyMatters": {
+        "title": "Pourquoi C'est Important",
+        "description": "Réduisez le temps administratif et diminuez les erreurs en automatisant les tâches répétitives. Offrez aux familles potentielles un parcours d'admission fluide et réactif qui reflète le professionnalisme de votre école et établit la confiance dès la première interaction."
+      },
+      "benefits": {
+        "title": "Transformez Votre Processus",
+        "faster": "Plus Rapide",
+        "fasterDesc": "Réduction du Temps de Traitement de 75%",
+        "accuracy": "Précision",
+        "accuracyDesc": "Vérification des Documents à 99%",
+        "realtime": "Temps Réel",
+        "realtimeDesc": "Analyses et Rapports"
+      },
+      "cta": {
+        "title": "Prêt à Moderniser Vos Admissions ?",
+        "description": "Rejoignez des milliers d'institutions dans le monde entier pour rationaliser leur processus d'admission avec notre plateforme éprouvée.",
+        "button": "Optimiser les Admissions Aujourd'hui"
+      },
+      "startTrial": "Commencer l'Essai Gratuit"
+    },
+    "reports": {
+      "title": "Rapports Généraux et Analyses",
+      "subtitle": "Transformez les données brutes en perspectives exploitables avec des outils de rapport complets conçus pour l'excellence éducative.",
+      "features": {
+        "title": "Suite d'Analyses Complète",
+        "subtitle": "Tout ce dont vous avez besoin pour prendre des décisions basées sur les données pour votre institution",
+        "dashboards": {
+          "title": "Tableaux de Bord Dynamiques",
+          "description": "Visualisation de données académiques, comportementales et opérationnelles en temps réel avec graphiques interactifs"
+        },
+        "builder": {
+          "title": "Générateur de Rapports Personnalisés",
+          "description": "Interface glisser-déposer pour créer des rapports sur mesure pour n'importe quel département ou métrique"
+        },
+        "export": {
+          "title": "Flexibilité d'Exportation",
+          "description": "Exportations en un clic vers Excel, PDF, ou livraison automatisée aux parties prenantes"
+        },
+        "aiInsights": {
+          "title": "Insights Assistés par l'IA",
+          "description": "Les algorithmes d'apprentissage automatique identifient les tendances et fournissent des analyses prédictives"
+        },
+        "security": {
+          "title": "Sécurité des Données et Conformité",
+          "description": "Sécurité de niveau entreprise avec accès basé sur les rôles et pistes d'audit"
+        },
+        "scheduling": {
+          "title": "Planification Automatisée",
+          "description": "Planifiez la génération et la distribution automatiques des rapports"
+        }
+      },
+      "whyMatters": {
+        "title": "Excellence Basée sur les Données",
+        "description": "Transformez les données institutionnelles brutes en insights stratégiques qui favorisent l'amélioration. Notre plateforme d'analyses avancées permet aux équipes de direction d'identifier les tendances, d'optimiser les ressources et de prendre des décisions basées sur des preuves qui améliorent les résultats éducatifs dans tous les départements.",
+        "stats": {
+          "reduction": "Réduction du temps de génération de rapports de 95%",
+          "templates": "Plus de 50 modèles de rapports pré-construits"
+        }
+      },
+      "benefits": {
+        "title": "Capacités d'Analyses Puissantes",
+        "realtime": "Temps Réel",
+        "realtimeDesc": "Mises à Jour du Tableau de Bord en Direct",
+        "aiPowered": "Alimenté par l'IA",
+        "aiDesc": "Intelligence Prédictive",
+        "custom": "Personnalisé",
+        "customDesc": "Solutions Sur Mesure"
+      },
+      "cta": {
+        "title": "Prêt à Débloquer le Potentiel de Vos Données ?",
+        "description": "Rejoignez les institutions éducatives leaders dans la transformation des données en avantages stratégiques avec notre plateforme d'analyses avancées.",
+        "button": "Commencer le Parcours Analytique"
+      }
+    },
+    "hrPayroll": {
+      "title": "Solutions RH et Paie",
+      "subtitle": "Renforcez votre institution avec une gestion complète des ressources humaines qui priorise à la fois l'efficacité et la satisfaction des employés.",
+      "features": {
+        "title": "Suite Complète de Gestion RH",
+        "subtitle": "De l'embauche à la retraite, gérez chaque aspect de votre main-d'œuvre efficacement",
+        "onboarding": {
+          "title": "Intégration Numérique du Personnel",
+          "description": "Intégration numérique rationalisée avec paperasserie automatisée et configuration d'accès basée sur les rôles"
+        },
+        "payroll": {
+          "title": "Automatisation de la Paie",
+          "description": "Traitement entièrement automatisé de la paie avec calculs fiscaux, déductions et intégration des avantages"
+        },
+        "attendance": {
+          "title": "Gestion de la Présence et des Congés",
+          "description": "Suivi complet avec intégration biométrique et calculs automatisés des congés"
+        },
+        "performance": {
+          "title": "Évaluation de Performance",
+          "description": "Évaluations de performance à 360 degrés avec suivi des objectifs et évaluations de compétences"
+        },
+        "compliance": {
+          "title": "Conformité et Dossiers",
+          "description": "Surveillance automatisée de la conformité avec gestion sécurisée des documents dans le cloud"
+        },
+        "scheduling": {
+          "title": "Planification et Organisation",
+          "description": "Planification avancée du personnel avec gestion des équipes et optimisation des ressources"
+        }
+      },
+      "whyMatters": {
+        "title": "Solutions RH Axées sur les Personnes",
+        "description": "Transformez votre département RH d'un fardeau administratif en partenaire stratégique. Notre plateforme complète automatise les tâches routinières tout en maintenant la conformité, permettant à votre équipe de se concentrer sur ce qui compte le plus : développer et soutenir vos professionnels de l'éducation.",
+        "stats": {
+          "time": "Réduction de 80% du temps administratif",
+          "accuracy": "Précision de la paie garantie à 99,9%",
+          "compliance": "Couverture de conformité à 100%"
+        }
+      },
+      "benefits": {
+        "title": "Capacités RH Avancées",
+        "automated": "Automatisé",
+        "automatedDesc": "Paie et Avantages",
+        "compliant": "Conforme",
+        "compliantDesc": "Normes Réglementaires",
+        "digital": "Numérique",
+        "digitalDesc": "Gestion Documentaire"
+      },
+      "cta": {
+        "title": "Prêt à Transformer Vos Opérations RH ?",
+        "description": "Rejoignez les institutions éducatives progressistes dans la révolution de la gestion des ressources humaines avec notre plateforme complète.",
+        "button": "Transformer RH et Paie"
+      },
+      "streamlineOps": "Rationaliser les Opérations RH"
+    },
+    "finance": {
+      "title": "Suite de Gestion Financière",
+      "subtitle": "Atteignez la transparence et le contrôle financiers avec des outils complets conçus pour l'excellence des institutions éducatives.",
+      "features": {
+        "title": "Contrôle Financier Complet",
+        "subtitle": "Tout ce dont vous avez besoin pour gérer les finances de votre institution avec confiance",
+        "feeManagement": {
+          "title": "Gestion des Frais et Facturation Automatisée",
+          "description": "Gestion complète du cycle de vie des frais avec facturation automatisée, rappels de paiement et suivi des recouvrements"
+        },
+        "reports": {
+          "title": "Rapports Financiers Avancés",
+          "description": "Tableaux de bord financiers en temps réel avec rapports complets et pistes d'audit détaillées pour la transparence"
+        },
+        "budgeting": {
+          "title": "Planification Budgétaire et Prévisions",
+          "description": "Planification budgétaire intelligente avec analyses prédictives et surveillance des dépenses en temps réel"
+        },
+        "payments": {
+          "title": "Traitement de Paiements Multi-Canaux",
+          "description": "Intégration sécurisée avec banques, passerelles de paiement et portefeuilles numériques pour des transactions fluides"
+        },
+        "tax": {
+          "title": "Gestion Fiscale et Conformité",
+          "description": "Calculs fiscaux automatisés, surveillance de la conformité et capacités de rapport réglementaire"
+        },
+        "optimization": {
+          "title": "Analyses d'Optimisation des Coûts",
+          "description": "Insights alimentés par l'IA pour identifier les opportunités d'économies et optimiser l'allocation des ressources"
+        }
+      },
+      "whyMatters": {
+        "title": "Excellence Financière par la Technologie",
+        "description": "Transformez vos opérations financières du complexe au rationalisé. Notre plateforme complète fournit une visibilité en temps réel sur tous les aspects des finances de votre institution, de la gestion des frais de scolarité aux prévisions budgétaires, assurant transparence, conformité et planification financière stratégique.",
+        "stats": {
+          "processing": "Traitement des paiements 90% plus rapide",
+          "accuracy": "Taux de précision financière de 99,8%",
+          "costs": "Réduction de 60% des coûts administratifs"
+        }
+      },
+      "benefits": {
+        "title": "Capacités Financières Avancées",
+        "automated": "Automatisé",
+        "automatedDesc": "Traitement des Paiements",
+        "transparent": "Transparent",
+        "transparentDesc": "Insights Financiers",
+        "smart": "Intelligent",
+        "smartDesc": "Planification Budgétaire"
+      },
+      "cta": {
+        "title": "Prêt à Transformer Vos Opérations Financières ?",
+        "description": "Rejoignez les institutions éducatives leaders dans l'atteinte de l'excellence financière avec notre plateforme de gestion complète.",
+        "button": "Optimiser la Santé Financière"
+      }
+    },
+    "communication": {
+      "title": "Excellence en Communication",
+      "subtitle": "Unissez toute votre communauté éducative avec une communication intelligente multi-canaux qui construit des connexions plus fortes.",
+      "features": {
+        "title": "Plateforme de Communication Complète",
+        "subtitle": "Connectez, engagez et informez toute votre communauté éducative de manière fluide",
+        "broadcasting": {
+          "title": "Diffusion Multi-Canaux",
+          "description": "Annonces instantanées par email, SMS, notifications push et plateformes de médias sociaux"
+        },
+        "alerts": {
+          "title": "Système d'Alertes Intelligent",
+          "description": "Alertes intelligentes alimentées par l'IA pour la présence, les progrès académiques, les événements et les notifications d'urgence"
+        },
+        "hub": {
+          "title": "Hub de Communication Interactif",
+          "description": "Portails de messagerie sécurisés bidirectionnels connectant enseignants, parents, étudiants et administrateurs"
+        },
+        "multilingual": {
+          "title": "Multilingue et Accessibilité",
+          "description": "Traduction en temps réel dans plus de 50 langues avec fonctionnalités de conformité d'accessibilité complètes"
+        },
+        "video": {
+          "title": "Intégration de Réunions Virtuelles",
+          "description": "Visioconférence fluide pour les réunions parents-enseignants et les sessions de classe virtuelle"
+        },
+        "workflows": {
+          "title": "Flux de Travail Automatisés",
+          "description": "Flux de travail de communication intelligents qui se déclenchent en fonction d'événements et de planification"
+        }
+      },
+      "whyMatters": {
+        "title": "Construire des Communautés Plus Fortes",
+        "description": "Transformez la façon dont votre communauté éducative se connecte et collabore. Notre plateforme garantit que chaque voix est entendue, chaque message atteint sa destination, et chaque partie prenante se sent engagée et informée."
+      },
+      "cta": {
+        "title": "Prêt à Unir Votre Communauté ?",
+        "description": "Rejoignez les institutions éducatives progressistes dans la révolution de la communication et de l'engagement.",
+        "button": "Connecter Votre Communauté"
+      }
+    }
   }
 }

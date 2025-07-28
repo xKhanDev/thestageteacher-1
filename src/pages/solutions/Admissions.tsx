@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { UserCheck, FileText, Users, CheckCircle, Clock, BarChart, Bot, MessageSquare, Monitor, ArrowRight, Zap, Target } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LoginModal from "@/components/auth/LoginModal";
 import admissionsHero from "@/assets/solutions/admissions-hero.jpg";
 
 const Admissions = () => {
+  const { t } = useTranslation();
   const [showLogin, setShowLogin] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,28 +20,28 @@ const Admissions = () => {
   const features = [
     {
       icon: FileText,
-      title: "Online Application Forms",
-      description: "Customizable fields that adapt to your school's specific requirements"
+      title: t('solutions.admissions.features.onlineForms.title'),
+      description: t('solutions.admissions.features.onlineForms.description')
     },
     {
       icon: CheckCircle,
-      title: "Automatic Document Verification",
-      description: "Automated verification and comprehensive applicant tracking system"
+      title: t('solutions.admissions.features.verification.title'),
+      description: t('solutions.admissions.features.verification.description')
     },
     {
       icon: Bot,
-      title: "AI-Based Student Profiling",
-      description: "Faster evaluations through intelligent student profiling algorithms"
+      title: t('solutions.admissions.features.aiProfiling.title'),
+      description: t('solutions.admissions.features.aiProfiling.description')
     },
     {
       icon: MessageSquare,
-      title: "Seamless Communication",
-      description: "Direct communication channels with parents and applicants"
+      title: t('solutions.admissions.features.communication.title'),
+      description: t('solutions.admissions.features.communication.description')
     },
     {
       icon: Monitor,
-      title: "Centralized Dashboard",
-      description: "Monitor every stage of enrollment from a single interface"
+      title: t('solutions.admissions.features.dashboard.title'),
+      description: t('solutions.admissions.features.dashboard.description')
     }
   ];
 
@@ -63,11 +65,10 @@ const Admissions = () => {
               <UserCheck className="h-10 w-10" />
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              Admissions Management
+              {t('solutions.admissions.title')}
             </h1>
             <p className="text-xl leading-relaxed mb-8 opacity-90 animate-fade-in" style={{animationDelay: '0.4s'}}>
-              Simplify student enrollment with our smart, AI-powered school admissions software. 
-              Make onboarding easy for families and efficient for your team.
+              {t('solutions.admissions.subtitle')}
             </p>
             <Button 
               size="lg"
@@ -75,7 +76,7 @@ const Admissions = () => {
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in group"
               style={{animationDelay: '0.6s'}}
             >
-              Start Free Trial
+              {t('solutions.admissions.startTrial')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -87,9 +88,9 @@ const Admissions = () => {
         {/* Features Grid */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('solutions.admissions.features.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to streamline your admissions process
+              {t('solutions.admissions.features.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -118,19 +119,17 @@ const Admissions = () => {
           <div className="bg-gradient-to-r from-white via-blue-50/50 to-cyan-50/50 rounded-3xl p-12 shadow-2xl border border-blue-100">
             <div className="text-center mb-8">
               <Target className="h-16 w-16 text-blue-600 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Why it Matters</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('solutions.admissions.whyMatters.title')}</h2>
             </div>
             <p className="text-xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed">
-              Cut down administrative time and reduce errors by automating repetitive tasks. 
-              Offer prospective families a smooth and responsive admissions journey that reflects 
-              your school's professionalism and builds trust from the first interaction.
+              {t('solutions.admissions.whyMatters.description')}
             </p>
           </div>
         </section>
 
         {/* Benefits */}
         <section className="py-20">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Transform Your Process</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">{t('solutions.admissions.benefits.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="relative mb-6">
@@ -141,8 +140,8 @@ const Admissions = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">75% Faster</h3>
-              <p className="text-gray-600 text-lg">Processing Time Reduction</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">75% {t('solutions.admissions.benefits.faster')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.admissions.benefits.fasterDesc')}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -153,8 +152,8 @@ const Admissions = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">99% Accuracy</h3>
-              <p className="text-gray-600 text-lg">Document Verification</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">99% {t('solutions.admissions.benefits.accuracy')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.admissions.benefits.accuracyDesc')}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -165,8 +164,8 @@ const Admissions = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Real-time</h3>
-              <p className="text-gray-600 text-lg">Analytics & Reporting</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t('solutions.admissions.benefits.realtime')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.admissions.benefits.realtimeDesc')}</p>
             </div>
           </div>
         </section>
@@ -174,16 +173,16 @@ const Admissions = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-6">Ready to Modernize Your Admissions?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t('solutions.admissions.cta.title')}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Join thousands of institutions worldwide in streamlining their admission process with our proven platform.
+              {t('solutions.admissions.cta.description')}
             </p>
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
               className="bg-white text-blue-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Streamline Admissions Today
+              {t('solutions.admissions.cta.button')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

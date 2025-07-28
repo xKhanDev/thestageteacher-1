@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { BarChart3, FileSpreadsheet, Download, Brain, TrendingUp, ArrowRight, Target, Zap, Shield, Clock } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LoginModal from "@/components/auth/LoginModal";
 import reportsHero from "@/assets/solutions/reports-hero.jpg";
 
 const GeneralReports = () => {
+  const { t } = useTranslation();
   const [showLogin, setShowLogin] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,33 +20,33 @@ const GeneralReports = () => {
   const features = [
     {
       icon: BarChart3,
-      title: "Dynamic Dashboards",
-      description: "Real-time academic, behavioral, and operational data visualization with interactive charts"
+      title: t('solutions.reports.features.dashboards.title'),
+      description: t('solutions.reports.features.dashboards.description')
     },
     {
       icon: FileSpreadsheet,
-      title: "Custom Report Builder",
-      description: "Drag-and-drop interface to create tailored reports for any department or metric"
+      title: t('solutions.reports.features.builder.title'),
+      description: t('solutions.reports.features.builder.description')
     },
     {
       icon: Download,
-      title: "Export Flexibility",
-      description: "One-click exports to Excel, PDF, or automated delivery to stakeholders"
+      title: t('solutions.reports.features.export.title'),
+      description: t('solutions.reports.features.export.description')
     },
     {
       icon: Brain,
-      title: "AI-Assisted Insights",
-      description: "Machine learning algorithms identify trends and provide predictive analytics"
+      title: t('solutions.reports.features.aiInsights.title'),
+      description: t('solutions.reports.features.aiInsights.description')
     },
     {
       icon: Shield,
-      title: "Data Security & Compliance",
-      description: "Enterprise-grade security with role-based access and audit trails"
+      title: t('solutions.reports.features.security.title'),
+      description: t('solutions.reports.features.security.description')
     },
     {
       icon: Clock,
-      title: "Automated Scheduling",
-      description: "Schedule reports to be generated and distributed automatically"
+      title: t('solutions.reports.features.scheduling.title'),
+      description: t('solutions.reports.features.scheduling.description')
     }
   ];
 
@@ -68,10 +70,10 @@ const GeneralReports = () => {
               <BarChart3 className="h-10 w-10" />
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              General Reports & Analytics
+              {t('solutions.reports.title')}
             </h1>
             <p className="text-xl leading-relaxed mb-8 opacity-90 animate-fade-in" style={{animationDelay: '0.4s'}}>
-              Transform raw data into actionable insights with comprehensive reporting tools designed for educational excellence.
+              {t('solutions.reports.subtitle')}
             </p>
             <Button 
               size="lg"
@@ -79,7 +81,7 @@ const GeneralReports = () => {
               className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in group"
               style={{animationDelay: '0.6s'}}
             >
-              Start Analytics Journey
+              {t('solutions.reports.cta.button')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -91,9 +93,9 @@ const GeneralReports = () => {
         {/* Features Grid */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Comprehensive Analytics Suite</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('solutions.reports.features.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to make data-driven decisions for your institution
+              {t('solutions.reports.features.subtitle')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,21 +124,19 @@ const GeneralReports = () => {
           <div className="bg-gradient-to-r from-white via-green-50/50 to-emerald-50/50 rounded-3xl p-12 shadow-2xl border border-green-100">
             <div className="text-center mb-8">
               <Target className="h-16 w-16 text-green-600 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Data-Driven Excellence</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('solutions.reports.whyMatters.title')}</h2>
             </div>
             <p className="text-xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed mb-8">
-              Transform raw institutional data into strategic insights that drive improvement. Our advanced analytics platform 
-              empowers leadership teams to identify trends, optimize resources, and make evidence-based decisions that enhance 
-              educational outcomes across all departments.
+              {t('solutions.reports.whyMatters.description')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
-                <p className="text-gray-600">Reduction in report generation time</p>
+                <p className="text-gray-600">{t('solutions.reports.whyMatters.stats.reduction')}</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-green-600 mb-2">50+</div>
-                <p className="text-gray-600">Pre-built report templates</p>
+                <p className="text-gray-600">{t('solutions.reports.whyMatters.stats.templates')}</p>
               </div>
             </div>
           </div>
@@ -144,7 +144,7 @@ const GeneralReports = () => {
 
         {/* Benefits */}
         <section className="py-20">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Powerful Analytics Capabilities</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">{t('solutions.reports.benefits.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="relative mb-6">
@@ -155,8 +155,8 @@ const GeneralReports = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Real-time</h3>
-              <p className="text-gray-600 text-lg">Live Dashboard Updates</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t('solutions.reports.benefits.realtime')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.reports.benefits.realtimeDesc')}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -167,8 +167,8 @@ const GeneralReports = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">AI-Powered</h3>
-              <p className="text-gray-600 text-lg">Predictive Intelligence</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t('solutions.reports.benefits.aiPowered')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.reports.benefits.aiDesc')}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -179,8 +179,8 @@ const GeneralReports = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Custom</h3>
-              <p className="text-gray-600 text-lg">Tailored Solutions</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t('solutions.reports.benefits.custom')}</h3>
+              <p className="text-gray-600 text-lg">{t('solutions.reports.benefits.customDesc')}</p>
             </div>
           </div>
         </section>
@@ -188,16 +188,16 @@ const GeneralReports = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-6">Ready to Unlock Your Data's Potential?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t('solutions.reports.cta.title')}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Join leading educational institutions in transforming data into strategic advantages with our advanced analytics platform.
+              {t('solutions.reports.cta.description')}
             </p>
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
               className="bg-white text-green-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Start Analytics Journey
+              {t('solutions.reports.cta.button')}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
