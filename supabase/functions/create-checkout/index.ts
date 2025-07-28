@@ -53,9 +53,9 @@ serve(async (req) => {
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       customer_email: customerId ? undefined : user.email,
-      line_items: [
+        line_items: [
         {
-          price: priceId || "price_1QdLt4JMhklqCX0VsVLGNgLB", // Default to Pro plan price ID
+          price: priceId || "price_1RpkpuHHP05TviTOpktrT5Cb", // Default to Pro plan price ID
           quantity: 1,
         },
       ],
