@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { DollarSign, CreditCard, FileBarChart, Banknote, PieChart, ArrowRight, Target, Zap, Calculator, TrendingDown } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LoginModal from "@/components/auth/LoginModal";
 import financeHero from "@/assets/solutions/finance-hero.jpg";
 
 const Finance = () => {
+  const { t } = useTranslation();
   const [showLogin, setShowLogin] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,33 +20,33 @@ const Finance = () => {
   const features = [
     {
       icon: CreditCard,
-      title: "Fee Management & Automated Billing",
-      description: "Complete fee lifecycle management with automated invoicing, payment reminders, and collection tracking"
+      title: t("solutions.finance.features.feeManagement.title"),
+      description: t("solutions.finance.features.feeManagement.description")
     },
     {
       icon: FileBarChart,
-      title: "Advanced Financial Reports",
-      description: "Real-time financial dashboards with comprehensive reporting and detailed audit trails for transparency"
+      title: t("solutions.finance.features.reports.title"),
+      description: t("solutions.finance.features.reports.description")
     },
     {
       icon: PieChart,
-      title: "Budget Planning & Forecasting",
-      description: "Intelligent budget planning with predictive analytics and real-time expenditure monitoring"
+      title: t("solutions.finance.features.budgetPlanning.title"),
+      description: t("solutions.finance.features.budgetPlanning.description")
     },
     {
       icon: Banknote,
-      title: "Multi-Channel Payment Processing",
-      description: "Secure integration with banks, payment gateways, and digital wallets for seamless transactions"
+      title: t("solutions.finance.features.paymentProcessing.title"),
+      description: t("solutions.finance.features.paymentProcessing.description")
     },
     {
       icon: Calculator,
-      title: "Tax Management & Compliance",
-      description: "Automated tax calculations, compliance monitoring, and regulatory reporting capabilities"
+      title: t("solutions.finance.features.taxManagement.title"),
+      description: t("solutions.finance.features.taxManagement.description")
     },
     {
       icon: TrendingDown,
-      title: "Cost Optimization Analytics",
-      description: "AI-powered insights to identify cost-saving opportunities and optimize resource allocation"
+      title: t("solutions.finance.features.costOptimization.title"),
+      description: t("solutions.finance.features.costOptimization.description")
     }
   ];
 
@@ -68,10 +70,10 @@ const Finance = () => {
               <DollarSign className="h-10 w-10" />
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              Financial Management Suite
+              {t("solutions.finance.hero.title")}
             </h1>
             <p className="text-xl leading-relaxed mb-8 opacity-90 animate-fade-in" style={{animationDelay: '0.4s'}}>
-              Achieve financial transparency and control with comprehensive tools designed for educational institution excellence.
+              {t("solutions.finance.hero.subtitle")}
             </p>
             <Button 
               size="lg"
@@ -79,7 +81,7 @@ const Finance = () => {
               className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in group"
               style={{animationDelay: '0.6s'}}
             >
-              Optimize Financial Health
+              {t("solutions.finance.hero.cta")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -91,9 +93,9 @@ const Finance = () => {
         {/* Features Grid */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Complete Financial Control</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("solutions.finance.featuresSection.title")}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to manage your institution's finances with confidence
+              {t("solutions.finance.featuresSection.subtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,25 +124,23 @@ const Finance = () => {
           <div className="bg-gradient-to-r from-white via-orange-50/50 to-amber-50/50 rounded-3xl p-12 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
               <Target className="h-16 w-16 text-orange-600 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Financial Excellence Through Technology</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t("solutions.finance.whyItMatters.title")}</h2>
             </div>
             <p className="text-xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed mb-8">
-              Transform your financial operations from complex to streamlined. Our comprehensive platform provides real-time visibility 
-              into every aspect of your institution's finances, from tuition management to budget forecasting, ensuring transparency, 
-              compliance, and strategic financial planning.
+              {t("solutions.finance.whyItMatters.description")}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-orange-600 mb-2">90%</div>
-                <p className="text-gray-600">Faster payment processing</p>
+                <p className="text-gray-600">{t("solutions.finance.stats.paymentProcessing")}</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-orange-600 mb-2">99.8%</div>
-                <p className="text-gray-600">Financial accuracy rate</p>
+                <p className="text-gray-600">{t("solutions.finance.stats.accuracy")}</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-orange-600 mb-2">60%</div>
-                <p className="text-gray-600">Reduction in administrative costs</p>
+                <p className="text-gray-600">{t("solutions.finance.stats.costReduction")}</p>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ const Finance = () => {
 
         {/* Benefits */}
         <section className="py-20">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Advanced Financial Capabilities</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">{t("solutions.finance.benefits.title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="relative mb-6">
@@ -159,8 +159,8 @@ const Finance = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Automated</h3>
-              <p className="text-gray-600 text-lg">Payment Processing</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.finance.benefits.automated.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.finance.benefits.automated.subtitle")}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -171,8 +171,8 @@ const Finance = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Transparent</h3>
-              <p className="text-gray-600 text-lg">Financial Insights</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.finance.benefits.transparent.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.finance.benefits.transparent.subtitle")}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -183,8 +183,8 @@ const Finance = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Smart</h3>
-              <p className="text-gray-600 text-lg">Budget Planning</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.finance.benefits.smart.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.finance.benefits.smart.subtitle")}</p>
             </div>
           </div>
         </section>
@@ -192,16 +192,16 @@ const Finance = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="bg-gradient-to-r from-orange-600 to-amber-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Financial Operations?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t("solutions.finance.cta.title")}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Join leading educational institutions in achieving financial excellence with our comprehensive management platform.
+              {t("solutions.finance.cta.description")}
             </p>
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
               className="bg-white text-orange-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Optimize Financial Health
+              {t("solutions.finance.cta.button")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

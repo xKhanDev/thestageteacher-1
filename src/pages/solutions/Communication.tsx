@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { MessageSquare, Megaphone, Bell, Globe, Users, ArrowRight, Target, Zap, Video, Send } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LoginModal from "@/components/auth/LoginModal";
 import communicationHero from "@/assets/solutions/communication-hero.jpg";
 
 const Communication = () => {
+  const { t } = useTranslation();
   const [showLogin, setShowLogin] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,33 +20,33 @@ const Communication = () => {
   const features = [
     {
       icon: Megaphone,
-      title: "Multi-Channel Broadcasting",
-      description: "Instant announcements across email, SMS, push notifications, and social media platforms"
+      title: t("solutions.communication.features.broadcasting.title"),
+      description: t("solutions.communication.features.broadcasting.description")
     },
     {
       icon: Bell,
-      title: "Smart Alert System",
-      description: "AI-powered intelligent alerts for attendance, academic progress, events, and emergency notifications"
+      title: t("solutions.communication.features.alerts.title"),
+      description: t("solutions.communication.features.alerts.description")
     },
     {
       icon: MessageSquare,
-      title: "Interactive Communication Hub",
-      description: "Secure two-way messaging portals connecting teachers, parents, students, and administrators"
+      title: t("solutions.communication.features.hub.title"),
+      description: t("solutions.communication.features.hub.description")
     },
     {
       icon: Globe,
-      title: "Multilingual & Accessibility",
-      description: "Real-time translation in 50+ languages with full accessibility compliance features"
+      title: t("solutions.communication.features.multilingual.title"),
+      description: t("solutions.communication.features.multilingual.description")
     },
     {
       icon: Video,
-      title: "Virtual Meeting Integration",
-      description: "Seamless video conferencing for parent-teacher meetings and virtual classroom sessions"
+      title: t("solutions.communication.features.meetings.title"),
+      description: t("solutions.communication.features.meetings.description")
     },
     {
       icon: Send,
-      title: "Automated Workflows",
-      description: "Intelligent communication workflows that trigger based on events and scheduled timing"
+      title: t("solutions.communication.features.workflows.title"),
+      description: t("solutions.communication.features.workflows.description")
     }
   ];
 
@@ -68,10 +70,10 @@ const Communication = () => {
               <MessageSquare className="h-10 w-10" />
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              Communication Excellence
+              {t("solutions.communication.hero.title")}
             </h1>
             <p className="text-xl leading-relaxed mb-8 opacity-90 animate-fade-in" style={{animationDelay: '0.4s'}}>
-              Unite your entire educational community with intelligent, multi-channel communication that builds stronger connections.
+              {t("solutions.communication.hero.subtitle")}
             </p>
             <Button 
               size="lg"
@@ -79,7 +81,7 @@ const Communication = () => {
               className="bg-white text-teal-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in group"
               style={{animationDelay: '0.6s'}}
             >
-              Connect Your Community
+              {t("solutions.communication.hero.cta")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -91,9 +93,9 @@ const Communication = () => {
         {/* Features Grid */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Comprehensive Communication Platform</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("solutions.communication.featuresSection.title")}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Connect, engage, and inform your entire educational community seamlessly
+              {t("solutions.communication.featuresSection.subtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,11 +124,10 @@ const Communication = () => {
           <div className="bg-gradient-to-r from-white via-teal-50/50 to-cyan-50/50 rounded-3xl p-12 shadow-2xl border border-teal-100">
             <div className="text-center mb-8">
               <Target className="h-16 w-16 text-teal-600 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Building Stronger Communities</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t("solutions.communication.whyItMatters.title")}</h2>
             </div>
             <p className="text-xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed">
-              Transform how your educational community connects and collaborates. Our platform ensures every voice is heard, 
-              every message reaches its destination, and every stakeholder feels engaged and informed.
+              {t("solutions.communication.whyItMatters.description")}
             </p>
           </div>
         </section>
@@ -134,16 +135,16 @@ const Communication = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-6">Ready to Unite Your Community?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t("solutions.communication.cta.title")}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Join progressive educational institutions in revolutionizing communication and engagement.
+              {t("solutions.communication.cta.description")}
             </p>
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
               className="bg-white text-teal-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Connect Your Community
+              {t("solutions.communication.cta.button")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

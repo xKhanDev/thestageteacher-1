@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Users, CreditCard, UserPlus, ClipboardCheck, Shield, ArrowRight, Target, Zap, Calendar, FileSearch } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import LoginModal from "@/components/auth/LoginModal";
 import hrHero from "@/assets/solutions/hr-payroll-hero.jpg";
 
 const HRPayroll = () => {
+  const { t } = useTranslation();
   const [showLogin, setShowLogin] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,33 +20,33 @@ const HRPayroll = () => {
   const features = [
     {
       icon: UserPlus,
-      title: "Digital Staff Onboarding",
-      description: "Streamlined digital onboarding with automated paperwork and role-based access setup"
+      title: t("solutions.hrPayroll.features.onboarding.title"),
+      description: t("solutions.hrPayroll.features.onboarding.description")
     },
     {
       icon: CreditCard,
-      title: "Payroll Automation",
-      description: "Fully automated payroll processing with tax calculations, deductions, and benefits integration"
+      title: t("solutions.hrPayroll.features.payroll.title"),
+      description: t("solutions.hrPayroll.features.payroll.description")
     },
     {
       icon: ClipboardCheck,
-      title: "Attendance & Leave Management",
-      description: "Comprehensive tracking with biometric integration and automated leave calculations"
+      title: t("solutions.hrPayroll.features.attendance.title"),
+      description: t("solutions.hrPayroll.features.attendance.description")
     },
     {
       icon: Users,
-      title: "Performance Evaluation",
-      description: "360-degree performance reviews with goal tracking and competency assessments"
+      title: t("solutions.hrPayroll.features.performance.title"),
+      description: t("solutions.hrPayroll.features.performance.description")
     },
     {
       icon: Shield,
-      title: "Compliance & Records",
-      description: "Automated compliance monitoring with secure cloud-based document management"
+      title: t("solutions.hrPayroll.features.compliance.title"),
+      description: t("solutions.hrPayroll.features.compliance.description")
     },
     {
       icon: Calendar,
-      title: "Scheduling & Planning",
-      description: "Advanced staff scheduling with shift management and resource optimization"
+      title: t("solutions.hrPayroll.features.scheduling.title"),
+      description: t("solutions.hrPayroll.features.scheduling.description")
     }
   ];
 
@@ -68,10 +70,10 @@ const HRPayroll = () => {
               <Users className="h-10 w-10" />
             </div>
             <h1 className="text-6xl font-bold mb-6 animate-fade-in" style={{animationDelay: '0.2s'}}>
-              HR & Payroll Solutions
+              {t("solutions.hrPayroll.hero.title")}
             </h1>
             <p className="text-xl leading-relaxed mb-8 opacity-90 animate-fade-in" style={{animationDelay: '0.4s'}}>
-              Empower your institution with comprehensive human resource management that prioritizes both efficiency and employee satisfaction.
+              {t("solutions.hrPayroll.hero.subtitle")}
             </p>
             <Button 
               size="lg"
@@ -79,7 +81,7 @@ const HRPayroll = () => {
               className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in group"
               style={{animationDelay: '0.6s'}}
             >
-              Streamline HR Operations
+              {t("solutions.hrPayroll.hero.cta")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
@@ -91,9 +93,9 @@ const HRPayroll = () => {
         {/* Features Grid */}
         <section className="py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Complete HR Management Suite</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("solutions.hrPayroll.featuresSection.title")}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From hiring to retirement, manage every aspect of your workforce efficiently
+              {t("solutions.hrPayroll.featuresSection.subtitle")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -122,25 +124,23 @@ const HRPayroll = () => {
           <div className="bg-gradient-to-r from-white via-purple-50/50 to-indigo-50/50 rounded-3xl p-12 shadow-2xl border border-purple-100">
             <div className="text-center mb-8">
               <Target className="h-16 w-16 text-purple-600 mx-auto mb-6" />
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">People-First HR Solutions</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t("solutions.hrPayroll.whyItMatters.title")}</h2>
             </div>
             <p className="text-xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed mb-8">
-              Transform your HR department from administrative burden to strategic partner. Our comprehensive platform automates 
-              routine tasks while maintaining compliance, allowing your team to focus on what matters most: developing and supporting 
-              your educational professionals.
+              {t("solutions.hrPayroll.whyItMatters.description")}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-600 mb-2">80%</div>
-                <p className="text-gray-600">Reduction in administrative time</p>
+                <p className="text-gray-600">{t("solutions.hrPayroll.stats.adminReduction")}</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-600 mb-2">99.9%</div>
-                <p className="text-gray-600">Payroll accuracy guaranteed</p>
+                <p className="text-gray-600">{t("solutions.hrPayroll.stats.payrollAccuracy")}</p>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-600 mb-2">100%</div>
-                <p className="text-gray-600">Compliance coverage</p>
+                <p className="text-gray-600">{t("solutions.hrPayroll.stats.compliance")}</p>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@ const HRPayroll = () => {
 
         {/* Benefits */}
         <section className="py-20">
-          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">Advanced HR Capabilities</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900">{t("solutions.hrPayroll.benefits.title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center group">
               <div className="relative mb-6">
@@ -159,8 +159,8 @@ const HRPayroll = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Automated</h3>
-              <p className="text-gray-600 text-lg">Payroll & Benefits</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.hrPayroll.benefits.automated.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.hrPayroll.benefits.automated.subtitle")}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -171,8 +171,8 @@ const HRPayroll = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Compliant</h3>
-              <p className="text-gray-600 text-lg">Regulatory Standards</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.hrPayroll.benefits.compliant.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.hrPayroll.benefits.compliant.subtitle")}</p>
             </div>
             <div className="text-center group">
               <div className="relative mb-6">
@@ -183,8 +183,8 @@ const HRPayroll = () => {
                   <Zap className="h-4 w-4 text-white" />
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-gray-900">Digital</h3>
-              <p className="text-gray-600 text-lg">Document Management</p>
+              <h3 className="text-2xl font-bold mb-3 text-gray-900">{t("solutions.hrPayroll.benefits.digital.title")}</h3>
+              <p className="text-gray-600 text-lg">{t("solutions.hrPayroll.benefits.digital.subtitle")}</p>
             </div>
           </div>
         </section>
@@ -192,16 +192,16 @@ const HRPayroll = () => {
         {/* CTA Section */}
         <section className="py-20">
           <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl p-12 text-center text-white shadow-2xl">
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your HR Operations?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t("solutions.hrPayroll.cta.title")}</h2>
             <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-              Join progressive educational institutions in revolutionizing human resource management with our comprehensive platform.
+              {t("solutions.hrPayroll.cta.description")}
             </p>
             <Button 
               size="lg"
               onClick={() => setShowLogin(true)}
               className="bg-white text-purple-600 hover:bg-gray-100 px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              Transform HR & Payroll
+              {t("solutions.hrPayroll.cta.button")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
