@@ -68,38 +68,38 @@ const ProductsSection = ({
       btnIcon: ArrowRight,
       popular: false,
     },
-    // {
-    //   id: "easyteach-pro",
-    //   name: "EasyTeach Pro",
-    //   description:
-    //     "Everything in Free, plus unlimited AI power and exclusive features",
-    //   longDescription:
-    //     "Unlock the full potential of AI-powered teaching with unlimited generations, advanced features, and exclusive early access to new tools.",
-    //   icon: Crown,
-    //   status: "available",
-    //   color: "from-purple-500 to-purple-600",
-    //   bgColor: "purple",
-    //   price: "$89",
-    //   priceSubtext: "per year",
-    //   features: [
-    //     { text: "Everything in Free, plus...", reactIcon: FaCheck },
-    //     { text: "Unlimited AI generations", reactIcon: IoMdInfinite },
-    //     {
-    //       text: "Continue threads with Kribi Chatbot",
-    //       reactIcon: IoIosChatbubbles,
-    //     },
-    //     { text: "Unlimited AI Slides generation", reactIcon: FaSlideshare },
-    //     { text: "Export to Google Slides", reactIcon: FaGoogle },
-    //     { text: "EasyTeach for students", reactIcon: FaCheck },
-    //     { text: "Lifetime output history", reactIcon: FaCheck },
-    //     { text: "Exclusive early access to new features", reactIcon: FaCheck },
-    //   ],
-    //   users: "Most Popular",
-    //   action: () => onShowLogin(),
-    //   actionText: "Upgrade to Pro",
-    //   btnIcon: FaCrown,
-    //   popular: true,
-    // },
+    {
+      id: "easyteach-pro",
+      name: "EasyTeach Pro",
+      description:
+        "Everything in Free, plus unlimited AI power and exclusive features",
+      longDescription:
+        "Unlock the full potential of AI-powered teaching with unlimited generations, advanced features, and exclusive early access to new tools.",
+      icon: Crown,
+      status: "available",
+      color: "from-purple-500 to-purple-600",
+      bgColor: "purple",
+      price: "$89",
+      priceSubtext: "per year",
+      features: [
+        { text: "Everything in Free, plus...", reactIcon: FaCheck },
+        { text: "Unlimited AI generations", reactIcon: IoMdInfinite },
+        {
+          text: "Continue threads with Kribi Chatbot",
+          reactIcon: IoIosChatbubbles,
+        },
+        { text: "Unlimited AI Slides generation", reactIcon: FaSlideshare },
+        { text: "Export to Google Slides", reactIcon: FaGoogle },
+        { text: "EasyTeach for students", reactIcon: FaCheck },
+        { text: "Lifetime output history", reactIcon: FaCheck },
+        { text: "Exclusive early access to new features", reactIcon: FaCheck },
+      ],
+      users: "Most Popular",
+      action: () => onShowLogin(),
+      actionText: "Upgrade to Pro",
+      btnIcon: FaCrown,
+      popular: true,
+    },
     {
       id: "school-admin",
       name: "School Administration",
@@ -185,15 +185,19 @@ const ProductsSection = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-3">
           {products.map((product, index) => (
             <div
               key={product.id}
-              className={`relative border border-gray-300 rounded-2xl hover:border-${product.bgColor}-600`}
+              className={`relative border border-gray-300 rounded-2xl hover:border-${product.bgColor}-600 hover:border-blue-500`}
             >
               {/* header */}
               <div
-                className={`flex items-center justify-between bg-${product.bgColor}-600 text-white rounded-t-2xl px-4 py-12 md:py-12
+                className={`flex items-center justify-between bg-${
+                  product.bgColor
+                }-600 ${
+                  product.name.startsWith("School") && "bg-orange-600"
+                } text-white rounded-t-2xl px-4 py-12 md:py-12
                 `}
               >
                 <h1 className="text-lg/6 font-bold text-white">
@@ -214,7 +218,13 @@ const ProductsSection = ({
 
               {/* icon */}
               <span
-                className={`absolute top-[85px] left-4 z-10 size-16 p-3 rounded-full bg-accent flex items-center justify-center bg-${product.bgColor}-100`}
+                className={`absolute left-4 z-10 size-16 p-3 rounded-full bg-accent flex items-center justify-center bg-${
+                  product.bgColor
+                }-100 ${
+                  product.name.startsWith("School")
+                    ? "top-20 md:top-[110px]"
+                    : "top-[85px]"
+                }`}
               >
                 <product.icon
                   className={`h-6 w-6 text-${product.bgColor}-600`}
@@ -256,21 +266,23 @@ const ProductsSection = ({
                     What's included:
                   </h3>
                   <div className="flex flex-col gap-2">
-                    {product.features.slice(0, 4).map((feature, featureIndex) => (
-                      <p
-                        key={`${product.id}-feature-${featureIndex}`}
-                        className={`text-gray-600 flex items-start text-sm ${
-                          feature.text.startsWith("Everything in Free")
-                            ? "font-semibold"
-                            : ""
-                        }`}
-                      >
-                        <feature.reactIcon
-                          className={`size-4 mr-2 mt-1 text-${product.bgColor}-600`}
-                        />
-                        {feature.text}
-                      </p>
-                    ))}
+                    {product.features
+                      .slice(0, 4)
+                      .map((feature, featureIndex) => (
+                        <p
+                          key={`${product.id}-feature-${featureIndex}`}
+                          className={`text-gray-600 flex items-start text-sm ${
+                            feature.text.startsWith("Everything in Free")
+                              ? "font-semibold"
+                              : ""
+                          }`}
+                        >
+                          <feature.reactIcon
+                            className={`size-4 mr-2 mt-1 text-${product.bgColor}-600`}
+                          />
+                          {feature.text}
+                        </p>
+                      ))}
                     <span className="text-gray-500 italic text-sm">
                       +{product.features.length - 4} features more
                     </span>
@@ -281,7 +293,12 @@ const ProductsSection = ({
               {/* button */}
               <div className={`p-4`}>
                 <Button
-                  className={`mt-4 py-6 w-full flex items-center justify-center bg-${product.bgColor}-600 hover:bg-${product.bgColor}-700`}
+                  className={`mt-4 py-6 w-full flex items-center justify-center bg-${
+                    product.bgColor
+                  }-600 hover:bg-${product.bgColor}-700 ${
+                    product.name.startsWith("School") &&
+                    "bg-orange-600 hover:bg-orange-700"
+                  }`}
                 >
                   {product.actionText}{" "}
                   <product.btnIcon className="h-4 w-4 ml-2" />
