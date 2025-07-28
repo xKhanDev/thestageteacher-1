@@ -16,6 +16,7 @@ import ToolModal from "@/components/ToolModal";
 import AIAssistant from "@/components/AIAssistant";
 import GradeSystemSelector from "@/components/GradeSystemSelector";
 import LanguageSelector from "@/components/LanguageSelector";
+import { SubscriptionStatus } from "@/components/SubscriptionStatus";
 import { useTranslatedTools, useTranslatedCategories } from "@/hooks/useTranslatedTools";
 
 const EasyTeachApp = () => {
@@ -194,6 +195,9 @@ const EasyTeachApp = () => {
               teacherProfile={teacherProfile}
               onQuickAction={handleQuickAction}
             />
+
+            {/* Subscription Status */}
+            <SubscriptionStatus className="mb-6 sm:mb-8" />
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">
