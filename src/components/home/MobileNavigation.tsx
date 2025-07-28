@@ -29,7 +29,11 @@ interface MobileNavigationProps {
   onShowLogin: () => void;
 }
 
-const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProps) => {
+const MobileNavigation = ({
+  isOpen,
+  onClose,
+  onShowLogin,
+}: MobileNavigationProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -65,18 +69,38 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
   ];
 
   const solutionsByCategory = [
-    { title: "Primary Schools", icon: Heart, path: "/solutions/primary-schools" },
-    { title: "Secondary Schools", icon: TrendingUp, path: "/solutions/secondary-schools" },
+    {
+      title: "Primary Schools",
+      icon: Heart,
+      path: "/solutions/primary-schools",
+    },
+    {
+      title: "Secondary Schools",
+      icon: TrendingUp,
+      path: "/solutions/secondary-schools",
+    },
     { title: "Universities", icon: Award, path: "/solutions/universities" },
-    { title: "Independent Schools", icon: Target, path: "/solutions/independent-schools" },
+    {
+      title: "Independent Schools",
+      icon: Target,
+      path: "/solutions/independent-schools",
+    },
   ];
 
   const solutionsByDepartment = [
     { title: "Admissions", icon: UserCheck, path: "/solutions/admissions" },
-    { title: "General Report", icon: FileBarChart, path: "/solutions/reporting" },
+    {
+      title: "General Report",
+      icon: FileBarChart,
+      path: "/solutions/reporting",
+    },
     { title: "HR & Payroll", icon: Users, path: "/solutions/hr-payroll" },
     { title: "Finance", icon: DollarSign, path: "/solutions/finance" },
-    { title: "Communication", icon: MessageSquare, path: "/solutions/communication" },
+    {
+      title: "Communication",
+      icon: MessageSquare,
+      path: "/solutions/communication",
+    },
   ];
 
   const resources = [
@@ -86,7 +110,11 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
   ];
 
   const about = [
-    { title: "Partners & Integrations", icon: Zap, path: "/partners-integrations" },
+    {
+      title: "Partners & Integrations",
+      icon: Zap,
+      path: "/partners-integrations",
+    },
     { title: "Data Protection & GDPR", icon: Shield, path: "/data-protection" },
     { title: "Contact Us", icon: Mail, path: "/contact-us" },
   ];
@@ -97,9 +125,9 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
     <div className="fixed inset-0 z-50 lg:hidden">
       {/* Backdrop */}
       <div className="fixed inset-0 bg-black/50" onClick={onClose} />
-      
+
       {/* Menu Panel */}
-      <div className="fixed right-0 top-0 h-full w-80 bg-background shadow-xl animate-slide-in-right">
+      <div className="fixed left-0 top-0 w-full h-screen bg-background shadow-xl animate-slide-in-right">
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
@@ -118,10 +146,10 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.products")}
-                <ChevronRight 
+                <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "products" ? "rotate-90" : ""
-                  }`} 
+                  }`}
                 />
               </button>
               {expandedSection === "products" && (
@@ -147,10 +175,10 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.solutions")}
-                <ChevronRight 
+                <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "solutions" ? "rotate-90" : ""
-                  }`} 
+                  }`}
                 />
               </button>
               {expandedSection === "solutions" && (
@@ -172,7 +200,7 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                       {t("navigation.byDepartment")}
@@ -201,10 +229,10 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.resources")}
-                <ChevronRight 
+                <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "resources" ? "rotate-90" : ""
-                  }`} 
+                  }`}
                 />
               </button>
               {expandedSection === "resources" && (
@@ -230,10 +258,10 @@ const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProp
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.aboutUs")}
-                <ChevronRight 
+                <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "about" ? "rotate-90" : ""
-                  }`} 
+                  }`}
                 />
               </button>
               {expandedSection === "about" && (

@@ -75,8 +75,8 @@ const AIAssistant = () => {
   };
 
   return (
-    <Card className="h-[500px] flex flex-col bg-white/90 backdrop-blur-sm border-emerald-200">
-      <CardHeader className="pb-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
+    <Card className="h-[500px] flex flex-col bg-white/90 backdrop-blur-sm border-blue-200">
+      <CardHeader className="pb-3 bg-gradient-to-r from-blue-500 to-[#2901b3] text-white rounded-t-lg">
         <CardTitle className="flex items-center space-x-2 text-lg text-white">
           <Bot className="h-5 w-5" />
           <span>Virtual Teaching Assistant</span>
@@ -102,7 +102,7 @@ const AIAssistant = () => {
                 <div
                   className={`size-8 rounded-full p-2 flex items-center justify-center text-xs ${
                     message.sender === "user"
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-blue-600 text-white"
                       : "bg-gray-200 text-gray-600"
                   }`}
                 >
@@ -115,7 +115,7 @@ const AIAssistant = () => {
                 <div
                   className={`p-3 rounded-lg text-sm ${
                     message.sender === "user"
-                      ? "bg-emerald-600 text-white"
+                      ? "bg-blue-600 text-white"
                       : "bg-gray-100 text-gray-800"
                   }`}
                 >
@@ -152,9 +152,9 @@ const AIAssistant = () => {
           <Button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-emerald-600 hover:bg-emerald-700 self-end"
+            className="bg-blue-600 hover:bg-[#2901b3] self-end group"
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-4 w-4 group-hover:rotate-45 transition-transform duration-300" />
           </Button>
         </div>
       </CardContent>

@@ -397,7 +397,7 @@ const EasyTeachPage = () => {
             Available Now
           </Badge>
           <div className="w-full text-center flex items-center justify-center">
-            <h1 className="lg:w-[70%] text-center text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="lg:w-[70%] text-center text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               EasyTeach: AI-Powered Teaching
               <span className="bg-gradient-to-r from-[#3101e3] to-blue-600 bg-clip-text text-transparent">
                 {" "}
@@ -431,7 +431,7 @@ const EasyTeachPage = () => {
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <Marquee className="mb-8" speed={50} gradient={false} autoFill>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid grid-cols-6 lg:grid-cols-6">
               {platformStats.map((stat, index) => (
                 <div
                   key={index}
@@ -459,7 +459,7 @@ const EasyTeachPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               The Most Comprehensive{" "}
               <span className="bg-gradient-to-r from-[#3101e3] to-blue-600 bg-clip-text text-transparent">
                 AI Teaching Platform
@@ -480,7 +480,7 @@ const EasyTeachPage = () => {
                 }`}
               >
                 <div className="flex-1 space-y-6">
-                  <h3 className="text-3xl font-bold text-gray-900">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
                     {feature.title}
                   </h3>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -520,7 +520,7 @@ const EasyTeachPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               Why EasyTeach is the
               <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
                 {" "}
@@ -563,7 +563,7 @@ const EasyTeachPage = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-400">
         <div className="max-w-6xl mx-auto text-center *:text-white">
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to Transform Your <span className="">Teaching</span>?
           </h2>
           <p className="text-xl mb-8 opacity-90">

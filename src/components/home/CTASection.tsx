@@ -26,7 +26,7 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
           </div>
         </div>
 
-        <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
           Ready to Transform Your Teaching?
         </h2>
 

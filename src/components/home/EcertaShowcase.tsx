@@ -94,7 +94,7 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               {t("showcase.drivingForce")}
               <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
                 {" "}
@@ -120,7 +120,7 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
                     <div className="p-3 rounded-2xl  icon-bg shadow-lg">
                       <feature.icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-3xl font-bold text-[#2901B3]">
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#2901B3]">
                       {feature.title}
                     </h3>
                   </div>
@@ -170,7 +170,7 @@ const EcertaShowcase = ({ onShowLogin }: EcertaShowcaseProps) => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               {t("showcase.whyEcerta").slice(0, 19)}
               <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
                 {t("showcase.whyEcerta").slice(

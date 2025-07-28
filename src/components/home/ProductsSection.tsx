@@ -173,7 +173,7 @@ const ProductsSection = ({
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Choose Your
             <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent">
               {" "}

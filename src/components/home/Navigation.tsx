@@ -398,7 +398,6 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             <span className="size-8 rounded-sm bg-blue-100 flex items-center justify-center">
               <LanguageSelector />
             </span>
-
           </div>
         </div>
       </div>
