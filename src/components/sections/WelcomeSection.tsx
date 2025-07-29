@@ -73,23 +73,51 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         </div>
       </div>
 
-      {/* Your Favorite Tools - More Compact with better spacing */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
-        <div className="flex items-center space-x-2 mb-3">
-          <Heart className="h-4 w-4 text-red-500" />
-          <h2 className="text-base font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
+      {/* Side by side blocks - Your Favorite Tools and Free Plan */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Your Favorite Tools */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
+          <div className="flex items-center space-x-2 mb-3">
+            <Heart className="h-4 w-4 text-red-500" />
+            <h2 className="text-base font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {favoriteTools.map((tool, index) => (
+              <Button 
+                key={index}
+                onClick={() => onQuickAction?.(tool.category, tool.toolId)}
+                className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-2 py-1 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer`}
+              >
+                <tool.icon className="mr-1 h-3 w-3" />
+                {tool.name}
+              </Button>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-wrap gap-3 justify-center">
-          {favoriteTools.map((tool, index) => (
-            <Button 
-              key={index}
-              onClick={() => onQuickAction?.(tool.category, tool.toolId)}
-              className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-3 py-1 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer`}
-            >
-              <tool.icon className="mr-1 h-3 w-3" />
-              {tool.name}
+
+        {/* Free Plan Info */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
+          <div className="flex items-center space-x-2 mb-3">
+            <Star className="h-4 w-4 text-yellow-500" />
+            <h2 className="text-base font-semibold text-gray-800">Free Plan</h2>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Basic lesson planning tools
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Limited AI generations
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Community support
+            </div>
+            <Button variant="outline" size="sm" className="w-full mt-2 text-xs">
+              Upgrade to Pro
             </Button>
-          ))}
+          </div>
         </div>
       </div>
     </div>
