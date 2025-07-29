@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -50,10 +51,8 @@ const iconMap = {
 
 export default function AppSidebar() {
   const { t } = useTranslation();
-  const { state } = useSidebar();
+  const { collapsed } = useSidebar();
   const [showAllCategories, setShowAllCategories] = useState(false);
-
-  const isCollapsed = state === "collapsed";
 
   const categories = [
     {
@@ -143,17 +142,17 @@ export default function AppSidebar() {
     : categories.slice(0, 5);
 
   return (
-    <Sidebar className={isCollapsed ? "w-14" : "w-64"} collapsible="icon">
+    <Sidebar className={collapsed ? "w-14" : "w-64"} collapsible>
       <SidebarContent className="bg-white border-r border-gray-200">
         {/* Logo Section */}
         <div className="p-4 border-b border-gray-200">
-          {!isCollapsed ? (
+          {!collapsed ? (
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
                 <Bot className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h1 className="text-base font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <h1 className="text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   EasyTeach
                 </h1>
                 <p className="text-xs text-muted-foreground font-medium">
@@ -185,7 +184,7 @@ export default function AppSidebar() {
                         }`}
                       >
                         <IconComponent className="h-4 w-4" />
-                        {!isCollapsed && <span className="text-sm font-medium">{item.name}</span>}
+                        {!collapsed && <span className="text-sm font-medium">{item.name}</span>}
                       </button>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -196,7 +195,7 @@ export default function AppSidebar() {
         </SidebarGroup>
 
         {/* Tool Categories */}
-        {!isCollapsed && (
+        {!collapsed && (
           <SidebarGroup>
             <SidebarGroupLabel className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-3">
               {t("easyteach.sidebar.categories")}
@@ -262,7 +261,7 @@ export default function AppSidebar() {
                       className="flex items-center space-x-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
                     >
                       <IconComponent className="h-4 w-4" />
-                      {!isCollapsed && <span className="text-sm">{item.name}</span>}
+                      {!collapsed && <span className="text-sm">{item.name}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
