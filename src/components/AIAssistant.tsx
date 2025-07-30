@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { MessageCircle, Send, Bot, User, Loader2, Lightbulb, Wand2 } from "lucide-react";
-import { generateEducationalContent } from "@/utils/aiService";
+import { generateEducationalContent } from "@/utils/aiServiceWithUsage";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
@@ -22,7 +22,7 @@ interface AIAssistantProps {
 }
 
 const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -77,7 +77,8 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
       
       const aiResponse = await generateEducationalContent(
         enhancedPrompt,
-        "AI Assistant Chat"
+        "AI Assistant Chat",
+        i18n.language
       );
 
       // Find relevant tools based on user message
@@ -118,7 +119,7 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
 
   return (
     <Card className="h-[700px] flex flex-col bg-white/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-2xl">
-      <CardHeader className="pb-3 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white rounded-t-2xl">
+      <CardHeader className="pb-3 bg-gradient-to-r from-primary via-secondary to-accent text-white rounded-t-2xl">
         <CardTitle className="flex items-center space-x-2 text-lg text-white">
           <Bot className="h-5 w-5" />
           <span>Virtual Teaching Assistant</span>
@@ -147,7 +148,7 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
                 <div
                   className={`w-8 h-8 rounded-full p-2 flex items-center justify-center flex-shrink-0 ${
                     message.sender === "user"
-                      ? "bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white"
+                      ? "bg-gradient-to-r from-primary via-secondary to-accent text-white"
                       : "bg-muted text-muted-foreground"
                   }`}
                 >
@@ -161,7 +162,7 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
                   <div
                     className={`p-4 rounded-2xl text-sm leading-relaxed ${
                       message.sender === "user"
-                        ? "bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white ml-4"
+                        ? "bg-gradient-to-r from-primary via-secondary to-accent text-white ml-4"
                         : "bg-gray-50 text-gray-800 mr-4 border border-gray-200"
                     }`}
                   >
@@ -250,7 +251,7 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
           <Button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-blue-700 self-end text-white px-4 rounded-xl"
+            className="bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 self-end text-white px-4 rounded-xl"
           >
             <Send className="h-4 w-4" />
           </Button>

@@ -4,6 +4,7 @@ import * as aiService from "@/utils/aiServiceWithUsage";
 import { saveGeneratedContent } from "@/utils/contentService";
 import { exportToPowerPoint } from "@/utils/slideExporter";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 import { UsageLimitModal } from "@/components/UsageLimitModal";
 import SatisfactionSurvey from "@/components/SatisfactionSurvey";
 import ToolModalForm from './ToolModalForm';
@@ -27,6 +28,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [isExportingSlides, setIsExportingSlides] = useState(false);
   const { toast } = useToast();
+  const { i18n } = useTranslation();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -42,7 +44,8 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
           content = await aiService.generateLessonPlan(
             formData.subject || '',
             formData.topic || '',
-            formData.grade || ''
+            formData.grade || '',
+            i18n.language
           );
           break;
         case 17: // ai-text-detector
@@ -51,28 +54,31 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
             formData.assignmentType || '',
             formData.studentGrade || '',
             formData.analysisDepth || '',
-            formData.additionalContext || ''
+            formData.additionalContext || '',
+            i18n.language
           );
           break;
         case 18: // parent-email
           content = await aiService.generateParentEmail(
             formData.studentName || '',
             formData.situation || '',
-            formData.emailType || ''
+            formData.emailType || '',
+            i18n.language
           );
           break;
         case 21: // behavior-plan
           content = await aiService.generateBehaviorPlan(
             formData.behaviorConcern || '',
             formData.studentAge || '',
-            formData.strengths || ''
+            formData.strengths || '',
+            i18n.language
           );
           break;
         default:
           const prompt = Object.entries(formData)
             .map(([key, value]) => `${key}: ${value}`)
             .join(', ');
-          content = await aiService.generateEducationalContent(prompt, tool.name);
+          content = await aiService.generateEducationalContent(prompt, tool.name, i18n.language);
           break;
       }
       
@@ -100,7 +106,7 @@ const ToolModal = ({ tool, isOpen, onClose, teacherProfile }: ToolModalProps) =>
     setIsRegenerating(true);
     try {
       const enhancedPrompt = `Previous content: ${generatedContent}\n\nUser's modification request: ${chatMessage}\n\nPlease modify the content based on the user's request.`;
-      const modifiedContent = await aiService.generateEducationalContent(enhancedPrompt, tool.name);
+      const modifiedContent = await aiService.generateEducationalContent(enhancedPrompt, tool.name, i18n.language);
       setGeneratedContent(modifiedContent);
       toast({
         title: "Content Updated",

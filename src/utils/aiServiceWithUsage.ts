@@ -43,24 +43,25 @@ export const withUsageTracking = async <T extends unknown[], R>(
 };
 
 // Wrapped AI service functions
-export const generateEducationalContent = (prompt: string, toolContext?: string) =>
-  withUsageTracking(aiService.generateEducationalContent, prompt, toolContext);
+export const generateEducationalContent = (prompt: string, toolContext?: string, language?: string) =>
+  withUsageTracking(aiService.generateEducationalContent, prompt, toolContext, language);
 
-export const generateLessonPlan = (subject: string, topic: string, grade: string) =>
-  withUsageTracking(aiService.generateLessonPlan, subject, topic, grade);
+export const generateLessonPlan = (subject: string, topic: string, grade: string, language?: string) =>
+  withUsageTracking(aiService.generateLessonPlan, subject, topic, grade, language);
 
-export const generateParentEmail = (studentName: string, situation: string, emailType: string) =>
-  withUsageTracking(aiService.generateParentEmail, studentName, situation, emailType);
+export const generateParentEmail = (studentName: string, situation: string, emailType: string, language?: string) =>
+  withUsageTracking(aiService.generateParentEmail, studentName, situation, emailType, language);
 
-export const generateBehaviorPlan = (behaviorConcern: string, studentAge: string, strengths: string) =>
-  withUsageTracking(aiService.generateBehaviorPlan, behaviorConcern, studentAge, strengths);
+export const generateBehaviorPlan = (behaviorConcern: string, studentAge: string, strengths: string, language?: string) =>
+  withUsageTracking(aiService.generateBehaviorPlan, behaviorConcern, studentAge, strengths, language);
 
 export const generateAITextAnalysis = (
   studentText: string,
   assignmentType: string,
   studentGrade: string,
   analysisDepth: string,
-  additionalContext: string
+  additionalContext: string,
+  language?: string
 ) =>
   withUsageTracking(
     aiService.generateAITextAnalysis,
@@ -68,7 +69,8 @@ export const generateAITextAnalysis = (
     assignmentType,
     studentGrade,
     analysisDepth,
-    additionalContext
+    additionalContext,
+    language
   );
 
 // Re-export other functions that don't need usage tracking
