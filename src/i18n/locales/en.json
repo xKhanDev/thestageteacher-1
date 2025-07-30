@@ -732,6 +732,7 @@
       "financial": "Financial Operations",
       "portal": "Parent & Student Portal",
       "reporting": "Reporting & Analytics"
+    }
   },
   "advancedLMS": {
     "sections": {
@@ -740,7 +741,10 @@
       "transform": "Transform Your Institution"
     }
   },
+  "ui": {
     "buttons": {
+      "generateContent": "Generate Content",
+      "generating": "Generating...",
       "requestDemo": "Request Demo"
     }
   }

@@ -105,21 +105,24 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-4 p-4 rounded-lg bg-white/50 hover:bg-white/80 border border-gray-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-200 group/item relative"
+                      className="flex items-center space-x-4 p-5 rounded-xl bg-white/60 hover:bg-white/90 border border-gray-200/60 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group/item relative backdrop-blur-sm"
                       title={item.description}
                     >
                       <div
-                        className={`p-3 rounded-lg bg-gradient-to-br ${item.gradient} shadow-sm`}
+                        className={`p-4 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg ring-1 ring-white/20`}
                       >
-                        <item.icon className="h-6 w-6 text-white" />
+                        <item.icon className="h-7 w-7 text-white" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <span className="text-base font-semibold text-gray-900 block leading-tight">
+                        <span className="text-lg font-bold text-gray-900 block leading-tight mb-1">
                           {item.name}
                         </span>
+                        <span className="text-sm text-gray-600 block leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {item.description}
+                        </span>
                         {(item as any).isVicertaOnly && (
-                          <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-1">
+                          <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-2">
                             Vicerta Team
                           </span>
                         )}
