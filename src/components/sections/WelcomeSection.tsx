@@ -39,16 +39,6 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
 
   return (
     <div className="mb-4">
-      {/* Welcome Section with Personal Greeting */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-gray-200 mb-4">
-        <h1 className="text-lg font-semibold text-gray-800 mb-1">
-          Welcome back, {getUserName()}
-        </h1>
-        <p className="text-sm text-gray-600">
-          Ready to create something amazing today?
-        </p>
-      </div>
-
       {/* Main section: Favorite Tools + Citation side by side */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Your Favorite Tools - Now on the left */}

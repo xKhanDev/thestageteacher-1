@@ -90,42 +90,48 @@ const AppSidebar = () => {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="bg-gradient-to-b from-background via-primary/3 to-secondary/5 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.05),transparent)] pointer-events-none" />
+      <SidebarContent className="bg-gradient-to-b from-background via-primary/2 to-secondary/3 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.03),transparent)] pointer-events-none" />
         
-        <SidebarGroup className="px-4 py-6 relative z-10">
-          <SidebarGroupLabel className="text-foreground font-semibold text-xs mb-4 flex items-center space-x-2 tracking-wide uppercase opacity-80">
-            <Star className="h-3 w-3 text-primary" />
+        <SidebarGroup className="px-6 py-8 relative z-10">
+          <SidebarGroupLabel className="text-foreground/70 font-bold text-sm mb-6 flex items-center space-x-3 tracking-wide uppercase">
+            <div className="w-6 h-6 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
+              <Star className="h-3 w-3 text-white" />
+            </div>
             <span>Quick Access</span>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-2">
+            <SidebarMenu className="space-y-3">
               {sidebarItems.map((item, index) => (
                 <SidebarMenuItem key={item.name}>
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-4 p-5 rounded-xl bg-white/60 hover:bg-white/90 border border-gray-200/60 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group/item relative backdrop-blur-sm"
-                      title={item.description}
+                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/80 hover:bg-white border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 group/item relative backdrop-blur-sm hover:scale-[1.02]"
                     >
                       <div
-                        className={`p-4 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg ring-1 ring-white/20`}
+                        className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg ring-1 ring-white/30 group-hover:shadow-xl transition-all duration-300`}
                       >
-                        <item.icon className="h-7 w-7 text-white" />
+                        <item.icon className="h-5 w-5 text-white" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <span className="text-lg font-bold text-gray-900 block leading-tight mb-1">
+                        <span className="text-base font-bold text-gray-900 block leading-tight mb-1">
                           {item.name}
                         </span>
-                        <span className="text-sm text-gray-600 block leading-snug opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-xs text-gray-500 block leading-tight font-medium">
                           {item.description}
                         </span>
                         {(item as any).isVicertaOnly && (
-                          <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-2">
+                          <span className="inline-flex text-xs bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2 py-1 rounded-full font-bold mt-2 shadow-sm">
                             Vicerta Team
                           </span>
                         )}
+                      </div>
+                      
+                      {/* Hover arrow indicator */}
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-2 h-2 border-r-2 border-t-2 border-primary rotate-45"></div>
                       </div>
                     </a>
                   </SidebarMenuButton>
