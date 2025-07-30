@@ -31,11 +31,11 @@ const AppHeader = ({ teacherProfile, onProfileClick }: AppHeaderProps) => {
               <Sparkles className="h-6 w-6 text-white animate-pulse" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                EasyTeach
+              <h1 className="text-lg font-semibold text-gray-800">
+                Welcome back, adrien
               </h1>
-              <p className="text-xs text-muted-foreground font-medium">
-                by Vicerta • {t("easyteach.header.aiTeachingAssistant")}
+              <p className="text-sm text-gray-600">
+                Ready to create something amazing today?
               </p>
             </div>
           </div>

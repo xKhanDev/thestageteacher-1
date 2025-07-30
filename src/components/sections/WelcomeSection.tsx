@@ -44,10 +44,10 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         {/* Welcome Message */}
         <div className="lg:col-span-1 text-left">
           <h1 className="text-lg font-semibold text-gray-800 mb-1">
-            {t('easyteach.welcome.welcomeBack', { name: getUserName() })}
+            EasyTeach
           </h1>
           <p className="text-sm text-gray-600">
-            {t('easyteach.welcome.readyToCreate')}
+            by Vicerta • AI Teaching Assistant
           </p>
         </div>
 

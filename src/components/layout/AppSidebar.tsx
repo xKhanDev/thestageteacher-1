@@ -105,21 +105,19 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 hover:bg-white/80 border border-gray-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-200 group/item"
+                      className="flex items-center space-x-4 p-4 rounded-lg bg-white/50 hover:bg-white/80 border border-gray-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-200 group/item relative"
+                      title={item.description}
                     >
                       <div
-                        className={`p-2 rounded-lg bg-gradient-to-br ${item.gradient} shadow-sm`}
+                        className={`p-3 rounded-lg bg-gradient-to-br ${item.gradient} shadow-sm`}
                       >
-                        <item.icon className="h-4 w-4 text-white" />
+                        <item.icon className="h-6 w-6 text-white" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <span className="text-sm font-semibold text-gray-900 block leading-tight">
+                        <span className="text-base font-semibold text-gray-900 block leading-tight">
                           {item.name}
                         </span>
-                        <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
-                          {item.description}
-                        </p>
                         {(item as any).isVicertaOnly && (
                           <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-1">
                             Vicerta Team

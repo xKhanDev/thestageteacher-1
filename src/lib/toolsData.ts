@@ -1,10 +1,5 @@
 import { 
-  BookOpen, MessageCircle, Users, FileText, Target, 
-  PenTool, Mail, ClipboardList, Calendar, Star,
-  CheckCircle, AlertCircle, TrendingUp, Award,
-  Lightbulb, Heart, Clock, Puzzle, Brain, Zap,
-  Presentation, Calculator, Eye, Layers, HelpCircle,
-  FileQuestion, Edit, Plus, BarChart, Shield
+  BookOpen, MessageCircle, Users, FileText, CheckCircle
 } from "lucide-react";
 
 export const tools = [
@@ -33,7 +28,7 @@ export const tools = [
     nameKey: "tools.lessonHookIdeas.name",
     descriptionKey: "tools.lessonHookIdeas.description",
     categoryKey: "categories.lessonPlanning",
-    icon: Zap,
+    icon: BookOpen,
     color: "bg-blue-100 text-blue-600",
     timesSaved: "30m",
     estimatedTime: "2 min",
@@ -50,7 +45,7 @@ export const tools = [
     nameKey: "tools.iepGenerator.name",
     descriptionKey: "tools.iepGenerator.description",
     categoryKey: "categories.lessonPlanning",
-    icon: Target,
+    icon: BookOpen,
     color: "bg-blue-100 text-blue-600",
     timesSaved: "2h",
     estimatedTime: "5 min",
@@ -67,7 +62,7 @@ export const tools = [
     nameKey: "tools.learningObjectiveWriter.name",
     descriptionKey: "tools.learningObjectiveWriter.description",
     categoryKey: "categories.lessonPlanning",
-    icon: Award,
+    icon: BookOpen,
     color: "bg-blue-100 text-blue-600",
     timesSaved: "30m",
     estimatedTime: "3 min",
@@ -86,7 +81,7 @@ export const tools = [
     nameKey: "tools.presentationGenerator.name",
     descriptionKey: "tools.presentationGenerator.description",
     categoryKey: "categories.contentHub",
-    icon: Presentation,
+    icon: FileText,
     color: "bg-green-100 text-green-600",
     timesSaved: "90m",
     estimatedTime: "4 min",
@@ -120,7 +115,7 @@ export const tools = [
     nameKey: "tools.mathSpiralReview.name",
     descriptionKey: "tools.mathSpiralReview.description",
     categoryKey: "categories.contentHub",
-    icon: Calculator,
+    icon: FileText,
     color: "bg-green-100 text-green-600",
     timesSaved: "45m",
     estimatedTime: "3 min",
@@ -137,7 +132,7 @@ export const tools = [
     nameKey: "tools.textValidation.name",
     descriptionKey: "tools.textValidation.description",
     categoryKey: "categories.contentHub",
-    icon: Eye,
+    icon: FileText,
     color: "bg-green-100 text-green-600",
     timesSaved: "20m",
     estimatedTime: "2 min",
@@ -155,7 +150,7 @@ export const tools = [
     nameKey: "tools.multipleExplanationsGenerator.name",
     descriptionKey: "tools.multipleExplanationsGenerator.description",
     categoryKey: "categories.contentHub",
-    icon: Layers,
+    icon: FileText,
     color: "bg-green-100 text-green-600",
     timesSaved: "40m",
     estimatedTime: "3 min",
@@ -192,7 +187,7 @@ export const tools = [
     nameKey: "tools.questionStemGenerator.name",
     descriptionKey: "tools.questionStemGenerator.description",
     categoryKey: "categories.assessment",
-    icon: HelpCircle,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "30m",
     estimatedTime: "2 min",
@@ -208,7 +203,7 @@ export const tools = [
     nameKey: "tools.worksheetGenerator.name",
     descriptionKey: "tools.worksheetGenerator.description",
     categoryKey: "categories.assessment",
-    icon: FileQuestion,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "60m",
     estimatedTime: "4 min",
@@ -226,7 +221,7 @@ export const tools = [
     nameKey: "tools.multiStepAssignmentCreator.name",
     descriptionKey: "tools.multiStepAssignmentCreator.description",
     categoryKey: "categories.assessment",
-    icon: Layers,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "75m",
     estimatedTime: "5 min",
@@ -243,7 +238,7 @@ export const tools = [
     nameKey: "tools.dokQuestionsGenerator.name",
     descriptionKey: "tools.dokQuestionsGenerator.description",
     categoryKey: "categories.assessment",
-    icon: Brain,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "45m",
     estimatedTime: "3 min",
@@ -259,7 +254,7 @@ export const tools = [
     nameKey: "tools.quizCreator.name",
     descriptionKey: "tools.quizCreator.description",
     categoryKey: "categories.assessment",
-    icon: ClipboardList,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "30m",
     estimatedTime: "3 min",
@@ -277,7 +272,7 @@ export const tools = [
     nameKey: "tools.mathProblemGenerator.name",
     descriptionKey: "tools.mathProblemGenerator.description",
     categoryKey: "categories.assessment",
-    icon: Calculator,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "40m",
     estimatedTime: "3 min",
@@ -294,7 +289,7 @@ export const tools = [
     nameKey: "tools.aiTextDetector.name",
     descriptionKey: "tools.aiTextDetector.description",
     categoryKey: "categories.assessment",
-    icon: Shield,
+    icon: CheckCircle,
     color: "bg-purple-100 text-purple-600",
     timesSaved: "15m",
     estimatedTime: "2 min",
@@ -313,7 +308,7 @@ export const tools = [
     nameKey: "tools.parentEmailComposer.name",
     descriptionKey: "tools.parentEmailComposer.description",
     categoryKey: "categories.communication",
-    icon: Mail,
+    icon: MessageCircle,
     color: "bg-orange-100 text-orange-600",
     timesSaved: "30m",
     estimatedTime: "2 min",
@@ -321,6 +316,38 @@ export const tools = [
       { name: "emailType", labelKey: "fields.emailType.label", type: "select", optionsKey: "fieldOptions.emailTypes" },
       { name: "studentName", labelKey: "fields.studentName.label", type: "text", placeholderKey: "fields.studentName.placeholder" },
       { name: "situation", labelKey: "fields.situation.label", type: "textarea", placeholderKey: "fields.situation.placeholder" }
+    ]
+  },
+
+  // Classroom Management
+  {
+    id: 19,
+    nameKey: "tools.behaviorPlan.name",
+    descriptionKey: "tools.behaviorPlan.description",
+    categoryKey: "categories.classroomManagement",
+    icon: Users,
+    color: "bg-yellow-100 text-yellow-600",
+    timesSaved: "60m",
+    estimatedTime: "4 min",
+    fields: [
+      { name: "studentAge", labelKey: "fields.studentAge.label", type: "select", optionsKey: "fieldOptions.ageGroups" },
+      { name: "behaviorConcern", labelKey: "fields.behaviorConcern.label", type: "textarea", placeholderKey: "fields.behaviorConcern.placeholder" },
+      { name: "interventionLevel", labelKey: "fields.interventionLevel.label", type: "select", optionsKey: "fieldOptions.interventionLevels" }
+    ]
+  },
+  {
+    id: 20,
+    nameKey: "tools.studentGrouping.name",
+    descriptionKey: "tools.studentGrouping.description",
+    categoryKey: "categories.classroomManagement",
+    icon: Users,
+    color: "bg-yellow-100 text-yellow-600",
+    timesSaved: "30m",
+    estimatedTime: "3 min",
+    fields: [
+      { name: "classSize", labelKey: "fields.classSize.label", type: "select", optionsKey: "fieldOptions.classSizes" },
+      { name: "groupingPurpose", labelKey: "fields.groupingPurpose.label", type: "select", optionsKey: "fieldOptions.groupingPurposes" },
+      { name: "groupSize", labelKey: "fields.groupSize.label", type: "select", optionsKey: "fieldOptions.groupSizes" }
     ]
   }
 ];
