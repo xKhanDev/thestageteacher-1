@@ -438,6 +438,14 @@
       "name": "Compositeur d'Email Parent",
       "description": "Rédigez des emails professionnels et chaleureux aux parents concernant les progrès, préoccupations ou célébrations des élèves."
     },
+    "behaviorPlan": {
+      "name": "Générateur de Plan de Comportement",
+      "description": "Créez des plans d'intervention comportementale complets avec des stratégies et des supports pour des étudiants individuels."
+    },
+    "studentGrouping": {
+      "name": "Outil de Regroupement d'Étudiants",
+      "description": "Générez des regroupements stratégiques d'étudiants pour le travail collaboratif, l'instruction différenciée et la gestion de classe."
+    },
     "behaviorManagementPlan": {
       "name": "Plan de Gestion du Comportement",
       "description": "Créez des plans de soutien comportemental positif avec stratégies et interventions pour les élèves individuels."
