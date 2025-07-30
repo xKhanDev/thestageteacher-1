@@ -1,24 +1,3 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import {
-  Grid,
-  BookOpen,
-  FileText,
-  CheckCircle,
-  MessageCircle,
-  Users,
-  Target,
-  Bot,
-  History,
-  Settings,
-  HelpCircle,
-  User,
-  Bell,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
-
 import {
   Sidebar,
   SidebarContent,
@@ -28,249 +7,203 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
+  SidebarHeader,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+  Wand2,
+  Bot,
+  History,
+  BrainCircuit,
+  Star,
+  Heart,
+  GraduationCap,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
+import easyTeachLogo from "@/assets/easyteach-logo.png";
+import { useTranslation } from "react-i18next";
+import { useAuth } from "@/hooks/useAuth";
 
-const iconMap = {
-  Grid,
-  BookOpen,
-  FileText,
-  CheckCircle,
-  MessageCircle,
-  Users,
-  Target,
-};
-
-export default function AppSidebar() {
+const AppSidebar = () => {
   const { t } = useTranslation();
-  const { state } = useSidebar();
-  const [showAllCategories, setShowAllCategories] = useState(false);
+  const { user } = useAuth();
 
-  const isCollapsed = state === "collapsed";
+  // Check if user has Vicerta email address
+  const isVicertaUser = user?.email?.includes('@vicerta') || false;
 
-  const categories = [
+  const sidebarItems = [
     {
-      name: t("categories.all"),
-      icon: "Grid",
-      href: "#all",
-      count: 30,
+      name: t("easyteach.sidebar.wizardTools"),
+      icon: Wand2,
+      href: "/wizard-tools",
+      description: t("easyteach.sidebar.wizardToolsDesc"),
+      gradient: "from-primary to-secondary",
     },
     {
-      name: t("categories.lessonPlanning"),
-      icon: "BookOpen",
-      href: "#lesson-planning",
-      count: 8,
-    },
-    {
-      name: t("categories.contentHub"),
-      icon: "FileText",
-      href: "#content-hub",
-      count: 6,
-    },
-    {
-      name: t("categories.assessment"),
-      icon: "CheckCircle",
-      href: "#assessment",
-      count: 7,
-    },
-    {
-      name: t("categories.communication"),
-      icon: "MessageCircle",
-      href: "#communication",
-      count: 4,
-    },
-    {
-      name: t("categories.classroomManagement"),
-      icon: "Users",
-      href: "#classroom-management",
-      count: 3,
-    },
-    {
-      name: t("categories.languageArts"),
-      icon: "Target",
-      href: "#language-arts",
-      count: 2,
-    },
-  ];
-
-  const mainNavigation = [
-    {
-      name: t("easyteach.tabs.teachingTools"),
-      icon: Grid,
-      href: "#tools",
-      active: true,
-    },
-    {
-      name: t("easyteach.tabs.kribiAssistant"),
+      name: t("easyteach.sidebar.kribiChatbot"),
       icon: Bot,
-      href: "#ai-assistant",
-      active: false,
+      href: "/ai-chatbot",
+      description: t("easyteach.sidebar.kribiChatbotDesc"),
+      gradient: "from-secondary to-accent",
     },
-  ];
-
-  const bottomNavigation = [
     {
       name: t("easyteach.sidebar.outputHistory"),
       icon: History,
       href: "/output-history",
+      description: t("easyteach.sidebar.outputHistoryDesc"),
+      gradient: "from-primary to-accent",
     },
     {
-      name: t("easyteach.sidebar.profile"),
-      icon: User,
-      href: "#profile",
+      name: t("easyteach.sidebar.toolsSuggestions"),
+      icon: BrainCircuit,
+      href: "/tools-suggestions",
+      description: t("easyteach.sidebar.toolsSuggestionsDesc"),
+      gradient: "from-accent to-secondary",
     },
-    {
-      name: t("easyteach.sidebar.settings"),
-      icon: Settings,
-      href: "#settings",
-    },
-    {
-      name: t("easyteach.sidebar.help"),
-      icon: HelpCircle,
-      href: "/knowledge-base",
-    },
+    // Only show feedback dashboard for Vicerta users
+    ...(isVicertaUser ? [{
+      name: t("easyteach.sidebar.feedbackDashboard"),
+      icon: BarChart3,
+      href: "/feedback-dashboard",
+      description: t("easyteach.sidebar.feedbackDashboardDesc"),
+      gradient: "from-emerald-500 to-teal-500",
+      isVicertaOnly: true,
+    }] : []),
   ];
 
-  const visibleCategories = showAllCategories
-    ? categories
-    : categories.slice(0, 5);
-
   return (
-    <Sidebar className={isCollapsed ? "w-14" : "w-64"} collapsible="icon">
-      <SidebarContent className="bg-white border-r border-gray-200">
-        {/* Logo Section */}
-        <div className="p-4 border-b border-gray-200">
-          {!isCollapsed ? (
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
-                <Bot className="h-5 w-5 text-white" />
-              </div>
-              <div>
-                <h1 className="text-base font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  EasyTeach
-                </h1>
-                <p className="text-xs text-muted-foreground font-medium">
-                  by Vicerta
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto">
-              <Bot className="h-5 w-5 text-white" />
-            </div>
-          )}
+    <Sidebar className="border-0 shadow-2xl bg-white/98 backdrop-blur-xl">
+      <SidebarHeader className="p-6 bg-gradient-to-br from-primary/8 via-secondary/8 to-background border-b border-primary/15">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center shadow-lg ring-2 ring-primary/20">
+            <Sparkles className="h-5 w-5 text-white animate-pulse" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              EasyTeach
+            </h2>
+            <p className="text-xs text-muted-foreground font-medium tracking-wide">
+              by Vicerta • AI Assistant
+            </p>
+          </div>
         </div>
+      </SidebarHeader>
 
-        {/* Main Navigation */}
-        <SidebarGroup>
+      <SidebarContent className="bg-gradient-to-b from-background via-primary/3 to-secondary/5 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.05),transparent)] pointer-events-none" />
+        
+        <SidebarGroup className="px-5 py-8 relative z-10">
+          <SidebarGroupLabel className="text-foreground font-bold text-sm mb-6 flex items-center space-x-2 tracking-wide">
+            <Star className="h-4 w-4 text-primary animate-pulse" />
+            <span>{t("easyteach.sidebar.quickAccess")}</span>
+          </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {mainNavigation.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <SidebarMenuItem key={item.name}>
-                    <SidebarMenuButton asChild>
-                      <button
-                        className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-all ${
-                          item.active
-                            ? "bg-primary/10 text-primary border-r-2 border-primary"
-                            : "text-gray-600 hover:bg-gray-50"
-                        }`}
+            <SidebarMenu className="space-y-4">
+              {sidebarItems.map((item, index) => (
+                <SidebarMenuItem key={item.name}>
+                  <SidebarMenuButton asChild className="group">
+                    <a
+                      href={item.href}
+                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/70 backdrop-blur-sm border border-primary/15 hover:bg-white/90 hover:border-primary/30 hover:shadow-xl transition-all duration-500 hover:scale-[1.03] relative overflow-hidden group/item"
+                    >
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover/item:opacity-8 transition-opacity duration-500 rounded-2xl`}
+                      />
+                      
+                      {/* Animated background pattern */}
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-0 group-hover/item:opacity-30 transition-opacity duration-700 rounded-2xl" />
+                      
+                      <div
+                        className={`relative z-10 p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg group-hover/item:shadow-xl group-hover/item:scale-110 transition-all duration-500 ring-2 ring-white/20`}
                       >
-                        <IconComponent className="h-4 w-4" />
-                        {!isCollapsed && <span className="text-sm font-medium">{item.name}</span>}
-                      </button>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
+                        <item.icon className="h-4 w-4 text-white drop-shadow-sm" />
+                      </div>
+                      
+                      <div className="flex-1 relative z-10 min-w-0">
+                        <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors duration-300 block leading-tight">
+                          {item.name}
+                        </span>
+                        <p className="text-xs text-muted-foreground group-hover/item:text-primary/80 transition-colors duration-300 mt-1 leading-relaxed line-clamp-2">
+                          {item.description}
+                        </p>
+                        {(item as any).isVicertaOnly && (
+                          <div className="inline-flex items-center mt-2">
+                            <span className="text-xs bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-2 py-1 rounded-full font-bold border border-emerald-200/50 shadow-sm">
+                              ✨ Vicerta Team
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <div className="relative z-10 opacity-0 group-hover/item:opacity-100 transition-all duration-300 group-hover/item:translate-x-1">
+                        <div className="w-2 h-8 bg-gradient-to-b from-primary to-secondary rounded-full animate-pulse shadow-lg"></div>
+                      </div>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Tool Categories */}
-        {!isCollapsed && (
-          <SidebarGroup>
-            <SidebarGroupLabel className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-3">
-              {t("easyteach.sidebar.categories")}
-            </SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {visibleCategories.map((category) => {
-                  const IconComponent = iconMap[category.icon as keyof typeof iconMap];
-                  return (
-                    <SidebarMenuItem key={category.name}>
-                      <SidebarMenuButton asChild>
-                        <button className="w-full flex items-center justify-between px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all">
-                          <div className="flex items-center space-x-3">
-                            <IconComponent className="h-4 w-4" />
-                            <span className="text-sm">{category.name}</span>
-                          </div>
-                          <Badge variant="secondary" className="text-xs">
-                            {category.count}
-                          </Badge>
-                        </button>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  );
-                })}
-                
-                {categories.length > 5 && (
-                  <SidebarMenuItem>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setShowAllCategories(!showAllCategories)}
-                      className="w-full justify-start px-3 text-sm text-gray-500 hover:text-gray-700"
-                    >
-                      {showAllCategories ? (
-                        <>
-                          <ChevronDown className="h-4 w-4 mr-2" />
-                          {t("easyteach.sidebar.showLess")}
-                        </>
-                      ) : (
-                        <>
-                          <ChevronRight className="h-4 w-4 mr-2" />
-                          {t("easyteach.sidebar.showMore")}
-                        </>
-                      )}
-                    </Button>
-                  </SidebarMenuItem>
-                )}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        )}
-
-        {/* Bottom Navigation */}
-        <div className="mt-auto border-t border-gray-200 p-2">
-          <SidebarMenu>
-            {bottomNavigation.map((item) => {
-              const IconComponent = item.icon;
-              return (
-                <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton asChild>
-                    <NavLink
-                      to={item.href}
-                      className="flex items-center space-x-3 px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
-                    >
-                      <IconComponent className="h-4 w-4" />
-                      {!isCollapsed && <span className="text-sm">{item.name}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              );
-            })}
-          </SidebarMenu>
+        <div className="px-6 py-6 relative z-10">
+          <div className="bg-gradient-to-br from-primary/8 via-secondary/8 to-accent/8 rounded-2xl p-5 border border-primary/20 backdrop-blur-sm relative overflow-hidden shadow-lg">
+            {/* Decorative background */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(120,119,198,0.1),transparent)] pointer-events-none" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="p-2 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg shadow-md">
+                  <Heart className="h-4 w-4 text-white" />
+                </div>
+                <span className="font-bold text-foreground text-sm tracking-wide">
+                  {t("easyteach.sidebar.trustedByEducators")}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed italic">
+                "{t("easyteach.sidebar.testimonial")}"
+              </p>
+              <div className="flex items-center mt-4 justify-between">
+                <div className="flex items-center space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-3 w-3 text-amber-500 fill-current drop-shadow-sm"
+                    />
+                  ))}
+                </div>
+                <span className="text-xs text-muted-foreground font-medium">Sarah M.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </SidebarContent>
+
+      <SidebarFooter className="p-5 bg-gradient-to-br from-primary/10 to-secondary/10 border-t border-primary/20 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(120,119,198,0.05)_50%,transparent_75%)] pointer-events-none" />
+        
+        <div className="relative z-10 text-center space-y-3">
+          <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
+            <div className="p-1 bg-gradient-to-r from-primary to-secondary rounded-md">
+              <GraduationCap className="h-4 w-4 text-white" />
+            </div>
+            <span className="font-semibold tracking-wide">{t("easyteach.sidebar.empoweringEducators")}</span>
+          </div>
+          <div className="flex items-center justify-center space-x-2">
+            <span className="text-xs text-muted-foreground font-medium">Powered by</span>
+            <div className="relative">
+              <span className="text-sm font-black bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent tracking-wider">
+                VICERTA
+              </span>
+              <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full opacity-60"></div>
+            </div>
+          </div>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
-}
+};
+
+export default AppSidebar;
