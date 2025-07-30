@@ -69,31 +69,7 @@ const EasyTeachApp = () => {
       icon: "Users",
       color: "bg-yellow-100 text-yellow-800",
       gradient: "from-yellow-500 to-orange-600",
-    },
-    {
-      name: t("categories.languageArts"),
-      icon: "Target",
-      color: "bg-pink-100 text-pink-800",
-      gradient: "from-pink-500 to-rose-600",
-    },
-    {
-      name: t("categories.math"),
-      icon: "Target",
-      color: "bg-teal-100 text-teal-800",
-      gradient: "from-teal-500 to-cyan-600",
-    },
-    {
-      name: t("categories.science"),
-      icon: "Target",
-      color: "bg-indigo-100 text-indigo-800",
-      gradient: "from-indigo-500 to-purple-600",
-    },
-    {
-      name: t("categories.socialStudies"),
-      icon: "Target",
-      color: "bg-amber-100 text-amber-800",
-      gradient: "from-amber-500 to-yellow-600",
-    },
+    }
   ];
 
   // Map translated categories back to English for tool filtering
@@ -103,11 +79,7 @@ const EasyTeachApp = () => {
     [t("categories.contentHub")]: "Content Hub", 
     [t("categories.assessment")]: "Assessment",
     [t("categories.communication")]: "Communication",
-    [t("categories.classroomManagement")]: "Behaviour Support",
-    [t("categories.languageArts")]: "Differentiation",
-    [t("categories.math")]: "Math",
-    [t("categories.science")]: "Science",
-    [t("categories.socialStudies")]: "Social Studies",
+    [t("categories.classroomManagement")]: "Classroom Management"
   };
 
   const filteredTools = translatedTools.filter((tool) => {

@@ -458,6 +458,14 @@
     "parentEmailComposer": {
       "name": "Parent Email Composer",
       "description": "Draft professional, warm emails to parents about student progress, concerns, or celebrations."
+    },
+    "behaviorPlan": {
+      "name": "Behavior Plan Generator",
+      "description": "Create comprehensive behavior intervention plans with strategies and supports for individual students."
+    },
+    "studentGrouping": {
+      "name": "Student Grouping Tool",
+      "description": "Generate strategic student groupings for collaborative work, differentiated instruction, and classroom management."
     }
   },
   "categories": {
@@ -628,6 +636,25 @@
     },
     "subjectArea": {
       "label": "Subject Area"
+    },
+    "studentAge": {
+      "label": "Student Age Group"
+    },
+    "behaviorConcern": {
+      "label": "Behavior Concern",
+      "placeholder": "Describe the specific behavior that needs to be addressed..."
+    },
+    "interventionLevel": {
+      "label": "Intervention Level"
+    },
+    "classSize": {
+      "label": "Class Size"
+    },
+    "groupingPurpose": {
+      "label": "Grouping Purpose"
+    },
+    "groupSize": {
+      "label": "Group Size"
     }
   },
   "fieldOptions": {
@@ -660,7 +687,11 @@
     "wordProblemOptions": ["Yes", "No", "Only Word Problems"],
     "studentGrades": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
     "analysisDepths": ["Quick Check", "Standard Analysis", "Detailed Review"],
-    "emailTypes": ["Progress Update", "Concern/Issue", "Celebration", "Conference Request", "Behavior Update"]
+    "emailTypes": ["Progress Update", "Concern/Issue", "Celebration", "Conference Request", "Behavior Update"],
+    "interventionLevels": ["Tier 1 - Universal", "Tier 2 - Targeted", "Tier 3 - Intensive"],
+    "classSizes": ["15-20 students", "20-25 students", "25-30 students", "30+ students"],
+    "groupingPurposes": ["Academic Level", "Learning Style", "Interest", "Social Skills", "Random"],
+    "groupSizes": ["2 students", "3-4 students", "5-6 students", "Larger groups"]
   },
   "schoolAdmin": {
     "sections": {

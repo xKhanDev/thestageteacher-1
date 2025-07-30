@@ -41,15 +41,8 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
     <div className="mb-4">
       {/* Top section: Welcome + Citation side by side */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
-        {/* Welcome Message */}
-        <div className="lg:col-span-1 text-left">
-          <h1 className="text-lg font-semibold text-gray-800 mb-1">
-            EasyTeach
-          </h1>
-          <p className="text-sm text-gray-600">
-            by Vicerta • AI Teaching Assistant
-          </p>
-        </div>
+        {/* Empty space where EasyTeach branding was */}
+        <div className="lg:col-span-1"></div>
 
         {/* Cogitatio - More compact */}
         <div className="lg:col-span-2 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-lg p-4 border border-blue-200">
