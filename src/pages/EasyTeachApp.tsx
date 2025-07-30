@@ -59,16 +59,10 @@ const EasyTeachApp = () => {
       gradient: "from-purple-500 to-violet-600",
     },
     {
-      name: t("categories.communication"),
+      name: t("categories.communication") + " & " + t("categories.classroomManagement"),
       icon: "MessageCircle",
       color: "bg-orange-100 text-orange-800",
       gradient: "from-orange-500 to-red-600",
-    },
-    {
-      name: t("categories.classroomManagement"),
-      icon: "Users",
-      color: "bg-yellow-100 text-yellow-800",
-      gradient: "from-yellow-500 to-orange-600",
     }
   ];
 
@@ -78,8 +72,7 @@ const EasyTeachApp = () => {
     [t("categories.lessonPlanning")]: "Lesson Planning",
     [t("categories.contentHub")]: "Content Hub", 
     [t("categories.assessment")]: "Assessment",
-    [t("categories.communication")]: "Communication",
-    [t("categories.classroomManagement")]: "Classroom Management"
+    [t("categories.communication") + " & " + t("categories.classroomManagement")]: "Communication"
   };
 
   const filteredTools = translatedTools.filter((tool) => {
@@ -88,7 +81,9 @@ const EasyTeachApp = () => {
       tool.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory =
       categoryMapping[selectedCategory] === "All" ||
-      tool.category === categoryMapping[selectedCategory];
+      tool.category === categoryMapping[selectedCategory] ||
+      (categoryMapping[selectedCategory] === "Communication" && 
+       (tool.category === "Communication" || tool.category === "Classroom Management"));
     return matchesSearch && matchesCategory;
   });
 

@@ -74,13 +74,13 @@ const AppSidebar = () => {
 
   return (
     <Sidebar className="border-0 shadow-2xl bg-white/98 backdrop-blur-xl">
-      <SidebarHeader className="p-6 bg-gradient-to-br from-primary/8 via-secondary/8 to-background border-b border-primary/15">
+      <SidebarHeader className="p-6 bg-gradient-to-br from-blue-500/10 via-green-500/10 to-purple-500/10 border-b border-blue-500/20">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center shadow-lg ring-2 ring-primary/20">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-green-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg ring-2 ring-blue-500/20">
             <Sparkles className="h-5 w-5 text-white animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <h2 className="text-lg font-bold bg-gradient-to-r from-blue-500 via-green-500 to-purple-500 bg-clip-text text-transparent">
               EasyTeach
             </h2>
             <p className="text-xs text-muted-foreground font-medium tracking-wide">
@@ -107,23 +107,23 @@ const AppSidebar = () => {
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/80 hover:bg-white border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 group/item relative backdrop-blur-sm hover:scale-[1.02]"
+                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/80 hover:bg-white border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 group/item relative backdrop-blur-sm hover:scale-[1.02] min-h-[80px]"
                     >
                       <div
-                        className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg ring-1 ring-white/30 group-hover:shadow-xl transition-all duration-300`}
+                        className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg ring-1 ring-white/30 group-hover:shadow-xl transition-all duration-300 flex-shrink-0`}
                       >
                         <item.icon className="h-5 w-5 text-white" />
                       </div>
                       
-                      <div className="flex-1 min-w-0">
-                        <span className="text-base font-bold text-gray-900 block leading-tight mb-1">
+                      <div className="flex-1 min-w-0 flex flex-col justify-center">
+                        <span className="text-sm font-bold text-gray-900 leading-tight mb-1 truncate">
                           {item.name}
                         </span>
-                        <span className="text-xs text-gray-500 block leading-tight font-medium">
+                        <span className="text-xs text-gray-500 leading-tight font-medium line-clamp-2">
                           {item.description}
                         </span>
                         {(item as any).isVicertaOnly && (
-                          <span className="inline-flex text-xs bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2 py-1 rounded-full font-bold mt-2 shadow-sm">
+                          <span className="inline-flex text-xs bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2 py-1 rounded-full font-bold mt-2 shadow-sm self-start">
                             Vicerta Team
                           </span>
                         )}
