@@ -73,53 +73,51 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
         </div>
       </div>
 
-      {/* Favorite Tools & Free Plan Side by Side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* Side by side blocks - Your Favorite Tools and Free Plan */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Your Favorite Tools */}
         <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
           <div className="flex items-center space-x-2 mb-3">
             <Heart className="h-4 w-4 text-red-500" />
-            <h2 className="text-sm font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
+            <h2 className="text-base font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="flex flex-wrap gap-2">
             {favoriteTools.map((tool, index) => (
               <Button 
                 key={index}
                 onClick={() => onQuickAction?.(tool.category, tool.toolId)}
-                className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-2 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer flex items-center justify-center`}
+                className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-2 py-1 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer`}
               >
                 <tool.icon className="mr-1 h-3 w-3" />
-                <span className="truncate">{tool.name}</span>
+                {tool.name}
               </Button>
             ))}
           </div>
         </div>
 
-        {/* Free Plan Card */}
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-4 border border-emerald-200">
+        {/* Free Plan Info */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
           <div className="flex items-center space-x-2 mb-3">
-            <div className="p-1 bg-emerald-500 rounded-md">
-              <Star className="h-3 w-3 text-white" />
-            </div>
-            <h2 className="text-sm font-semibold text-emerald-800">Free Plan</h2>
+            <Star className="h-4 w-4 text-yellow-500" />
+            <h2 className="text-base font-semibold text-gray-800">Free Plan</h2>
           </div>
-          <div className="space-y-2 text-xs text-emerald-700">
-            <div className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-              <span>10 AI generations/day</span>
+          <div className="space-y-2">
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Basic lesson planning tools
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-              <span>All teaching tools</span>
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Limited AI generations
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-              <span>Basic AI assistant</span>
+            <div className="flex items-center text-sm text-gray-600">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+              Community support
             </div>
+            <Button variant="outline" size="sm" className="w-full mt-2 text-xs">
+              Upgrade to Pro
+            </Button>
           </div>
-          <Button className="w-full mt-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs py-1.5">
-            Upgrade to Pro
-          </Button>
         </div>
       </div>
     </div>
