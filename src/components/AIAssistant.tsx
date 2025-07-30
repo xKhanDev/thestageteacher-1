@@ -117,8 +117,8 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
   };
 
   return (
-    <Card className="h-[600px] flex flex-col bg-white/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-2xl">
-      <CardHeader className="pb-3 bg-gradient-to-r from-primary to-secondary text-white rounded-t-2xl">
+    <Card className="h-[700px] flex flex-col bg-white/95 backdrop-blur-md border border-primary/20 shadow-xl rounded-2xl">
+      <CardHeader className="pb-3 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white rounded-t-2xl">
         <CardTitle className="flex items-center space-x-2 text-lg text-white">
           <Bot className="h-5 w-5" />
           <span>Virtual Teaching Assistant</span>
@@ -127,9 +127,9 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
           </div>
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col p-4">
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto space-y-3 mb-4">
+      <CardContent className="flex-1 flex flex-col p-4 overflow-hidden">
+        {/* Messages Container - Scrollable */}
+        <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -138,16 +138,16 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
               }`}
             >
               <div
-                className={`flex items-start space-x-2 max-w-[80%] ${
+                className={`flex items-start space-x-3 max-w-[85%] ${
                   message.sender === "user"
                     ? "flex-row-reverse space-x-reverse"
                     : ""
                 }`}
               >
                 <div
-                  className={`size-8 rounded-full p-2 flex items-center justify-center text-xs ${
+                  className={`w-8 h-8 rounded-full p-2 flex items-center justify-center flex-shrink-0 ${
                     message.sender === "user"
-                      ? "bg-gradient-to-r from-primary to-secondary text-white"
+                      ? "bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white"
                       : "bg-muted text-muted-foreground"
                   }`}
                 >
@@ -157,24 +157,60 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
                     <Bot className="h-4 w-4" />
                   )}
                 </div>
-                <div
-                  className={`p-3 rounded-lg text-sm max-w-md ${
-                    message.sender === "user"
-                      ? "bg-gradient-to-r from-primary to-secondary text-white"
-                      : "bg-muted text-foreground"
-                  }`}
-                >
-                  <div className="whitespace-pre-wrap">{message.text}</div>
+                <div className="flex flex-col space-y-2 flex-1 min-w-0">
+                  <div
+                    className={`p-4 rounded-2xl text-sm leading-relaxed ${
+                      message.sender === "user"
+                        ? "bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 text-white ml-4"
+                        : "bg-gray-50 text-gray-800 mr-4 border border-gray-200"
+                    }`}
+                  >
+                    <div className="whitespace-pre-wrap break-words">
+                      {message.text.split('\n').map((line, index) => {
+                        // Handle bold text formatting
+                        if (line.includes('**')) {
+                          const parts = line.split('**');
+                          return (
+                            <div key={index} className="mb-2">
+                              {parts.map((part, partIndex) => (
+                                partIndex % 2 === 1 ? 
+                                  <strong key={partIndex} className="font-bold">{part}</strong> : 
+                                  <span key={partIndex}>{part}</span>
+                              ))}
+                            </div>
+                          );
+                        }
+                        // Handle bullet points
+                        if (line.startsWith('•')) {
+                          return (
+                            <div key={index} className="mb-1 pl-2">
+                              {line}
+                            </div>
+                          );
+                        }
+                        // Handle emojis and tool recommendations
+                        if (line.includes('🛠️')) {
+                          return (
+                            <div key={index} className="mb-2 font-semibold border-t border-white/20 pt-2 mt-2">
+                              {line}
+                            </div>
+                          );
+                        }
+                        return line ? <div key={index} className="mb-1">{line}</div> : <br key={index} />;
+                      })}
+                    </div>
+                  </div>
+                  
                   {/* Tool recommendations */}
                   {message.recommendedTools && message.recommendedTools.length > 0 && onToolRecommend && (
-                    <div className="mt-3 space-y-2">
+                    <div className="space-y-2 ml-11">
                       {message.recommendedTools.map((tool, index) => (
                         <Button
                           key={index}
                           variant="outline"
                           size="sm"
                           onClick={() => onToolRecommend(tool)}
-                          className="w-full justify-start text-xs bg-white/80 hover:bg-white border-primary/20 hover:border-primary text-primary"
+                          className="w-full justify-start text-xs bg-white hover:bg-blue-50 border-blue-200 hover:border-blue-300 text-blue-600 hover:text-blue-700 transition-all duration-200"
                         >
                           <Wand2 className="h-3 w-3 mr-2" />
                           Use {tool.name}
@@ -188,13 +224,13 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="flex items-center space-x-2">
-                <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
                   <Bot className="h-4 w-4 text-muted-foreground" />
                 </div>
-                <div className="bg-muted p-3 rounded-lg flex items-center space-x-2">
-                  <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                  <span className="text-sm text-muted-foreground">Thinking...</span>
+                <div className="bg-gray-50 p-4 rounded-2xl flex items-center space-x-2 border border-gray-200">
+                  <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
+                  <span className="text-sm text-gray-600">Thinking...</span>
                 </div>
               </div>
             </div>
@@ -202,19 +238,19 @@ const AIAssistant = ({ tools = [], onToolRecommend }: AIAssistantProps) => {
         </div>
 
         {/* Input */}
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 border-t border-gray-100 pt-4">
           <Textarea
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask me about lesson planning, classroom management, or any teaching topic..."
-            className="flex-1 min-h-[40px] focus:outline-none max-h-[100px] resize-none text-sm border-primary/20 focus:border-primary"
+            className="flex-1 min-h-[45px] focus:outline-none max-h-[120px] resize-none text-sm border-blue-200 focus:border-blue-400 rounded-xl"
             rows={1}
           />
           <Button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 self-end text-white"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 hover:from-blue-600 hover:via-purple-600 hover:to-blue-700 self-end text-white px-4 rounded-xl"
           >
             <Send className="h-4 w-4" />
           </Button>

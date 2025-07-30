@@ -73,7 +73,7 @@ const AppSidebar = () => {
   ];
 
   return (
-    <Sidebar className="border-0 shadow-2xl bg-white/98 backdrop-blur-xl w-80">
+    <Sidebar className="border-0 shadow-2xl bg-white/98 backdrop-blur-xl w-72">
       <SidebarHeader className="p-6 bg-gradient-to-br from-blue-500/10 via-green-500/10 to-purple-500/10 border-b border-blue-500/20">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-green-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg ring-2 ring-blue-500/20">
