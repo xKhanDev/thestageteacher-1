@@ -102,33 +102,29 @@ const AppSidebar = () => {
             <SidebarMenu className="space-y-2">
               {sidebarItems.map((item, index) => (
                 <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton asChild className="group relative">
+                  <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-4 p-4 rounded-xl bg-white/70 hover:bg-white/90 border border-gray-200/50 hover:border-primary/40 hover:shadow-lg transition-all duration-300 group/item"
-                      title={item.description}
+                      className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 hover:bg-white/80 border border-gray-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-200 group/item"
                     >
                       <div
-                        className={`p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-md group-hover:scale-105 transition-transform duration-200`}
+                        className={`p-2 rounded-lg bg-gradient-to-br ${item.gradient} shadow-sm`}
                       >
-                        <item.icon className="h-5 w-5 text-white" />
+                        <item.icon className="h-4 w-4 text-white" />
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <span className="text-base font-bold text-gray-900 block leading-tight group-hover:text-primary transition-colors duration-200">
+                        <span className="text-sm font-semibold text-gray-900 block leading-tight">
                           {item.name}
                         </span>
+                        <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
+                          {item.description}
+                        </p>
                         {(item as any).isVicertaOnly && (
                           <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-1">
                             Vicerta Team
                           </span>
                         )}
-                      </div>
-
-                      {/* Tooltip for description on hover */}
-                      <div className="absolute left-full ml-2 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-50 shadow-lg">
-                        {item.description}
-                        <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-gray-900"></div>
                       </div>
                     </a>
                   </SidebarMenuButton>

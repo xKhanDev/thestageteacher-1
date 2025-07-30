@@ -40,7 +40,11 @@ export const useTranslatedCategories = () => {
       { name: t('categories.contentHub'), gradient: 'from-green-500 to-emerald-600', icon: 'FileText' },
       { name: t('categories.assessment'), gradient: 'from-purple-500 to-violet-600', icon: 'CheckCircle' },
       { name: t('categories.communication'), gradient: 'from-orange-500 to-red-600', icon: 'MessageCircle' },
-      { name: t('categories.classroomManagement'), gradient: 'from-yellow-500 to-orange-600', icon: 'Users' }
+      { name: t('categories.classroomManagement'), gradient: 'from-yellow-500 to-orange-600', icon: 'Users' },
+      { name: t('categories.languageArts'), gradient: 'from-pink-500 to-rose-600', icon: 'Target' },
+      { name: t('categories.math'), gradient: 'from-teal-500 to-cyan-600', icon: 'Target' },
+      { name: t('categories.science'), gradient: 'from-indigo-500 to-purple-600', icon: 'Target' },
+      { name: t('categories.socialStudies'), gradient: 'from-amber-500 to-yellow-600', icon: 'Target' }
     ];
   }, [t]);
 
