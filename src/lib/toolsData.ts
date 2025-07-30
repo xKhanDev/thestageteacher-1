@@ -322,5 +322,39 @@ export const tools = [
       { name: "studentName", labelKey: "fields.studentName.label", type: "text", placeholderKey: "fields.studentName.placeholder" },
       { name: "situation", labelKey: "fields.situation.label", type: "textarea", placeholderKey: "fields.situation.placeholder" }
     ]
+  },
+
+  // Classroom Management
+  {
+    id: 19,
+    nameKey: "tools.classroomBehaviorPlan.name",
+    descriptionKey: "tools.classroomBehaviorPlan.description",
+    categoryKey: "categories.classroomManagement",
+    icon: Users,
+    color: "bg-yellow-100 text-yellow-600",
+    timesSaved: "45m",
+    estimatedTime: "4 min",
+    fields: [
+      { name: "grade", labelKey: "fields.grade.label", type: "grade_selector" },
+      { name: "behaviorIssue", labelKey: "fields.behaviorIssue.label", type: "textarea", placeholderKey: "fields.behaviorIssue.placeholder" },
+      { name: "classSize", labelKey: "fields.classSize.label", type: "select", optionsKey: "fieldOptions.classSizes" },
+      { name: "environmentType", labelKey: "fields.environmentType.label", type: "select", optionsKey: "fieldOptions.environmentTypes" }
+    ]
+  },
+  {
+    id: 20,
+    nameKey: "tools.studentGrouping.name",
+    descriptionKey: "tools.studentGrouping.description",
+    categoryKey: "categories.classroomManagement",
+    icon: Users,
+    color: "bg-yellow-100 text-yellow-600",
+    timesSaved: "20m",
+    estimatedTime: "2 min",
+    fields: [
+      { name: "classSize", labelKey: "fields.classSize.label", type: "select", optionsKey: "fieldOptions.classSizes" },
+      { name: "groupingCriteria", labelKey: "fields.groupingCriteria.label", type: "select", optionsKey: "fieldOptions.groupingCriteria" },
+      { name: "activityType", labelKey: "fields.activityType.label", type: "select", optionsKey: "fieldOptions.activityTypes" },
+      { name: "specialNeeds", labelKey: "fields.specialNeeds.label", type: "textarea", placeholderKey: "fields.specialNeeds.placeholder" }
+    ]
   }
 ];
