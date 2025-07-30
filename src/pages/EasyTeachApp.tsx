@@ -191,13 +191,19 @@ const EasyTeachApp = () => {
           </div>
 
           <div className="container-responsive section-responsive">
-            <WelcomeSection
-              teacherProfile={teacherProfile}
-              onQuickAction={handleQuickAction}
-            />
-
-            {/* Subscription Status */}
-            <SubscriptionStatus className="mb-6 sm:mb-8" />
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
+              <div className="lg:col-span-3">
+                <WelcomeSection
+                  teacherProfile={teacherProfile}
+                  onQuickAction={handleQuickAction}
+                />
+              </div>
+              
+              {/* Compact Subscription Status */}
+              <div className="lg:col-span-1">
+                <SubscriptionStatus className="h-fit" />
+              </div>
+            </div>
 
             {/* Main Content Tabs */}
             <Tabs defaultValue="tools" className="w-full">

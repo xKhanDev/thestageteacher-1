@@ -38,53 +38,48 @@ const WelcomeSection = ({ teacherProfile, onQuickAction }: WelcomeSectionProps) 
   };
 
   return (
-    <div className="mb-6">
-      {/* Compact Welcome Message */}
-      <div className="text-center mb-4">
-        <h1 className="text-xl font-semibold text-gray-800 mb-1">
-          {t('easyteach.welcome.welcomeBack', { name: getUserName() })}
-        </h1>
-        <p className="text-xs text-gray-700">
-          {t('easyteach.welcome.readyToCreate')}
-        </p>
-      </div>
-
-      {/* Cogitatio - Enhanced with animations and gradients */}
-      <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 backdrop-blur-sm rounded-xl p-6 border border-blue-200 mb-4 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-md animate-pulse">
-            <Quote className="h-5 w-5 text-white" />
-          </div>
-          <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            {t('easyteach.welcome.cogitatio')}
-          </h2>
-          <div className="flex space-x-1 ml-auto">
-            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-          </div>
+    <div className="mb-4">
+      {/* Top section: Welcome + Citation side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        {/* Welcome Message */}
+        <div className="lg:col-span-1 text-left">
+          <h1 className="text-lg font-semibold text-gray-800 mb-1">
+            {t('easyteach.welcome.welcomeBack', { name: getUserName() })}
+          </h1>
+          <p className="text-sm text-gray-600">
+            {t('easyteach.welcome.readyToCreate')}
+          </p>
         </div>
-        <div className="text-center relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-100 to-transparent opacity-30 rounded-lg animate-fade-in"></div>
-          <blockquote className="text-base text-gray-800 font-medium italic mb-3 leading-relaxed relative z-10 hover:text-blue-700 transition-colors duration-300">
+
+        {/* Cogitatio - More compact */}
+        <div className="lg:col-span-2 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-lg p-4 border border-blue-200">
+          <div className="flex items-center space-x-2 mb-3">
+            <div className="p-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
+              <Quote className="h-4 w-4 text-white" />
+            </div>
+            <h2 className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {t('easyteach.welcome.cogitatio')}
+            </h2>
+          </div>
+          <blockquote className="text-sm text-gray-800 italic mb-2 leading-relaxed">
             "{currentQuote.text}"
           </blockquote>
-          <cite className="text-sm text-blue-600 font-semibold relative z-10">— {currentQuote.author}</cite>
+          <cite className="text-xs text-blue-600 font-medium">— {currentQuote.author}</cite>
         </div>
       </div>
 
-      {/* Your Favorite Tools - More Compact with better spacing */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200">
+      {/* Your Favorite Tools */}
+      <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
         <div className="flex items-center space-x-2 mb-3">
           <Heart className="h-4 w-4 text-red-500" />
-          <h2 className="text-base font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
+          <h2 className="text-sm font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
         </div>
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
           {favoriteTools.map((tool, index) => (
             <Button 
               key={index}
               onClick={() => onQuickAction?.(tool.category, tool.toolId)}
-              className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-3 py-1 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs font-medium hover-scale cursor-pointer`}
+              className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-xs font-medium`}
             >
               <tool.icon className="mr-1 h-3 w-3" />
               {tool.name}

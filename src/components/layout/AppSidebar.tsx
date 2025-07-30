@@ -93,51 +93,38 @@ const AppSidebar = () => {
       <SidebarContent className="bg-gradient-to-b from-background via-primary/3 to-secondary/5 relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(120,119,198,0.05),transparent)] pointer-events-none" />
         
-        <SidebarGroup className="px-5 py-8 relative z-10">
-          <SidebarGroupLabel className="text-foreground font-bold text-sm mb-6 flex items-center space-x-2 tracking-wide">
-            <Star className="h-4 w-4 text-primary animate-pulse" />
-            <span>{t("easyteach.sidebar.quickAccess")}</span>
+        <SidebarGroup className="px-4 py-6 relative z-10">
+          <SidebarGroupLabel className="text-foreground font-semibold text-xs mb-4 flex items-center space-x-2 tracking-wide uppercase opacity-80">
+            <Star className="h-3 w-3 text-primary" />
+            <span>Quick Access</span>
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-4">
+            <SidebarMenu className="space-y-2">
               {sidebarItems.map((item, index) => (
                 <SidebarMenuItem key={item.name}>
                   <SidebarMenuButton asChild className="group">
                     <a
                       href={item.href}
-                      className="flex items-center space-x-4 p-4 rounded-2xl bg-white/70 backdrop-blur-sm border border-primary/15 hover:bg-white/90 hover:border-primary/30 hover:shadow-xl transition-all duration-500 hover:scale-[1.03] relative overflow-hidden group/item"
+                      className="flex items-center space-x-3 p-3 rounded-lg bg-white/50 hover:bg-white/80 border border-gray-200/50 hover:border-primary/30 hover:shadow-md transition-all duration-200 group/item"
                     >
                       <div
-                        className={`absolute inset-0 bg-gradient-to-r ${item.gradient} opacity-0 group-hover/item:opacity-8 transition-opacity duration-500 rounded-2xl`}
-                      />
-                      
-                      {/* Animated background pattern */}
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px] opacity-0 group-hover/item:opacity-30 transition-opacity duration-700 rounded-2xl" />
-                      
-                      <div
-                        className={`relative z-10 p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg group-hover/item:shadow-xl group-hover/item:scale-110 transition-all duration-500 ring-2 ring-white/20`}
+                        className={`p-2 rounded-lg bg-gradient-to-br ${item.gradient} shadow-sm`}
                       >
-                        <item.icon className="h-4 w-4 text-white drop-shadow-sm" />
+                        <item.icon className="h-4 w-4 text-white" />
                       </div>
                       
-                      <div className="flex-1 relative z-10 min-w-0">
-                        <span className="text-sm font-bold text-foreground group-hover/item:text-primary transition-colors duration-300 block leading-tight">
+                      <div className="flex-1 min-w-0">
+                        <span className="text-sm font-semibold text-gray-900 block leading-tight">
                           {item.name}
                         </span>
-                        <p className="text-xs text-muted-foreground group-hover/item:text-primary/80 transition-colors duration-300 mt-1 leading-relaxed line-clamp-2">
+                        <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
                           {item.description}
                         </p>
                         {(item as any).isVicertaOnly && (
-                          <div className="inline-flex items-center mt-2">
-                            <span className="text-xs bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 px-2 py-1 rounded-full font-bold border border-emerald-200/50 shadow-sm">
-                              ✨ Vicerta Team
-                            </span>
-                          </div>
+                          <span className="inline-flex text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium mt-1">
+                            Vicerta Team
+                          </span>
                         )}
-                      </div>
-                      
-                      <div className="relative z-10 opacity-0 group-hover/item:opacity-100 transition-all duration-300 group-hover/item:translate-x-1">
-                        <div className="w-2 h-8 bg-gradient-to-b from-primary to-secondary rounded-full animate-pulse shadow-lg"></div>
                       </div>
                     </a>
                   </SidebarMenuButton>
