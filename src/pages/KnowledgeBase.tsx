@@ -201,7 +201,7 @@ const KnowledgeBase = () => {
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <HelpCircle className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Knowledge
                 <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -234,7 +234,7 @@ const KnowledgeBase = () => {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Browse by Category
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
               {categories.map((category, index) => (
                 <div
                   key={index}
@@ -271,9 +271,9 @@ const KnowledgeBase = () => {
                   className="bg-white/50 backdrop-blur-2xl group border-none hover:shadow-lg transition-all duration-300 cursor-pointer animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardContent className="p-6">
+                  <CardContent className="px-4 py-2 md:p-6">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-gray-900 ">
+                      <h3 className="text-base/6 md:text-lg font-medium md:font-semibold text-gray-900 ">
                         {article}
                       </h3>
                       <div className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">

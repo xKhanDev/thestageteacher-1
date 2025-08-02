@@ -13,15 +13,15 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
         {/* Trust indicators */}
         <div className="flex justify-center items-center space-x-8 mb-8 text-gray-600">
           <div className="flex items-center space-x-2">
-            <Users className="h-5 w-5 text-blue-500" />
+            <Users className="size-6 md:size-5 text-blue-500" />
             <span className="text-sm font-medium">100,000+ Teachers</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Award className="h-5 w-5 text-purple-500" />
+            <Award className="size-6 md:size-5 text-purple-500" />
             <span className="text-sm font-medium">4.9/5 Rating</span>
           </div>
           <div className="flex items-center space-x-2">
-            <Heart className="h-5 w-5 text-pink-500" />
+            <Heart className="size-6 md:size-5 text-pink-500" />
             <span className="text-sm font-medium">Loved by Educators</span>
           </div>
         </div>
@@ -39,19 +39,19 @@ const CTASection = ({ onShowLogin, onJoinWaitlist }: CTASectionProps) => {
           <Button
             size="lg"
             onClick={onShowLogin}
-            className="my-btn text-white px-6 py-6 rounded-xl group"
+            className="w-full md:w-72 my-btn text-white px-6 py-6 rounded-xl group"
           >
             Get Started for Free
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 size-6 md:size-5 group-hover:translate-x-1 transition-transform" />
           </Button>
 
           <Button
             size="lg"
             variant="outline"
             onClick={() => onJoinWaitlist("Advanced Features")}
-            className=" hover:bg-purple-50 hover:text-primary px-6 py-6 rounded-xl group"
+            className="w-full md:w-72 hover:bg-purple-50 hover:text-primary px-6 py-6 rounded-xl group"
           >
-            <Sparkles className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            <Sparkles className="mr-2 size-6 md:size-5 group-hover:scale-110 transition-transform" />
             Join Waitlist
           </Button>
         </div>

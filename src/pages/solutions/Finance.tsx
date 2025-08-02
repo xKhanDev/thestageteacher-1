@@ -9,6 +9,7 @@ import {
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState } from "react";
 import LoginModal from "@/components/auth/LoginModal";
+import Footer from "@/components/home/Footer";
 
 const Finance = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -41,49 +42,50 @@ const Finance = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
-      <UniversalHeader onShowLogin={() => setShowLogin(true)} />
+    <>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+        <UniversalHeader onShowLogin={() => setShowLogin(true)} />
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 icon-bg rounded-full mb-6">
-            <DollarSign className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Finance Management
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Keep your school financially healthy with full visibility and
-            control over every penny.
-          </p>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
-            >
-              <div>
-                <div className="flex flex-col items-start justify-center gap-2">
-                  <div className="p-3 icon-bg rounded-lg  group-hover:scale-105 transition-transform duration-300">
-                    <feature.icon className="h-6 w-6 text-white" />
-                  </div>
-                  <h2 className="text-lg/6 font-bold">{feature.title}</h2>
-                </div>
-              </div>
-
-              <p className="text-gray-600 text-base/6 pt-2">
-                {feature.description}
-              </p>
+        <div className="container mx-auto px-4 py-16">
+          {/* Hero Section */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 icon-bg rounded-full mb-6">
+              <DollarSign className="h-8 w-8 text-white" />
             </div>
-          ))}
-        </div>
+            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+              Finance Management
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              Keep your school financially healthy with full visibility and
+              control over every penny.
+            </p>
+          </div>
 
-        {/* Why it Matters Section */}
-        {/* <div className="bg-white rounded-2xl p-8 shadow-lg mb-16">
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+              >
+                <div>
+                  <div className="flex flex-col items-start justify-center gap-2">
+                    <div className="p-3 icon-bg rounded-lg  group-hover:scale-105 transition-transform duration-300">
+                      <feature.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h2 className="text-lg/6 font-bold">{feature.title}</h2>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-base/6 pt-2">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Why it Matters Section */}
+          {/* <div className="bg-white rounded-2xl p-8 shadow-lg mb-16">
           <h2 className="text-3xl font-bold text-center mb-8">
             Why it Matters
           </h2>
@@ -94,59 +96,67 @@ const Finance = () => {
           </p>
         </div> */}
 
-        {/* Benefits */}
-        <div className="bg-[#2901b3] rounded-2xl p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-white">
-            Complete Financial Control
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <CreditCard className="h-12 w-12 text-white mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Automated
-              </h3>
-              <p className="text-gray-200">Billing & Payments</p>
+          {/* Benefits */}
+          <div className="bg-[#2901b3] rounded-2xl p-8 mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white">
+              Complete Financial Control
+            </h2>
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <CreditCard className="size-8 md:size-12 text-white mx-auto mb-4" />
+                <h3 className="text-base/5 md:text-xl font-semibold mb-2 text-white">
+                  Automated
+                </h3>
+                <p className="text-gray-200 text-xs md:text-base">
+                  Billing & Payments
+                </p>
+              </div>
+              <div>
+                <FileBarChart className="size-8 md:size-12 text-white mx-auto mb-4" />
+                <h3 className="text-base/5 md:text-xl font-semibold mb-2 text-white">
+                  Transparent
+                </h3>
+                <p className="text-gray-200 text-xsmd:text-base">
+                  Financial Reporting
+                </p>
+              </div>
+              <div>
+                <PieChart className="size-8 md:size-12 text-white mx-auto mb-4" />
+                <h3 className="text-base/5 md:text-xl font-semibold mb-2 text-white">
+                  Real-time
+                </h3>
+                <p className="text-gray-200 text-xs md:text-base">
+                  Budget Tracking
+                </p>
+              </div>
             </div>
-            <div>
-              <FileBarChart className="h-12 w-12 text-white mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Transparent
-              </h3>
-              <p className="text-gray-200">Financial Reporting</p>
-            </div>
-            <div>
-              <PieChart className="h-12 w-12 text-white mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-white">
-                Real-time
-              </h3>
-              <p className="text-gray-200">Budget Tracking</p>
-            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              Ready to Optimize Your Finances?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Take control of your school's financial health with intelligent
+              tools.
+            </p>
+            <Button
+              size="lg"
+              onClick={() => setShowLogin(true)}
+              className="my-btn p-6"
+            >
+              Optimize School Finances
+            </Button>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Optimize Your Finances?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Take control of your school's financial health with intelligent
-            tools.
-          </p>
-          <Button
-            size="lg"
-            onClick={() => setShowLogin(true)}
-            className="my-btn p-6"
-          >
-            Optimize School Finances
-          </Button>
-        </div>
+        {showLogin && (
+          <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
+        )}
       </div>
-
-      {showLogin && (
-        <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
-      )}
-    </div>
+      <Footer />
+    </>
   );
 };
 

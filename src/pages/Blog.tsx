@@ -93,7 +93,7 @@ const Blog = () => {
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <BookOpen className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Education
                 <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -135,7 +135,7 @@ const Blog = () => {
                         {post.readTime}
                       </div>
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-900  line-clamp-2">
+                    <CardTitle className="text-lg md:text-xl font-bold text-gray-900  line-clamp-2">
                       {post.title}
                     </CardTitle>
                   </CardHeader>

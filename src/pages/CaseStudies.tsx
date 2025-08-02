@@ -80,7 +80,7 @@ const CaseStudies = () => {
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <FileText className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Case
                 <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -113,7 +113,7 @@ const CaseStudies = () => {
                         className="w-full h-64 lg:h-full object-cover"
                       />
                     </div>
-                    <div className="lg:w-2/3 p-8">
+                    <div className="lg:w-2/3 p-4 md:p-8">
                       <div className="flex items-center space-x-3 mb-4">
                         <Badge className="bg-blue-100 text-blue-800 border-blue-200">
                           {study.type}
@@ -123,7 +123,7 @@ const CaseStudies = () => {
                           {study.timeframe}
                         </div>
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
                         {study.title}
                       </h3>
                       <p className="text-lg text-blue-600 font-semibold mb-4">

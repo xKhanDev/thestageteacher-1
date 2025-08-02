@@ -98,37 +98,29 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
       {/* Navigation */}
       <nav className="bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                <Sparkles className="h-6 w-6 text-white" />
-              </div>
+              <img src="/favicon.png" alt="logo" className="w-8" />
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                   EasyTeach
                 </h1>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-purple-600"
-              >
+            <div className="flex items-center space-x-8">
+              <button className="text-gray-700 hover:text-purple-600 hover:scale-105">
                 Features
-              </Button>
-              <Button
-                variant="ghost"
-                className="text-gray-700 hover:text-purple-600"
-              >
+              </button>
+              <button className="text-gray-700 hover:text-purple-600 hover:scale-105">
                 Pricing
-              </Button>
+              </button>
               <Button
                 onClick={() => setShowLogin(true)}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white"
+                className="my-btn text-white hidden md:block"
               >
                 Sign In
               </Button>
@@ -141,15 +133,15 @@ const LandingPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center mb-8">
-            <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-purple-700 border-purple-200 text-sm font-medium px-4 py-2">
+            <Badge className="bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 border-purple-200 text-sm font-medium px-4 py-2">
               <Sparkles className="h-4 w-4 mr-2" />
               Trusted by 100,000+ educators worldwide
             </Badge>
           </div>
 
-          <h1 className="text-6xl font-bold text-gray-900 mb-8 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight">
             Teaching Made
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent block">
+            <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent block">
               Effortless with AI
             </span>
           </h1>
@@ -164,31 +156,34 @@ const LandingPage = () => {
             <Button
               size="lg"
               onClick={() => setShowLogin(true)}
-              className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+              className="w-60 my-btn group text-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Start Teaching Smarter
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-all duration-200" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-gray-300 hover:border-purple-300 px-8 py-4 text-lg font-semibold rounded-xl"
+              className="w-60 text-black hover:bg-gray-50 hover:text-[#2901B3] px-6 py-6 rounded-xl group"
             >
-              <Play className="mr-2 h-5 w-5" />
+              <Play className="mr-2 size-5 group-hover:scale-[1.04] transition-all duration-300" />
               Watch Demo
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 lg:gap-8 mt-16">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <div
+                key={index}
+                className="text-center bg-blue-100 p-3 lg:p-8 rounded-md"
+              >
                 <div className="flex justify-center mb-3">
-                  <div className="p-3 rounded-2xl bg-gradient-to-r from-blue-100 to-purple-100">
-                    <stat.icon className="h-6 w-6 text-purple-600" />
+                  <div className="p-3 rounded-2xl bg-blue-200">
+                    <stat.icon className="h-6 w-6 text-[#2901B3]" />
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">
+                <div className="text-xl md:text-3xl font-bold text-gray-900 mb-1">
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
@@ -204,7 +199,7 @@ const LandingPage = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Everything You Need to
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                 {" "}
                 Excel
               </span>
@@ -215,21 +210,21 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 overflow-hidden"
+                className="group hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-blue-50 overflow-hidden"
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-4">
                     <div
                       className={`p-4 rounded-2xl bg-gradient-to-r ${feature.color} shadow-lg group-hover:scale-110 transition-transform duration-200`}
                     >
-                      <feature.icon className="h-8 w-8 text-white" />
+                      <feature.icon className="size-4 text-white" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
+                      <CardTitle className="text-xl font-bold text-gray-900 ">
                         {feature.title}
                       </CardTitle>
                     </div>
@@ -296,19 +291,19 @@ const LandingPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-[#2901B3]">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
             Ready to Transform Your Teaching?
           </h2>
-          <p className="text-xl mb-12 opacity-90">
+          <p className="text-xl mb-12 opacity-90 text-gray-200">
             Join thousands of educators who are already saving time and creating
             better learning experiences.
           </p>
           <Button
             size="lg"
             onClick={() => setShowLogin(true)}
-            className="bg-white text-purple-600 hover:bg-gray-100 px-12 py-4 text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
+            className="bg-white text-purple-600 hover:bg-gray-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200"
           >
             Get Started for Free
             <Sparkles className="ml-3 h-6 w-6" />

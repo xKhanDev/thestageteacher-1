@@ -18,7 +18,6 @@ import {
   MessageSquare,
   BarChart3,
   Shield,
-  Clock,
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
@@ -90,13 +89,13 @@ const SchoolAdministration = () => {
         }`}
       >
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-8">
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
                 <Building2 className="h-10 w-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 School
                 <span className=" bg-gradient-to-r from-[#2903b1] to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -117,59 +116,57 @@ const SchoolAdministration = () => {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16">
               Complete Administrative{" "}
               <span className="bg-gradient-to-r from-[#2903b1] to-blue-600 bg-clip-text text-transparent">
                 Solution
               </span>
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 place-content-center gap-4 md:gap-8">
               {features.map((feature, index) => (
-                <Card
+                <div
                   key={index}
-                  className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-blue-50 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="group bg-gradient-to-br from-white to-blue-50 border border-gray-100 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
                 >
-                  <CardHeader>
-                    <div className="p-3 rounded-2xl icon-bg shadow-lg w-fit group-hover:scale-110 transition-transform duration-300 mx-auto">
-                      <feature.icon className="h-6 w-6 text-white" />
+                  <div>
+                    <div className="flex flex-col items-start justify-center gap-2">
+                      <div className="p-3 icon-bg rounded-lg  group-hover:scale-105 transition-transform duration-300">
+                        <feature.icon className="h-6 w-6 text-white" />
+                      </div>
+                      <h2 className="text-lg/6 font-bold">{feature.title}</h2>
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 pt-4">
-                      {feature.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600 text-base">
-                      {feature.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                  </div>
+
+                  <p className="text-gray-600 text-base/6 pt-2">
+                    {feature.description}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Modules Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-50">
+        <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12">
               Integrated Modules
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
               {modules.map((module, index) => (
                 <div
                   key={index}
-                  className="flex items-center text-lg text-gray-700 p-4 bg-white rounded-lg shadow-sm animate-fade-in"
+                  className="flex items-center text-lg text-gray-700"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CheckCircle className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
+                  <CheckCircle className="size-5 md:size-6 text-green-500 mr-3 flex-shrink-0" />
                   {module}
                 </div>
               ))}
             </div>
-            <Button className="my-btn text-white p-6 rounded-xl">
+            <Button className="w-full md:w-72 my-btn text-white p-6 rounded-xl">
               Request Demo
             </Button>
           </div>

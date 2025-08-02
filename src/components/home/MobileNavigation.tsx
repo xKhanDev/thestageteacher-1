@@ -122,12 +122,12 @@ const MobileNavigation = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 lg:hidden">
+    <div className="fixed left-0 top-0 w-full lg:hidden">
       {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/50" onClick={onClose} />
+      {/* <div className="fixed inset-0 bg-black/50" onClick={onClose} /> */}
 
       {/* Menu Panel */}
-      <div className="fixed left-0 top-0 w-full h-screen bg-background shadow-xl animate-slide-in-right">
+      <div className="w-full h-screen bg-background shadow-xl animate-slide-in-right">
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
@@ -158,7 +158,7 @@ const MobileNavigation = ({
                     <button
                       key={product.id}
                       onClick={() => handleNavigate(product.path)}
-                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+                      className="py-3 flex items-center space-x-3 w-full px-4 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-blue-100 rounded-lg"
                     >
                       <product.icon className="h-4 w-4" />
                       <span>{product.name}</span>
@@ -192,7 +192,7 @@ const MobileNavigation = ({
                         <button
                           key={index}
                           onClick={() => handleNavigate(solution.path)}
-                          className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+                          className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
                         >
                           <solution.icon className="h-4 w-4" />
                           <span>{solution.title}</span>
@@ -210,7 +210,7 @@ const MobileNavigation = ({
                         <button
                           key={index}
                           onClick={() => handleNavigate(solution.path)}
-                          className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+                          className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
                         >
                           <solution.icon className="h-4 w-4" />
                           <span>{solution.title}</span>
@@ -241,7 +241,7 @@ const MobileNavigation = ({
                     <button
                       key={index}
                       onClick={() => handleNavigate(item.path)}
-                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+                      className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
                     >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
@@ -270,7 +270,7 @@ const MobileNavigation = ({
                     <button
                       key={index}
                       onClick={() => handleNavigate(item.path)}
-                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+                      className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
                     >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
@@ -286,7 +286,7 @@ const MobileNavigation = ({
             <Button
               onClick={() => handleNavigate("/contact-us")}
               variant="outline"
-              className="w-full"
+              className="w-full p-6"
             >
               {t("navigation.contact")}
             </Button>
@@ -295,7 +295,7 @@ const MobileNavigation = ({
                 onShowLogin();
                 onClose();
               }}
-              className="w-full bg-primary hover:bg-primary/90"
+              className="w-full my-btn p-6"
             >
               {t("navigation.login")}
             </Button>

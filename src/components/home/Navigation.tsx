@@ -171,12 +171,9 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
   return (
     <nav className="bg-background/90 backdrop-blur-sm border-b border-border shadow-lg sticky top-0 z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div
-            className="flex items-center space-x-2 sm:space-x-3 animate-scale-in cursor-pointer"
-            onClick={() => navigate("/")}
-          >
+          <div className="flex items-center space-x-2 sm:space-x-3 animate-scale-in cursor-pointer">
             <div className="flex items-center gap-2">
               {/* Mobile Menu Icon */}
               <button
@@ -191,6 +188,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 src="/logos/brand.svg"
                 alt="Website Logo"
                 className="h-8 hidden md:block"
+                onClick={() => navigate("/")}
               />
 
               {/* Mobile Logo */}
@@ -198,6 +196,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                 src="/favicon.png"
                 alt="Mobile logo"
                 className="h-8 md:hidden"
+                onClick={() => navigate("/")}
               />
             </div>
           </div>
@@ -395,7 +394,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
             >
               Login
             </Button>
-            <span className="size-8 rounded-sm bg-blue-100 flex items-center justify-center">
+            <span className="size-9 rounded-md bg-blue-50 flex items-center justify-center">
               <LanguageSelector />
             </span>
           </div>

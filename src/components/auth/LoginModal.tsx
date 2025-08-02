@@ -213,7 +213,10 @@ const LoginModal = ({
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="signin" className="space-y-5 mt-6">
+          <TabsContent
+            value="signin"
+            className="space-y-5 mt-6 focus:outline-none border-none"
+          >
             <div className="space-y-2">
               <Label
                 htmlFor="signin-email"

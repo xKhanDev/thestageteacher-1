@@ -381,11 +381,11 @@ const EasyTeachPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
       <Navigation onShowLogin={() => setShowLogin(true)} />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center mb-6">
             <div className="p-4 rounded-2xl icon-bg shadow-lg">
@@ -414,7 +414,7 @@ const EasyTeachPage = () => {
             <Button
               size="lg"
               onClick={() => setShowLogin(true)}
-              className="my-btn group text-white px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full md:w-72 my-btn group text-white px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Start Teaching Smarter
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-all duration-300" />
@@ -428,14 +428,14 @@ const EasyTeachPage = () => {
       </section>
 
       {/* Platform Stats Grid */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <section className="pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <Marquee className="mb-8" speed={50} gradient={false} autoFill>
             <div className="grid grid-cols-6 lg:grid-cols-6">
               {platformStats.map((stat, index) => (
                 <div
                   key={index}
-                  className="mr-12 bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-all duration-300 text-center"
+                  className="mr-4 md:mr-12 bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200 hover:shadow-lg transition-all duration-300 text-center"
                 >
                   <div className="flex justify-center mb-2">
                     <div className="p-2 rounded-lg icon-bg">
@@ -456,7 +456,7 @@ const EasyTeachPage = () => {
       </section>
 
       {/* Feature Showcase with Dashboard Mockups */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -499,7 +499,7 @@ const EasyTeachPage = () => {
                   </div>
                   <Button
                     onClick={() => setShowLogin(true)}
-                    className="my-btn text-white px-6 py-6 group rounded-xl"
+                    className="w-full md:w-72 my-btn text-white px-6 py-6 group rounded-xl"
                   >
                     Explore This Feature
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-all duration-300" />
@@ -517,7 +517,7 @@ const EasyTeachPage = () => {
       </section>
 
       {/* Why Choose EasyTeach Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -541,10 +541,10 @@ const EasyTeachPage = () => {
               >
                 <CardHeader className="pb-4">
                   <div className="flex items-center space-x-4">
-                    <div className="p-4 rounded-2xl icon-bg shadow-lg group-hover:scale-110 transition-transform duration-200">
-                      <item.icon className="h-8 w-8 text-white" />
+                    <div className="p-2 md:p-4 rounded-2xl icon-bg shadow-lg group-hover:scale-110 transition-transform duration-200">
+                      <item.icon className="size-6 md:size-8 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
+                    <CardTitle className="text-xl font-bold text-gray-900 ">
                       {item.title}
                     </CardTitle>
                   </div>
@@ -561,7 +561,7 @@ const EasyTeachPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-400">
+      <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-400">
         <div className="max-w-6xl mx-auto text-center *:text-white">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to Transform Your <span className="">Teaching</span>?
@@ -571,7 +571,7 @@ const EasyTeachPage = () => {
             EasyTeach
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 place-items-center gap-6 mb-12">
+          <div className="flex flex-col md:flex-row justify-center gap-6 mb-12 *:w-full *:md:w-72">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 w-[300px] h-[200px] flex flex-col items-center justify-center">
               <Clock className="h-8 w-8 mx-auto mb-3" />
               <h3 className="font-bold mb-2 text-white">
@@ -604,7 +604,7 @@ const EasyTeachPage = () => {
           <Button
             size="lg"
             onClick={() => setShowLogin(true)}
-            className="bg-white *:text-[#2901e3] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-100 hover:text-[#2901e3]"
+            className="w-full md:w-72 bg-white *:text-[#2901e3] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-100 hover:text-[#2901e3]"
           >
             <span>Start Teaching Smarter Today</span>
             <Sparkles className="ml-3 h-6 w-6 text-[#2901e3]" />

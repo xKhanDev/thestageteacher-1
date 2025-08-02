@@ -52,9 +52,9 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
               </Badge>
             </div>
 
-            <h1 className="text-center md:text-start text-3xl md:text-6xl font-bold text-gray-900 mb-8 leading-tight animate-scale-in">
+            <h1 className="text-center md:text-start text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight animate-scale-in">
               {t("hero.title")}
-              <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent block transition-all duration-1000 animate-fade-in">
+              <span className="bg-gradient-to-r from-[#2901B3] to-blue-600 bg-clip-text text-transparent block transition-all duration-1000 animate-fade-in pb-2">
                 {messages[currentMessageIndex]}
               </span>
             </h1>
@@ -90,7 +90,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
               <Button
                 size="lg"
                 onClick={onShowLogin}
-                className="my-btn text-white px-6 py-6 rounded-xl group"
+                className="w-full md:w-72 my-btn text-white px-6 py-6 rounded-xl group"
               >
                 Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -99,7 +99,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
               <Button
                 size="lg"
                 variant="outline"
-                className=" text-black hover:bg-gray-50 hover:text-[#2901B3] px-6 py-6 rounded-xl group"
+                className="w-full md:w-72 text-black hover:bg-gray-50 hover:text-[#2901B3] px-6 py-6 rounded-xl group"
               >
                 <Play className="mr-2 size-5 group-hover:scale-[1.04] transition-all duration-300" />
                 Watch Demo
@@ -116,7 +116,7 @@ const HeroSection = ({ onShowLogin }: HeroSectionProps) => {
         </div>
         {/* Hero Section Cards */}
         <div className="w-full pt-12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto mb-4 animate-fade-in px-8">
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg hover-scale transition-all duration-300 border border-white/20">
+          <div className=" bg-white/80 backdrop-blur-sm rounded-xl p-6 hover:shadow-lg hover-scale transition-all duration-300 border border-white/20">
             <div className="flex items-center justify-center mb-4">
               <div className="p-3 rounded-full icon-bg shadow-lg">
                 <Users className="h-6 w-6 text-white" />
