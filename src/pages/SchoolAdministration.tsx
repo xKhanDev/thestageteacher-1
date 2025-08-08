@@ -92,8 +92,8 @@ const SchoolAdministration = () => {
         <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-8">
-              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
-                <Building2 className="h-10 w-10 text-white" />
+              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto size-16 md:size-20 flex items-center justify-center mb-6">
+                <Building2 className="size-8 md:size-10 text-white" />
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 School
@@ -107,7 +107,7 @@ const SchoolAdministration = () => {
                 administration platform designed for modern educational
                 institutions.
               </p>
-              <Button className="my-btn group text-white p-6 rounded-xl">
+              <Button className="w-full md:w-72 my-btn group text-white p-6 rounded-xl">
                 Join the Waitlist
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>

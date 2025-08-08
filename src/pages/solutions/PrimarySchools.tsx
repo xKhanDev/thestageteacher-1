@@ -3,7 +3,6 @@ import { Heart, Users2, BookOpen, Shield } from "lucide-react";
 import UniversalHeader from "@/components/layout/UniversalHeader";
 import { useState } from "react";
 import LoginModal from "@/components/auth/LoginModal";
-import primarySchoolsHero from "@/assets/primary-schools-hero.jpg";
 import Footer from "@/components/home/Footer";
 
 const PrimarySchools = () => {
@@ -44,8 +43,8 @@ const PrimarySchools = () => {
         <div className="container mx-auto px-4 py-6 md:py-16">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 icon-bg rounded-full mb-6">
-              <Heart className="h-8 w-8 text-white" />
+            <div className="inline-flex items-center justify-center size-16 md:size-20 icon-bg rounded-full mb-6">
+              <Heart className="size-8 md:size-10 text-white" />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               Primary{" "}
@@ -60,7 +59,7 @@ const PrimarySchools = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 mb-16">
             {features.map((feature, index) => (
               <div
                 key={index}

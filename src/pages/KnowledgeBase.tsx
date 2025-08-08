@@ -16,6 +16,7 @@ import {
   Video,
   FileText,
   MessageCircle,
+  ArrowDownRight,
 } from "lucide-react";
 import Navigation from "@/components/home/Navigation";
 import Footer from "@/components/home/Footer";
@@ -195,11 +196,11 @@ const KnowledgeBase = () => {
         }`}
       >
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
-              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
-                <HelpCircle className="h-10 w-10 text-white" />
+              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto size-16 md:size-20 flex items-center justify-center mb-6">
+                <HelpCircle className="size-8 md:size-10 text-white" />
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Knowledge
@@ -229,16 +230,16 @@ const KnowledgeBase = () => {
         </section>
 
         {/* Categories Grid */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Browse by Category
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
               {categories.map((category, index) => (
                 <div
                   key={index}
-                  className="group bg-white shadow rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+                  className="group bg-white shadow rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100"
                 >
                   <div>
                     <div className="flex flex-col items-start justify-center gap-2">
@@ -259,29 +260,30 @@ const KnowledgeBase = () => {
         </section>
 
         {/* Popular Articles */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
               Popular Articles
             </h2>
             <div className="space-y-4">
               {popularArticles.map((article, index) => (
-                <Card
+                <div
                   key={index}
-                  className="bg-white/50 backdrop-blur-2xl group border-none hover:shadow-lg transition-all duration-300 cursor-pointer animate-fade-in"
+                  className="bg-white/50 backdrop-blur-2xl group border-none hover:shadow-lg transition-all duration-300 cursor-pointer animate-fade-in p-4 md:p-6 rounded-md md:rounded-2xl"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardContent className="px-4 py-2 md:p-6">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-base/6 md:text-lg font-medium md:font-semibold text-gray-900 ">
-                        {article}
-                      </h3>
-                      <div className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        →
-                      </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-base/6 md:text-lg font-medium md:font-semibold text-gray-900 ">
+                      {article}
+                    </h3>
+                    <div className="text-blue-500  group">
+                      <ArrowDownRight
+                        size={26}
+                        className="group-hover:-rotate-45 transition-all duration-300"
+                      />
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

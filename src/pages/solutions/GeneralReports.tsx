@@ -51,11 +51,11 @@ const GeneralReports = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
         <UniversalHeader onShowLogin={() => setShowLogin(true)} />
 
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 py-6 md:py-16">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 icon-bg rounded-full mb-6">
-              <BarChart3 className="h-8 w-8 text-white" />
+            <div className="inline-flex items-center justify-center size-16 md:size-20 icon-bg rounded-full mb-6">
+              <BarChart3 className="size-8 md:size-10 text-white" />
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
               General Reports
@@ -67,7 +67,7 @@ const GeneralReports = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 mb-16">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -148,7 +148,7 @@ const GeneralReports = () => {
             <Button
               size="lg"
               onClick={() => setShowLogin(true)}
-              className="my-btn text-white p-6"
+              className="w-full md:w-72 my-btn text-white p-6"
             >
               See Insights in Action
             </Button>

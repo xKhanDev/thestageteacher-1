@@ -25,25 +25,25 @@ const PartnersIntegrations = () => {
       name: "Google Workspace",
       description:
         "Seamless integration with Google Classroom, Drive, and Calendar",
-      logo: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=100&q=80",
+      logo: "/partners/google.svg",
       category: "Productivity",
     },
     {
       name: "Microsoft 365",
       description: "Connect with Teams, OneDrive, and Office applications",
-      logo: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=100&q=80",
+      logo: "/partners/microsoft.svg",
       category: "Productivity",
     },
     {
       name: "Zoom",
       description: "Integrated video conferencing for virtual classrooms",
-      logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=100&q=80",
+      logo: "/partners/zoom.svg",
       category: "Communication",
     },
     {
       name: "Khan Academy",
       description: "Access to educational content and learning resources",
-      logo: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=100&q=80",
+      logo: "/partners/khan.svg",
       category: "Education",
     },
   ];
@@ -51,7 +51,7 @@ const PartnersIntegrations = () => {
   const partners = [
     {
       name: "Educational Technology Alliance",
-      description: "Leading consortium of EdTech innovators",
+      description: "Leading consortium of EdTech innovators and advocates",
       type: "Technology Partner",
     },
     {
@@ -76,13 +76,13 @@ const PartnersIntegrations = () => {
         }`}
       >
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-8">
-              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
-                <Zap className="h-10 w-10 text-white" />
+              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto size-16 md:size-20 flex items-center justify-center mb-6">
+                <Zap className="size-8 md:size-10 text-white" />
               </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Partners &
                 <span className="bg-gradient-to-r from-[#2901b3] to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -99,16 +99,16 @@ const PartnersIntegrations = () => {
         </section>
 
         {/* Integrations Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-900 mb-4 md:mb-12">
               Platform Integrations
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {integrations.map((integration, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-blue-50 animate-fade-in"
+                  className="border border-gray-100 group hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-blue-50 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardHeader className="text-center">
@@ -138,12 +138,12 @@ const PartnersIntegrations = () => {
         </section>
 
         {/* Partners Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
               Strategic Partners
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {partners.map((partner, index) => (
                 <Card
                   key={index}
@@ -163,7 +163,7 @@ const PartnersIntegrations = () => {
                           <span className="text-sm text-[#2901b3] font-medium bg-blue-100 px-3 py-1 rounded-full">
                             {partner.type}
                           </span>
-                          <CheckCircle className="h-8 w-8 text-blue-500" />
+                          <CheckCircle className="size-4 md:size-8 text-blue-500" />
                         </div>
                       </div>
                     </div>

@@ -74,11 +74,11 @@ const CaseStudies = () => {
         }`}
       >
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <section className="py-6 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-8">
-              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto w-20 h-20 flex items-center justify-center mb-6">
-                <FileText className="h-10 w-10 text-white" />
+              <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto size-16 md:size-20 flex items-center justify-center mb-6">
+                <FileText className="size-8 md:size-10 md:size-10 text-white" />
               </div>
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Case
@@ -98,7 +98,7 @@ const CaseStudies = () => {
         {/* Case Studies Grid */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-1 gap-4 md:gap-12">
               {caseStudies.map((study, index) => (
                 <Card
                   key={index}

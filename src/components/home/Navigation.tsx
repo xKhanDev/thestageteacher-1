@@ -219,7 +219,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         <div
                           className={`p-2 rounded-lg bg-gradient-to-r ${product.color}`}
                         >
-                          <product.icon className="h-5 w-5 text-white" />
+                          <product.icon className="size-4 text-white" />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center space-x-2">
@@ -268,7 +268,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                               <div
                                 className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}
                               >
-                                <solution.icon className="h-3 w-3 text-white" />
+                                <solution.icon className="size-4 text-white" />
                               </div>
                               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                                 {solution.title}
@@ -295,7 +295,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                               <div
                                 className={`p-1.5 rounded-lg bg-gradient-to-r ${solution.color} group-hover:scale-110 transition-transform duration-200`}
                               >
-                                <solution.icon className="h-3 w-3 text-white" />
+                                <solution.icon className="size-4 text-white" />
                               </div>
                               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                                 {solution.title}
@@ -331,7 +331,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         onClick={item.onClick}
                       >
                         <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500">
-                          <item.icon className="h-4 w-4 text-white" />
+                          <item.icon className="size-4 text-white" />
                         </div>
                         <span className="font-medium text-foreground hover:text-orange-700 transition-colors">
                           {item.title}
@@ -355,7 +355,7 @@ const Navigation = ({ onShowLogin }: NavigationProps) => {
                         onClick={item.onClick}
                       >
                         <div className="p-2 rounded-lg bg-gradient-to-r from-slate-500 to-[#2901B3]">
-                          <item.icon className="h-4 w-4 text-white" />
+                          <item.icon className="size-4 text-white" />
                         </div>
                         <span className="font-medium text-foreground hover:text-slate-700 transition-colors">
                           {item.title}
