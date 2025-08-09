@@ -270,6 +270,7 @@ const LoginModal = ({
               </div>
             </div>
 
+<<<<<<< HEAD
             <div className="flex items-center space-x-2 pt-2">
               <Checkbox
                 id="remember-me"
@@ -283,6 +284,30 @@ const LoginModal = ({
               >
                 Forgot Password?
               </Label>
+=======
+            <div className="flex items-center justify-between pt-2">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="remember-me"
+                  checked={rememberMe}
+                  onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                  className="border-gray-300 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-500 data-[state=checked]:to-purple-500"
+                />
+                <Label
+                  htmlFor="remember-me"
+                  className="text-sm text-gray-600 font-medium"
+                >
+                  Keep me signed in
+                </Label>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowForgotPassword(true)}
+                className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
+              >
+                Forgot Password?
+              </button>
+>>>>>>> main
             </div>
 
             <Button
@@ -413,7 +438,11 @@ const LoginModal = ({
           </TabsContent>
         </Tabs>
       </DialogContent>
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> main
       <ForgotPasswordModal
         isOpen={showForgotPassword}
         onClose={() => setShowForgotPassword(false)}

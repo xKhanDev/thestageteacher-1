@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   CardContent,
@@ -42,6 +43,7 @@ const AdvancedLMS = () => {
   const [onShowLogin, setOnShowLogin] = useState(false);
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -201,7 +203,7 @@ const AdvancedLMS = () => {
     <>
       <Navigation onShowLogin={() => setOnShowLogin(true)} />
       <div
-        className={`min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 transition-all duration-1000 ${
+        className={`min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 via-purple-50 to-pink-50 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
@@ -212,20 +214,29 @@ const AdvancedLMS = () => {
               <div className="p-4 rounded-3xl icon-bg shadow-lg mx-auto size-16 md:size-20 flex items-center justify-center mb-6">
                 <GraduationCap className="size-8 md:size-10 text-white" />
               </div>
+<<<<<<< HEAD
               <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
                 Advanced
                 <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
+=======
+              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+                {t('common.advancedLMS')}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+>>>>>>> main
                   {" "}
                   AI LMS
                 </span>
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                The next generation learning management system that adapts to
-                every student's needs through the power of artificial
-                intelligence.
+                {t('products.advancedLMSDesc')}
               </p>
+<<<<<<< HEAD
               <Button className="w-full md:w-72 my-btn group text-white p-6 rounded-xl">
                 Join the Waitlist
+=======
+              <Button className="my-btn group text-white p-6 rounded-xl">
+                {t('common.joinWaitlist')}
+>>>>>>> main
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-all duration-300" />
               </Button>
             </div>
@@ -235,10 +246,17 @@ const AdvancedLMS = () => {
         {/* Features Categories */}
         <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
+<<<<<<< HEAD
             <h2 className="text-3xl md:text-5xl font-bold text-center text-gray-900 mb-16">
               Revolutionary AI-Powered{" "}
               <span className="bg-gradient-to-r from-[#2901e3] to-blue-600 bg-clip-text text-transparent">
                 Features
+=======
+            <h2 className="text-4xl font-bold text-center text-foreground mb-16">
+              {t('advancedLMS.sections.revolutionary')}{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                {t('advancedLMS.sections.features')}
+>>>>>>> main
               </span>
             </h2>
             <div className="space-y-24">
@@ -329,8 +347,13 @@ const AdvancedLMS = () => {
         {/* Benefits Section */}
         <section className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 to-blue-50">
           <div className="max-w-4xl mx-auto text-center">
+<<<<<<< HEAD
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 md:mb-12">
               Transform Your Institution
+=======
+            <h2 className="text-4xl font-bold text-foreground mb-12">
+              {t('advancedLMS.sections.transform')}
+>>>>>>> main
             </h2>
             <div className="space-y-4 mb-12 grid grid-cols-1 sm:grid-cols-2 place-content-center">
               {benefits.map((benefit, index) => (

@@ -75,6 +75,7 @@ const WelcomeSection = ({
   };
 
   return (
+<<<<<<< HEAD
     <div className="mb-6">
       {/* Compact Welcome Message */}
       <div className="text-center mb-4">
@@ -137,6 +138,45 @@ const WelcomeSection = ({
               {tool.name}
             </Button>
           ))}
+=======
+    <div className="mb-4">
+      {/* Main section: Favorite Tools + Citation side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Your Favorite Tools - Now on the left */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-gray-200">
+          <div className="flex items-center space-x-2 mb-3">
+            <Heart className="h-4 w-4 text-red-500" />
+            <h2 className="text-sm font-semibold text-gray-800">{t('easyteach.welcome.favoriteTools')}</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {favoriteTools.map((tool, index) => (
+              <Button 
+                key={index}
+                onClick={() => onQuickAction?.(tool.category, tool.toolId)}
+                className={`bg-gradient-to-r ${tool.color} hover:opacity-90 text-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-xs font-medium justify-start`}
+              >
+                <tool.icon className="mr-2 h-3 w-3" />
+                {tool.name}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        {/* Cogitatio - Now on the right */}
+        <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-lg p-4 border border-blue-200">
+          <div className="flex items-center space-x-2 mb-3">
+            <div className="p-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500">
+              <Quote className="h-4 w-4 text-white" />
+            </div>
+            <h2 className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              {t('easyteach.welcome.cogitatio')}
+            </h2>
+          </div>
+          <blockquote className="text-sm text-gray-800 italic mb-2 leading-relaxed">
+            "{currentQuote.text}"
+          </blockquote>
+          <cite className="text-xs text-blue-600 font-medium">— {currentQuote.author}</cite>
+>>>>>>> main
         </div>
       </div>
     </div>

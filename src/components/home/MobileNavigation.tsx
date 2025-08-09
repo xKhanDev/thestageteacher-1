@@ -29,11 +29,15 @@ interface MobileNavigationProps {
   onShowLogin: () => void;
 }
 
+<<<<<<< HEAD
 const MobileNavigation = ({
   isOpen,
   onClose,
   onShowLogin,
 }: MobileNavigationProps) => {
+=======
+const MobileNavigation = ({ isOpen, onClose, onShowLogin }: MobileNavigationProps) => {
+>>>>>>> main
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
@@ -69,6 +73,7 @@ const MobileNavigation = ({
   ];
 
   const solutionsByCategory = [
+<<<<<<< HEAD
     {
       title: "Primary Schools",
       icon: Heart,
@@ -85,10 +90,17 @@ const MobileNavigation = ({
       icon: Target,
       path: "/solutions/independent-schools",
     },
+=======
+    { title: "Primary Schools", icon: Heart, path: "/solutions/primary-schools" },
+    { title: "Secondary Schools", icon: TrendingUp, path: "/solutions/secondary-schools" },
+    { title: "Universities", icon: Award, path: "/solutions/universities" },
+    { title: "Independent Schools", icon: Target, path: "/solutions/independent-schools" },
+>>>>>>> main
   ];
 
   const solutionsByDepartment = [
     { title: "Admissions", icon: UserCheck, path: "/solutions/admissions" },
+<<<<<<< HEAD
     {
       title: "General Report",
       icon: FileBarChart,
@@ -101,6 +113,12 @@ const MobileNavigation = ({
       icon: MessageSquare,
       path: "/solutions/communication",
     },
+=======
+    { title: "General Report", icon: FileBarChart, path: "/solutions/general-reports" },
+    { title: "HR & Payroll", icon: Users, path: "/solutions/hr-payroll" },
+    { title: "Finance", icon: DollarSign, path: "/solutions/finance" },
+    { title: "Communication", icon: MessageSquare, path: "/solutions/communication" },
+>>>>>>> main
   ];
 
   const resources = [
@@ -110,11 +128,15 @@ const MobileNavigation = ({
   ];
 
   const about = [
+<<<<<<< HEAD
     {
       title: "Partners & Integrations",
       icon: Zap,
       path: "/partners-integrations",
     },
+=======
+    { title: "Partners & Integrations", icon: Zap, path: "/partners-integrations" },
+>>>>>>> main
     { title: "Data Protection & GDPR", icon: Shield, path: "/data-protection" },
     { title: "Contact Us", icon: Mail, path: "/contact-us" },
   ];
@@ -122,12 +144,21 @@ const MobileNavigation = ({
   if (!isOpen) return null;
 
   return (
+<<<<<<< HEAD
     <div className="fixed left-0 top-0 w-full lg:hidden">
       {/* Backdrop */}
       {/* <div className="fixed inset-0 bg-black/50" onClick={onClose} /> */}
 
       {/* Menu Panel */}
       <div className="w-full h-screen bg-background shadow-xl animate-slide-in-right">
+=======
+    <div className="fixed inset-0 z-50 lg:hidden">
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-black/50" onClick={onClose} />
+      
+      {/* Menu Panel */}
+      <div className="fixed right-0 top-0 h-full w-80 bg-background shadow-xl animate-slide-in-right">
+>>>>>>> main
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
@@ -146,10 +177,17 @@ const MobileNavigation = ({
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.products")}
+<<<<<<< HEAD
                 <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "products" ? "rotate-90" : ""
                   }`}
+=======
+                <ChevronRight 
+                  className={`h-4 w-4 transition-transform ${
+                    expandedSection === "products" ? "rotate-90" : ""
+                  }`} 
+>>>>>>> main
                 />
               </button>
               {expandedSection === "products" && (
@@ -158,7 +196,11 @@ const MobileNavigation = ({
                     <button
                       key={product.id}
                       onClick={() => handleNavigate(product.path)}
+<<<<<<< HEAD
                       className="py-3 flex items-center space-x-3 w-full px-4 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-blue-100 rounded-lg"
+=======
+                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+>>>>>>> main
                     >
                       <product.icon className="h-4 w-4" />
                       <span>{product.name}</span>
@@ -175,10 +217,17 @@ const MobileNavigation = ({
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.solutions")}
+<<<<<<< HEAD
                 <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "solutions" ? "rotate-90" : ""
                   }`}
+=======
+                <ChevronRight 
+                  className={`h-4 w-4 transition-transform ${
+                    expandedSection === "solutions" ? "rotate-90" : ""
+                  }`} 
+>>>>>>> main
                 />
               </button>
               {expandedSection === "solutions" && (
@@ -192,7 +241,11 @@ const MobileNavigation = ({
                         <button
                           key={index}
                           onClick={() => handleNavigate(solution.path)}
+<<<<<<< HEAD
                           className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+=======
+                          className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+>>>>>>> main
                         >
                           <solution.icon className="h-4 w-4" />
                           <span>{solution.title}</span>
@@ -200,7 +253,11 @@ const MobileNavigation = ({
                       ))}
                     </div>
                   </div>
+<<<<<<< HEAD
 
+=======
+                  
+>>>>>>> main
                   <div>
                     <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                       {t("navigation.byDepartment")}
@@ -210,7 +267,11 @@ const MobileNavigation = ({
                         <button
                           key={index}
                           onClick={() => handleNavigate(solution.path)}
+<<<<<<< HEAD
                           className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+=======
+                          className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+>>>>>>> main
                         >
                           <solution.icon className="h-4 w-4" />
                           <span>{solution.title}</span>
@@ -229,10 +290,17 @@ const MobileNavigation = ({
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.resources")}
+<<<<<<< HEAD
                 <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "resources" ? "rotate-90" : ""
                   }`}
+=======
+                <ChevronRight 
+                  className={`h-4 w-4 transition-transform ${
+                    expandedSection === "resources" ? "rotate-90" : ""
+                  }`} 
+>>>>>>> main
                 />
               </button>
               {expandedSection === "resources" && (
@@ -241,7 +309,11 @@ const MobileNavigation = ({
                     <button
                       key={index}
                       onClick={() => handleNavigate(item.path)}
+<<<<<<< HEAD
                       className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+=======
+                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+>>>>>>> main
                     >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
@@ -258,10 +330,17 @@ const MobileNavigation = ({
                 className="flex items-center justify-between w-full p-3 text-left font-medium text-foreground hover:bg-accent/10 rounded-lg"
               >
                 {t("navigation.aboutUs")}
+<<<<<<< HEAD
                 <ChevronRight
                   className={`h-4 w-4 transition-transform ${
                     expandedSection === "about" ? "rotate-90" : ""
                   }`}
+=======
+                <ChevronRight 
+                  className={`h-4 w-4 transition-transform ${
+                    expandedSection === "about" ? "rotate-90" : ""
+                  }`} 
+>>>>>>> main
                 />
               </button>
               {expandedSection === "about" && (
@@ -270,7 +349,11 @@ const MobileNavigation = ({
                     <button
                       key={index}
                       onClick={() => handleNavigate(item.path)}
+<<<<<<< HEAD
                       className="flex items-center space-x-3 w-full px-4 py-3 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+=======
+                      className="flex items-center space-x-3 w-full p-2 text-left text-sm text-muted-foreground hover:text-foreground hover:bg-accent/10 rounded-lg"
+>>>>>>> main
                     >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
@@ -286,7 +369,11 @@ const MobileNavigation = ({
             <Button
               onClick={() => handleNavigate("/contact-us")}
               variant="outline"
+<<<<<<< HEAD
               className="w-full p-6"
+=======
+              className="w-full"
+>>>>>>> main
             >
               {t("navigation.contact")}
             </Button>
@@ -295,7 +382,11 @@ const MobileNavigation = ({
                 onShowLogin();
                 onClose();
               }}
+<<<<<<< HEAD
               className="w-full my-btn p-6"
+=======
+              className="w-full bg-primary hover:bg-primary/90"
+>>>>>>> main
             >
               {t("navigation.login")}
             </Button>
@@ -306,4 +397,8 @@ const MobileNavigation = ({
   );
 };
 
+<<<<<<< HEAD
 export default MobileNavigation;
+=======
+export default MobileNavigation;
+>>>>>>> main
